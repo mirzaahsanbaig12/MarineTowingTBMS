@@ -1,11 +1,11 @@
-page 50120 "Location Register List"
+page 50129 "Tariff Register List"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "Location Register";
-    Caption = 'Location Register List';
-    CardPageId = 50121;
+    SourceTable = Tariff;
+    Caption = 'Tariff Register List';
+    CardPageId = 50130;
 
     layout
     {
@@ -13,16 +13,11 @@ page 50120 "Location Register List"
         {
             repeater("General")
             {
-                field(LocId; LocId)
+                field(TarId; TarId)
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
-                {
-                    ApplicationArea = All;
-                }
-
-                field(PrtId; PrtId)
+                field(Descr; Descr)
                 {
                     ApplicationArea = All;
                 }
@@ -54,5 +49,4 @@ page 50120 "Location Register List"
 
     var
         myInt: Integer;
-
 }

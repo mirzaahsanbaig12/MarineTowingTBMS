@@ -41,18 +41,7 @@ page 50128 "Revenue Tracking Register Card"
 
             }
 
-            group(Location)
-            {
 
-                part("locations"; "Location SubForm")
-                {
-                    ApplicationArea = Basic, Suite;
-                    SubPageLink = PrtId = FIELD(PrtId);
-                    UpdatePropagation = Both;
-                    //Editable = true;
-
-                }
-            }
 
 
         }

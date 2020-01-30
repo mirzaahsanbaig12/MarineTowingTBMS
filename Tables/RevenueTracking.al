@@ -50,7 +50,7 @@ table 50125 "Revenue Tracking"
 
     keys
     {
-        key(PK; Ident)
+        key(PK; RevId)
         {
             Clustered = true;
         }

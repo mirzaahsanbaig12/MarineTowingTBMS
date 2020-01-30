@@ -23,7 +23,7 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Default Tariff';
             Caption = 'Default Tariff';
-            TableRelation = Tariff.Ident;
+            TableRelation = Tariff.TarId;
         }
 
         field(50113; Name; Text[50])

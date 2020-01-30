@@ -20,7 +20,7 @@ table 50113 "Tug Rate"
         {
             DataClassification = ToBeClassified;
             Caption = 'Tar Id';
-            TableRelation = Tariff.Ident;
+            TableRelation = Tariff.TarId;
 
         }
         field(50113; CmpId; Code[5])
