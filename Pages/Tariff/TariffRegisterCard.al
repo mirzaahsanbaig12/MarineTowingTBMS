@@ -96,37 +96,70 @@ page 50130 "Tariff Register Card"
                         ApplicationArea = All;
                     }
                 }
+
+
+                group("Hawser Charge")
+                {
+                    field(HWATBFlag; HWATBFlag)
+                    {
+                        ApplicationArea = All;
+                    }
+                    field(HWType; HWType)
+                    {
+                        ApplicationArea = All;
+                    }
+
+                    field(HWRate; HWRate)
+                    {
+                        ApplicationArea = All;
+                    }
+                }
+                group("Over Time Rate")
+                {
+                    field(OTATBFlag; OTATBFlag)
+                    {
+                        ApplicationArea = All;
+                    }
+
+                    field(OTType; OTType)
+                    {
+                        ApplicationArea = All;
+                    }
+
+                    field(OTRateAmount; OTRateAmount)
+                    {
+                        ApplicationArea = All;
+                    }
+
+                    field(OTMinAmount; OTMinAmount)
+                    {
+                        ApplicationArea = All;
+                    }
+
+                    field(OTShiftAmount; OTShiftAmount)
+                    {
+                        ApplicationArea = All;
+                    }
+                }
+
+                group("Turning Charge")
+                {
+                    field(TCATBFlag; TCATBFlag)
+                    {
+                        ApplicationArea = All;
+                    }
+                    field(TCType; TCType)
+                    {
+                        ApplicationArea = All;
+                    }
+
+                    field(TCRate; TCRate)
+                    {
+                        ApplicationArea = All;
+                    }
+                }
+
             }
-            group("Over Time Rate")
-            {
-                field(OTATBFlag; OTATBFlag)
-                {
-                    ApplicationArea = All;
-                }
-
-                field(OTType; OTType)
-                {
-                    ApplicationArea = All;
-                }
-
-                field(OTRateAmount; OTRateAmount)
-                {
-                    ApplicationArea = All;
-                }
-
-                field(OTMinAmount; OTMinAmount)
-                {
-                    ApplicationArea = All;
-                }
-
-                field(OTShiftAmount; OTShiftAmount)
-                {
-                    ApplicationArea = All;
-                }
-            }
-
-
-
         }
     }
 

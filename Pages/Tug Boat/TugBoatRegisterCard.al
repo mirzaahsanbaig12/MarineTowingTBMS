@@ -16,6 +16,10 @@ page 50115 "Tug Register Card"
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
+                    trigger OnValidate()
+                    begin
+                        CurrPage."Tug Rate".Page.SetTugId(TugId);
+                    end;
                 }
 
                 field(Name; Name)

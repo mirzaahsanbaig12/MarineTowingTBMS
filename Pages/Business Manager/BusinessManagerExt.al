@@ -34,7 +34,6 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     {
                         ApplicationArea = All;
                         RunObject = page "Traffic Type";
-
                     }
 
                     action("Revenue/Tracking Register")
@@ -76,6 +75,18 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     {
                         ApplicationArea = All;
                         RunObject = page "Location Register List";
+                    }
+
+                    action("Pilot Association")
+                    {
+                        ApplicationArea = All;
+                        RunObject = page "Pilot Association List";
+                    }
+
+                    action("Vessel")
+                    {
+                        ApplicationArea = All;
+                        RunObject = page "Vessel Register List";
                     }
 
 

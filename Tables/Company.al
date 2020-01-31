@@ -8,7 +8,7 @@ table 50110 "Company Register"
         {
             DataClassification = ToBeClassified;
             Description = 'Ident';
-            Caption = 'Ident';
+            Caption = 'Company Id';
 
         }
         field(50111; DbId; Code[5])

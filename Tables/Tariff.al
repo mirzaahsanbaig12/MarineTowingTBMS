@@ -131,6 +131,49 @@ table 50129 "Tariff"
         }
 
 
+        field(50130; HWATBFlag; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Add To Base';
+            OptionMembers = "No","Yes";
+        }
+
+        field(50131; HWType; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Type';
+            OptionMembers = "Amount Per Tug","Percent Of Base";
+        }
+
+        field(50132; HWRate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Amount/ Percent';
+
+        }
+
+        field(50133; TCATBFlag; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Add To Base';
+            OptionMembers = "No","Yes";
+        }
+
+        field(50134; TCType; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Type';
+            OptionMembers = "Amount Per Tug","Percent Of Base";
+        }
+
+        field(50135; TCRate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Amount/ Percent';
+
+        }
+
+
 
     }
 
