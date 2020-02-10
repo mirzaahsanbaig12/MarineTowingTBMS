@@ -1,44 +1,51 @@
-page 50133 "Pilot Subform"
+page 50140 "Contract Agent SubForm"
 {
     AutoSplitKey = false;
-    Caption = 'Pilots';
+    Caption = 'ContractAgent';
     DelayedInsert = true;
     LinksAllowed = false;
     MultipleNewLines = false;
     PageType = ListPart;
-    SourceTable = "Pilot";
-    Editable = true;
+    SourceTable = ConAgent;
 
 
     layout
     {
         area(Content)
         {
-            repeater(GroupName)
+            repeater(groupname)
             {
-                field(PaId; PaId)
+                field(LineNo; LineNo)
                 {
                     ApplicationArea = All;
                     Visible = false;
-
                 }
-                field(PilId; PilId)
+                field(ConNumber; ConNumber)
                 {
                     ApplicationArea = All;
+                    Editable = false;
 
                 }
-
-                field(Status; Status)
+                field(CommonType; CommonType)
                 {
                     ApplicationArea = All;
-
                 }
 
-                field(Name; Name)
+                field(CommonPer; CommonPer)
                 {
                     ApplicationArea = All;
-
                 }
+
+                field(DiscType; DiscType)
+                {
+                    ApplicationArea = all;
+                }
+                field(DiscPer; DiscPer)
+                {
+                    ApplicationArea = all;
+                }
+
+
             }
         }
     }
@@ -60,18 +67,17 @@ page 50133 "Pilot Subform"
             }
         }
     }
-
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        PaId := paIdCode;
+        // BusOc := BusOcCode;
     end;
 
     var
-        paIdCode: code[5];
+        BusOcCode: code[20];
 
-    procedure SetPaId(_paIdCode: Code[5])
+    procedure SetBusOc(_BusOc: Code[20])
     begin
-        paIdCode := _paIdCode;
+        BusOcCode := _BusOc;
     end;
 
 }
