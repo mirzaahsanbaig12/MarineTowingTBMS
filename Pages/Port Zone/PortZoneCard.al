@@ -5,7 +5,7 @@ page 50119 "Port Zone Register Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Port Zone";
-    Caption = 'Port  Register Card';
+    Caption = 'Port Card';
 
     layout
     {
@@ -52,15 +52,13 @@ page 50119 "Port Zone Register Card"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("LocationFrom")
             {
                 ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
+                RunObject = page "Location Register List";
+                Caption = 'Locations';
             }
+
         }
     }
 

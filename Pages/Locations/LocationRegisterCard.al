@@ -5,7 +5,7 @@ page 50121 "location Register Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Location Register";
-    Caption = 'Location Register Card';
+    Caption = 'Location Card';
 
     layout
     {
@@ -43,6 +43,21 @@ page 50121 "location Register Card"
                 }
 
             }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action("Port")
+            {
+                ApplicationArea = All;
+                RunObject = page "Port Zone Register List";
+                Caption = 'Port/ Zone';
+            }
+
+
         }
     }
 

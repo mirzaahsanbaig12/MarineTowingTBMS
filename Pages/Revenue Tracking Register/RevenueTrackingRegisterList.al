@@ -4,7 +4,7 @@ page 50127 "Revenue Tracking Register"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Revenue Tracking";
-    Caption = 'Revenue/Tracking Register';
+    Caption = 'Revenue/Tracking';
     CardPageId = 50128;
 
     layout

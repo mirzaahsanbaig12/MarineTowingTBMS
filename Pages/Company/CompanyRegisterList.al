@@ -4,7 +4,7 @@ page 50110 "Company Register List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Company Register";
-    Caption = 'Company Register List';
+    Caption = 'Company List';
     CardPageId = 50111;
 
     layout

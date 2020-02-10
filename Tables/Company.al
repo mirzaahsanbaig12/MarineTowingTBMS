@@ -1,6 +1,7 @@
 table 50110 "Company Register"
 {
     DataClassification = ToBeClassified;
+    LookupPageId = "Company Register Card";
 
     fields
     {
@@ -84,7 +85,6 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Company Logo';
             Caption = 'Company logo';
-
         }
 
         field(50121; AcctRev; Integer)
@@ -92,8 +92,6 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Revenue Account';
             Caption = 'Revenue Account';
-
-
         }
 
         field(50122; DbName; Text[50])
@@ -126,11 +124,7 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Remit To memo';
             Caption = 'Remit To memo';
-
-
         }
-
-
     }
 
     keys

@@ -2,6 +2,7 @@ table 50114 "Port Zone"
 {
     DataClassification = ToBeClassified;
     caption = 'Port Zone';
+    LookupPageId = "Port Zone Register Card";
 
     fields
     {

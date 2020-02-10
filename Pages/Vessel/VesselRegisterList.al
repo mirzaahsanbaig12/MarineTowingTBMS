@@ -1,28 +1,33 @@
-page 50118 "Port Zone Register List"
+page 50134 "Vessel Register List"
 {
     PageType = List;
     ApplicationArea = All;
-    UsageCategory = Lists;
-    SourceTable = "Port Zone";
-    Caption = 'Port Zone List';
-    CardPageId = 50119;
+    UsageCategory = Administration;
+    SourceTable = Vessel;
+    Caption = 'Vessel List';
+    CardPageId = 50135;
 
     layout
     {
         area(Content)
         {
-            repeater("AreaPort Zone Register")
+            repeater("General")
             {
-                field(PrtId; PrtId)
+                field(VesId; VesId)
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Name)
+                field(Name; Name)
                 {
                     ApplicationArea = All;
                 }
 
                 field(Status; Status)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(Tonnage; Tonnage)
                 {
                     ApplicationArea = All;
                 }
@@ -49,5 +54,4 @@ page 50118 "Port Zone Register List"
 
     var
         myInt: Integer;
-    //ahsan:  "Locations Subform";
 }

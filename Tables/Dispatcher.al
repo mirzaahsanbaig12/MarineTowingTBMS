@@ -2,6 +2,7 @@ table 50116 Dispatcher
 {
     DataClassification = ToBeClassified;
     Caption = 'Dispatcher';
+    LookupPageId = "Dispatcher Register Card";
 
     fields
     {

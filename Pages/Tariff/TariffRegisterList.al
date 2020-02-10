@@ -4,7 +4,7 @@ page 50129 "Tariff Register List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Tariff;
-    Caption = 'Tariff Register List';
+    Caption = 'Tariff List';
     CardPageId = 50130;
 
     layout
@@ -35,7 +35,7 @@ page 50129 "Tariff Register List"
     {
         area(Processing)
         {
-            action(ActionName)
+            /*action(ActionName)
             {
                 ApplicationArea = All;
 
@@ -44,9 +44,11 @@ page 50129 "Tariff Register List"
 
                 end;
             }
+            */
         }
     }
 
     var
-        myInt: Integer;
+
+
 }

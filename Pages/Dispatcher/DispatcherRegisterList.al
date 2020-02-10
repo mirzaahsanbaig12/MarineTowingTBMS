@@ -4,7 +4,7 @@ page 50123 "Dispatcher Register List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Dispatcher;
-    Caption = 'Dispatcher Register List';
+    Caption = 'Dispatcher List';
     CardPageId = 50124;
 
     layout

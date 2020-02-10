@@ -1,19 +1,19 @@
-page 50118 "Port Zone Register List"
+page 50131 "Pilot Association List"
 {
     PageType = List;
     ApplicationArea = All;
-    UsageCategory = Lists;
-    SourceTable = "Port Zone";
-    Caption = 'Port Zone List';
-    CardPageId = 50119;
+    UsageCategory = Administration;
+    SourceTable = "Pilot Association";
+    Caption = 'Pilot Association List';
+    CardPageId = 50132;
 
     layout
     {
         area(Content)
         {
-            repeater("AreaPort Zone Register")
+            repeater("General")
             {
-                field(PrtId; PrtId)
+                field(PaId; PaId)
                 {
                     ApplicationArea = All;
                 }
@@ -22,10 +22,6 @@ page 50118 "Port Zone Register List"
                     ApplicationArea = All;
                 }
 
-                field(Status; Status)
-                {
-                    ApplicationArea = All;
-                }
             }
 
         }
@@ -49,5 +45,6 @@ page 50118 "Port Zone Register List"
 
     var
         myInt: Integer;
-    //ahsan:  "Locations Subform";
+        sales: page "Sales Order";
+        sales1: page "Sales Order Subform";
 }

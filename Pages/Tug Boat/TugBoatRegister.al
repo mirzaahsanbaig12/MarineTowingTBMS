@@ -4,7 +4,7 @@ page 50114 "Tug Boat Register List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Tug Boat";
-    Caption = 'Tug Boat Register List';
+    Caption = 'Tug Boat List';
     CardPageId = 50115;
 
     layout

@@ -4,7 +4,7 @@ page 50120 "Location Register List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Location Register";
-    Caption = 'Location Register List';
+    Caption = 'Location List';
     CardPageId = 50121;
 
     layout

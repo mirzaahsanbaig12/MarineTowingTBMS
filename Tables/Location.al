@@ -2,6 +2,7 @@ table 50115 "Location Register"
 {
     DataClassification = ToBeClassified;
     Caption = 'Location';
+    LookupPageId = "Location Card";
 
     fields
     {

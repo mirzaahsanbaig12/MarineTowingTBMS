@@ -5,7 +5,7 @@ page 50111 "Company Register Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Company Register";
-    Caption = 'Company Register Card';
+    Caption = 'Company Card';
 
     layout
     {

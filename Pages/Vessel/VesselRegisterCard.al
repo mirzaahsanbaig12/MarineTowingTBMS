@@ -1,11 +1,10 @@
-page 50128 "Revenue Tracking Register Card"
+page 50135 "Vessel Register Card"
 {
     PageType = Card;
-    DeleteAllowed = true;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "Revenue Tracking";
-    Caption = 'Revenue Tracking Card';
+    SourceTable = Vessel;
+    Caption = 'Vessel Card';
 
     layout
     {
@@ -13,22 +12,40 @@ page 50128 "Revenue Tracking Register Card"
         {
             group("General")
             {
-                field(RevId; RevId)
+                field(VesId; VesId)
                 {
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
-                field(Description; Description)
+                field(VesType; VesType)
+                {
+                    ApplicationArea = All;
+                }
+                field(RevId; RevId)
+                {
+                    ApplicationArea = All;
+                }
+                field(Tonnage; Tonnage)
                 {
                     ApplicationArea = All;
                 }
 
-                field(AccountNumber; AccountNumber)
+                field(BusLa; BusLa)
                 {
                     ApplicationArea = All;
                 }
 
-                field(TrafficType; TrafficType)
+                field(BusOc; BusOc)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(DefaultFlag; DefaultFlag)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(LockFlag; LockFlag)
                 {
                     ApplicationArea = All;
                 }
@@ -37,12 +54,7 @@ page 50128 "Revenue Tracking Register Card"
                 {
                     ApplicationArea = All;
                 }
-
-
             }
-
-
-
 
         }
     }

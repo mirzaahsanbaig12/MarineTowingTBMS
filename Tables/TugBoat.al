@@ -2,10 +2,10 @@ table 50112 "Tug Boat"
 {
     DataClassification = ToBeClassified;
     Caption = 'Tug Boat';
+    LookupPageId = "Tug Register Card";
 
     fields
     {
-
         field(50110; TugId; Code[5])
         {
             DataClassification = ToBeClassified;
@@ -32,10 +32,12 @@ table 50112 "Tug Boat"
             Caption = 'Db Name';
         }
 
-        field(50114; AccountCC; text[50])
+        field(50114; AccountCC; code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Cost Center Account';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(0),
+                                                          Blocked = CONST(false));
         }
 
         field(50115; Power; text[50])
@@ -69,13 +71,6 @@ table 50112 "Tug Boat"
             TableRelation = "Company Register".CmpId;
             Caption = 'Owner Company';
         }
-
-
-
-
-
-
-
     }
 
 

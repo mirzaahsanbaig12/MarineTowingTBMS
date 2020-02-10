@@ -2,6 +2,7 @@ table 50129 "Tariff"
 {
     DataClassification = ToBeClassified;
     Caption = 'Tariff Register';
+    LookupPageId = "Tariff Register Card";
 
     fields
     {
@@ -170,11 +171,51 @@ table 50129 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Amount/ Percent';
-
         }
 
+        field(50136; PrtId; code[5])
+        {
+            Caption = 'Port Id';
+            TableRelation = "Port Zone".PrtId;
+            DataClassification = ToBeClassified;
+        }
 
+        field(50137; DateBegining; Date)
+        {
+            Caption = 'To Date';
+            DataClassification = ToBeClassified;
+        }
 
+        field(50138; DateEnding; Date)
+        {
+            Caption = 'From Date';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50139; BRInc; Integer)
+        {
+            Caption = 'Increment Tons';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50140; BRAmt; Integer)
+        {
+            Caption = 'Rate Amount';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50141; TariffType; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Tariff Type';
+            OptionMembers = "Base","Change";
+        }
+
+        field(50142; MaxiumCharge; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Maximum Charge';
+        }
     }
 
     keys

@@ -1,23 +1,27 @@
-page 50118 "Port Zone Register List"
+page 50137 "Contract List"
 {
     PageType = List;
     ApplicationArea = All;
-    UsageCategory = Lists;
-    SourceTable = "Port Zone";
-    Caption = 'Port Zone List';
-    CardPageId = 50119;
+    UsageCategory = Administration;
+    SourceTable = Contract;
+    Caption = 'Contract List';
+    CardPageId = 50138;
 
     layout
     {
         area(Content)
         {
-            repeater("AreaPort Zone Register")
+            repeater("General")
             {
-                field(PrtId; PrtId)
+                field(BusOc; BusOc)
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Name)
+                field(ConNumber; ConNumber)
+                {
+                    ApplicationArea = All;
+                }
+                field(CmpId; CmpId)
                 {
                     ApplicationArea = All;
                 }
@@ -25,6 +29,11 @@ page 50118 "Port Zone Register List"
                 field(Status; Status)
                 {
                     ApplicationArea = All;
+                }
+
+                field(Descr; Descr)
+                {
+                    ApplicationArea = all;
                 }
             }
 
@@ -49,5 +58,4 @@ page 50118 "Port Zone Register List"
 
     var
         myInt: Integer;
-    //ahsan:  "Locations Subform";
 }

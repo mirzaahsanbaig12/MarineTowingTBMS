@@ -2,11 +2,12 @@ table 50121 "Vessel"
 {
     DataClassification = ToBeClassified;
     Caption = 'Vessel';
+    LookupPageId = "Vessel Register Card";
 
     fields
     {
 
-        field(50110; VesId; Code[5])
+        field(50110; VesId; Code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Id';

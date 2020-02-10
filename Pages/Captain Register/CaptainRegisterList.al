@@ -4,7 +4,7 @@ page 50125 "Captain Register List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Captain;
-    Caption = 'Captain Register List';
+    Caption = 'Captain List';
     CardPageId = 50126;
 
     layout

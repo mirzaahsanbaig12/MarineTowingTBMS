@@ -4,7 +4,7 @@ page 50124 "Dispatcher Register Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Dispatcher;
-    Caption = 'Dispatcher Register Card';
+    Caption = 'Dispatcher Card';
 
     layout
     {

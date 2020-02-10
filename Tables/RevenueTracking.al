@@ -2,6 +2,7 @@ table 50125 "Revenue Tracking"
 {
     DataClassification = ToBeClassified;
     caption = 'Revenue/Tracking Register';
+    LookupPageId = "Revenue Tracking Register Card";
 
     fields
     {

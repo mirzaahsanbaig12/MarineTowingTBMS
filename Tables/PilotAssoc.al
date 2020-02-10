@@ -1,6 +1,7 @@
 table 50119 "Pilot Association"
 {
     DataClassification = ToBeClassified;
+    LookupPageId = "Pilot Assoc Register Card";
 
     fields
     {

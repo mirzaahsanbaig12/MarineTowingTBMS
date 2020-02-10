@@ -2,6 +2,7 @@ table 50117 Captain
 {
     DataClassification = ToBeClassified;
     Caption = 'Captain';
+    LookupPageId = "Captain Register Card";
 
     fields
     {

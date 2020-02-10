@@ -4,7 +4,7 @@ page 50126 "Captain Register Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Captain;
-    Caption = 'Captain Register Card';
+    Caption = 'Captain Card';
 
     layout
     {

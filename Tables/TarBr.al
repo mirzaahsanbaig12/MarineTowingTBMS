@@ -1,47 +1,50 @@
-table 50120 Pilot
+table 50122 TarBr
 {
     DataClassification = ToBeClassified;
-    Caption = 'Pilot';
-
 
     fields
     {
-        field(50110; PilId; Code[5])
+        field(50110; LineNo; Integer)
         {
             DataClassification = ToBeClassified;
-            Description = 'Pilot Id';
-            Caption = 'Pilot Id';
-        }
-        field(50111; Name; Text[50])
-        {
-            DataClassification = ToBeClassified;
-            Description = 'Name';
+            AutoIncrement = true;
         }
 
-        field(50112; Status; Option)
+        field(50111; TarId; code[5])
         {
             DataClassification = ToBeClassified;
-            OptionMembers = "Active","Inactive","Purge";
+            TableRelation = Tariff.TarId;
         }
 
-        field(50113; Dbid; code[5])
+        field(50112; PrtId; code[5])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Port Zone".PrtId;
+        }
+
+        field(50113; class; Text[50])
         {
             DataClassification = ToBeClassified;
         }
 
-        field(50114; PaId; Code[5])
+        field(50114; TonnageBeg; Decimal)
         {
             DataClassification = ToBeClassified;
-            Description = 'Pilot Assoc Id';
-            Caption = 'Pilot Assoc Id';
-            TableRelation = "Pilot Association".PaId;
         }
 
+        field(50115; TonnageEnd; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50116; Rate; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
     {
-        key(PK; PilId)
+        key(PK; LineNo)
         {
             Clustered = true;
         }
@@ -52,9 +55,6 @@ table 50120 Pilot
 
     trigger OnInsert()
     begin
-        IF PilId = ''
-                THEN
-            ERROR('Please Add Pilot Id');
 
     end;
 
