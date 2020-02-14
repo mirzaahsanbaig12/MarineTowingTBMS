@@ -83,7 +83,7 @@ page 50144 "Inbound Ord Doc Card"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        InboundOutbound := ordDocRec.InboundOutbound::Outbound;
+        InboundOutbound := ordDocRec.InboundOutbound::Inbound;
         CurrPage."ord Tug SubForm".Page.SetORDocNumber(ordDocRec.GetORDocNumber());
         CurrPage."ord loc SubForm".Page.SetORDocNumber(ordDocRec.GetORDocNumber());
     end;
