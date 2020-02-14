@@ -10,7 +10,6 @@ table 50114 "Port Zone"
         {
             DataClassification = ToBeClassified;
             Caption = 'Port Id';
-
         }
 
         field(50111; DbId; Code[5])
@@ -25,12 +24,18 @@ table 50114 "Port Zone"
             Caption = 'Name';
         }
 
-        field(5013; Status; Option)
+        field(50113; Status; Option)
         {
             DataClassification = ToBeClassified;
             OptionMembers = "Active","Inactive","Purge";
             Caption = 'Status';
 
+        }
+        field(50114; Company; Code[5])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Company Register";
+            Caption = 'Company';
         }
     }
 

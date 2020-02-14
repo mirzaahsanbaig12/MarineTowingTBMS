@@ -11,7 +11,7 @@ table 50123 Contract
             DataClassification = ToBeClassified;
             Description = 'Number';
             Caption = 'Number';
-            AutoIncrement = true;
+            //AutoIncrement = true;
         }
         field(50111; BusOc; Code[20])
         {
@@ -44,7 +44,6 @@ table 50123 Contract
         {
             DataClassification = ToBeClassified;
             Caption = 'Agent Discount Description';
-
         }
 
 
@@ -92,10 +91,12 @@ table 50123 Contract
             Caption = 'Type';
         }
 
-        field(50123; DiscPer; Integer)
+        field(50123; DiscPer; Decimal)
         {
             DataClassification = ToBeClassified;
             Caption = 'Discount Percentage';
+            AutoFormatExpression = '<precision, 2:2><standard format,0>%';
+            AutoFormatType = 10;
         }
 
         field(50124; Memo; Text[100])
@@ -123,9 +124,6 @@ table 50123 Contract
             Caption = 'Change Tariff';
             TableRelation = Tariff where(TariffType = const(Change));
         }
-
-
-
     }
 
     keys
@@ -141,7 +139,7 @@ table 50123 Contract
 
     trigger OnInsert()
     begin
-
+        ConNumber := GetLastLineNo();
     end;
 
     trigger OnModify()
@@ -156,6 +154,22 @@ table 50123 Contract
 
     trigger OnRename()
     begin
+
+    end;
+
+    procedure GetLastLineNo(): Integer
+    var
+        contractRec: Record Contract;
+        lineNoLocal: Integer;
+    begin
+        ;
+        if (contractRec.FindLast()) then begin
+            linenolocal := contractRec.ConNumber;
+        end
+        else begin
+            linenolocal := 0;
+        end;
+        exit(lineNoLocal + 1);
 
     end;
 

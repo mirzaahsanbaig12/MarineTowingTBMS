@@ -12,10 +12,22 @@ page 50138 "Contract Card"
         {
             group("General")
             {
+
+                field(ConNumber; ConNumber)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                    trigger OnValidate()
+                    begin
+                        CurrPage.contractAgent.Page.SetConNumber(ConNumber);
+                    end;
+                    //Visible = false;
+
+                }
                 field(BusOc; BusOc)
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
+                    //ShowMandatory = true;
                 }
                 field(CmpId; CmpId)
                 {
@@ -104,5 +116,22 @@ page 50138 "Contract Card"
     }
 
     var
-        myInt: Integer;
+        contractRec: Record Contract;
+
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage.contractAgent.Page.SetConNumber(ConNumber);
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        CurrPage.contractAgent.Page.SetConNumber(contractRec.GetLastLineNo());
+    end;
+
+    trigger OnOpenPage()
+    begin
+        ConNumber := contractRec.GetLastLineNo();
+        CurrPage.contractAgent.Page.SetConNumber(ConNumber);
+    end;
+
 }

@@ -28,6 +28,11 @@ page 50119 "Port Zone Register Card"
                     ApplicationArea = All;
                 }
 
+                field(Company; Company)
+                {
+                    ApplicationArea = All;
+                }
+
 
             }
 

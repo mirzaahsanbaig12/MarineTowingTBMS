@@ -105,12 +105,20 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     RunObject = page "Contract List";
                 }
 
-
-                /*action("Address")
+                group("Scheduler")
                 {
-                    ApplicationArea = All;
-                    RunObject = page "Address Register List";
-                }*/
+                    action("Outbound Vessel")
+                    {
+                        ApplicationArea = All;
+                        RunObject = page "Outbound Ord Doc List";
+                    }
+
+                    action("Inbound Vessel")
+                    {
+                        ApplicationArea = All;
+                        RunObject = page "InBound Ord Doc List";
+                    }
+                }
             }
 
 

@@ -1,7 +1,7 @@
 page 50140 "Contract Agent SubForm"
 {
     AutoSplitKey = false;
-    Caption = 'ContractAgent';
+    Caption = 'Contract Agent';
     DelayedInsert = true;
     LinksAllowed = false;
     MultipleNewLines = false;
@@ -24,7 +24,13 @@ page 50140 "Contract Agent SubForm"
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    Visible = false;
 
+                }
+
+                field(BusId; BusId)
+                {
+                    ApplicationArea = All;
                 }
                 field(CommonType; CommonType)
                 {
@@ -69,15 +75,15 @@ page 50140 "Contract Agent SubForm"
     }
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        // BusOc := BusOcCode;
+        ConNumber := ConNumberCode;
     end;
 
     var
-        BusOcCode: code[20];
+        ConNumberCode: Integer;
 
-    procedure SetBusOc(_BusOc: Code[20])
+    procedure SetConNumber(_ConNumber: Integer)
     begin
-        BusOcCode := _BusOc;
+        ConNumberCode := _ConNumber;
     end;
 
 }
