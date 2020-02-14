@@ -18,7 +18,7 @@ page 50141 "Outbound Ord Doc List"
                 {
                     ApplicationArea = All;
                 }
-                field(JobType; JobType)
+                field(JobDate; JobDate)
                 {
                     ApplicationArea = All;
                 }

@@ -18,7 +18,7 @@ page 50143 "InBound Ord Doc List"
                 {
                     ApplicationArea = All;
                 }
-                field(JobType; JobType)
+                field(JobDate; JobDate)
                 {
                     ApplicationArea = All;
                 }

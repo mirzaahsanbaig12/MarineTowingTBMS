@@ -49,7 +49,7 @@ table 50126 OrdDoc
         {
             DataClassification = ToBeClassified;
             TableRelation = Vessel;
-            Caption = 'Vesel Id';
+            Caption = 'Vessel Id';
         }
         field(50118; TugOrderDescr; Text[50])
         {
@@ -131,11 +131,6 @@ table 50126 OrdDoc
             OptionMembers = "Inbound","Outbound";
             Caption = 'Inbound\Outbound';
         }
-
-
-
-
-
     }
 
     keys

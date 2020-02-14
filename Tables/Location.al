@@ -2,7 +2,7 @@ table 50115 "Location Register"
 {
     DataClassification = ToBeClassified;
     Caption = 'Location';
-    LookupPageId = "Location Card";
+    LookupPageId = "location Register Card";
 
     fields
     {
@@ -28,7 +28,7 @@ table 50115 "Location Register"
         field(50113; Description; Text[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Name/Descrition';
+            Caption = 'Name/Description';
         }
 
         field(50114; Status; Option)
@@ -49,7 +49,6 @@ table 50115 "Location Register"
         {
             DataClassification = ToBeClassified;
             Caption = 'Area/State';
-
         }
     }
 
