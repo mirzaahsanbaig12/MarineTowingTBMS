@@ -41,6 +41,7 @@ page 50122 "Location SubForm"
                     ApplicationArea = All;
 
                 }
+
             }
         }
     }

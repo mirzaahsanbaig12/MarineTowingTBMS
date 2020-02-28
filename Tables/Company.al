@@ -19,7 +19,7 @@ table 50110 "Company Register"
             Caption = 'DB';
         }
 
-        field(50112; TarId; Code[5])
+        field(50112; TarId; Code[20])
         {
             DataClassification = ToBeClassified;
             Description = 'Default Tariff';
@@ -87,11 +87,12 @@ table 50110 "Company Register"
             Caption = 'Company logo';
         }
 
-        field(50121; AcctRev; Integer)
+        field(50121; AcctRev; Code[20])
         {
             DataClassification = ToBeClassified;
             Description = 'Revenue Account';
             Caption = 'Revenue Account';
+            TableRelation = "G/L Account";
         }
 
         field(50122; DbName; Text[50])

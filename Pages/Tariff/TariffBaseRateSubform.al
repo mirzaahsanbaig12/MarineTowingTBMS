@@ -47,20 +47,24 @@ page 50136 "Tariff Base Rate Subfrom"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Add Tonnage")
             {
                 ApplicationArea = All;
 
                 trigger OnAction();
                 begin
-
+                    if prtIdCode = '' then
+                        Error('Port Cannot be null')
+                    else
+                        InsertBaseRate.InsertTariffBaseRate(prtIdCode, tarIdCode);
                 end;
             }
         }
     }
     var
         prtIdCode: Code[5];
-        tarIdCode: Code[5];
+        tarIdCode: Code[20];
+        InsertBaseRate: Codeunit InsertData;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -74,7 +78,7 @@ page 50136 "Tariff Base Rate Subfrom"
         prtIdCode := _prtId;
     end;
 
-    procedure SetTarId(_TarId: Code[5])
+    procedure SetTarId(_TarId: Code[20])
     begin
         tarIdCode := _TarId;
     end;

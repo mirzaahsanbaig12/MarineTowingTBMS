@@ -16,7 +16,7 @@ table 50113 "Tug Rate"
             Caption = 'Tug Id';
             TableRelation = "Tug Boat".TugId;
         }
-        field(50112; TarId; text[50])
+        field(50112; TarId; code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Tar Id';

@@ -6,8 +6,8 @@ page 50139 "Contract SubForm"
     LinksAllowed = false;
     MultipleNewLines = false;
     PageType = ListPart;
-    SourceTable = Contract;
-
+    SourceTable = Contract2;
+    CardPageId = "Contract Card2";
 
     layout
     {
@@ -28,6 +28,7 @@ page 50139 "Contract SubForm"
                 field(CmpId; CmpId)
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
 
                 field(Status; Status)
@@ -50,13 +51,18 @@ page 50139 "Contract SubForm"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("New With Current Customer")
             {
                 ApplicationArea = All;
 
                 trigger OnAction();
                 begin
-
+                    InsertContract.InsertContract(BusOcCode);
+                    contractRec.Reset();
+                    contractRec.SetRange(BusOc, BusOcCode);
+                    contractRec.FindLast();
+                    ContractCardLocal.SetRecord(contractRec);
+                    ContractCardLocal.Run();
                 end;
             }
         }
@@ -68,10 +74,15 @@ page 50139 "Contract SubForm"
 
     var
         BusOcCode: code[20];
+        ContractCardLocal: Page "Contract Card2";
+        InsertContract: Codeunit InsertData;
+        contractRec: Record Contract2;
 
     procedure SetBusOc(_BusOc: Code[20])
     begin
         BusOcCode := _BusOc;
     end;
+
+
 
 }

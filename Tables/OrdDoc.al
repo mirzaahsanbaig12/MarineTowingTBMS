@@ -22,7 +22,7 @@ table 50126 OrdDoc
         field(50113; BusLA; Text[50])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Customer;
+            TableRelation = Customer where(TBMSAgent = const(true));
             Caption = 'Agent';
         }
 
@@ -100,7 +100,7 @@ table 50126 OrdDoc
             Caption = 'Document Date';
         }
 
-        field(50126; JobDate; Date)
+        field(50126; JobDate; DateTime)
         {
             DataClassification = ToBeClassified;
             Caption = 'Job Date';

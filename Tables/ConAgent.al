@@ -39,10 +39,12 @@ table 50124 ConAgent
             Caption = 'Commission';
         }
 
-        field(50115; CommonPer; Integer)
+        field(50115; CommonPer; Decimal)
         {
             DataClassification = ToBeClassified;
             Caption = 'Percentage';
+            AutoFormatExpression = '<precision, 2:2><standard format,0>%';
+            AutoFormatType = 10;
         }
         field(50116; DiscType; Text[50])
         {
@@ -50,10 +52,12 @@ table 50124 ConAgent
             Caption = 'Discount';
         }
 
-        field(50117; DiscPer; Text[50])
+        field(50117; DiscPer; Decimal)
         {
             DataClassification = ToBeClassified;
             Caption = 'Discount Percentage';
+            AutoFormatExpression = '<precision, 2:2><standard format,0>%';
+            AutoFormatType = 10;
         }
 
 

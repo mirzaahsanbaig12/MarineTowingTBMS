@@ -1,8 +1,8 @@
-table 50123 Contract
+table 50170 Contract2
 {
     DataClassification = ToBeClassified;
     Caption = 'Contract';
-    LookupPageId = "Contract Card";
+    LookupPageId = "Contract Card2";
 
     fields
     {
@@ -12,6 +12,7 @@ table 50123 Contract
             Description = 'Number';
             Caption = 'Number';
         }
+
         field(50111; BusOc; Code[20])
         {
             DataClassification = ToBeClassified;
@@ -24,7 +25,9 @@ table 50123 Contract
         {
             DataClassification = ToBeClassified;
             TableRelation = "Company Register";
+            NotBlank = true;
             Caption = 'Company';
+
         }
         field(50113; DbId; Code[5])
         {
@@ -123,6 +126,17 @@ table 50123 Contract
             Caption = 'Change Tariff';
             TableRelation = Tariff where(TariffType = const(Change));
         }
+        field(50128; AssistFixedRate; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Assist Fix Rate';
+        }
+
+        field(50129; Rate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Rate';
+        }
 
 
     }
@@ -141,6 +155,8 @@ table 50123 Contract
     trigger OnInsert()
     begin
         ConNumber := GetLastLineNo();
+        if CmpId = '' then
+            FieldError(CmpId, 'Can not be null');
     end;
 
     trigger OnModify()

@@ -58,21 +58,24 @@ page 50141 "Outbound Ord Doc List"
 
         }
     }
-
     actions
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Customer List")
             {
                 ApplicationArea = All;
+                Caption = 'Customer';
 
                 trigger OnAction()
                 begin
-
+                    customerList.Run();
                 end;
             }
         }
     }
+
+    var
+        customerList: Page "Customer List";
 }
 

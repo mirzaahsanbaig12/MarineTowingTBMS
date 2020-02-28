@@ -5,6 +5,7 @@ page 50135 "Vessel Register Card"
     UsageCategory = Administration;
     SourceTable = Vessel;
     Caption = 'Vessel Card';
+    DelayedInsert = true;
 
     layout
     {
@@ -28,6 +29,7 @@ page 50135 "Vessel Register Card"
                 field(Tonnage; Tonnage)
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
 
                 field(BusLa; BusLa)

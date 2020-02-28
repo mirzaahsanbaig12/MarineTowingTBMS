@@ -63,16 +63,20 @@ page 50143 "InBound Ord Doc List"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Customer List")
             {
                 ApplicationArea = All;
+                Caption = 'Customer';
 
                 trigger OnAction()
                 begin
-
+                    customerList.Run();
                 end;
             }
         }
     }
+
+    var
+        customerList: Page "Customer List";
 }
 

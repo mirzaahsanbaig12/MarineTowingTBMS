@@ -44,6 +44,7 @@ table 50128 OrdLoc
         {
             DataClassification = ToBeClassified;
             Caption = 'Name';
+            Editable = false;
         }
 
 

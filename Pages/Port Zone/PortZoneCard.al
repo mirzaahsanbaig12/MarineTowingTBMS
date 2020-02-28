@@ -6,6 +6,7 @@ page 50119 "Port Zone Register Card"
     UsageCategory = Administration;
     SourceTable = "Port Zone";
     Caption = 'Port Card';
+    DelayedInsert = true;
 
     layout
     {
@@ -31,6 +32,7 @@ page 50119 "Port Zone Register Card"
                 field(Company; Company)
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
 
 

@@ -21,4 +21,26 @@ codeunit 50111 GetData
             exit(Location.Description);
         exit('');
     end;
+
+
+    procedure GetVesselTonnage(_VesId: code[20]): Integer
+    var
+        VesselRec: Record Vessel;
+        Tonnage: Integer;
+    begin
+        VesselRec.Reset();
+        VesselRec.SetFilter(VesId, _VesId);
+
+        if VesselRec.FindFirst() then begin
+
+            Tonnage := VesselRec.Tonnage;
+        end
+        else begin
+            Tonnage := 0;
+        end;
+
+        exit(Tonnage);
+    end;
+
+
 }

@@ -1,4 +1,4 @@
-table 50129 "Tariff"
+table 50151 "Tariff"
 {
     DataClassification = ToBeClassified;
     Caption = 'Tariff Register';
@@ -6,7 +6,7 @@ table 50129 "Tariff"
 
     fields
     {
-        field(50110; TarId; Code[5])
+        field(50110; TarId; Code[20])
         {
             DataClassification = ToBeClassified;
             Description = 'Ident';
@@ -91,6 +91,8 @@ table 50129 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Surcharge Base %';
+            AutoFormatExpression = '<precision, 2:2><standard format,0>%';
+            AutoFormatType = 10;
         }
 
         field(50124; FSPerInc; Decimal)
@@ -117,6 +119,7 @@ table 50129 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Amount/Percent';
+
         }
 
         field(50128; OTMinAmount; Decimal)
@@ -216,8 +219,10 @@ table 50129 "Tariff"
             DataClassification = ToBeClassified;
             Caption = 'Maximum Charge';
         }
-    }
 
+
+
+    }
     keys
     {
         key(PK; TarId)
@@ -225,6 +230,15 @@ table 50129 "Tariff"
             Clustered = true;
         }
     }
+
+    fieldgroups
+    {
+        fieldgroup(DropDown; TarId, Descr, TariffType, DateBegining, DateEnding, Status)
+        {
+
+        }
+    }
+
 
     var
         myInt: Integer;
@@ -243,8 +257,12 @@ table 50129 "Tariff"
     end;
 
     trigger OnDelete()
+    var
+        baseRate: Record TarBr;
     begin
-
+        baseRate.SetFilter(TarId, TarId);
+        baseRate.FindSet();
+        baseRate.DeleteAll();
     end;
 
     trigger OnRename()

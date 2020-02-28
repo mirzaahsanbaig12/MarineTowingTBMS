@@ -4,6 +4,7 @@ table 50121 "Vessel"
     Caption = 'Vessel';
     LookupPageId = "Vessel Register Card";
 
+
     fields
     {
 
@@ -67,6 +68,7 @@ table 50121 "Vessel"
         {
             DataClassification = ToBeClassified;
             Caption = 'Gross Tonage';
+            BlankZero = true;
         }
 
 
@@ -77,12 +79,6 @@ table 50121 "Vessel"
             TableRelation = "Revenue Tracking".RevId;
 
         }
-
-
-
-
-
-
 
     }
 
@@ -113,6 +109,8 @@ table 50121 "Vessel"
         IF VesId = ''
                 THEN
             ERROR('Please Add Vessel Id');
+        if Tonnage = 0 then
+            FieldError(Tonnage, 'Can not be Zero');
     end;
 
     trigger OnModify()

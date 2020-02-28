@@ -1,11 +1,12 @@
-page 50129 "Tariff Register List"
+page 50170 "Contract List2"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Tariff;
-    Caption = 'Tariff List';
-    CardPageId = 50130;
+    SourceTable = Contract2;
+    Caption = 'Contract List';
+    CardPageId = 50171;
+
 
     layout
     {
@@ -13,11 +14,18 @@ page 50129 "Tariff Register List"
         {
             repeater("General")
             {
-                field(TarId; TarId)
+
+                field(ConNumber; ConNumber)
                 {
                     ApplicationArea = All;
                 }
-                field(Descr; Descr)
+
+                field(BusOc; BusOc)
+                {
+                    ApplicationArea = all;
+                }
+
+                field(CmpId; CmpId)
                 {
                     ApplicationArea = All;
                 }
@@ -26,7 +34,15 @@ page 50129 "Tariff Register List"
                 {
                     ApplicationArea = All;
                 }
+
+                field(Descr; Descr)
+                {
+                    ApplicationArea = all;
+                }
+
             }
+
+
 
         }
     }
@@ -35,34 +51,18 @@ page 50129 "Tariff Register List"
     {
         area(Processing)
         {
-            action("Copy Tariff")
+            action(ActionName)
             {
                 ApplicationArea = All;
 
                 trigger OnAction()
                 begin
-                    CopyTariff.CopyTariff(TarId);
+
                 end;
             }
-
-            action("Base Rate List")
-            {
-                ApplicationArea = All;
-                trigger OnAction()
-                begin
-                    PageBaseRate.Run();
-                end;
-            }
-
         }
-
-
     }
 
     var
-
-        CopyTariff: Codeunit InsertData;
-        PageBaseRate: Page "Base Rate List";
-
-
+        myInt: Integer;
 }

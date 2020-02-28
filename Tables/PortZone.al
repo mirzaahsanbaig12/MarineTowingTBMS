@@ -55,6 +55,8 @@ table 50114 "Port Zone"
         IF PrtId = ''
                 THEN
             ERROR('Please Add Port Id');
+        if Company = '' then
+            FieldError(Company, 'Can not be null');
 
     end;
 

@@ -31,6 +31,10 @@ page 50142 "Outbound Ord Doc Card"
                 field(VesId; VesId)
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    begin
+                        Tonnage := getVesselTonnage.GetVesselTonnage(VesId);
+                    end;
                 }
 
                 field(BusLA; BusLA)
@@ -51,11 +55,12 @@ page 50142 "Outbound Ord Doc Card"
                 field(Tonnage; Tonnage)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
 
             }
 
-            group("Tug Boat")
+            group("Ord Tug")
             {
                 part("ord Tug SubForm"; "Ord Tug SubForm")
                 {
@@ -65,6 +70,10 @@ page 50142 "Outbound Ord Doc Card"
                     //Editable = true;
                 }
 
+            }
+
+            group("Ord Loc")
+            {
                 part("ord loc SubForm"; "Ord Loc SubForm")
                 {
                     ApplicationArea = Basic, Suite;
@@ -74,12 +83,43 @@ page 50142 "Outbound Ord Doc Card"
                 }
             }
 
+            group(Memos)
+            {
+                field(ManagerMemo; ManagerMemo)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(DispatcherMemo; DispatcherMemo)
+                {
+                    ApplicationArea = All;
+                }
+
+            }
+
+        }
+    }
+    actions
+    {
+        area(Processing)
+        {
+            action("Customer List")
+            {
+                ApplicationArea = All;
+                Caption = 'Customer';
+
+                trigger OnAction()
+                begin
+                    customerList.Run();
+                end;
+            }
         }
     }
 
-
     var
         ordDocRec: Record OrdDoc;
+        getVesselTonnage: Codeunit GetData;
+        customerList: Page "Customer List";
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -93,23 +133,6 @@ page 50142 "Outbound Ord Doc Card"
         CurrPage."ord Tug SubForm".Page.SetORDocNumber(ORDocNumber);
         CurrPage."ord loc SubForm".Page.SetORDocNumber(ORDocNumber);
     end;
-
-    /*actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-    */
 
 
 

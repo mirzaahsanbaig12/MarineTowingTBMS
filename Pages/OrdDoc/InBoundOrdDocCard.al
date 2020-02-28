@@ -31,6 +31,10 @@ page 50144 "Inbound Ord Doc Card"
                 field(VesId; VesId)
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    begin
+                        Tonnage := getVesselTonnage.GetVesselTonnage(VesId);
+                    end;
                 }
 
                 field(BusLA; BusLA)
@@ -51,11 +55,12 @@ page 50144 "Inbound Ord Doc Card"
                 field(Tonnage; Tonnage)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
 
             }
 
-            group("Tug Boat")
+            group("Ord Tug")
             {
                 part("ord Tug SubForm"; "Ord Tug SubForm")
                 {
@@ -65,6 +70,10 @@ page 50144 "Inbound Ord Doc Card"
                     //Editable = true;
                 }
 
+            }
+
+            group("Ord Loc")
+            {
                 part("ord loc SubForm"; "Ord Loc SubForm")
                 {
                     ApplicationArea = Basic, Suite;
@@ -74,12 +83,45 @@ page 50144 "Inbound Ord Doc Card"
                 }
             }
 
+            group(Memos)
+            {
+                field(ManagerMemo; ManagerMemo)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(DispatcherMemo; DispatcherMemo)
+                {
+                    ApplicationArea = All;
+                }
+
+            }
+
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action("Customer List")
+            {
+                ApplicationArea = All;
+                Caption = 'Customer';
+
+                trigger OnAction()
+                begin
+                    customerList.Run();
+                end;
+            }
         }
     }
 
 
     var
+        customerList: Page "Customer List";
         ordDocRec: Record OrdDoc;
+        getVesselTonnage: Codeunit GetData;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
