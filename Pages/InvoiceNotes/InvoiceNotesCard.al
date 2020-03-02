@@ -1,33 +1,32 @@
-page 50120 "Location Register List"
+page 50155 "Invoice Note Card"
 {
-    PageType = List;
+    PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "Location Register";
-    Caption = 'Location List';
-    CardPageId = 50121;
+    SourceTable = "Invoice Notes";
+    Caption = 'Invoice Note Card';
 
     layout
     {
         area(Content)
         {
-            repeater("General")
+            group("General")
             {
-                field(LocId; LocId)
+                field(TerId; TerId)
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Descr; Descr)
                 {
                     ApplicationArea = All;
                 }
-
-                /*field(PrtId; PrtId)
-                {
-                    ApplicationArea = All;
-                }*/
 
                 field(Status; Status)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(InoMemos; InoMemos)
                 {
                     ApplicationArea = All;
                 }
@@ -54,5 +53,4 @@ page 50120 "Location Register List"
 
     var
         myInt: Integer;
-
 }

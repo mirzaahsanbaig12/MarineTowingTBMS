@@ -5,7 +5,7 @@ table 50132 LocationPort
 
     fields
     {
-        field(50110; LocId; Code[5])
+        field(50110; LocId; Code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Location ID';

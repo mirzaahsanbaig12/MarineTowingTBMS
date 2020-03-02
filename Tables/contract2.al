@@ -138,6 +138,37 @@ table 50170 Contract2
             Caption = 'Rate';
         }
 
+        field(50130; TarCustomer; code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Customer Tariff';
+            TableRelation = Tariff where(TariffType = const(Customer));
+
+        }
+
+        field(50131; TarCustomerName; text[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Customer Tariff';
+            TableRelation = Tariff.Descr where(TariffType = const(Customer));
+            ValidateTableRelation = false;
+            trigger OnLookup()
+            var
+                TarCustRec: Record Tariff;
+            begin
+                if TarCustomer <> '' then
+                    TarCustRec.Get(TarCustomer);
+
+                TarCustRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+                if TarCustRec.LookupTariff(TarCustRec) then begin
+                    TarCustomerName := TarCustRec.Descr;
+                    Validate(TarCustomer, TarCustRec.TarId);
+                end;
+
+            end;
+
+        }
+
 
     }
 

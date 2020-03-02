@@ -211,7 +211,7 @@ table 50151 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Tariff Type';
-            OptionMembers = "Base","Change";
+            OptionMembers = "Base","Change","Customer";
         }
 
         field(50142; MaxiumCharge; Decimal)
@@ -220,6 +220,11 @@ table 50151 "Tariff"
             Caption = 'Maximum Charge';
         }
 
+        field(50143; AmountPercent; Option)
+        {
+            OptionMembers = "","Amount","Percent";
+            Caption = 'Amount/Percent';
+        }
 
 
     }
@@ -261,13 +266,31 @@ table 50151 "Tariff"
         baseRate: Record TarBr;
     begin
         baseRate.SetFilter(TarId, TarId);
-        baseRate.FindSet();
-        baseRate.DeleteAll();
+        if baseRate.FindSet() then
+            baseRate.DeleteAll();
     end;
 
     trigger OnRename()
     begin
 
+    end;
+
+
+    procedure LookupTariff(var TariffRec: Record Tariff): Boolean
+    var
+        TariffLookup: Page "Tariff Register List";
+        Result: Boolean;
+    begin
+        TariffLookup.SetTableView(TariffRec);
+        TariffLookup.SetRecord(TariffRec);
+        TariffLookup.LookupMode := true;
+        Result := TariffLookup.RunModal = ACTION::LookupOK;
+        if Result then
+            TariffLookup.GetRecord(TariffRec)
+        else
+            Clear(TariffRec);
+
+        exit(Result);
     end;
 
 

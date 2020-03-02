@@ -114,6 +114,11 @@ page 50130 "Tariff Register Card"
                     ApplicationArea = All;
                 }
 
+                field(AmountPercent; AmountPercent)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(MaxiumCharge; MaxiumCharge)
                 {
                     ApplicationArea = All;

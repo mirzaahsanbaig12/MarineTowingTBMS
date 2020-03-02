@@ -74,9 +74,21 @@ page 50171 "Contract Card2"
                 field(TarBase; TarBase)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(TarChange; TarChange)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+
+                field(TarCustomer; TarCustomer)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field(TarCustomerName; TarCustomerName)
                 {
                     ApplicationArea = All;
                 }

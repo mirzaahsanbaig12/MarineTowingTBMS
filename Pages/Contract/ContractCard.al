@@ -130,8 +130,16 @@ page 50138 "Contract Card"
 
     trigger OnOpenPage()
     begin
-        ConNumber := contractRec.GetLastLineNo();
+        //ConNumber := contractRec.GetLastLineNo();
         CurrPage.contractAgent.Page.SetConNumber(ConNumber);
+
     end;
+
+    procedure SetBusOc(_BusOc: Code[20])
+    begin
+        BusOc := _BusOc;
+    end;
+
+
 
 }

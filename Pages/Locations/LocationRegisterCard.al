@@ -30,6 +30,7 @@ page 50121 "location Register Card"
                 field(araId; araId)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field("type"; "type")
@@ -43,6 +44,21 @@ page 50121 "location Register Card"
                 }
 
             }
+
+            /*group("Port Register Group")
+            {
+
+                Caption = 'Port Register';
+                part("Port Register"; LocationPortRegisterSubform)
+                {
+                    ApplicationArea = Basic, Suite;
+                    SubPageLink = LocId = field(LocId);
+                    UpdatePropagation = Both;
+                    //Editable = true;
+
+                }
+            }
+            */
         }
     }
 

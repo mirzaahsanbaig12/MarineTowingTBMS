@@ -9,7 +9,6 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
     {
         addafter(Action39)
         {
-
             group(TBMS)
             {
                 Caption = 'SmartList';
@@ -118,6 +117,12 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                 {
                     ApplicationArea = All;
                     RunObject = page "Fuel Cost List";
+                }
+
+                action("Invoice Notes")
+                {
+                    ApplicationArea = All;
+                    RunObject = page "Invoice Notes List";
                 }
             }
 

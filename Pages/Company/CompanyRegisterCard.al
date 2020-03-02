@@ -38,9 +38,20 @@ page 50111 "Company Register Card"
                 field(CmpType; CmpType)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(TarId; TarId)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(AcctRev; AcctRev)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(RemitToMessage; RemitToMessage)
                 {
                     ApplicationArea = All;
                 }
@@ -82,21 +93,21 @@ page 50111 "Company Register Card"
 
             group("Accounting")
             {
+                Visible = false;
                 field(DbName; DbName)
                 {
                     ApplicationArea = All;
                 }
 
-                field(AcctRev; AcctRev)
-                {
-                    ApplicationArea = All;
-                }
+
 
 
             }
 
             group("Invoicing")
             {
+                Visible = false;
+
                 field(InoInvNumber; InoInvNumber)
                 {
                     ApplicationArea = All;
@@ -106,14 +117,12 @@ page 50111 "Company Register Card"
                     ApplicationArea = All;
                 }
 
-                field(RemitToMessage; RemitToMessage)
-                {
-                    ApplicationArea = All;
-                }
+
             }
 
             group("Tug Rates")
             {
+                Visible = false;
 
                 part("Tug Rate"; "Tug Rate List Company Hide")
                 {

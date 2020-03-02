@@ -6,7 +6,7 @@ table 50115 "Location Register"
 
     fields
     {
-        field(50110; LocId; Code[5])
+        field(50110; LocId; Code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Location ID';

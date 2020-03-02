@@ -1,11 +1,11 @@
-page 50120 "Location Register List"
+page 50154 "Invoice Notes List"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "Location Register";
-    Caption = 'Location List';
-    CardPageId = 50121;
+    SourceTable = "Invoice Notes";
+    Caption = 'Invoice Notes List';
+    CardPageId = 50155;
 
     layout
     {
@@ -13,19 +13,14 @@ page 50120 "Location Register List"
         {
             repeater("General")
             {
-                field(LocId; LocId)
+                field(TerId; TerId)
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Descr; Descr)
                 {
                     ApplicationArea = All;
                 }
-
-                /*field(PrtId; PrtId)
-                {
-                    ApplicationArea = All;
-                }*/
 
                 field(Status; Status)
                 {
@@ -54,5 +49,4 @@ page 50120 "Location Register List"
 
     var
         myInt: Integer;
-
 }

@@ -81,14 +81,14 @@ table 50129 LogDoc
             Caption = 'Pilot';
         }
 
-        field(50122; LocStr; text[50])
+        field(50122; LocStr; code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Start Loc';
             TableRelation = "Location Register";
         }
 
-        field(50123; DestinationStr; Text[50])
+        field(50123; DestinationStr; code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Destination Loc';

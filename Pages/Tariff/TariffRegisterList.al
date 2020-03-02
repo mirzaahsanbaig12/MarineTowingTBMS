@@ -22,6 +22,21 @@ page 50129 "Tariff Register List"
                     ApplicationArea = All;
                 }
 
+                field(TariffType; TariffType)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(DateBegining; DateBegining)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(DateEnding; DateEnding)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(Status; Status)
                 {
                     ApplicationArea = All;

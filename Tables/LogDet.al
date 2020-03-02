@@ -29,14 +29,14 @@ table 50130 LogDet
             Caption = 'Data Base Id';
         }
 
-        field(50121; LocStr; text[50])
+        field(50121; LocStr; code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Start Loc';
             TableRelation = "Location Register";
         }
 
-        field(50122; DestinationStr; Text[50])
+        field(50122; DestinationStr; code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Destination Loc';

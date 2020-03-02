@@ -16,7 +16,7 @@ table 50128 OrdLoc
             Caption = 'Database Id';
         }
 
-        field(50112; LocId; code[5])
+        field(50112; LocId; code[20])
         {
             DataClassification = ToBeClassified;
             TableRelation = "Location Register".LocId;
