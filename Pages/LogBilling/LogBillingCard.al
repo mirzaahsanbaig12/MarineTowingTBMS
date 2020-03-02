@@ -131,7 +131,12 @@ page 50148 "Log Billing"
                 {
                     ApplicationArea = All;
                 }
-
+                field(ORDocNumber; ORDocNumber)
+                {
+                    Editable = false;
+                    ApplicationArea = All;
+                    Caption = 'Scheduler ID';
+                }
 
             }
 

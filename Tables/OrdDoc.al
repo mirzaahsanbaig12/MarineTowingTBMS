@@ -74,7 +74,7 @@ table 50126 OrdDoc
         field(50121; Status; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = "Active","Inactive","Purge";
+            OptionMembers = "Open","Canceled","Logged","Active","Inactive","Purge";
             Caption = 'Status';
         }
 

@@ -57,6 +57,12 @@ page 50142 "Outbound Ord Doc Card"
                     ApplicationArea = All;
                     Editable = false;
                 }
+                field(Status; Status)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Status';
+                    Editable = false;
+                }
 
             }
 
@@ -113,6 +119,26 @@ page 50142 "Outbound Ord Doc Card"
                     customerList.Run();
                 end;
             }
+            action("Create Log")
+            {
+                ApplicationArea = All;
+                Caption = 'Create Log';
+                Visible = ShowCreateLogAction;
+                trigger OnAction()
+                begin
+                    CreateLog();
+                end;
+            }
+            action("Cancel")
+            {
+                ApplicationArea = All;
+                Caption = 'Cancel';
+
+                trigger OnAction()
+                begin
+                    CancelSchedule();
+                end;
+            }
         }
     }
 
@@ -120,6 +146,7 @@ page 50142 "Outbound Ord Doc Card"
         ordDocRec: Record OrdDoc;
         getVesselTonnage: Codeunit GetData;
         customerList: Page "Customer List";
+        ShowCreateLogAction: Boolean;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -132,6 +159,43 @@ page 50142 "Outbound Ord Doc Card"
     begin
         CurrPage."ord Tug SubForm".Page.SetORDocNumber(ORDocNumber);
         CurrPage."ord loc SubForm".Page.SetORDocNumber(ORDocNumber);
+
+        if Status = Status::Canceled then begin
+            CurrPage.Editable := false;
+            ShowCreateLogAction := false;
+        end
+        else begin
+            ShowCreateLogAction := true;
+        end;
+    end;
+
+    procedure CreateLog()
+    var
+        logDoc: Record LogDoc;
+    begin
+        logDoc.Init();
+        logDoc.Validate(Datelog, CurrentDateTime);
+        logDoc.Validate(DocType, logDoc.DocType);
+        logDoc.Validate(Status, logDoc.Status::Open);
+
+        logDoc.Validate(JobType, logDoc.JobType::Assiting); //confirm this
+        logDoc.Validate(PilId, PilId);
+        logDoc.Validate(VesId, VesId);
+        logDoc.Validate(Tonnage, Tonnage);
+        logDoc.Validate(ORDocNumber, ORDocNumber);
+        logDoc.Insert(true);
+
+        Rec.Validate(Status, Status::Logged);
+        Rec.Modify(true);
+        CurrPage.Update();
+
+    end;
+
+    procedure CancelSchedule()
+    begin
+        Rec.Validate(Status, Status::Canceled);
+        Rec.Modify(true);
+        CurrPage.Update();
     end;
 
 
