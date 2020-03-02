@@ -6,7 +6,6 @@ page 50142 "Outbound Ord Doc Card"
     UsageCategory = Administration;
     SourceTable = OrdDoc;
     Caption = 'Outbound Order Document Details';
-
     layout
     {
         area(Content)
@@ -134,7 +133,8 @@ page 50142 "Outbound Ord Doc Card"
             {
                 ApplicationArea = All;
                 Caption = 'Cancel';
-
+                Visible = ShowCancelAction;
+                Enabled = ShowCancelAction;
                 trigger OnAction()
                 begin
                     CancelSchedule();
@@ -148,6 +148,8 @@ page 50142 "Outbound Ord Doc Card"
         getVesselTonnage: Codeunit GetData;
         customerList: Page "Customer List";
         ShowCreateLogAction: Boolean;
+        ShowCancelAction: Boolean;
+        IsPageDisabled: Boolean;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -160,13 +162,26 @@ page 50142 "Outbound Ord Doc Card"
     begin
         CurrPage."ord Tug SubForm".Page.SetORDocNumber(ORDocNumber);
         CurrPage."ord loc SubForm".Page.SetORDocNumber(ORDocNumber);
+        ShowHideActions();
+    end;
 
-        if Status = Status::Canceled then begin
-            CurrPage.Editable := false;
-            ShowCreateLogAction := false;
-        end
-        else begin
-            ShowCreateLogAction := true;
+    procedure ShowHideActions()
+    begin
+        case Status of
+            Status::Canceled:
+                begin
+                    CurrPage.Editable := false;
+                    ShowCreateLogAction := false;
+                    ShowCancelAction := false;
+                end;
+            Status::Logged:
+                begin
+                    ShowCreateLogAction := false;
+                end;
+            else begin
+                    ShowCreateLogAction := true;
+                    ShowCancelAction := true;
+                end;
         end;
     end;
 
@@ -186,8 +201,8 @@ page 50142 "Outbound Ord Doc Card"
         logDoc.Insert(true);
 
         Rec.Validate(Status, Status::Logged);
-        ShowCreateLogAction := false;
         Rec.Modify(true);
+        ShowHideActions();
         CurrPage.Update();
 
     end;
@@ -197,6 +212,7 @@ page 50142 "Outbound Ord Doc Card"
         Rec.Validate(Status, Status::Canceled);
         ShowCreateLogAction := false;
         Rec.Modify(true);
+        ShowHideActions();
         CurrPage.Update();
     end;
 
