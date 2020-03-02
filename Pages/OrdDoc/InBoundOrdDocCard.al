@@ -125,6 +125,7 @@ page 50144 "Inbound Ord Doc Card"
                 ApplicationArea = All;
                 Caption = 'Create Log';
                 Visible = ShowCreateLogAction;
+                Enabled = ShowCreateLogAction;
                 trigger OnAction()
                 begin
                     CreateLog();
@@ -165,6 +166,7 @@ page 50144 "Inbound Ord Doc Card"
         if Status = Status::Canceled then begin
             CurrPage.Editable := false;
             ShowCreateLogAction := false;
+
         end
         else begin
             ShowCreateLogAction := true;
@@ -187,14 +189,18 @@ page 50144 "Inbound Ord Doc Card"
         logDoc.Insert(true);
 
         Rec.Validate(Status, Status::Logged);
+        ShowCreateLogAction := false;
         Rec.Modify(true);
+        CurrPage.Update();
 
     end;
 
     procedure CancelSchedule()
     begin
         Rec.Validate(Status, Status::Canceled);
+        ShowCreateLogAction := false;
         Rec.Modify(true);
+        CurrPage.Update();
     end;
 
     /*actions

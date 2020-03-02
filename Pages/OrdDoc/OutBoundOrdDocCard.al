@@ -124,6 +124,7 @@ page 50142 "Outbound Ord Doc Card"
                 ApplicationArea = All;
                 Caption = 'Create Log';
                 Visible = ShowCreateLogAction;
+                Enabled = ShowCreateLogAction;
                 trigger OnAction()
                 begin
                     CreateLog();
@@ -180,12 +181,12 @@ page 50142 "Outbound Ord Doc Card"
 
         logDoc.Validate(JobType, logDoc.JobType::Assiting); //confirm this
         logDoc.Validate(PilId, PilId);
-        logDoc.Validate(VesId, VesId);
         logDoc.Validate(Tonnage, Tonnage);
         logDoc.Validate(ORDocNumber, ORDocNumber);
         logDoc.Insert(true);
 
         Rec.Validate(Status, Status::Logged);
+        ShowCreateLogAction := false;
         Rec.Modify(true);
         CurrPage.Update();
 
@@ -194,6 +195,7 @@ page 50142 "Outbound Ord Doc Card"
     procedure CancelSchedule()
     begin
         Rec.Validate(Status, Status::Canceled);
+        ShowCreateLogAction := false;
         Rec.Modify(true);
         CurrPage.Update();
     end;
