@@ -37,7 +37,10 @@ page 50141 "Outbound Ord Doc List"
                 {
                     ApplicationArea = All;
                 }
-
+                field(Status; Status)
+                {
+                    ApplicationArea = All;
+                }
                 field(PilId; PilId)
                 {
                     ApplicationArea = All;
