@@ -17,10 +17,6 @@ page 50154 "Invoice Notes List"
                 {
                     ApplicationArea = All;
                 }
-                field(Descr; Descr)
-                {
-                    ApplicationArea = All;
-                }
 
                 field(Status; Status)
                 {

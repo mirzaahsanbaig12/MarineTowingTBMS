@@ -32,7 +32,8 @@ table 50129 LogDoc
         field(50114; ConNumber; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Con Number';
+            Caption = 'Contract';
+            TableRelation = Contract2 where(BusOc = field(BusOwner));
         }
 
         field(50115; BusCus; Text[50])
@@ -287,6 +288,7 @@ table 50129 LogDoc
         {
             DataClassification = ToBeClassified;
         }
+
     }
 
     keys

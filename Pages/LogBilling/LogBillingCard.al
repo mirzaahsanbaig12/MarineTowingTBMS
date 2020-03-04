@@ -69,6 +69,11 @@ page 50148 "Log Billing"
                     ApplicationArea = All;
                 }
 
+                field(ConNumber; ConNumber)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(RevId; RevId)
                 {
                     ApplicationArea = All;
