@@ -51,7 +51,6 @@ page 50148 "Log Billing"
                     ApplicationArea = All;
                 }
 
-
                 field(VesId; VesId)
                 {
                     ApplicationArea = All;
@@ -67,6 +66,11 @@ page 50148 "Log Billing"
                 field(BusOwner; BusOwner)
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    begin
+                        ConNumber := getTonnage.GetSingleContractId(BusOwner);
+                    end;
+
                 }
 
                 field(ConNumber; ConNumber)
@@ -199,11 +203,9 @@ page 50148 "Log Billing"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Datelog := System.CurrentDateTime;
-
         FuelCost := getTonnage.GetFuelCost()
 
     end;
-
 
 
 

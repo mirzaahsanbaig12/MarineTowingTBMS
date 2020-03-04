@@ -182,7 +182,7 @@ table 50170 Contract2
 
     fieldgroups
     {
-        fieldgroup(DropDown; ConNumber, Descr)
+        fieldgroup(DropDown; ConNumber, CmpId, Descr, Status)
         {
 
         }
