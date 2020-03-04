@@ -181,5 +181,33 @@ table 50126 OrdDoc
 
     end;
 
+    procedure CreateLog()
+    var
+        logDoc: Record LogDoc;
+    begin
+        if (Status <> Status::Canceled) OR (Status <> Status::Logged) then begin
+            logDoc.Init();
+            logDoc.Validate(Datelog, CurrentDateTime);
+            logDoc.Validate(DocType, logDoc.DocType);
+            logDoc.Validate(Status, logDoc.Status::Open);
+
+            logDoc.Validate(JobType, logDoc.JobType::Assiting); //confirm this
+            logDoc.Validate(PilId, PilId);
+            logDoc.Validate(Tonnage, Tonnage);
+            logDoc.Validate(ORDocNumber, ORDocNumber);
+            logDoc.Insert(true);
+
+            Rec.Validate(Status, Status::Logged);
+            Rec.Modify(true);
+        end;
+    end;
+
+    procedure CancelSchedule()
+    begin
+        if Status <> Status::Canceled then begin
+            Rec.Validate(Status, Status::Canceled);
+            Rec.Modify(true);
+        end;
+    end;
 
 }

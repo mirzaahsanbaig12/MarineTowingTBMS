@@ -72,10 +72,55 @@ page 50141 "Outbound Ord Doc List"
                     customerList.Run();
                 end;
             }
+            action("Cancel Records")
+            {
+                ApplicationArea = All;
+                Caption = 'Cancel Records';
+
+                trigger OnAction()
+                begin
+                    CancelScheduleAction();
+                end;
+            }
+            action("Log Records")
+            {
+                ApplicationArea = All;
+                Caption = 'Log Records';
+
+                trigger OnAction()
+                begin
+                    CreateLogAction();
+                end;
+            }
         }
     }
 
+    procedure CreateLogAction()
+    begin
+        CurrPage.SetSelectionFilter(SelectedRecords);
+        if SelectedRecords.FindSet() then begin
+            repeat
+                SelectedRecords.CreateLog();
+            until SelectedRecords.Next() = 0;
+        end;
+        CurrPage.Update();
+        Message(Format(SelectedRecords.Count) + ' Records Updated');
+    end;
+
+    procedure CancelScheduleAction()
+    begin
+        CurrPage.SetSelectionFilter(SelectedRecords);
+        if SelectedRecords.FindSet() then begin
+            repeat
+                SelectedRecords.CancelSchedule();
+            until SelectedRecords.Next() = 0;
+        end;
+        CurrPage.Update();
+        Message(Format(SelectedRecords.Count) + ' Records Updated');
+    end;
+
     var
         customerList: Page "Customer List";
+        SelectedRecords: Record OrdDoc;
 }
 

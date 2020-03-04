@@ -128,7 +128,7 @@ page 50144 "Inbound Ord Doc Card"
                 Enabled = ShowCreateLogAction;
                 trigger OnAction()
                 begin
-                    CreateLog();
+                    CreateLogAction();
                 end;
             }
             action("Cancel")
@@ -139,7 +139,7 @@ page 50144 "Inbound Ord Doc Card"
                 Enabled = ShowCancelAction;
                 trigger OnAction()
                 begin
-                    CancelSchedule();
+                    CancelScheduleAction();
                 end;
             }
         }
@@ -187,33 +187,18 @@ page 50144 "Inbound Ord Doc Card"
         end;
     end;
 
-    procedure CreateLog()
+    procedure CreateLogAction()
     var
         logDoc: Record LogDoc;
     begin
-        logDoc.Init();
-        logDoc.Validate(Datelog, CurrentDateTime);
-        logDoc.Validate(DocType, logDoc.DocType);
-        logDoc.Validate(Status, logDoc.Status::Open);
-
-        logDoc.Validate(JobType, logDoc.JobType::Assiting); //confirm this
-        logDoc.Validate(PilId, PilId);
-        logDoc.Validate(Tonnage, Tonnage);
-        logDoc.Validate(ORDocNumber, ORDocNumber);
-        logDoc.Insert(true);
-
-        Rec.Validate(Status, Status::Logged);
-        Rec.Modify(true);
+        Rec.CreateLog();
         ShowHideActions();
         CurrPage.Update();
-
     end;
 
-    procedure CancelSchedule()
+    procedure CancelScheduleAction()
     begin
-        Rec.Validate(Status, Status::Canceled);
-        ShowCreateLogAction := false;
-        Rec.Modify(true);
+        Rec.CancelSchedule();
         ShowHideActions();
         CurrPage.Update();
     end;

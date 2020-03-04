@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50141,"Kind":12,"Name":"Outbound Ord Doc List","PackagePath":"/src/Pages/OrdDoc/OutBoundOrdDocList.al"},{"Id":50126,"Kind":10,"Name":"OrdDoc","PackagePath":"/src/Tables/OrdDoc.al"},{"Id":50143,"Kind":12,"Name":"InBound Ord Doc List","PackagePath":"/src/Pages/OrdDoc/InboundOrdDocList.al"}],"Removed":[]}
