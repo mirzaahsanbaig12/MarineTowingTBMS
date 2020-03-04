@@ -18,10 +18,10 @@ table 50135 "Invoice Notes"
             Description = 'Name';
         }
 
-        field(50112; Descr; Text[50])
+        field(50112; Descr; Blob)
         {
             DataClassification = ToBeClassified;
-            Description = 'Name';
+            Description = 'Description';
             Caption = 'Description';
         }
 
@@ -78,6 +78,26 @@ table 50135 "Invoice Notes"
     trigger OnRename()
     begin
 
+    end;
+
+    procedure SetNotesDescription(NewNotesDescription: Text)
+    var
+        OutStream: OutStream;
+    begin
+        Clear(Descr);
+        Descr.CreateOutStream(OutStream, TEXTENCODING::UTF8);
+        OutStream.WriteText(NewNotesDescription);
+        Modify;
+    end;
+
+    procedure GetNotesDescription(): Text
+    var
+        TypeHelper: Codeunit "Type Helper";
+        InStream: InStream;
+    begin
+        CalcFields(Descr);
+        Descr.CreateInStream(InStream, TEXTENCODING::UTF8);
+        exit(TypeHelper.ReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator));
     end;
 
 }

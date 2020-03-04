@@ -16,11 +16,21 @@ page 50155 "Invoice Note Card"
                 {
                     ApplicationArea = All;
                 }
-                field(Descr; Descr)
+                group("Description")
                 {
-                    ApplicationArea = All;
-                }
+                    Caption = 'Description';
+                    field(NotesDescription; NotesDescription)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        MultiLine = true;
+                        ShowCaption = false;
 
+                        trigger OnValidate()
+                        begin
+                            SetNotesDescription(NotesDescription);
+                        end;
+                    }
+                }
                 field(Status; Status)
                 {
                     ApplicationArea = All;
@@ -50,7 +60,12 @@ page 50155 "Invoice Note Card"
             }
         }
     }
+    trigger OnAfterGetRecord()
+    begin
+        NotesDescription := GetNotesDescription;
+    end;
 
     var
         myInt: Integer;
+        NotesDescription: Text;
 }
