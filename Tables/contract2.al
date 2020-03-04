@@ -180,6 +180,14 @@ table 50170 Contract2
         }
     }
 
+    fieldgroups
+    {
+        fieldgroup(DropDown; ConNumber, Descr)
+        {
+
+        }
+    }
+
     var
         myInt: Integer;
 
