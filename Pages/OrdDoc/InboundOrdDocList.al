@@ -113,7 +113,7 @@ page 50143 "InBound Ord Doc List"
 
     procedure CancelScheduleAction()
     begin
-        if Dialog.Confirm('Please confirm To cancel the selected schedules?') then begin
+        if Dialog.Confirm('Please confirm to cancel the selected schedules?') then begin
             CurrPage.SetSelectionFilter(SelectedRecords);
             if SelectedRecords.FindSet() then begin
                 repeat

@@ -201,7 +201,7 @@ page 50144 "Inbound Ord Doc Card"
 
     procedure CancelScheduleAction()
     begin
-        if Dialog.Confirm('Please confirm To cancel this schedule?') then begin
+        if Dialog.Confirm('Please confirm to cancel this schedule?') then begin
             Rec.CancelSchedule();
             ShowHideActions();
             CurrPage.Update();
