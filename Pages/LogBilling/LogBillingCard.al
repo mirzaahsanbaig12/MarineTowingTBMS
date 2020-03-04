@@ -194,6 +194,9 @@ page 50148 "Log Billing"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Datelog := System.CurrentDateTime;
+
+        FuelCost := getTonnage.GetFuelCost()
+
     end;
 
 

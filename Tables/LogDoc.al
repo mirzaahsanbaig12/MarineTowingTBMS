@@ -243,6 +243,7 @@ table 50129 LogDoc
             DataClassification = ToBeClassified;
             TableRelation = "Fuel Cost".FuelCost;
             ValidateTableRelation = false;
+            Caption = 'Fuel Cost';
         }
         field(50149; DiscountPer; Decimal)
         {

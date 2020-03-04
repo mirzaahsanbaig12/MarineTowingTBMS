@@ -6,6 +6,7 @@ page 50150 "Fuel Cost List"
     SourceTable = "Fuel Cost";
     Caption = 'Fuel CostList';
     CardPageId = 50151;
+    SourceTableView = sorting(FuelDate) order(descending);
 
     layout
     {

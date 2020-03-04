@@ -9,7 +9,7 @@ table 50135 "Invoice Notes"
         field(50110; TerId; Code[20])
         {
             DataClassification = ToBeClassified;
-            Description = 'Term Id';
+            Description = 'Invoice Note Id';
             Caption = 'Invoice Note Id';
         }
         field(50111; DbId; code[5])
@@ -61,7 +61,7 @@ table 50135 "Invoice Notes"
     begin
         IF TerId = ''
                 THEN
-            ERROR('Please Add Terms Id');
+            ERROR('Please Add Invoice Note Id');
 
     end;
 
