@@ -186,18 +186,23 @@ page 50142 "Outbound Ord Doc Card"
     end;
 
     procedure CreateLogAction()
+    var
+        logId: Integer;
     begin
-        Rec.CreateLog();
+        logId := Rec.CreateLog();
         ShowHideActions();
         CurrPage.Update();
+        Message('Log created. Log Number: %1', logId);
 
     end;
 
     procedure CancelScheduleAction()
     begin
-        Rec.CancelSchedule();
-        ShowHideActions();
-        CurrPage.Update();
+        if Dialog.Confirm('Please confirm To cancel this schedule?') then begin
+            Rec.CancelSchedule();
+            ShowHideActions();
+            CurrPage.Update();
+        end;
     end;
 
 

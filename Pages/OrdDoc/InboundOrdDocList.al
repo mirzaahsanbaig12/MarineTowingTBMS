@@ -113,14 +113,17 @@ page 50143 "InBound Ord Doc List"
 
     procedure CancelScheduleAction()
     begin
-        CurrPage.SetSelectionFilter(SelectedRecords);
-        if SelectedRecords.FindSet() then begin
-            repeat
-                SelectedRecords.CancelSchedule();
-            until SelectedRecords.Next() = 0;
+        if Dialog.Confirm('Please confirm To cancel the selected schedules?') then begin
+            CurrPage.SetSelectionFilter(SelectedRecords);
+            if SelectedRecords.FindSet() then begin
+                repeat
+                    SelectedRecords.CancelSchedule();
+                until SelectedRecords.Next() = 0;
+
+            end;
+            CurrPage.Update();
+            Message(Format(SelectedRecords.Count) + ' Records Updated');
         end;
-        CurrPage.Update();
-        Message(Format(SelectedRecords.Count) + ' Records Updated');
     end;
 
     var

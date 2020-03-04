@@ -181,7 +181,7 @@ table 50126 OrdDoc
 
     end;
 
-    procedure CreateLog()
+    procedure CreateLog(): Integer
     var
         logDoc: Record LogDoc;
     begin
@@ -195,10 +195,13 @@ table 50126 OrdDoc
             logDoc.Validate(PilId, PilId);
             logDoc.Validate(Tonnage, Tonnage);
             logDoc.Validate(ORDocNumber, ORDocNumber);
-            logDoc.Insert(true);
+            if logDoc.Insert(true) then begin
+                Rec.Validate(Status, Status::Logged);
+                Rec.Modify(true);
+                exit(logDoc.LogDocNumber);
+            end;
+            exit(0);
 
-            Rec.Validate(Status, Status::Logged);
-            Rec.Modify(true);
         end;
     end;
 
