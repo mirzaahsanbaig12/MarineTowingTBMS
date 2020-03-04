@@ -200,7 +200,9 @@ page 50144 "Inbound Ord Doc Card"
         logDoc.Validate(PilId, PilId);
         logDoc.Validate(Tonnage, Tonnage);
         logDoc.Validate(ORDocNumber, ORDocNumber);
-        logDoc.Insert(true);
+        logDoc.Validate(VesId, VesId);
+        if logDoc.Insert(true) then
+            Message('Log Billing is created with Log ID %1', logDoc.LogDocNumber);
 
         Rec.Validate(Status, Status::Logged);
         Rec.Modify(true);
@@ -211,11 +213,14 @@ page 50144 "Inbound Ord Doc Card"
 
     procedure CancelSchedule()
     begin
-        Rec.Validate(Status, Status::Canceled);
-        ShowCreateLogAction := false;
-        Rec.Modify(true);
-        ShowHideActions();
-        CurrPage.Update();
+
+        if Dialog.CONFIRM('Please confirm to cancel the schedule', TRUE) then begin
+            Rec.Validate(Status, Status::Canceled);
+            ShowCreateLogAction := false;
+            Rec.Modify(true);
+            ShowHideActions();
+            CurrPage.Update();
+        end;
     end;
 
     /*actions

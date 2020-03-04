@@ -42,5 +42,23 @@ codeunit 50111 GetData
         exit(Tonnage);
     end;
 
+    procedure GetFuelCost(): Decimal
+    var
+        Cost: Decimal;
+        FuelCosetRec: Record "Fuel Cost";
+        TodayDate: DateTime;
+    begin
+        TodayDate := CurrentDateTime;
+        FuelCosetRec.Reset();
+        FuelCosetRec.SetFilter(FuelDate, format(TodayDate));
+
+        FuelCosetRec.SetFilter(FuelDate, '..%1', TodayDate);
+        FuelCosetRec.SetAscending(FuelDate, false);
+        if FuelCosetRec.FindFirst()
+        then
+            exit(FuelCosetRec.FuelCost);
+        exit(0);
+    end;
+
 
 }
