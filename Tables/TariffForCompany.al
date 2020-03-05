@@ -1,8 +1,7 @@
-table 50118 "Tariff"
+table 50133 TariffForCompany
 {
     DataClassification = ToBeClassified;
-    Caption = 'Tariff Register';
-    LookupPageId = "Tariff Register Card";
+    Caption = 'Tariff For Company';
 
     fields
     {
@@ -226,11 +225,26 @@ table 50118 "Tariff"
             Caption = 'Amount/Percent';
         }
 
+        field(50144; CmpId; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Ident';
+            Caption = 'Company Id';
+            TableRelation = "Company Register";
+        }
+
+        field(50145; CmpTar; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Ident';
+            Caption = 'Company Tariff';
+
+        }
 
     }
     keys
     {
-        key(PK; TarId)
+        key(PK; CmpTar)
         {
             Clustered = true;
         }
@@ -244,7 +258,6 @@ table 50118 "Tariff"
         }
     }
 
-
     var
         myInt: Integer;
 
@@ -253,6 +266,8 @@ table 50118 "Tariff"
         IF TarId = ''
                 THEN
             ERROR('Please Add Tariff Id');
+
+        CmpTar := GetLastLineNo();
 
     end;
 
@@ -275,7 +290,6 @@ table 50118 "Tariff"
 
     end;
 
-
     procedure LookupTariff(var TariffRec: Record Tariff): Boolean
     var
         TariffLookup: Page "Tariff Register List";
@@ -292,6 +306,25 @@ table 50118 "Tariff"
 
         exit(Result);
     end;
+
+    procedure GetLastLineNo(): Integer
+    var
+        CompanyTariffRec: Record TariffForCompany;
+        lineNoLocal: Integer;
+    begin
+        ;
+        if (CompanyTariffRec.FindLast()) then begin
+            linenolocal := CompanyTariffRec.CmpTar;
+        end
+        else begin
+            linenolocal := 100;
+
+        end;
+
+        exit(lineNoLocal + 10);
+
+    end;
+
 
 
 

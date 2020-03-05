@@ -95,5 +95,49 @@ codeunit 50112 InsertData
 
     End;
 
+    procedure InsertTariffForCompany(_tarId: code[20]; _cmpId: Code[20]): Integer
+    var
+        tariffOrg: Record Tariff;
+        tariffCompany: Record TariffForCompany;
+        TarBaseRateOrg: Record TarBr;
+        TarBaseCompany: Record TarBrForCompany;
+        lineNo: Integer;
+        CmpTarNo: Integer;
+    begin
+
+        TarBaseCompany.Init();
+
+        TarBaseCompany.Reset();
+        tariffCompany.Reset();
+        tariffCompany.Init();
+
+        lineNo := TarBaseRateOrg.GetLineNo();
+        CmpTarNo := tariffCompany.GetLastLineNo();
+        if tariffOrg.Get(_tarId) then begin
+            tariffCompany.TransferFields(tariffOrg);
+            tariffCompany.CmpId := _cmpId;
+            tariffCompany.CmpTar := CmpTarNo;
+            tariffCompany.Insert(true);
+            Commit();
+
+            TarBaseRateOrg.SetFilter(TarId, _tarId);
+            if TarBaseRateOrg.FindSet() then begin
+                repeat
+
+                    lineNo := lineNo + 1;
+                    TarBaseCompany.TransferFields(TarBaseRateOrg);
+                    TarBaseCompany.LineNo := lineNo;
+                    TarBaseCompany.CmpId := _cmpId;
+                    TarBaseCompany.CmpTar := CmpTarNo;
+                    TarBaseCompany.Insert(false);
+                until TarBaseRateOrg.Next = 0;
+            end;
+            exit(CmpTarNo);
+        end;
+        exit(0);
+
+    end;
+
+
 
 }

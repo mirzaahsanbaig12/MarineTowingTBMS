@@ -2,6 +2,7 @@ table 50110 "Company Register"
 {
     DataClassification = ToBeClassified;
     LookupPageId = "Company Register Card";
+    DrillDownPageId = "Company Register Card";
 
     fields
     {
@@ -10,7 +11,6 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Ident';
             Caption = 'Company Id';
-
         }
         field(50111; DbId; Code[5])
         {
@@ -108,8 +108,6 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Next Number';
             Caption = 'Next Number';
-
-
         }
 
         field(50124; InoSegType; Text[50])
@@ -125,6 +123,14 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Remit To memo';
             Caption = 'Remit To memo';
+        }
+
+        field(50126; CmpTar; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Ident';
+            Caption = 'Company Tariff';
+
         }
     }
 
@@ -151,8 +157,8 @@ table 50110 "Company Register"
 
     trigger OnModify()
     begin
-
     end;
+
 
 
     trigger OnDelete()
@@ -163,6 +169,25 @@ table 50110 "Company Register"
     trigger OnRename()
     begin
 
+    end;
+
+    procedure deleteTariffForCompany(CurCmpTar: Integer; PervCmpTar: Integer)
+    var
+        CompanyTariff: Record TariffForCompany;
+        CompanyBaseTariff: Record TarBrForCompany;
+    begin
+        if (PervCmpTar <> 0) And (CmpTar <> PervCmpTar)
+        then begin
+            CompanyTariff.SetFilter(CmpTar, format(PervCmpTar));
+            CompanyBaseTariff.SetFilter(CmpTar, format(PervCmpTar));
+            if (CompanyTariff.FindFirst())
+            then begin
+                CompanyTariff.Delete();
+                if CompanyBaseTariff.FindSet() then begin
+                    CompanyBaseTariff.DeleteAll();
+                end;
+            end;
+        end;
     end;
 
 }

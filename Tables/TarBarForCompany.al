@@ -1,14 +1,13 @@
-table 50122 TarBr
+table 50134 TarBrForCompany
 {
     DataClassification = ToBeClassified;
-
+    Caption = 'Tariff Rate for Company';
 
     fields
     {
         field(50110; LineNo; Integer)
         {
             DataClassification = ToBeClassified;
-
         }
 
         field(50111; TarId; code[20])
@@ -46,7 +45,21 @@ table 50122 TarBr
             AutoFormatExpression = '1,USD';
         }
 
+        field(50117; CmpId; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Ident';
+            Caption = 'Company Id';
+            TableRelation = "Company Register";
+        }
 
+        field(50118; CmpTar; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Ident';
+            Caption = 'Company Tariff';
+
+        }
     }
 
     keys

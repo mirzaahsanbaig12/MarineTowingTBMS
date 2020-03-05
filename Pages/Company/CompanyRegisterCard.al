@@ -41,9 +41,26 @@ page 50111 "Company Register Card"
                     Visible = false;
                 }
 
+                field(CmpTar; CmpTar)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+
                 field(TarId; TarId)
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    begin
+                        if CmpId = ''
+                        then begin
+                            FieldError(CmpId, 'Please add Company Id');
+                        end;
+
+                        CmpTar := InsertCompanyTariff.InsertTariffForCompany(tarId, CmpId);
+                        deleteTariffForCompany(CmpTar, PrevCmpTar);
+                        PrevCmpTar := CmpTar;
+                    end;
                 }
 
                 field(AcctRev; AcctRev)
@@ -154,7 +171,14 @@ page 50111 "Company Register Card"
     */
 
 
+
     var
-        myInt: Integer;
+        PrevCmpTar: Integer;
         InsertAddress: Codeunit "Insert Address";
+        InsertCompanyTariff: Codeunit InsertData;
+
+    trigger OnAfterGetRecord()
+    begin
+        PrevCmpTar := CmpTar;
+    end;
 }
