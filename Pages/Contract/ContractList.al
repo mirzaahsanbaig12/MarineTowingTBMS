@@ -5,7 +5,8 @@ page 50137 "Contract List"
     UsageCategory = Administration;
     SourceTable = Contract;
     Caption = 'Contract List';
-    CardPageId = 50138;
+    CardPageId = "Contract Card";
+
 
     layout
     {
@@ -13,14 +14,17 @@ page 50137 "Contract List"
         {
             repeater("General")
             {
-                field(BusOc; BusOc)
-                {
-                    ApplicationArea = All;
-                }
+
                 field(ConNumber; ConNumber)
                 {
                     ApplicationArea = All;
                 }
+
+                field(BusOc; BusOc)
+                {
+                    ApplicationArea = all;
+                }
+
                 field(CmpId; CmpId)
                 {
                     ApplicationArea = All;

@@ -6,8 +6,8 @@ page 50139 "Contract SubForm"
     LinksAllowed = false;
     MultipleNewLines = false;
     PageType = ListPart;
-    SourceTable = Contract2;
-    CardPageId = "Contract Card2";
+    SourceTable = Contract;
+    CardPageId = "Contract Card";
 
     layout
     {
@@ -74,9 +74,9 @@ page 50139 "Contract SubForm"
 
     var
         BusOcCode: code[20];
-        ContractCardLocal: Page "Contract Card2";
+        ContractCardLocal: Page "Contract Card";
         InsertContract: Codeunit InsertData;
-        contractRec: Record Contract2;
+        contractRec: Record Contract;
 
     procedure SetBusOc(_BusOc: Code[20])
     begin

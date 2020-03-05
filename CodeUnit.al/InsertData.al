@@ -3,7 +3,7 @@ codeunit 50112 InsertData
     procedure InsertContract(_BusOc: code[20]): Boolean
     var
 
-        Contract: Record "Contract2";
+        Contract: Record "Contract";
         Company: Record "Company Register";
     begin
         Contract.Reset();

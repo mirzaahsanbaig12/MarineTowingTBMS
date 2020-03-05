@@ -33,7 +33,7 @@ table 50129 LogDoc
         {
             DataClassification = ToBeClassified;
             Caption = 'Contract';
-            TableRelation = Contract2 where(BusOc = field(BusOwner));
+            TableRelation = Contract where(BusOc = field(BusOwner));
         }
 
         field(50115; BusCus; Text[50])

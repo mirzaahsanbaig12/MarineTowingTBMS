@@ -25,7 +25,7 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                 action("Contract")
                 {
                     ApplicationArea = All;
-                    RunObject = page "Contract List2";
+                    RunObject = page "Contract List";
                 }
                 action("Logs")
                 {

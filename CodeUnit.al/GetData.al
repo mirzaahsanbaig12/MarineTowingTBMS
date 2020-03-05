@@ -63,7 +63,7 @@ codeunit 50111 GetData
 
     procedure GetSingleContractId(Customer: Code[20]): Integer
     var
-        contractRec: Record Contract2;
+        contractRec: Record Contract;
     Begin
         contractRec.SetFilter(BusOc, Customer);
         if contractRec.FindSet()

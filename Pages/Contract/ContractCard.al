@@ -5,6 +5,7 @@ page 50138 "Contract Card"
     UsageCategory = Administration;
     SourceTable = Contract;
     Caption = 'Contract Card';
+    DelayedInsert = true;
 
     layout
     {
@@ -13,26 +14,23 @@ page 50138 "Contract Card"
             group("General")
             {
 
+                field(CmpId; CmpId)
+                {
+                    ApplicationArea = All;
+                    ShowMandatory = true;
+                }
+
                 field(ConNumber; ConNumber)
                 {
                     ApplicationArea = All;
                     Visible = false;
-                    trigger OnValidate()
-                    begin
-                        CurrPage.contractAgent.Page.SetConNumber(ConNumber);
-                    end;
-                    //Visible = false;
 
                 }
                 field(BusOc; BusOc)
                 {
                     ApplicationArea = All;
-                    //ShowMandatory = true;
                 }
-                field(CmpId; CmpId)
-                {
-                    ApplicationArea = All;
-                }
+
                 field(TerID; TerID)
                 {
                     ApplicationArea = All;
@@ -76,14 +74,35 @@ page 50138 "Contract Card"
                 field(TarBase; TarBase)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(TarChange; TarChange)
                 {
                     ApplicationArea = All;
+                    Visible = false;
+                }
+
+                field(TarCustomer; TarCustomer)
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field(TarCustomerName; TarCustomerName)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(AssistFixedRate; AssistFixedRate)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(Rate; Rate)
+                {
+                    ApplicationArea = All;
                 }
             }
-
             group("Contract Agent")
             {
                 part(contractAgent; "Contract Agent SubForm")
@@ -95,8 +114,9 @@ page 50138 "Contract Card"
 
                 }
             }
-
         }
+
+
     }
 
     actions
@@ -114,7 +134,6 @@ page 50138 "Contract Card"
             }
         }
     }
-
     var
         contractRec: Record Contract;
 
@@ -130,16 +149,9 @@ page 50138 "Contract Card"
 
     trigger OnOpenPage()
     begin
-        //ConNumber := contractRec.GetLastLineNo();
         CurrPage.contractAgent.Page.SetConNumber(ConNumber);
 
     end;
-
-    procedure SetBusOc(_BusOc: Code[20])
-    begin
-        BusOc := _BusOc;
-    end;
-
 
 
 }

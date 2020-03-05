@@ -12,6 +12,7 @@ table 50123 Contract
             Description = 'Number';
             Caption = 'Number';
         }
+
         field(50111; BusOc; Code[20])
         {
             DataClassification = ToBeClassified;
@@ -24,7 +25,9 @@ table 50123 Contract
         {
             DataClassification = ToBeClassified;
             TableRelation = "Company Register";
+            NotBlank = true;
             Caption = 'Company';
+
         }
         field(50113; DbId; Code[5])
         {
@@ -123,6 +126,48 @@ table 50123 Contract
             Caption = 'Change Tariff';
             TableRelation = Tariff where(TariffType = const(Change));
         }
+        field(50128; AssistFixedRate; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Assist Fix Rate';
+        }
+
+        field(50129; Rate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Rate';
+        }
+
+        field(50130; TarCustomer; code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Customer Tariff';
+            TableRelation = Tariff where(TariffType = const(Customer));
+
+        }
+
+        field(50131; TarCustomerName; text[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Customer Tariff';
+            TableRelation = Tariff.Descr where(TariffType = const(Customer));
+            ValidateTableRelation = false;
+            trigger OnLookup()
+            var
+                TarCustRec: Record Tariff;
+            begin
+                if TarCustomer <> '' then
+                    TarCustRec.Get(TarCustomer);
+
+                TarCustRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+                if TarCustRec.LookupTariff(TarCustRec) then begin
+                    TarCustomerName := TarCustRec.Descr;
+                    Validate(TarCustomer, TarCustRec.TarId);
+                end;
+
+            end;
+
+        }
 
 
     }
@@ -135,12 +180,22 @@ table 50123 Contract
         }
     }
 
+    fieldgroups
+    {
+        fieldgroup(DropDown; ConNumber, CmpId, Descr, Status)
+        {
+
+        }
+    }
+
     var
         myInt: Integer;
 
     trigger OnInsert()
     begin
         ConNumber := GetLastLineNo();
+        if CmpId = '' then
+            FieldError(CmpId, 'Can not be null');
     end;
 
     trigger OnModify()
@@ -160,7 +215,7 @@ table 50123 Contract
 
     procedure GetLastLineNo(): Integer
     var
-        contractRec: Record Contract2;
+        contractRec: Record Contract;
         lineNoLocal: Integer;
     begin
         ;
