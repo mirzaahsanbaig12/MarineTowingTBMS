@@ -124,6 +124,12 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     ApplicationArea = All;
                     RunObject = page "Invoice Notes List";
                 }
+
+                action("Billing Tariff")
+                {
+                    ApplicationArea = All;
+                    RunObject = report "Billing Tariff";
+                }
             }
 
         }
