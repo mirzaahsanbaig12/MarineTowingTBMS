@@ -111,7 +111,7 @@ codeunit 50112 InsertData
         tariffCompany.Reset();
         tariffCompany.Init();
 
-        lineNo := TarBaseRateOrg.GetLineNo();
+        lineNo := TarBaseCompany.GetLineNo();
         CmpTarNo := tariffCompany.GetLastLineNo();
         if tariffOrg.Get(_tarId) then begin
             tariffCompany.TransferFields(tariffOrg);

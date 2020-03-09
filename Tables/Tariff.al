@@ -1,7 +1,7 @@
 table 50118 "Tariff"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Tariff Register';
+    Caption = 'Tariff';
     LookupPageId = "Tariff Register Card";
 
     fields

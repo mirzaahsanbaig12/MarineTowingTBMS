@@ -98,7 +98,7 @@ table 50134 TarBrForCompany
     procedure GetLineNo(): Integer
     var
         LineNo: Integer;
-        TarBarRec: Record TarBr;
+        TarBarRec: Record TarBrForCompany;
     begin
         TarBarRec.Reset();
         if (TarBarRec.FindLast())

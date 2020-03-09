@@ -56,7 +56,6 @@ page 50111 "Company Register Card"
                         then begin
                             FieldError(CmpId, 'Please add Company Id');
                         end;
-
                         CmpTar := InsertCompanyTariff.InsertTariffForCompany(tarId, CmpId);
                         deleteTariffForCompany(CmpTar, PrevCmpTar);
                         PrevCmpTar := CmpTar;
