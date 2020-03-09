@@ -43,6 +43,7 @@ report 50110 "Billing Tariff"
             column(CTBRInc; BRInc) { }
             column(CTBRAmt; BRAmt) { }
 
+
             dataitem(Tr; Tariff)
             {
                 DataItemLink = "TarId" = field("TarId");
@@ -78,15 +79,28 @@ report 50110 "Billing Tariff"
                 column(TrBRAmt; BRAmt) { }
 
 
+
+                dataitem(TarBr; TarBr)
+                {
+                    DataItemLink = "TarId" = field("TarId");
+                    column(TrTonnageEnd; TonnageEnd) { }
+                    column(TrRate; Rate) { }
+                    column(TrPrtId; PrtId) { }
+
+                }
+
             }
 
+            dataitem(CTBaseRate; TarBrForCompany)
+            {
+                DataItemLink = "CmpTar" = field("CmpTar");
+                column(CTTonnageEnd; TonnageEnd) { }
+                column(CTRate; Rate) { }
+                column(CTPrtId; PrtId) { }
+            }
         }
-
-
-
     }
-
-
-    var
-        myInt: Integer;
 }
+
+
+
