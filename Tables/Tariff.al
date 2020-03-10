@@ -2,8 +2,7 @@ table 50118 "Tariff"
 {
     DataClassification = ToBeClassified;
     Caption = 'Tariff';
-    LookupPageId = "Tariff Register Card";
-
+    DrillDownPageId = "Tariff Register Card";
     fields
     {
         field(50110; TarId; Code[20])
