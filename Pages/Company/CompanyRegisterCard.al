@@ -152,29 +152,39 @@ page 50111 "Company Register Card"
 
         }
     }
-    /*actions
+    actions
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Company Tariff")
             {
                 ApplicationArea = All;
 
                 trigger OnAction()
                 begin
 
+                    CompanyTariffRec.SetFilter(CmpId, CmpId);
+                    if CompanyTariffRec.FindFirst() then begin
+
+                        PageCompanyTariff.SetTableView(CompanyTariffRec);
+                        PageCompanyTariff.SetRecord(CompanyTariffRec);
+                        PageCompanyTariff.Run();
+
+                    end;
+
                 end;
             }
         }
     }
-    */
-
 
 
     var
         PrevCmpTar: Integer;
         InsertAddress: Codeunit "Insert Address";
         InsertCompanyTariff: Codeunit InsertData;
+        PageCompanyTariff: page "Company Tariff Card";
+        CompanyTariffRec: Record TariffForCompany;
+
 
     trigger OnAfterGetRecord()
     begin
