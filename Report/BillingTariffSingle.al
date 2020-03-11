@@ -1,9 +1,10 @@
-report 50110 "Billing Tariff"
+report 50111 "Billing Tariff Single"
 {
     UsageCategory = Administration;
     ApplicationArea = All;
     DefaultLayout = RDLC;
-    RDLCLayout = 'Billing Tariff.rdlc';
+    Caption = 'Billing Tariff';
+    RDLCLayout = 'Billing Tariff Single.rdlc';
 
 
     dataset

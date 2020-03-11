@@ -11,7 +11,7 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
         {
             group(TBMS)
             {
-                Caption = 'SmartList';
+                Caption = 'TBMS';
                 Image = Journals;
                 ToolTip = 'Tug Boat Management System';
 
@@ -130,6 +130,14 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     ApplicationArea = All;
                     RunObject = report "Billing Tariff";
                 }
+
+                action("Single Billing Tariff")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Billing Tariff';
+                    RunObject = report "Billing Tariff Single";
+                }
+
             }
 
         }
