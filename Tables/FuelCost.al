@@ -16,6 +16,7 @@ table 50131 "Fuel Cost"
         {
             DataClassification = ToBeClassified;
             Caption = 'Fuel Cost';
+            DecimalPlaces = 0 : 5;
         }
     }
 

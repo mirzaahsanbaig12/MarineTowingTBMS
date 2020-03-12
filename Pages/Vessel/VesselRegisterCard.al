@@ -25,6 +25,7 @@ page 50135 "Vessel Register Card"
                 field(RevId; RevId)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field(Tonnage; Tonnage)
                 {
@@ -35,21 +36,25 @@ page 50135 "Vessel Register Card"
                 field(BusLa; BusLa)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(BusOc; BusOc)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(DefaultFlag; DefaultFlag)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(LockFlag; LockFlag)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(Status; Status)
