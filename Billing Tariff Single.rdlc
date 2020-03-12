@@ -57,10 +57,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTDescr.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrDescr.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTDescr.Value, "DataSet_Result") &lt;&gt; First(Fields!TrDescr.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -93,10 +94,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTTariffType.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrTariffType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTTariffType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrTariffType.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -265,10 +267,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTDateEnding.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrDateEnding.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTDateEnding.Value, "DataSet_Result") &lt;&gt; First(Fields!TrDateEnding.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -301,10 +304,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTDateEnding.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrDateEnding.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTDateEnding.Value, "DataSet_Result") &lt;&gt; First(Fields!TrDateEnding.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -371,7 +375,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Company Tariff</Value>
+                    <Value>Billing Tariff</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -383,7 +387,7 @@
             </Paragraphs>
             <rd:DefaultName>CTCmpId</rd:DefaultName>
             <Top>0.65847in</Top>
-            <Left>2.96462in</Left>
+            <Left>3.48554in</Left>
             <Height>0.25in</Height>
             <Width>1.61458in</Width>
             <ZIndex>10</ZIndex>
@@ -404,10 +408,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTStatus.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrStatus.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTStatus.Value, "DataSet_Result") &lt;&gt; First(Fields!TrStatus.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -478,6 +483,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CtJobStandardTime.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobStandardTime.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -510,10 +516,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobShiftType.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrJobShiftType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTJobShiftType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobShiftType.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -550,6 +557,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTJobUDPer.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobUDPer.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -559,7 +567,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobUDPer</rd:DefaultName>
-            <Top>3.13416in</Top>
+            <Top>3.14804in</Top>
             <Left>3.48554in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
@@ -586,6 +594,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTJobSpPer.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobSpPer.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -622,6 +631,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTJobShiftAmount.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobShiftAmount.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -828,6 +838,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTJobShiftTime.Value, "DataSet_Result")&lt;&gt;First(Fields!TrJobShiftTime.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -999,10 +1010,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSType.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrFSType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTFSType.Value, "DataSet_Result")&lt;&gt;First(Fields!TrFSType.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1102,10 +1114,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSDiscountFlag.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrFSDiscountFlag.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTFSDiscountFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSDiscountFlag.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1141,6 +1154,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTFSPerBase.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSPerBase.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1176,6 +1190,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTFSPerInc.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSPerInc.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1211,6 +1226,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTFSPrcBase.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSPrcBase.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1246,6 +1262,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTFSPrcInc.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSPrcInc.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1413,10 +1430,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTAmountPercent.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrAmountPercent.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTAmountPercent.Value, "DataSet_Result")  &lt;&gt; First(Fields!TrAmountPercent.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1452,6 +1470,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTMaxiumCharge.Value, "DataSet_Result") &lt;&gt; First(Fields!TrMaxiumCharge.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1551,10 +1570,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTATBFlag.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrOTATBFlag.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!TrOTATBFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!CTOTATBFlag.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1590,6 +1610,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTOTMinAmount.Value, "DataSet_Result") - First(Fields!TrOTMinAmount.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1625,6 +1646,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTOTRateAmount.Value, "DataSet_Result") - First(Fields!TrOTRateAmount.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1660,6 +1682,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTOTShiftAmount.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTShiftAmount.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1691,10 +1714,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTType.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrOTType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!TrOTType.Value, "DataSet_Result") &lt;&gt; First(Fields!CTOTType.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1964,10 +1988,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTTCATBFlag.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrTCATBFlag.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTTCATBFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!TrTCATBFlag.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1999,10 +2024,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTTCType.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrTCType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTTCType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrTCType.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2038,6 +2064,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTTCRate.Value, "DataSet_Result") &lt;&gt; First(Fields!TrTCRate.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2073,7 +2100,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTBRInc.Value, "DataSet_Result") &lt;&gt; First(Fields!TrBRInc.Value, "DataSet_Result"),Black,Red)</Color>
+                      <Color>=IIf(First(Fields!CTBRInc.Value, "DataSet_Result") &lt;&gt; First(Fields!TrBRInc.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2109,6 +2136,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTBRAmt.Value, "DataSet_Result") &lt;&gt; First(Fields!TrBRAmt.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
