@@ -5,7 +5,7 @@ page 50119 "Port Zone Register Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Port Zone";
-    Caption = 'Port Card';
+    Caption = 'Zone Card';
     DelayedInsert = true;
 
     layout

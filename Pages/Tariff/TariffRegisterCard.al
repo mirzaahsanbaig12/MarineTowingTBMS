@@ -194,7 +194,7 @@ page 50130 "Tariff Register Card"
             group("Base Rate")
             {
 
-                group("Port Zone")
+                group("Zone")
                 {
                     field(PrtId; PrtId)
                     {

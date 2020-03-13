@@ -1,7 +1,7 @@
 table 50114 "Port Zone"
 {
     DataClassification = ToBeClassified;
-    caption = 'Port Zone';
+    caption = 'Zone';
     LookupPageId = "Port Zone Register Card";
 
     fields
@@ -9,7 +9,7 @@ table 50114 "Port Zone"
         field(50110; PrtId; Code[5])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Port Id';
+            Caption = 'Zone Id';
         }
 
         field(50111; DbId; Code[5])
@@ -54,7 +54,7 @@ table 50114 "Port Zone"
     begin
         IF PrtId = ''
                 THEN
-            ERROR('Please Add Port Id');
+            ERROR('Please Add Zone Id');
         if Company = '' then
             FieldError(Company, 'Can not be null');
 

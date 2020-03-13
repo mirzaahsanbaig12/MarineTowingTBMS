@@ -34,7 +34,7 @@ page 50136 "Tariff Base Rate Subfrom"
                 field(PrtId; PrtId)
                 {
                     ApplicationArea = All;
-                    Caption = 'Port Id';
+                    Caption = 'Zone Id';
                     Visible = false;
                 }
             }
@@ -54,7 +54,7 @@ page 50136 "Tariff Base Rate Subfrom"
                 trigger OnAction();
                 begin
                     if prtIdCode = '' then
-                        Error('Port Cannot be null')
+                        Error('Zone Cannot be null')
                     else
                         InsertBaseRate.InsertTariffBaseRate(prtIdCode, tarIdCode);
                 end;

@@ -20,7 +20,7 @@ table 50134 TarBrForCompany
         {
             DataClassification = ToBeClassified;
             TableRelation = "Port Zone".PrtId;
-            Caption = 'Port';
+            Caption = 'Zone Id';
         }
 
         field(50113; class; Text[50])

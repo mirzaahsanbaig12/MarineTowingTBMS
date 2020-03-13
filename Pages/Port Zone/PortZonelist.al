@@ -4,7 +4,7 @@ page 50118 "Port Zone Register List"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Port Zone";
-    Caption = 'Port Zone List';
+    Caption = 'Zone List';
     CardPageId = 50119;
 
     layout

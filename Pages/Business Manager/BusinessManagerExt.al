@@ -68,7 +68,7 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     RunObject = page "Company Register List";
                 }
 
-                action("Vessel")
+                action("Vessels")
                 {
                     ApplicationArea = All;
                     RunObject = page "Vessel Register List";
@@ -100,7 +100,7 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     RunObject = page "Location Register List";
                 }
 
-                action("Port")
+                action("Zone")
                 {
                     ApplicationArea = All;
                     RunObject = page "Port Zone Register List";
@@ -125,13 +125,13 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     RunObject = page "Invoice Notes List";
                 }
 
-                action("Billing Tariff")
+                action("Compare Tariffs")
                 {
                     ApplicationArea = All;
                     RunObject = report "Billing Tariff";
                 }
 
-                action("Single Billing Tariff")
+                action("Billing Tariff")
                 {
                     ApplicationArea = All;
                     Caption = 'Billing Tariff';

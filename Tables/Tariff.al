@@ -178,7 +178,7 @@ table 50118 "Tariff"
 
         field(50136; PrtId; code[5])
         {
-            Caption = 'Port Id';
+            Caption = 'Zone Id';
             TableRelation = "Port Zone".PrtId;
             DataClassification = ToBeClassified;
         }
