@@ -24,7 +24,7 @@ table 50110 "Company Register"
             DataClassification = ToBeClassified;
             Description = 'Default Tariff';
             Caption = 'Default Tariff';
-            TableRelation = Tariff.TarId where(TariffType = const(1));
+            TableRelation = Tariff.TarId where(TariffType = const(0));
         }
 
         field(50113; Name; Text[50])
