@@ -57,7 +57,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TrDescr.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrDescr.Value, "DataSet_Result") &lt;&gt; "", First(Fields!TrDescr.Value, "DataSet_Result"),First(Fields!CTDescr.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -94,7 +94,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TrTariffType.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrTariffType.Value, "DataSet_Result") &lt;&gt; "" , First(Fields!TrTariffType.Value, "DataSet_Result"),First(Fields!CTTariffType.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -267,7 +267,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TrDateEnding.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrDateBegining.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -282,7 +282,7 @@
             </Paragraphs>
             <rd:DefaultName>CTDateEnding</rd:DefaultName>
             <Top>1.64458in</Top>
-            <Left>3.48546in</Left>
+            <Left>3.48554in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>7</ZIndex>
@@ -408,7 +408,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TrStatus.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrStatus.Value, "DataSet_Result") &lt;&gt; "" ,First(Fields!TrStatus.Value, "DataSet_Result"),First(Fields!CTStatus.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -423,7 +423,7 @@
             </Paragraphs>
             <rd:DefaultName>CTStatus</rd:DefaultName>
             <Top>2.0682in</Top>
-            <Left>3.48546in</Left>
+            <Left>3.48554in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>11</ZIndex>
@@ -479,7 +479,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CtJobStandardTime.Value, "DataSet_Result") - First(Fields!TrJobStandardTime.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrJobStandardTime.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -516,7 +516,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TrJobShiftType.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobShiftType.Value, "DataSet_Result")&lt;&gt; "", First(Fields!TrJobShiftType.Value, "DataSet_Result"),First(Fields!CTJobShiftType.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -553,7 +553,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobUDPer.Value, "DataSet_Result") - First(Fields!TrJobUDPer.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobUDPer.Value, "DataSet_Result") &lt;&gt; 0 , First(Fields!TrJobUDPer.Value, "DataSet_Result"),First(Fields!CTJobUDPer.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -590,7 +590,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobSpPer.Value, "DataSet_Result") - First(Fields!TrJobSpPer.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobSpPer.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrJobSpPer.Value, "DataSet_Result"),First(Fields!CTJobSpPer.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -627,7 +627,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobShiftAmount.Value, "DataSet_Result") - First(Fields!TrJobShiftAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobShiftAmount.Value, "DataSet_Result")&lt;&gt;0 ,First(Fields!TrJobShiftAmount.Value, "DataSet_Result"),First(Fields!CTJobShiftAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -834,7 +834,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobShiftTime.Value, "DataSet_Result") - First(Fields!TrJobShiftTime.Value, "DataSet_Result")</Value>
+                    <Value>=IIf( First(Fields!TrJobShiftTime.Value, "DataSet_Result") &lt;&gt; 0 , First(Fields!TrJobShiftTime.Value, "DataSet_Result"), First(Fields!CTJobShiftTime.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1150,7 +1150,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPerBase.Value, "DataSet_Result") - First(Fields!TrFSPerBase.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPerBase.Value, "DataSet_Result") &lt;&gt; 0,First(Fields!TrFSPerBase.Value, "DataSet_Result"),First(Fields!CTFSPerBase.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1186,7 +1186,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPerInc.Value, "DataSet_Result") - First(Fields!TrFSPerInc.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPerInc.Value, "DataSet_Result") &lt;&gt; 0,First(Fields!TrFSPerInc.Value, "DataSet_Result"),First(Fields!CTFSPerInc.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1222,7 +1222,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPrcBase.Value, "DataSet_Result") - First(Fields!TrFSPrcBase.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPrcBase.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrFSPrcBase.Value, "DataSet_Result"),First(Fields!CTFSPrcBase.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1258,7 +1258,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPrcInc.Value, "DataSet_Result") - First(Fields!TrFSPrcInc.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPrcInc.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrFSPrcInc.Value, "DataSet_Result"),First(Fields!CTFSPrcInc.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1466,7 +1466,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTMaxiumCharge.Value, "DataSet_Result") - First(Fields!TrMaxiumCharge.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrMaxiumCharge.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrMaxiumCharge.Value, "DataSet_Result"),First(Fields!CTMaxiumCharge.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1606,7 +1606,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTMinAmount.Value, "DataSet_Result") - First(Fields!TrOTMinAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrOTMinAmount.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrOTMinAmount.Value, "DataSet_Result"),First(Fields!CTOTMinAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1642,7 +1642,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTRateAmount.Value, "DataSet_Result") - First(Fields!TrOTRateAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrOTRateAmount.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrOTRateAmount.Value, "DataSet_Result"),First(Fields!CTOTRateAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1678,7 +1678,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTShiftAmount.Value, "DataSet_Result") - First(Fields!TrOTShiftAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrOTShiftAmount.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrOTShiftAmount.Value, "DataSet_Result"),First(Fields!CTOTShiftAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1988,7 +1988,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TrTCATBFlag.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!CTTCATBFlag.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2024,7 +2024,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!TrTCType.Value, "DataSet_Result")</Value>
+                    <Value>= First(Fields!CTTCType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2060,7 +2060,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTTCRate.Value, "DataSet_Result") - First(Fields!TrTCRate.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrTCRate.Value, "DataSet_Result") &lt;&gt; 0 , First(Fields!TrTCRate.Value, "DataSet_Result"),First(Fields!CTTCRate.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2096,7 +2096,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTBRInc.Value, "DataSet_Result") - First(Fields!TrBRInc.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrBRInc.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrBRInc.Value, "DataSet_Result"),First(Fields!CTBRInc.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2132,7 +2132,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTBRAmt.Value, "DataSet_Result") - First(Fields!TrBRAmt.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrBRAmt.Value, "DataSet_Result") &lt;&gt; 0,First(Fields!TrBRAmt.Value, "DataSet_Result"),First(Fields!CTBRAmt.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>

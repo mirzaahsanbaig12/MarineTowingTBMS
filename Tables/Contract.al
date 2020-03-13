@@ -169,6 +169,13 @@ table 50123 Contract
 
         }
 
+        field(50132; BillingOptions; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Billing Options';
+            OptionMembers = "","Owner/Charter","Agent";
+        }
+
 
     }
 

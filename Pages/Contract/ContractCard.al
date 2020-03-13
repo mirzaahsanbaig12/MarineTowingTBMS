@@ -51,6 +51,11 @@ page 50138 "Contract Card"
                     ApplicationArea = All;
                 }
 
+                field(BillingOptions; BillingOptions)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(Status; Status)
                 {
                     ApplicationArea = All;
