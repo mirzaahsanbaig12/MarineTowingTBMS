@@ -58,10 +58,10 @@ table 50130 LogDet
         }
 
 
-        field(50125; VesId; Code[20])
+        field(50125; VesId; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Vessel Id';
+            Caption = 'Vessel Name';
             TableRelation = Vessel;
         }
         field(50126; FSDiscFlag; Option)

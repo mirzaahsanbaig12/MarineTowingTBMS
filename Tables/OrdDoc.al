@@ -45,11 +45,11 @@ table 50126 OrdDoc
             Caption = 'Port Id';
         }
 
-        field(50117; VesId; Code[20])
+        field(50117; VesId; Code[50])
         {
             DataClassification = ToBeClassified;
             TableRelation = Vessel;
-            Caption = 'Vessel Id';
+            Caption = 'Vessel Name';
         }
         field(50118; TugOrderDescr; Text[50])
         {

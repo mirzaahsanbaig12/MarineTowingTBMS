@@ -96,10 +96,10 @@ table 50129 LogDoc
             TableRelation = "Location Register" where(type = const(0));
         }
 
-        field(50124; VesId; Code[20])
+        field(50124; VesId; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Vessel Id';
+            Caption = 'Vessel Name';
             TableRelation = Vessel;
         }
 

@@ -23,7 +23,7 @@ codeunit 50111 GetData
     end;
 
 
-    procedure GetVesselTonnage(_VesId: code[20]): Integer
+    procedure GetVesselTonnage(_VesId: code[50]): Integer
     var
         VesselRec: Record Vessel;
         Tonnage: Integer;
