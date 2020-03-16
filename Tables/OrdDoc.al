@@ -45,7 +45,15 @@ table 50126 OrdDoc
             Caption = 'Port Id';
         }
 
-        field(50117; VesId; Code[50])
+        field(50117; VesId; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Vessel_PK;
+            Caption = 'Vessel Name';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field Changed';
+        }
+        field(50131; VesIdPk; Code[50])
         {
             DataClassification = ToBeClassified;
             TableRelation = Vessel_PK;
@@ -191,7 +199,7 @@ table 50126 OrdDoc
             logDoc.Validate(DocType, logDoc.DocType);
             logDoc.Validate(Status, logDoc.Status::Open);
 
-            logDoc.Validate(JobType, logDoc.JobType::Assiting); //confirm this
+            logDoc.Validate(JobType, logDoc.JobType::Docking); //confirm this
             logDoc.Validate(PilId, PilId);
             logDoc.Validate(Tonnage, Tonnage);
             logDoc.Validate(ORDocNumber, ORDocNumber);

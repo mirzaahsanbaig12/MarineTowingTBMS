@@ -27,12 +27,12 @@ page 50142 "Outbound Ord Doc Card"
                     ApplicationArea = All;
                 }
 
-                field(VesId; VesId)
+                field(VesId; VesIdPk)
                 {
                     ApplicationArea = All;
                     trigger OnValidate()
                     begin
-                        Tonnage := getVesselTonnage.GetVesselTonnage(VesId);
+                        Tonnage := getVesselTonnage.GetVesselTonnage(VesIdPk);
                     end;
                 }
 

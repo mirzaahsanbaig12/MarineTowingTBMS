@@ -52,7 +52,7 @@ page 50147 "Log Billing List"
                 {
                     ApplicationArea = All;
                 }
-                field(VesId; VesId)
+                field(VesId; VesIdPk)
                 {
                     ApplicationArea = All;
                 }

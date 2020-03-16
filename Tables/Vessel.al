@@ -1,4 +1,4 @@
-table 50121 "Vessel2"
+table 50121 "Vessel"
 {
     DataClassification = ToBeClassified;
     Caption = 'Vessel';
@@ -9,7 +9,7 @@ table 50121 "Vessel2"
     fields
     {
 
-        field(50110; VesId; Code[50])
+        field(50110; VesId; Code[20])
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';

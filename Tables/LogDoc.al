@@ -96,7 +96,16 @@ table 50129 LogDoc
             TableRelation = "Location Register" where(type = const(0));
         }
 
-        field(50124; VesId; Code[50])
+        field(50124; VesId; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Vessel Name';
+            TableRelation = Vessel_PK;
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field Changed';
+        }
+
+        field(50156; VesIdPk; Code[50])
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
@@ -157,7 +166,7 @@ table 50129 LogDoc
         field(50133; JobType; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = "Assiting","Docking","Shifting","Undocking","Hourly";
+            OptionMembers = "","Docking","Shifting","Undocking","Hourly";
             Caption = 'Job Type';
         }
 

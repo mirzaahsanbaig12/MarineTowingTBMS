@@ -51,12 +51,12 @@ page 50148 "Log Billing"
                     ApplicationArea = All;
                 }
 
-                field(VesId; VesId)
+                field(VesId; VesIdPk)
                 {
                     ApplicationArea = All;
                     trigger OnValidate()
                     begin
-                        Tonnage := getTonnage.GetVesselTonnage(VesId);
+                        Tonnage := getTonnage.GetVesselTonnage(VesIdPk);
                     End;
                 }
                 field(BusLA; BusLA)

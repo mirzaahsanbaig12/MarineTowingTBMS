@@ -58,7 +58,16 @@ table 50130 LogDet
         }
 
 
-        field(50125; VesId; Code[50])
+        field(50125; VesId; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Vessel Name';
+            TableRelation = Vessel_PK;
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Primary Field Changed';
+        }
+
+        Field(50142; VesIdPk; Code[50])
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';

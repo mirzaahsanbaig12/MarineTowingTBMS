@@ -28,7 +28,7 @@ page 50143 "InBound Ord Doc List"
                     ApplicationArea = All;
                 }
 
-                field(VesId; VesId)
+                field(VesId; VesIdPk)
                 {
                     ApplicationArea = All;
                 }
