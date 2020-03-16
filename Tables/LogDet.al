@@ -62,7 +62,7 @@ table 50130 LogDet
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
-            TableRelation = Vessel;
+            TableRelation = Vessel_PK;
         }
         field(50126; FSDiscFlag; Option)
         {

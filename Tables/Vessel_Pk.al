@@ -1,18 +1,22 @@
-table 50121 "Vessel2"
+table 50136 "Vessel_PK"
 {
     DataClassification = ToBeClassified;
     Caption = 'Vessel';
     LookupPageId = "Vessel Register Card";
-    ObsoleteState = Removed;
-    ObsoleteReason = 'Field Length Change';
 
     fields
     {
+        field(50121; VesId50; code[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Vessel Name';
+        }
 
         field(50110; VesId; Code[50])
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
+
         }
         field(50111; Name; text[50])
         {
@@ -89,8 +93,13 @@ table 50121 "Vessel2"
         key(PK; VesId)
         {
             Clustered = true;
+
         }
+
+
+
     }
+
 
     fieldgroups
     {

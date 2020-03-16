@@ -25,7 +25,7 @@ codeunit 50111 GetData
 
     procedure GetVesselTonnage(_VesId: code[50]): Integer
     var
-        VesselRec: Record Vessel;
+        VesselRec: Record Vessel_PK;
         Tonnage: Integer;
     begin
         VesselRec.Reset();

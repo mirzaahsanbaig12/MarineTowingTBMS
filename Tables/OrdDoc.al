@@ -48,7 +48,7 @@ table 50126 OrdDoc
         field(50117; VesId; Code[50])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Vessel;
+            TableRelation = Vessel_PK;
             Caption = 'Vessel Name';
         }
         field(50118; TugOrderDescr; Text[50])

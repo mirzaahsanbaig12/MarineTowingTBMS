@@ -100,7 +100,7 @@ table 50129 LogDoc
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
-            TableRelation = Vessel;
+            TableRelation = Vessel_PK;
         }
 
         field(50125; RevId; Code[5])
