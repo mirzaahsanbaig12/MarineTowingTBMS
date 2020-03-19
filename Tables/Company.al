@@ -1,8 +1,8 @@
 table 50110 "Company Register"
 {
     DataClassification = ToBeClassified;
-    //LookupPageId = "Company Register Card";
-    DrillDownPageId = "Company Register Card";
+    DrillDownPageId = "Company Register List";
+    LookupPageId = "Company Register Card";
 
     fields
     {

@@ -38,11 +38,13 @@ page 50138 "Contract Card"
                 }
                 field(StartDate; StartDate)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
                 field(EndDate; EndDate)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
@@ -104,6 +106,11 @@ page 50138 "Contract Card"
                 }
 
                 field(Rate; Rate)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(AssistRate; AssistRate)
                 {
                     ApplicationArea = All;
                 }

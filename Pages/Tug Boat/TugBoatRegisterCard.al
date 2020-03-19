@@ -28,6 +28,7 @@ page 50115 "Tug Register Card"
                 }
                 field(CmpId; CmpId)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
@@ -41,6 +42,7 @@ page 50115 "Tug Register Card"
                 }
                 field(Class; Class)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
@@ -55,6 +57,7 @@ page 50115 "Tug Register Card"
 
                 field(Memo; Memo)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
             }
@@ -63,6 +66,7 @@ page 50115 "Tug Register Card"
 
             group("Tug Rates")
             {
+                Visible = false;
                 part("Tug Rate"; "Tug Rate List Tug Hide")
                 {
                     ApplicationArea = Basic, Suite;

@@ -109,6 +109,18 @@ page 50147 "Log Billing List"
                     customerList.Run();
                 end;
             }
+
+            action("Create Sales Order")
+            {
+                ApplicationArea = All;
+                Caption = 'Create Sales Order';
+
+                trigger OnAction()
+                Begin
+                    CreateSalesOrder.CreateSalesOrder(LogDocNumber);
+                End;
+            }
+
         }
     }
 
@@ -116,6 +128,7 @@ page 50147 "Log Billing List"
 
     var
         customerList: Page "Customer List";
+        CreateSalesOrder: Codeunit CreateSalesOrder;
 
 }
 

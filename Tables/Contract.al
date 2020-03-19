@@ -129,13 +129,13 @@ table 50123 Contract
         field(50128; AssistFixedRate; Boolean)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Assist Fix Rate';
+            Caption = 'Fixed Rate';
         }
 
         field(50129; Rate; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Rate';
+            Caption = 'Docking (Un) Rate';
         }
 
         field(50130; TarCustomer; code[20])
@@ -176,6 +176,11 @@ table 50123 Contract
             OptionMembers = "","Owner/Charter","Agent";
         }
 
+        field(50133; AssistRate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Assist Rate';
+        }
 
     }
 

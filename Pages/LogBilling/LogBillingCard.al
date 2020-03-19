@@ -19,6 +19,14 @@ page 50148 "Log Billing"
                     Visible = false;
                 }
 
+                field(VesId; VesIdPk)
+                {
+                    ApplicationArea = All;
+                    trigger OnValidate()
+                    begin
+                        Tonnage := getTonnage.GetVesselTonnage(VesIdPk);
+                    End;
+                }
 
                 field(JobType; JobType)
                 {
@@ -51,14 +59,7 @@ page 50148 "Log Billing"
                     ApplicationArea = All;
                 }
 
-                field(VesId; VesIdPk)
-                {
-                    ApplicationArea = All;
-                    trigger OnValidate()
-                    begin
-                        Tonnage := getTonnage.GetVesselTonnage(VesIdPk);
-                    End;
-                }
+
                 field(BusLA; BusLA)
                 {
                     ApplicationArea = All;
@@ -80,6 +81,7 @@ page 50148 "Log Billing"
 
                 field(RevId; RevId)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
                 field(Tonnage; Tonnage)
@@ -93,22 +95,26 @@ page 50148 "Log Billing"
 
                 field(LocStr; LocStr)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
                 field(DestinationStr; DestinationStr)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
 
                 field(AsstFlag; AsstFlag)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
                 field(HWFlag; HWFlag)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
                 field(OTType; OTType)
@@ -133,6 +139,7 @@ page 50148 "Log Billing"
 
                 field(DUFlag; DUFlag)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
