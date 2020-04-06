@@ -14,13 +14,23 @@ codeunit 50113 CreateSalesOrder
         customerAcc: code[50];
         tugBoatRec: Record "Tug Boat";
         LineDesc: Text[200];
+        tariffRec: Record Tariff;
+        baseRateRec: Record TarBr;
     begin
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
         if logDocRec.FindFirst() then begin
 
-            fixRate := 2000;
+            fixRate := 2999;
             RevAccount := '40100';
             customerAcc := logDocRec.BusOwner;
+
+            if logDocRec.CmpId <> '' then begin
+                CompanyRec.SetFilter(CmpId, logDocRec.CmpId);
+                if CompanyRec.FindFirst() then begin
+                    RevAccount := CompanyRec.AcctRev;
+                end;
+            end;
+
 
             if logDocRec.ConNumber <> 0 then begin
                 contractRec.SetFilter(ConNumber, format(logDocRec.ConNumber));
@@ -29,6 +39,10 @@ codeunit 50113 CreateSalesOrder
                     if contractRec.AssistFixedRate then begin
                         fixRate := contractRec.Rate;
                     end;
+                    if logDocRec.JobType = logDocRec.JobType::Shifting
+                    then
+                        fixRate := contractRec.AssistRate;
+
                     if contractRec.BillingOptions = contractRec.BillingOptions::Agent then begin
                         customerAcc := logDocRec.BusLA;
                     end
@@ -37,24 +51,39 @@ codeunit 50113 CreateSalesOrder
                 end;
             end;
 
+            //contract find get tonnage rate
+
+            if (contractRec.AssistFixedRate = false) and (contractRec.TarCustomer = '')
+            then begin
+                tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                if tariffRec.FindFirst()
+                then begin
+                    baseRateRec.SetFilter(TarId, tariffRec.TarId);
+                    baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
+                    if baseRateRec.FindFirst()
+                    then
+                        fixRate := baseRateRec.Rate;
+                end;
+            end;
+
+
+
+            //
+
             SalesHeader."Document Type" := SalesHeader."Document Type"::Order;
             SalesHeader.Init();
             SalesHeader.Validate("Sell-to Customer No.", customerAcc);
+            SalesHeader.Validate("LogDocNumber", logDocRec.LogDocNumber);
 
             if SalesHeader.Insert(true) then begin
                 Commit();
+                logDocRec.Status := logDocRec.Status::SO;
+                logDocRec.SalesOrderNo := SalesHeader."No.";
+                logDocRec.Modify();
                 Message('Sale Order : %1 has been created', SalesHeader."No.");
 
                 SalesLine.SetFilter("Document Type", format(SalesLine."Document Type"::Order));
                 SalesLine.SetFilter("Document No.", SalesHeader."No.");
-
-
-                if logDocRec.CmpId <> '' then begin
-                    CompanyRec.SetFilter(CmpId, logDocRec.CmpId);
-                    if CompanyRec.FindFirst() then begin
-                        RevAccount := CompanyRec.AcctRev;
-                    end;
-                end;
 
                 if SalesLine.FindLast() then begin
                     lineNo := SalesLine."Line No."
@@ -80,6 +109,11 @@ codeunit 50113 CreateSalesOrder
                             LineDesc := format(logDocRec.VesIdPk) + ' Undocking From ' + logDetRec.LocStr + ' ' + format(logDetRec.TimeStart) + ' @ $' + format(fixRate);
                         end;
 
+                        if logDocRec.JobType = logDocRec.JobType::Shifting
+                       then begin
+                            LineDesc := format(logDocRec.VesIdPk) + ' Shifting From ' + logDetRec.LocStr + ' ' + format(logDetRec.TimeStart) + ' @ $' + format(fixRate);
+                        end;
+
                         SalesLine."Document No." := SalesHeader."No.";
                         SalesLine.Init();
                         SalesLine.Validate("Line No.", lineNo);
@@ -90,6 +124,8 @@ codeunit 50113 CreateSalesOrder
                         SalesLine.Validate("Quantity", 1);
                         SalesLine.Validate("Unit Price", fixRate);
                         SalesLine.Validate("Line Amount", fixRate);
+                        SalesLine.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                        SalesLine.Validate(Description, LineDesc);
                         SalesLine.Insert(true);
                         lineNo := lineNo + 100;
 

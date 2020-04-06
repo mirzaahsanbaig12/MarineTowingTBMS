@@ -138,6 +138,13 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     RunObject = report "Billing Tariff Single";
                 }
 
+                action("SalesOrder")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Sales Orders';
+                    RunObject = page "Sales Order List";
+                }
+
             }
 
         }
@@ -145,4 +152,5 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
 
     var
         myInt: Integer;
+
 }

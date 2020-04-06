@@ -50,26 +50,31 @@ page 50149 "Log Details"
                 field(Distance; Distance)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(TCFlag; TCFlag)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(SBFlag; SBFlag)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(NumberCables; NumberCables)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(NumberLines; NumberLines)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
             }

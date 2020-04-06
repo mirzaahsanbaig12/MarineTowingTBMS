@@ -51,6 +51,7 @@ page 50138 "Contract Card"
                 field(Class; Class)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(BillingOptions; BillingOptions)

@@ -154,6 +154,11 @@ page 50148 "Log Billing"
                     Caption = 'Scheduler ID';
                 }
 
+                field(SalesOrderNo; SalesOrderNo)
+                {
+                    ApplicationArea = All;
+                }
+
             }
 
             group("Log Details")

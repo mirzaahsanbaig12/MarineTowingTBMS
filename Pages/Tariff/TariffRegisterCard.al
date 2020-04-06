@@ -176,6 +176,7 @@ page 50130 "Tariff Register Card"
 
             group("Turning Charge")
             {
+                Visible = false;
                 field(TCATBFlag; TCATBFlag)
                 {
                     ApplicationArea = All;

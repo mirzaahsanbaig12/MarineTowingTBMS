@@ -180,7 +180,7 @@ table 50129 LogDoc
         field(50135; Status; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = "Open","Close";
+            OptionMembers = "Open","Close","SO","Invoiced","Reopen";
             Caption = 'Status';
         }
 
@@ -296,6 +296,14 @@ table 50129 LogDoc
         field(50155; Memo; Text[50])
         {
             DataClassification = ToBeClassified;
+        }
+
+        field(50157; SalesOrderNo; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Sales Order';
+            TableRelation = "Sales Header";
+            Editable = false;
         }
 
     }

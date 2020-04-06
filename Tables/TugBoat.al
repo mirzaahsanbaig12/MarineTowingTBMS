@@ -35,8 +35,8 @@ table 50112 "Tug Boat"
         field(50114; AccountCC; code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Cost Center Account';
-            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(0),
+            Caption = 'Department Code';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1),
                                                           Blocked = CONST(false));
         }
 

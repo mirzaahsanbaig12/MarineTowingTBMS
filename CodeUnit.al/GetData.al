@@ -71,7 +71,99 @@ codeunit 50111 GetData
             if contractRec.Count = 1
            then
                 exit(contractRec.ConNumber);
-        exit(0)
+        exit(0);
     End;
 
+    procedure CalcworkingDate()
+    var
+        c1: Codeunit "Calendar Management";
+    Begin
+        //Message('here');
+        //message(format(c1.CalcDateBOC('DD/MM/YYYY', WorkDate(), false, false));
+
+
+    End;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Invoice Line", 'OnAfterInsertEvent', '', true, true)]
+
+    local procedure hello()
+
+    begin
+        //Message('hi');
+    end;
+
+
+    [EventSubscriber(ObjectType::Page, Page::"Log Billing", 'OnOpenPageEvent', '', true, true)]
+
+    local procedure MyProcedure(var Rec: Record LogDoc)
+
+    begin
+        //Message('page open EventSubscriber %1', rec.LogDocNumber);
+
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Sales-Post", 'OnAfterPostInvPostBuffer', '', true, true)]
+    local procedure one(var SalesHeader: Record "Sales Header")
+    var
+        logdocRec: Record LogDoc;
+    begin
+        if SalesHeader.LogDocNumber <> 0
+        then begin
+            logdocRec.SetFilter(LogDocNumber, Format(SalesHeader.LogDocNumber));
+            if logdocRec.FindFirst()
+            then begin
+
+                if logdocRec.Status = logdocRec.Status::Invoiced
+                then begin
+                    //logdocRec.Status := logdocRec.Status::Reopen;
+                end;
+
+                if logdocRec.Status = logdocRec.Status::SO
+                then begin
+                    logdocRec.Status := logdocRec.Status::Invoiced;
+                end;
+
+
+                logdocRec.Modify();
+
+                //Message('hereeeeee in modify');
+            end;
+
+        end;
+        //Message('Sales order %1, log number%2', SalesHeader."No.", SalesHeader.LogDocNumber);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Correct Posted Sales Invoice", 'OnAfterCreateCorrSalesInvoice', '', true, true)]
+
+    local procedure two(var SalesHeader: Record "Sales Header")
+    var
+        logdocRec: Record LogDoc;
+    begin
+        if SalesHeader.LogDocNumber <> 0
+        then begin
+            logdocRec.SetFilter(LogDocNumber, Format(SalesHeader.LogDocNumber));
+            if logdocRec.FindFirst()
+            then begin
+
+                if logdocRec.Status = logdocRec.Status::Invoiced
+                then begin
+                    logdocRec.Status := logdocRec.Status::Reopen;
+                end;
+
+                logdocRec.Modify();
+
+                //Message('hereeeeee in modify coreect');
+            end;
+
+        end;
+        //Message('correct Sales order %1, log number%2', SalesHeader."No.", SalesHeader.LogDocNumber);
+    end;
+
+
+
 }
+
+
+
+
+

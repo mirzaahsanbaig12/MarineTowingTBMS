@@ -179,7 +179,7 @@ table 50123 Contract
         field(50133; AssistRate; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Assist Rate';
+            Caption = 'Shifting';
         }
 
     }
