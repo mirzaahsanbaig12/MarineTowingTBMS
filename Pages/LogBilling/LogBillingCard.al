@@ -40,6 +40,12 @@ page 50148 "Log Billing"
                 field(Status; Status)
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    begin
+                        if Status = LogDocRec.Status::Reopen
+                        then
+                            SalesOrderNo := '';
+                    end;
                 }
 
                 //field(dis)

@@ -16,6 +16,7 @@ codeunit 50113 CreateSalesOrder
         LineDesc: Text[200];
         tariffRec: Record Tariff;
         baseRateRec: Record TarBr;
+
     begin
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
         if logDocRec.FindFirst() then begin
@@ -40,8 +41,28 @@ codeunit 50113 CreateSalesOrder
                         fixRate := contractRec.Rate;
                     end;
                     if logDocRec.JobType = logDocRec.JobType::Shifting
-                    then
-                        fixRate := contractRec.AssistRate;
+                    then begin
+
+                        tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                        if tariffRec.FindFirst() then begin
+
+                            baseRateRec.SetFilter(TarId, tariffRec.TarId);
+                            baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
+                            if baseRateRec.FindFirst()
+                            then
+                                if tariffRec.JobShiftType = tariffRec.JobShiftType::Amount
+                                then begin
+                                    fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount;
+                                end;
+
+                            if tariffRec.JobShiftType = tariffRec.JobShiftType::Percentage
+                            then begin
+                                fixRate := baseRateRec.Rate + ((baseRateRec.Rate * tariffRec.JobShiftAmount) / 100);
+
+                            end;
+                        end;
+
+                    end;
 
                     if contractRec.BillingOptions = contractRec.BillingOptions::Agent then begin
                         customerAcc := logDocRec.BusLA;
@@ -101,17 +122,17 @@ codeunit 50113 CreateSalesOrder
 
                         if logDocRec.JobType = logDocRec.JobType::Docking
                        then begin
-                            LineDesc := format(logDocRec.VesIdPk) + ' Docking From ' + logDetRec.DestinationStr + ' ' + format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
+                            LineDesc := format(logDocRec.VesIdPk) + ' Docking From ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                         end;
 
                         if logDocRec.JobType = logDocRec.JobType::Undocking
                        then begin
-                            LineDesc := format(logDocRec.VesIdPk) + ' Undocking From ' + logDetRec.LocStr + ' ' + format(logDetRec.TimeStart) + ' @ $' + format(fixRate);
+                            LineDesc := format(logDocRec.VesIdPk) + ' Undocking From ' + logDetRec.LocStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                         end;
 
                         if logDocRec.JobType = logDocRec.JobType::Shifting
                        then begin
-                            LineDesc := format(logDocRec.VesIdPk) + ' Shifting From ' + logDetRec.LocStr + ' ' + format(logDetRec.TimeStart) + ' @ $' + format(fixRate);
+                            LineDesc := format(logDocRec.VesIdPk) + ' Shifting From ' + logDetRec.LocStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                         end;
 
                         SalesLine."Document No." := SalesHeader."No.";

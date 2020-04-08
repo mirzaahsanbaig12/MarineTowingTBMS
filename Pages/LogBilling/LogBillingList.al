@@ -121,6 +121,18 @@ page 50147 "Log Billing List"
                 End;
             }
 
+            /*action("Working date")
+            {
+                ApplicationArea = All;
+                Caption = 'Working Dates';
+
+                trigger OnAction()
+                Begin
+                    dates.CalcworkingDate();
+
+                End;
+            }*/
+
         }
     }
 
@@ -129,6 +141,8 @@ page 50147 "Log Billing List"
     var
         customerList: Page "Customer List";
         CreateSalesOrder: Codeunit CreateSalesOrder;
+        dates: Codeunit GetData;
+
 
 }
 

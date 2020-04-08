@@ -227,6 +227,12 @@ table 50118 "Tariff"
             Caption = 'Amount/Percent';
         }
 
+        field(50144; FlatRate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Repositioning Charge';
+        }
+
 
     }
     keys

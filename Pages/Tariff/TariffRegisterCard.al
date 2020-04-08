@@ -63,6 +63,7 @@ page 50130 "Tariff Register Card"
                 field(JobSpPer; JobSpPer)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(JobShiftType; JobShiftType)
@@ -73,6 +74,7 @@ page 50130 "Tariff Register Card"
                 field(JobUDPer; JobUDPer)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(JobShiftAmount; JobShiftAmount)
@@ -204,6 +206,11 @@ page 50130 "Tariff Register Card"
                         begin
                             CurrPage."Tariff Base Rate Subfrom".Page.SetPrtId(PrtId);
                         end;
+                    }
+
+                    field(FlatRate; FlatRate)
+                    {
+                        ApplicationArea = All;
                     }
 
                 }

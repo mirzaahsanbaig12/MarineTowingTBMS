@@ -148,6 +148,7 @@ codeunit 50111 GetData
                 if logdocRec.Status = logdocRec.Status::Invoiced
                 then begin
                     logdocRec.Status := logdocRec.Status::Reopen;
+                    logdocRec.SalesOrderNo := '';
                 end;
 
                 logdocRec.Modify();
