@@ -212,7 +212,7 @@ table 50118 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Tariff Type';
-            OptionMembers = "Base","Change","Customer";
+            OptionMembers = "Base","Customer";
         }
 
         field(50142; MaxiumCharge; Decimal)
@@ -227,7 +227,7 @@ table 50118 "Tariff"
             Caption = 'Amount/Percent';
         }
 
-        field(50144; FlatRate; Decimal)
+        field(50150; FlatRate; Decimal)
         {
             DataClassification = ToBeClassified;
             Caption = 'Repositioning Charge';

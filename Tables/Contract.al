@@ -124,7 +124,7 @@ table 50123 Contract
         {
             DataClassification = ToBeClassified;
             Caption = 'Change Tariff';
-            TableRelation = Tariff where(TariffType = const(Change));
+            TableRelation = Tariff where(TariffType = const(Customer));
         }
         field(50128; AssistFixedRate; Boolean)
         {

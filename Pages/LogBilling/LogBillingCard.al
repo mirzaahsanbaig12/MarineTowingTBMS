@@ -197,6 +197,28 @@ page 50148 "Log Billing"
                     customerList.Run();
                 end;
             }
+
+            action("Sales Order")
+            {
+                ApplicationArea = All;
+                Caption = 'Sales Order';
+                Visible = SalesOrderMenu;
+
+                trigger OnAction()
+                begin
+
+                    salesHeader.SetFilter("No.", SalesOrderNo);
+                    if salesHeader.FindFirst() then begin
+
+                        SalesOrder.SetRecord(salesHeader);
+                        //SalesOrder.Editable(False);
+                        SalesOrder.Run();
+
+                    end;
+
+                end;
+
+            }
         }
     }
 
@@ -206,6 +228,9 @@ page 50148 "Log Billing"
         LogDocRec: Record LogDoc;
         customerList: Page "Customer List";
         getTonnage: Codeunit GetData;
+        SalesOrder: Page "Sales Order";
+        salesHeader: Record "Sales Header";
+        SalesOrderMenu: Boolean;
 
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
@@ -216,12 +241,29 @@ page 50148 "Log Billing"
     trigger OnOpenPage()
     begin
         CurrPage.LogDetailsSubFrom.Page.SetLogDocNumber(LogDocNumber);
+        ShowHideMenu();
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Datelog := System.CurrentDateTime;
         FuelCost := getTonnage.GetFuelCost()
+
+    end;
+
+    procedure ShowHideMenu()
+    var
+        SalesHeaderLocal: Record "Sales Header";
+    begin
+        SalesHeaderLocal.SetFilter("No.", SalesOrderNo);
+        if SalesHeaderLocal.FindFirst() then begin
+            SalesOrderMenu := true;
+
+        end
+        else
+            SalesOrderMenu := false;
+
+
 
     end;
 

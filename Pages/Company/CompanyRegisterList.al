@@ -17,7 +17,14 @@ page 50110 "Company Register List"
                 {
                     ApplicationArea = All;
                 }
+
+
                 field(Description; Name)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(TarId; TarId)
                 {
                     ApplicationArea = All;
                 }
@@ -26,6 +33,8 @@ page 50110 "Company Register List"
                 {
                     ApplicationArea = All;
                 }
+
+
             }
 
         }

@@ -241,6 +241,12 @@ table 50133 TariffForCompany
 
         }
 
+        field(50150; FlatRate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Repositioning Charge';
+        }
+
     }
     keys
     {

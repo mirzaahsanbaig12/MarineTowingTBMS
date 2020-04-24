@@ -26,7 +26,7 @@ codeunit 50112 InsertData
         BaseRate: Record TarBr;
         BaseRateExist: Record TarBr;
     Begin
-        Tonnage := 0;
+        Tonnage := 4000;
         while Tonnage < 30000 do begin
 
             Tonnage := Tonnage + 1000;
@@ -110,6 +110,7 @@ codeunit 50112 InsertData
         TarBaseCompany.Reset();
         tariffCompany.Reset();
         tariffCompany.Init();
+
 
         lineNo := TarBaseCompany.GetLineNo();
         CmpTarNo := tariffCompany.GetLastLineNo();

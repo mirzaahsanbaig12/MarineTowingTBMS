@@ -122,15 +122,11 @@ codeunit 50111 GetData
                 then begin
                     logdocRec.Status := logdocRec.Status::Invoiced;
                 end;
-
-
                 logdocRec.Modify();
-
-                //Message('hereeeeee in modify');
             end;
 
         end;
-        //Message('Sales order %1, log number%2', SalesHeader."No.", SalesHeader.LogDocNumber);
+
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Correct Posted Sales Invoice", 'OnAfterCreateCorrSalesInvoice', '', true, true)]
@@ -152,12 +148,10 @@ codeunit 50111 GetData
                 end;
 
                 logdocRec.Modify();
-
-                //Message('hereeeeee in modify coreect');
             end;
 
         end;
-        //Message('correct Sales order %1, log number%2', SalesHeader."No.", SalesHeader.LogDocNumber);
+
     end;
 
 

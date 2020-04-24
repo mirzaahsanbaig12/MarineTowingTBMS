@@ -6,6 +6,7 @@ page 50147 "Log Billing List"
     SourceTable = LogDoc;
     Caption = 'log Billing';
     CardPageId = 50148;
+
     //SourceTableView = where(InboundOutbound = const(Inbound)),;
 
     layout
