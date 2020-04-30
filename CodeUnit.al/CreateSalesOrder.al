@@ -58,7 +58,7 @@ codeunit 50113 CreateSalesOrder
                             if tariffRec.JobShiftType = tariffRec.JobShiftType::Percentage
                             then begin
                                 fixRate := baseRateRec.Rate + ((baseRateRec.Rate * tariffRec.JobShiftAmount) / 100);
-
+                                fixRate := fixRate + baseRateRec.Rate;
                             end;
                         end;
 
@@ -81,7 +81,7 @@ codeunit 50113 CreateSalesOrder
                 then begin
                     baseRateRec.SetFilter(TarId, tariffRec.TarId);
                     baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
-                    if baseRateRec.FindFirst()
+                    if (baseRateRec.FindFirst()) and (fixRate = 0)
                     then
                         fixRate := baseRateRec.Rate;
                 end;

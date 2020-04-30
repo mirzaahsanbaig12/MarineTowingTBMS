@@ -100,16 +100,18 @@ table 50129 LogDoc
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
-            TableRelation = Vessel_PK;
-            ObsoleteState = Removed;
-            ObsoleteReason = 'Field Changed';
+            TableRelation = Vessel;
+            //ObsoleteState = Removed;
+            // ObsoleteReason = 'Field Changed';
         }
 
         field(50156; VesIdPk; Code[50])
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
-            TableRelation = Vessel_PK;
+            TableRelation = Vessel;
+            //ObsoleteState = Removed;
+            // ObsoleteReason = 'Field Changed';
         }
 
         field(50125; RevId; Code[5])

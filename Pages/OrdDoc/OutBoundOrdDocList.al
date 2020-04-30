@@ -28,7 +28,7 @@ page 50141 "Outbound Ord Doc List"
                     ApplicationArea = All;
                 }
 
-                field(VesId; VesIdPk)
+                field(VesId; VesId)
                 {
                     ApplicationArea = All;
                 }

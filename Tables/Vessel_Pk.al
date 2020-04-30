@@ -3,6 +3,8 @@ table 50136 "Vessel_PK"
     DataClassification = ToBeClassified;
     Caption = 'Vessel';
     LookupPageId = "Vessel Register Card";
+    ObsoleteState = Removed;
+    ObsoleteReason = 'Changes Removed';
 
     fields
     {

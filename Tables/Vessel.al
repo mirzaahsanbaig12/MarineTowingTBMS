@@ -3,8 +3,6 @@ table 50121 "Vessel"
     DataClassification = ToBeClassified;
     Caption = 'Vessel';
     LookupPageId = "Vessel Register Card";
-    ObsoleteState = Removed;
-    ObsoleteReason = 'Field Length Change';
 
     fields
     {

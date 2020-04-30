@@ -3,7 +3,7 @@ page 50135 "Vessel Register Card"
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Vessel_pk;
+    SourceTable = Vessel;
     Caption = 'Vessel Card';
     DelayedInsert = true;
 

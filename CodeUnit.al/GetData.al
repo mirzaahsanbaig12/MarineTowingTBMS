@@ -25,7 +25,7 @@ codeunit 50111 GetData
 
     procedure GetVesselTonnage(_VesId: code[50]): Integer
     var
-        VesselRec: Record Vessel_PK;
+        VesselRec: Record Vessel;
         Tonnage: Integer;
     begin
         VesselRec.Reset();
@@ -112,17 +112,19 @@ codeunit 50111 GetData
             logdocRec.SetFilter(LogDocNumber, Format(SalesHeader.LogDocNumber));
             if logdocRec.FindFirst()
             then begin
+                repeat
 
-                if logdocRec.Status = logdocRec.Status::Invoiced
-                then begin
-                    //logdocRec.Status := logdocRec.Status::Reopen;
-                end;
+                    if logdocRec.Status = logdocRec.Status::Invoiced
+                    then begin
+                        //logdocRec.Status := logdocRec.Status::Reopen;
+                    end;
 
-                if logdocRec.Status = logdocRec.Status::SO
-                then begin
-                    logdocRec.Status := logdocRec.Status::Invoiced;
-                end;
-                logdocRec.Modify();
+                    if logdocRec.Status = logdocRec.Status::SO
+                    then begin
+                        logdocRec.Status := logdocRec.Status::Invoiced;
+                    end;
+                    logdocRec.Modify();
+                until logdocRec.Next() = 0;
             end;
 
         end;
@@ -140,14 +142,14 @@ codeunit 50111 GetData
             logdocRec.SetFilter(LogDocNumber, Format(SalesHeader.LogDocNumber));
             if logdocRec.FindFirst()
             then begin
-
-                if logdocRec.Status = logdocRec.Status::Invoiced
-                then begin
-                    logdocRec.Status := logdocRec.Status::Reopen;
-                    logdocRec.SalesOrderNo := '';
-                end;
-
-                logdocRec.Modify();
+                repeat
+                    if logdocRec.Status = logdocRec.Status::Invoiced
+                    then begin
+                        logdocRec.Status := logdocRec.Status::Reopen;
+                        logdocRec.SalesOrderNo := '';
+                    end;
+                    logdocRec.Modify();
+                until logdocRec.Next() = 0;
             end;
 
         end;

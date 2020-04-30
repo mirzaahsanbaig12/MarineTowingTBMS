@@ -7,9 +7,9 @@ page 50163 AXPVesselAPI
     EntityName = 'Vessel';
     EntitySetName = 'Vessels';
     Caption = 'Vessel API';
-    SourceTable = Vessel_PK;
+    SourceTable = Vessel;
     DelayedInsert = true;
-    Permissions = tabledata Vessel_PK = r;
+    Permissions = tabledata Vessel = r;
     Editable = false;
     layout
     {
@@ -18,8 +18,8 @@ page 50163 AXPVesselAPI
             field(VesId; VesId)
             {
             }
-            field(VesId50; VesId50)
-            { }
+            //field(VesId50; VesId50)
+            //{ }
             field(VesType; VesType)
             { }
             field(Tonnage; Tonnage)

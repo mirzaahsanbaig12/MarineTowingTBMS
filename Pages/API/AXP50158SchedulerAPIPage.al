@@ -56,7 +56,7 @@ page 50158 SchedulerAPIPage
             field(TugOrderDescr; TugOrderDescr)
             {
             }
-            field(VesselId; VesIdPk)
+            field(VesselId; VesId)
             {
             }
         }

@@ -3,7 +3,7 @@ page 50134 "Vessel Register List"
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Vessel_PK;
+    SourceTable = Vessel;
     Caption = 'Vessel List';
     CardPageId = 50135;
 

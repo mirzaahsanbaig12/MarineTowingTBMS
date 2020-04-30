@@ -48,16 +48,17 @@ table 50126 OrdDoc
         field(50117; VesId; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Vessel_PK;
+            TableRelation = Vessel;
             Caption = 'Vessel Name';
-            ObsoleteState = Removed;
-            ObsoleteReason = 'Field Changed';
+
         }
         field(50131; VesIdPk; Code[50])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Vessel_PK;
+            TableRelation = Vessel;
             Caption = 'Vessel Name';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field Changed';
         }
         field(50118; TugOrderDescr; Text[50])
         {
