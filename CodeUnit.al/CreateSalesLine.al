@@ -110,17 +110,24 @@ codeunit 50115 CreateSalesLines
 
                     if logDocRec.JobType = logDocRec.JobType::Docking
                    then begin
-                        LineDesc := format(logDocRec.VesIdPk) + ' Docking From ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                        LineDesc := format(logDocRec.VesId) + ' Docking From ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                     end;
 
                     if logDocRec.JobType = logDocRec.JobType::Undocking
                    then begin
-                        LineDesc := format(logDocRec.VesIdPk) + ' Undocking From ' + logDetRec.LocStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                        LineDesc := format(logDocRec.VesId) + ' Undocking From ' + logDetRec.LocStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                     end;
 
                     if logDocRec.JobType = logDocRec.JobType::Shifting
                    then begin
-                        LineDesc := format(logDocRec.VesIdPk) + ' Shifting From ' + logDetRec.LocStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                        if DT2Date(logDetRec.TimeStart) = DT2Date(logDetRec.Timefinish) then begin
+                            LineDesc := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+
+                        end;
+                        if DT2Date(logDetRec.TimeStart) <> DT2Date(logDetRec.Timefinish) then begin
+                            LineDesc := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
+
+                        end;
                     end;
 
                     SalesLine."Document No." := SalesOrderNo;

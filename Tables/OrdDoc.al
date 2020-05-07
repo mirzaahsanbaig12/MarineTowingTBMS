@@ -140,6 +140,14 @@ table 50126 OrdDoc
             OptionMembers = "Inbound","Outbound";
             Caption = 'Inbound\Outbound';
         }
+
+        field(50132; "BusOwner"; Text[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Owner/Charcter';
+            TableRelation = Customer where(TBMSOwner = const(true));
+        }
+
     }
 
     keys

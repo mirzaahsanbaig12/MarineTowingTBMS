@@ -17,15 +17,18 @@ page 50134 "Vessel Register List"
                 {
                     ApplicationArea = All;
                 }
+
+                field(Name; Name)
+                {
+                    ApplicationArea = All;
+                    Visible = true;
+                }
+
                 field(VesType; VesType)
                 {
                     ApplicationArea = All;
                 }
-                field(Name; Name)
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
+
 
                 field(Status; Status)
                 {

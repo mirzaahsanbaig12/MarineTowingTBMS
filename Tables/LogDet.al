@@ -1,6 +1,7 @@
 table 50130 LogDet
 {
     DataClassification = ToBeClassified;
+    Caption = 'Log Details';
 
     fields
     {
@@ -63,17 +64,18 @@ table 50130 LogDet
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
             TableRelation = Vessel;
-            ObsoleteState = Removed;
-            ObsoleteReason = 'Primary Field Changed';
+
         }
 
-        /*Field(50142; VesIdPk; Code[50])
+        Field(50142; VesIdPk; Code[50])
         {
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
             TableRelation = Vessel;
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Primary Field Changed';
         }
-        */
+
         field(50126; FSDiscFlag; Option)
         {
             DataClassification = ToBeClassified;
@@ -122,11 +124,27 @@ table 50130 LogDet
         field(50133; TimeStart; DateTime)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Start Time';
+
+            trigger OnValidate()
+            begin
+                if (Timefinish <> 0DT) and (TimeStart > Timefinish)
+                then
+                    FieldError(TimeStart, 'Should be lesser than Finish Time');
+            end;
         }
 
         field(50134; Timefinish; DateTime)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Finish Time';
+
+            trigger OnValidate()
+            begin
+                if (TimeStart <> 0DT) and (TimeStart > Timefinish)
+                then
+                    FieldError(Timefinish, 'Should be greater than Start Time');
+            end;
         }
 
         field(50135; TimeAdd; DateTime)

@@ -18,6 +18,11 @@ page 50135 "Vessel Register Card"
                     ApplicationArea = All;
                     ShowMandatory = true;
                 }
+
+                field(Name; Name)
+                {
+                    ApplicationArea = All;
+                }
                 field(VesType; VesType)
                 {
                     ApplicationArea = All;

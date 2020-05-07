@@ -6,6 +6,7 @@ page 50148 "Log Billing"
     UsageCategory = Administration;
     SourceTable = LogDoc;
     Caption = 'Log Billing';
+    DelayedInsert = true;
 
     layout
     {
@@ -19,12 +20,12 @@ page 50148 "Log Billing"
                     Visible = false;
                 }
 
-                field(VesId; VesIdPk)
+                field(VesId; VesId)
                 {
                     ApplicationArea = All;
                     trigger OnValidate()
                     begin
-                        Tonnage := getTonnage.GetVesselTonnage(VesIdPk);
+                        Tonnage := getTonnage.GetVesselTonnage(VesId);
                     End;
                 }
 
@@ -55,34 +56,44 @@ page 50148 "Log Billing"
                     ApplicationArea = All;
                 }
 
-                field(CmpId; CmpId)
-                {
-                    ApplicationArea = All;
-                }
-
                 field(PilId; PilId)
                 {
                     ApplicationArea = All;
                 }
 
 
-                field(BusLA; BusLA)
-                {
-                    ApplicationArea = All;
-                }
+
                 field(BusOwner; BusOwner)
                 {
                     ApplicationArea = All;
                     trigger OnValidate()
                     begin
                         ConNumber := getTonnage.GetSingleContractId(BusOwner);
+                        CmpId := LogDocRec.getCompanyFromContract(ConNumber);
+                        BillingOptions := getBillingOptionsFromContract(ConNumber);
                     end;
 
+                }
+
+                field(BusLA; BusLA)
+                {
+                    ApplicationArea = All;
                 }
 
                 field(ConNumber; ConNumber)
                 {
                     ApplicationArea = All;
+                }
+
+                field(BillingOptions; BillingOptions)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(CmpId; CmpId)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
                 }
 
                 field(RevId; RevId)

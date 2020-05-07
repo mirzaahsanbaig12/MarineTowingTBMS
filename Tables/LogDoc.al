@@ -1,6 +1,7 @@
 table 50129 LogDoc
 {
     DataClassification = ToBeClassified;
+    Caption = 'Log Billing';
 
     fields
     {
@@ -34,6 +35,12 @@ table 50129 LogDoc
             DataClassification = ToBeClassified;
             Caption = 'Contract';
             TableRelation = Contract where(BusOc = field(BusOwner));
+
+            trigger OnValidate()
+            begin
+                CmpId := getCompanyFromContract(ConNumber);
+                BillingOptions := getBillingOptionsFromContract(ConNumber);
+            end;
         }
 
         field(50115; BusCus; Text[50])
@@ -110,8 +117,8 @@ table 50129 LogDoc
             DataClassification = ToBeClassified;
             Caption = 'Vessel Name';
             TableRelation = Vessel;
-            //ObsoleteState = Removed;
-            // ObsoleteReason = 'Field Changed';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field Changed';
         }
 
         field(50125; RevId; Code[5])
@@ -308,6 +315,14 @@ table 50129 LogDoc
             Editable = false;
         }
 
+        field(50158; BillingOptions; Text[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Billing Options';
+            TableRelation = Contract.BillingOptions where(ConNumber = field(ConNumber));
+            Editable = false;
+        }
+
     }
 
     keys
@@ -325,11 +340,14 @@ table 50129 LogDoc
     trigger OnInsert()
     begin
         LogDocNumber := GetLogDocNumber();
+
+        LogDocfieldError();
+
     end;
 
     trigger OnModify()
     begin
-
+        LogDocfieldError();
     end;
 
     trigger OnDelete()
@@ -359,6 +377,48 @@ table 50129 LogDoc
 
         exit(DocNumber + 10);
 
+    end;
+
+    procedure getCompanyFromContract(contractNo: Integer): code[20]
+    var
+        ContractRec: Record Contract;
+    begin
+
+        ContractRec.SetFilter(ConNumber, format(contractNo));
+        if ContractRec.FindFirst() then begin
+            exit(ContractRec.CmpId);
+        end;
+        exit('');
+    end;
+
+    procedure getBillingOptionsFromContract(contractNo: Integer): Text[50]
+    var
+        ContractRec: Record Contract;
+    begin
+
+        ContractRec.SetFilter(ConNumber, format(contractNo));
+        if ContractRec.FindFirst() then begin
+            exit(format(ContractRec.BillingOptions));
+        end;
+        exit('');
+    end;
+
+    procedure LogDocfieldError()
+    begin
+        if ConNumber = 0 then
+            FieldError(ConNumber, 'cannot be null');
+
+        if format(JobType) = '' then
+            FieldError(JobType, 'cannot be null');
+
+        if VesId = '' then
+            FieldError(VesId, 'cannot be null');
+
+        if Datelog = 0DT then
+            FieldError(Datelog, 'cannot be null');
+
+        if BusOwner = '' then
+            FieldError(BusOwner, 'cannot be null');
     end;
 
 }

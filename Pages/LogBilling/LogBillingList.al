@@ -53,7 +53,12 @@ page 50147 "Log Billing List"
                 {
                     ApplicationArea = All;
                 }
-                field(VesId; VesIdPk)
+                field(VesId; VesId)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(BusOwner; BusOwner)
                 {
                     ApplicationArea = All;
                 }
@@ -61,10 +66,11 @@ page 50147 "Log Billing List"
                 {
                     ApplicationArea = All;
                 }
-                field(BusOwner; BusOwner)
+                field(BillingOptions; BillingOptions)
                 {
                     ApplicationArea = All;
                 }
+
 
                 field(RevId; RevId)
                 {
@@ -140,7 +146,7 @@ page 50147 "Log Billing List"
                         repeat
 
                             if (logDocRecFirst.JobType <> logDocRec.JobType) or
-                               (logDocRecFirst.VesIdPk <> logDocRec.VesIdPk) or
+                               (logDocRecFirst.VesId <> logDocRec.VesId) or
                                (logDocRecFirst.BusLA <> logDocRec.BusLA) or
                                (logDocRecFirst.BusOwner <> logDocRec.BusOwner) or
                                (logDocRecFirst.ConNumber <> logDocRec.ConNumber)
@@ -161,13 +167,24 @@ page 50147 "Log Billing List"
 
                         if salesOrder <> '1111'
                         then begin
-                            Message('Sales Order : %1 has been created', salesOrder);
 
                             CurrPage.SetSelectionFilter(logDocRec);
                             if logDocRec.FindFirst() then begin
                                 repeat
                                     CreateSalesLines.CreateSalesLines(logDocRec.LogDocNumber, salesOrder);
                                 until logDocRec.Next() = 0;
+                            end;
+
+                            if Dialog.CONFIRM('Sales Order : %1 has been created \ Do you want to open sales order?', TRUE, salesOrder)
+                            then begin
+                                salesHeaderRec.SetFilter("No.", SalesOrderNo);
+                                if salesHeaderRec.FindFirst() then begin
+
+                                    salesHeaderPage.SetRecord(salesHeaderRec);
+                                    salesHeaderPage.Run();
+                                end;
+
+
                             end;
 
                         end;
@@ -208,6 +225,8 @@ page 50147 "Log Billing List"
         CreateSalesHeader: Codeunit CreateSalesHeader;
         salesOrder: code[50];
         CreateSalesLines: Codeunit CreateSalesLines;
+        salesHeaderPage: page "Sales Order";
+        salesHeaderRec: Record "Sales Header";
 
 
 

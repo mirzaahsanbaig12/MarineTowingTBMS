@@ -10,7 +10,7 @@ table 50121 "Vessel"
         field(50110; VesId; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Vessel Name';
+            Caption = 'Vessel Id';
         }
         field(50111; Name; text[50])
         {

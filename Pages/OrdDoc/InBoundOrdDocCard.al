@@ -37,6 +37,11 @@ page 50144 "Inbound Ord Doc Card"
                     end;
                 }
 
+                field(BusOwner; BusOwner)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(BusLA; BusLA)
                 {
                     ApplicationArea = All;
