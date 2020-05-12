@@ -16,6 +16,7 @@ codeunit 50115 CreateSalesLines
         LineDesc: Text[200];
         tariffRec: Record Tariff;
         baseRateRec: Record TarBr;
+        hours: Duration;
 
     begin
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
@@ -128,6 +129,17 @@ codeunit 50115 CreateSalesLines
                             LineDesc := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
 
                         end;
+                    end;
+
+                    if logDocRec.JobType = logDocRec.JobType::Hourly
+                    then begin
+                        hours := logDetRec.Timefinish - logDetRec.TimeStart;
+                        fixRate := hours / 3600000;
+                        fixRate := Round(fixRate, 1, '=') * tugBoatRec.HourlyRate;
+                        LineDesc := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
+                        LineDesc := LineDesc + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + logDetRec.LocStr;
+                        LineDesc := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + logDetRec.DestinationStr;
+                        LineDesc := LineDesc + ' 5 @ ' + Format(tugBoatRec.HourlyRate);
                     end;
 
                     SalesLine."Document No." := SalesOrderNo;

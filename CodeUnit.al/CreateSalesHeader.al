@@ -28,6 +28,7 @@ codeunit 50114 CreateSalesHeader
             SalesHeader.Init();
             SalesHeader.Validate("Sell-to Customer No.", customerAcc);
             SalesHeader.Validate("LogDocNumber", logDocRec.LogDocNumber);
+            SalesHeader.Validate("Vessel", logDocRec.VesId);
 
             if SalesHeader.Insert(true) then begin
                 exit(SalesHeader."No."); // return sales order no

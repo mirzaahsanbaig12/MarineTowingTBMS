@@ -79,4 +79,21 @@ table 50119 "Pilot Association"
 
     end;
 
+    procedure LookupPilotAssoc(var PilotAssoc: Record "Pilot Association"): Boolean
+    var
+        LookupPilotAssoc: Page "Pilot Association List";
+        Result: Boolean;
+    begin
+        LookupPilotAssoc.SetTableView(PilotAssoc);
+        LookupPilotAssoc.SetRecord(PilotAssoc);
+        LookupPilotAssoc.LookupMode := true;
+        Result := LookupPilotAssoc.RunModal = ACTION::LookupOK;
+        if Result then
+            LookupPilotAssoc.GetRecord(PilotAssoc)
+        else
+            Clear(PilotAssoc);
+
+        exit(Result);
+    end;
+
 }

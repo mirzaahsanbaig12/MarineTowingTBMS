@@ -226,9 +226,18 @@ page 50148 "Log Billing"
                         SalesOrder.Run();
 
                     end;
+                end;
+            }
+
+            action("date time")
+            {
+                ApplicationArea = All;
+                Visible = false;
+                trigger OnAction()
+                begin
+                    dateTimeTest.Run();
 
                 end;
-
             }
         }
     }
@@ -242,6 +251,8 @@ page 50148 "Log Billing"
         SalesOrder: Page "Sales Order";
         salesHeader: Record "Sales Header";
         SalesOrderMenu: Boolean;
+
+        dateTimeTest: Codeunit DateTimeTest;
 
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean

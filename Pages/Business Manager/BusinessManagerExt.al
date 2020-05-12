@@ -145,6 +145,13 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     RunObject = page "Sales Order List";
                 }
 
+                action("Sales confirmation")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Sales confirmation';
+                    RunObject = report "TBMS Sales Confirmation";
+                }
+
             }
 
         }
@@ -152,5 +159,6 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
 
     var
         myInt: Integer;
+
 
 }

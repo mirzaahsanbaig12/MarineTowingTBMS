@@ -55,6 +55,11 @@ page 50115 "Tug Register Card"
                     ApplicationArea = All;
                 }
 
+                field(HourlyRate; HourlyRate)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(Memo; Memo)
                 {
                     Visible = false;

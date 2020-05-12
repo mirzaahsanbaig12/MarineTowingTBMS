@@ -60,4 +60,21 @@ table 50131 "Fuel Cost"
 
     end;
 
+    procedure LookupFuelCost(var FuelCostRec: Record "Fuel Cost"): Boolean
+    var
+        FuelCostList: Page "Fuel Cost List";
+        Result: Boolean;
+    begin
+        FuelCostList.SetTableView(FuelCostRec);
+        FuelCostList.SetRecord(FuelCostRec);
+        FuelCostList.LookupMode := true;
+        Result := FuelCostList.RunModal = ACTION::LookupOK;
+        if Result then
+            FuelCostList.GetRecord(FuelCostRec)
+        else
+            Clear(FuelCostRec);
+
+        exit(Result);
+    end;
+
 }

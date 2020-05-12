@@ -32,23 +32,73 @@ table 50130 LogDet
 
         field(50121; LocStr; code[20])
         {
+            Caption = 'Start Location';
             DataClassification = ToBeClassified;
-            Caption = 'Start Loc';
+
             TableRelation = "Location Register";
+            ValidateTableRelation = false;
+            trigger OnLookup()
+            var
+                locationRec: Record "Location Register";
+            begin
+                if LocStr <> '' then
+                    locationRec.Get(LocStr);
+
+                //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+                if locationRec.LookupLocations(locationRec) then begin
+                    LocStr := locationRec.LocId;
+
+                end;
+
+            end;
         }
 
         field(50122; DestinationStr; code[20])
         {
+            Caption = 'Destination Location';
             DataClassification = ToBeClassified;
-            Caption = 'Destination Loc';
+
             TableRelation = "Location Register";
+            ValidateTableRelation = false;
+            trigger OnLookup()
+            var
+                locationRec: Record "Location Register";
+            begin
+                if DestinationStr <> '' then
+                    locationRec.Get(DestinationStr);
+
+                //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+                if locationRec.LookupLocations(locationRec) then begin
+                    DestinationStr := locationRec.LocId;
+
+                end;
+
+            end;
         }
 
         field(50123; TugId; code[5])
         {
-            DataClassification = ToBeClassified;
-            TableRelation = "Tug Boat";
+            //DataClassification = ToBeClassified;
+            //TableRelation = "Tug Boat";
             Caption = 'Tug';
+            DataClassification = ToBeClassified;
+
+            TableRelation = "Tug Boat";
+            ValidateTableRelation = false;
+            trigger OnLookup()
+            var
+                tugBoatRec: Record "Tug Boat";
+            begin
+                if TugId <> '' then
+                    tugBoatRec.Get(TugId);
+
+                //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+                if tugBoatRec.LookupTariff(tugBoatRec) then begin
+                    TugId := tugBoatRec.TugId;
+
+                end;
+
+            end;
         }
 
         field(50124; TarId; code[20])

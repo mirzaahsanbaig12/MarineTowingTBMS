@@ -36,6 +36,26 @@ table 50129 LogDoc
             Caption = 'Contract';
             TableRelation = Contract where(BusOc = field(BusOwner));
 
+            trigger OnLookup()
+            var
+                ContractRec: Record Contract;
+            begin
+                if ConNumber <> 0 then
+                    ContractRec.Get(ConNumber);
+                ContractRec.SetFilter(BusOc, BusOwner);
+                ContractRec.FindFirst();
+
+                if ContractRec.LookupContract(ContractRec) then begin
+                    ConNumber := ContractRec.ConNumber;
+                    CmpId := getCompanyFromContract(ConNumber);
+                    BillingOptions := getBillingOptionsFromContract(ConNumber);
+
+                end;
+
+            end;
+
+
+
             trigger OnValidate()
             begin
                 CmpId := getCompanyFromContract(ConNumber);
@@ -80,6 +100,22 @@ table 50129 LogDoc
             DataClassification = ToBeClassified;
             TableRelation = Dispatcher;
             Caption = 'Dispatcher';
+
+            ValidateTableRelation = false;
+            trigger OnLookup()
+            var
+                dispatcherRec: Record Dispatcher;
+            begin
+                if DisId <> '' then
+                    dispatcherRec.Get(DisId);
+
+                if dispatcherRec.LookupDispatcher(dispatcherRec) then begin
+                    DisId := dispatcherRec.DisId;
+
+                end;
+
+            end;
+
         }
 
         field(50121; PilId; code[5])
@@ -87,6 +123,20 @@ table 50129 LogDoc
             DataClassification = ToBeClassified;
             TableRelation = "Pilot Association";
             Caption = 'Pilot';
+            ValidateTableRelation = false;
+            trigger OnLookup()
+            var
+                pilotAssocRec: Record "Pilot Association";
+            begin
+                if PilId <> '' then
+                    pilotAssocRec.Get(PilId);
+
+                if pilotAssocRec.LookupPilotAssoc(pilotAssocRec) then begin
+                    PilId := pilotAssocRec.PaId;
+
+                end;
+
+            end;
         }
 
         field(50122; LocStr; code[20])
@@ -260,9 +310,24 @@ table 50129 LogDoc
         field(50148; FuelCost; Decimal)
         {
             DataClassification = ToBeClassified;
+
+            Caption = 'Fuel Cost';
+
             TableRelation = "Fuel Cost".FuelCost;
             ValidateTableRelation = false;
-            Caption = 'Fuel Cost';
+            trigger OnLookup()
+            var
+                FuelCostRec: Record "Fuel Cost";
+            begin
+                if FuelCost <> 0 then
+                    FuelCostRec.SetFilter(FuelCost, format(FuelCost));
+
+                if FuelCostRec.LookupFuelCost(FuelCostRec) then begin
+                    FuelCost := FuelCostRec.FuelCost;
+
+                end;
+
+            end;
         }
         field(50149; DiscountPer; Decimal)
         {

@@ -59,4 +59,22 @@ table 50116 Dispatcher
 
     end;
 
+
+    procedure LookupDispatcher(var dispatcherRec: Record Dispatcher): Boolean
+    var
+        LookupDispatcher: Page "Dispatcher Register List";
+        Result: Boolean;
+    begin
+        LookupDispatcher.SetTableView(dispatcherRec);
+        LookupDispatcher.SetRecord(dispatcherRec);
+        LookupDispatcher.LookupMode := true;
+        Result := LookupDispatcher.RunModal = ACTION::LookupOK;
+        if Result then
+            LookupDispatcher.GetRecord(dispatcherRec)
+        else
+            Clear(dispatcherRec);
+
+        exit(Result);
+    end;
+
 }

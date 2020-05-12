@@ -243,4 +243,21 @@ table 50123 Contract
 
     end;
 
+    procedure LookupContract(var contractRec: Record Contract): Boolean
+    var
+        contractList: Page "Contract List";
+        Result: Boolean;
+    begin
+        contractList.SetTableView(contractRec);
+        contractList.SetRecord(contractRec);
+        contractList.LookupMode := true;
+        Result := contractList.RunModal = ACTION::LookupOK;
+        if Result then
+            contractList.GetRecord(contractRec)
+        else
+            Clear(contractRec);
+
+        exit(Result);
+    end;
+
 }

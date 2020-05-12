@@ -9,6 +9,13 @@ tableextension 50113 SalesHeaderExt extends "Sales Header"
             Caption = 'Number';
             Editable = false;
         }
+
+        field(50111; Vessel; code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Vessel';
+            Editable = false;
+        }
     }
 
     var

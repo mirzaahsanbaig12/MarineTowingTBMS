@@ -175,7 +175,7 @@ page 50147 "Log Billing List"
                                 until logDocRec.Next() = 0;
                             end;
 
-                            if Dialog.CONFIRM('Sales Order : %1 has been created \ Do you want to open sales order?', TRUE, salesOrder)
+                            if Dialog.CONFIRM('Sales Order %1 has been created \ Do you want to open sales order?', TRUE, salesOrder)
                             then begin
                                 salesHeaderRec.SetFilter("No.", SalesOrderNo);
                                 if salesHeaderRec.FindFirst() then begin

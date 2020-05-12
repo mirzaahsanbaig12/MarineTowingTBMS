@@ -2,6 +2,8 @@ table 50112 "Tug Boat"
 {
     DataClassification = ToBeClassified;
     Caption = 'Tug Boat';
+    //
+    DrillDownPageId = "Company Register List";
     LookupPageId = "Tug Register Card";
 
     fields
@@ -10,7 +12,6 @@ table 50112 "Tug Boat"
         {
             DataClassification = ToBeClassified;
             Caption = 'Tug Id';
-
 
         }
         field(50111; Name; text[50])
@@ -71,6 +72,11 @@ table 50112 "Tug Boat"
             TableRelation = "Company Register".CmpId;
             Caption = 'Owner Company';
         }
+        field(50120; HourlyRate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Hourly Rate';
+        }
     }
 
 
@@ -84,12 +90,15 @@ table 50112 "Tug Boat"
 
     fieldgroups
     {
-        fieldgroup(DropDown; TugId, Name)
+        fieldgroup(DropDown; TugId, Name, Status)
         {
 
         }
 
     }
+
+
+
 
 
     var
@@ -116,5 +125,24 @@ table 50112 "Tug Boat"
     begin
 
     end;
+
+
+    procedure LookupTariff(var tugBoatRec: Record "Tug Boat"): Boolean
+    var
+        TugBoatList: Page "Tug Boat Register List";
+        Result: Boolean;
+    begin
+        TugBoatList.SetTableView(tugBoatRec);
+        TugBoatList.SetRecord(tugBoatRec);
+        TugBoatList.LookupMode := true;
+        Result := TugBoatList.RunModal = ACTION::LookupOK;
+        if Result then
+            TugBoatList.GetRecord(tugBoatRec)
+        else
+            Clear(tugBoatRec);
+
+        exit(Result);
+    end;
+
 
 }

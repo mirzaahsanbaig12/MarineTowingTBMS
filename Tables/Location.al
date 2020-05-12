@@ -2,7 +2,8 @@ table 50115 "Location Register"
 {
     DataClassification = ToBeClassified;
     Caption = 'Location';
-    LookupPageId = "location Register Card";
+    LookupPageId = "Location Register List";
+    DrillDownPageId = "Location Register List";
 
     fields
     {
@@ -85,5 +86,23 @@ table 50115 "Location Register"
     begin
 
     end;
+
+    procedure LookupLocations(var LocationRec: Record "Location Register"): Boolean
+    var
+        locationList: Page "Location Register List";
+        Result: Boolean;
+    begin
+        locationList.SetTableView(LocationRec);
+        locationList.SetRecord(LocationRec);
+        locationList.LookupMode := true;
+        Result := locationList.RunModal = ACTION::LookupOK;
+        if Result then
+            locationList.GetRecord(LocationRec)
+        else
+            Clear(LocationRec);
+
+        exit(Result);
+    end;
+
 
 }
