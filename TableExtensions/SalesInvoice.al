@@ -9,6 +9,13 @@ tableextension 50114 SalesInvoiceHeaderExt extends "Sales Invoice Header"
             Editable = false;
         }
 
+        field(50111; Vessel; code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Vessel';
+            Editable = false;
+        }
+
     }
 
     var

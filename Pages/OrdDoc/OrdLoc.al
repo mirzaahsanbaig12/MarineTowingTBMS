@@ -25,6 +25,7 @@ page 50146 "Ord Loc SubForm"
                     trigger OnValidate()
                     begin
                         LocationName := GetLocationName.GetLocationName(LocId);
+                        ordLocRec.updateLocationOnOrdoc(LocId, ORDocNumber, firstRec);
                     end;
 
 
@@ -64,6 +65,7 @@ page 50146 "Ord Loc SubForm"
     var
         ORDocNumberCode: Integer;
         GetLocationName: Codeunit getdata;
+        ordLocRec: Record OrdLoc;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin

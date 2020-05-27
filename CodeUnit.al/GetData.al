@@ -11,7 +11,7 @@ codeunit 50111 GetData
         exit('');
     end;
 
-    procedure GetLocationName(_LocId: code[5]): Text[50]
+    procedure GetLocationName(_LocId: code[20]): Text[50]
     var
         Name: Text[50];
         Location: Record "Location Register";
@@ -155,6 +155,25 @@ codeunit 50111 GetData
         end;
 
     end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Ord Loc SubForm", 'OnModifyRecordEvent', '', true, true)]
+
+    local procedure MyProcedure123(var Rec: Record OrdLoc)
+
+    begin
+        //rec.updateLocationOnOrdoc(rec.LocId, rec.ORDocNumber);
+    end;
+
+
+
+    [EventSubscriber(ObjectType::Page, Page::"Ord Loc SubForm", 'OnAfterGetRecordEvent', '', true, true)]
+
+    local procedure MyProcedure124(var Rec: Record OrdLoc)
+    begin
+        //rec.updateLocationOnOrdoc(rec.LocId, rec.ORDocNumber);
+
+    end;
+
 
 
 

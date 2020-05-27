@@ -4,6 +4,7 @@ codeunit 50115 CreateSalesLines
     var
         //SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
+        RepositionChargeSL: Record "Sales Line";
         logDocRec: Record LogDoc;
         logDetRec: Record LogDet;
         lineNo: Integer;
@@ -17,12 +18,17 @@ codeunit 50115 CreateSalesLines
         tariffRec: Record Tariff;
         baseRateRec: Record TarBr;
         hours: Duration;
+        TonnageDiff: Integer;
+        StartPort: Code[20];
+        EndPort: code[20];
+        locationRec: Record "Location Register";
+
 
     begin
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
         if logDocRec.FindFirst() then begin
 
-            fixRate := 2999;
+            fixRate := 0;
             RevAccount := '40100';
             customerAcc := logDocRec.BusOwner;
 
@@ -48,18 +54,44 @@ codeunit 50115 CreateSalesLines
                         if tariffRec.FindFirst() then begin
 
                             baseRateRec.SetFilter(TarId, tariffRec.TarId);
-                            baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
-                            if baseRateRec.FindFirst()
+                            if logDocRec.Tonnage > 30000
+                            then
+                                baseRateRec.SetFilter(TonnageEnd, format(30000))
+                            else
+                                baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
+                            if baseRateRec.FindLast()
                             then
                                 if tariffRec.JobShiftType = tariffRec.JobShiftType::Amount
                                 then begin
-                                    fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount;
+                                    if logDocRec.Tonnage > 30000 then begin
+
+                                        TonnageDiff := logDocRec.Tonnage - 30000;
+                                        TonnageDiff := Round(TonnageDiff / tariffRec.BRInc, 1, '=');
+                                        fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount + (TonnageDiff * tariffRec.BRAmt);
+
+
+
+                                    end
+                                    else
+                                        fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount;
+
+
                                 end;
 
                             if tariffRec.JobShiftType = tariffRec.JobShiftType::Percentage
                             then begin
-                                fixRate := baseRateRec.Rate + ((baseRateRec.Rate * tariffRec.JobShiftAmount) / 100);
-                                fixRate := fixRate + baseRateRec.Rate;
+                                if logDocRec.Tonnage > 30000 then begin
+
+                                    TonnageDiff := logDocRec.Tonnage - 30000;
+                                    TonnageDiff := Round(TonnageDiff / tariffRec.BRInc, 1, '=');
+                                    fixRate := baseRateRec.Rate + ((baseRateRec.Rate * tariffRec.JobShiftAmount) / 100);
+                                    fixRate := fixRate + baseRateRec.Rate + (TonnageDiff * tariffRec.BRAmt);
+
+                                end
+                                else begin
+                                    fixRate := baseRateRec.Rate + ((baseRateRec.Rate * tariffRec.JobShiftAmount) / 100);
+                                    fixRate := fixRate + baseRateRec.Rate;
+                                end;
                             end;
                         end;
 
@@ -81,10 +113,23 @@ codeunit 50115 CreateSalesLines
                 if tariffRec.FindFirst()
                 then begin
                     baseRateRec.SetFilter(TarId, tariffRec.TarId);
-                    baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
-                    if (baseRateRec.FindFirst()) and (fixRate = 0)
-                    then
-                        fixRate := baseRateRec.Rate;
+                    if logDocRec.Tonnage > 30000 then
+                        baseRateRec.SetFilter(TonnageEnd, format(30000))
+                    else
+                        baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
+
+                    if (baseRateRec.FindLast()) and (fixRate = 0)
+                    then begin
+
+                        if logDocRec.Tonnage > 30000 then begin
+
+                            TonnageDiff := logDocRec.Tonnage - 30000;
+                            TonnageDiff := Round(TonnageDiff / tariffRec.BRInc, 1, '=');
+                            fixRate := baseRateRec.Rate + (TonnageDiff * tariffRec.BRAmt);
+                        end
+                        else
+                            fixRate := baseRateRec.Rate;
+                    end;
                 end;
             end;
 
@@ -155,7 +200,44 @@ codeunit 50115 CreateSalesLines
                     SalesLine.Validate("Line Amount", fixRate);
                     SalesLine.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                     SalesLine.Validate(Description, LineDesc);
-                    SalesLine.Insert(true);
+                    if SalesLine.Insert(true) then begin
+                        locationRec.SetFilter(LocId, logDetRec.LocStr);
+                        if locationRec.FindFirst() then
+                            StartPort := locationRec.PrtId;
+
+                        locationRec.Reset();
+                        locationRec.SetFilter(LocId, logDetRec.DestinationStr);
+                        if locationRec.FindFirst() then
+                            EndPort := locationRec.PrtId;
+
+                        if (StartPort = 'C') and (EndPort = 'D') then begin
+                            tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                            if tariffRec.FindFirst() then begin
+
+
+                                RepositionChargeSL."Document No." := SalesOrderNo;
+                                RepositionChargeSL.Init();
+                                lineNo := lineNo + 100;
+                                RepositionChargeSL.Validate("Line No.", lineNo);
+                                RepositionChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                RepositionChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                RepositionChargeSL.Validate("No.", Format(RevAccount));
+                                RepositionChargeSL.Validate("Quantity", 1);
+
+                                RepositionChargeSL.Validate("Unit Price", tariffRec.FlatRate);
+                                RepositionChargeSL.Validate("Line Amount", tariffRec.FlatRate);
+                                RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                                LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
+                                RepositionChargeSL.Validate(Description, LineDesc);
+                                if RepositionChargeSL.Insert(true)
+                                then
+                                    ;
+
+                            end;
+
+                        end;
+
+                    end;
                 until logDetRec.Next() = 0;
             end;
         end;

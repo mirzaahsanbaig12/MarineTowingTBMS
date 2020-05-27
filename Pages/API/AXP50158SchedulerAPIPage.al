@@ -59,6 +59,11 @@ page 50158 SchedulerAPIPage
             field(VesselId; VesId)
             {
             }
+
+            field(Zone; LocId)
+            {
+
+            }
         }
     }
 }

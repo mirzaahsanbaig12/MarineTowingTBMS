@@ -43,6 +43,7 @@ table 50126 OrdDoc
             DataClassification = ToBeClassified;
             TableRelation = "Port Zone";
             Caption = 'Port Id';
+            Editable = False;
         }
 
         field(50117; VesId; Code[20])
@@ -90,7 +91,7 @@ table 50126 OrdDoc
         field(50122; LocDetNumber; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Locaiton Det Number';
+            Caption = 'Location Det Number';
         }
         field(50123; TugDetNumber; Integer)
         {
@@ -146,6 +147,14 @@ table 50126 OrdDoc
             DataClassification = ToBeClassified;
             Caption = 'Owner/Charcter';
             TableRelation = Customer where(TBMSOwner = const(true));
+        }
+
+        field(50133; "LocId"; code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Zone';
+            TableRelation = "Location Register";
+            Editable = false;
         }
 
     }
@@ -229,5 +238,8 @@ table 50126 OrdDoc
             Rec.Modify(true);
         end;
     end;
+
+
+
 
 }

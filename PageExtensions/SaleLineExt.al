@@ -8,6 +8,7 @@ pageextension 50113 SalesLineExt extends "Sales Order Subform"
             field(TBMSDescription; TBMSDescription)
             {
                 ApplicationArea = All;
+                Visible = false;
             }
         }
     }

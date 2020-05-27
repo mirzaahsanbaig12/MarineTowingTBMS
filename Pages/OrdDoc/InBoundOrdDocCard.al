@@ -69,6 +69,11 @@ page 50144 "Inbound Ord Doc Card"
                     Editable = false;
                 }
 
+                field(PrtId; PrtId)
+                {
+                    ApplicationArea = All;
+                }
+
             }
 
             group("Ord Tug")

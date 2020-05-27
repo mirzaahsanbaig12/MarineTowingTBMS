@@ -9,6 +9,8 @@ page 50122 "Location SubForm"
     MultipleNewLines = false;
     PageType = ListPart;
     SourceTable = "Location Register";
+    SourceTableView = where(PrtId = filter(<> ''));
+    // SourceTableView = WHERE("Document Type" = FILTER(Order));
 
 
     layout

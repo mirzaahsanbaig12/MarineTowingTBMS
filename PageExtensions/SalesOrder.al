@@ -7,17 +7,22 @@ pageextension 50117 SalesOrderExt extends "Sales Order"
 
     actions
     {
-        //modify("Print Confirmation")
-        //{
-        // Visible = false;
-        //}
+        /*modify("Print Confirmation")
+        {
+            Visible = true;
+        }
 
         addafter("Print Confirmation")
         {
             action("TBMS Print Confirmation")
             {
-                ApplicationArea = All;
-                Caption = 'Print Confirmation1';
+                ApplicationArea = Basic, Suite;
+                Caption = 'Print Confirmation1123';
+                Ellipsis = true;
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Category11;
+                ToolTip = 'Print a sales order confirmation.';
                 RunObject = report "TBMS Sales Confirmation";
             }
         }
@@ -32,6 +37,7 @@ pageextension 50117 SalesOrderExt extends "Sales Order"
             }
         }
         // Add changes to page actions here
+        */
     }
 
     var

@@ -54,7 +54,10 @@ page 50142 "Outbound Ord Doc Card"
                 field(LocDetNumber; LocDetNumber)
                 {
                     ApplicationArea = All;
+                    Caption = 'Location Det Number';
                 }
+
+
 
                 field(Tonnage; Tonnage)
                 {
@@ -66,6 +69,11 @@ page 50142 "Outbound Ord Doc Card"
                     ApplicationArea = All;
                     Caption = 'Status';
                     Editable = false;
+                }
+
+                field(LocId; LocId)
+                {
+                    ApplicationArea = All;
                 }
 
             }

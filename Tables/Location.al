@@ -105,4 +105,5 @@ table 50115 "Location Register"
     end;
 
 
+
 }
