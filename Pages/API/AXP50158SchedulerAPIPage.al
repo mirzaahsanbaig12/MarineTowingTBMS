@@ -38,7 +38,7 @@ page 50158 SchedulerAPIPage
             field(JobDate; JobDate)
             {
             }
-            field(JobType; JobType)
+            field(JobType; JobTypeNew)
             {
             }
             field(ManagerMemo; ManagerMemo)
@@ -60,10 +60,13 @@ page 50158 SchedulerAPIPage
             {
             }
 
-            field(Zone; LocId)
+            field(Zone; PrtId)
             {
 
             }
+
+            field(Owner; BusOwner)
+            { }
         }
     }
 }

@@ -142,6 +142,7 @@ page 50147 "Log Billing List"
                     CurrPage.SetSelectionFilter(logDocRec);
                     if logDocRec.FindFirst() then begin
                         SameRecs := true;
+                        StatusSO := false;
                         logDocRecFirst.TransferFields(logDocRec);
                         repeat
 
@@ -155,9 +156,21 @@ page 50147 "Log Billing List"
 
                             end;
 
+                            if (logDocRec.Status = logDocRec.Status::SO) or (logDocRec.Status = logDocRec.Status::Invoiced)
+                                   then begin
+                                StatusSO := true;
+                            end
+
 
 
                         until logDocRec.Next() = 0;
+                    end;
+
+                    if StatusSO
+                    then begin
+
+                        Message('Sales order cannot be created beacuse log status is SO or Invoiced \ Please Change log status to create sales order');
+                        exit;
                     end;
 
                     if (SameRecs) and (logDocRec.FindFirst())
@@ -222,6 +235,7 @@ page 50147 "Log Billing List"
         logDocRecFirst: Record LogDoc;
         logDocRecNext: Record LogDoc;
         SameRecs: Boolean;
+        StatusSO: Boolean;
         CreateSalesHeader: Codeunit CreateSalesHeader;
         salesOrder: code[50];
         CreateSalesLines: Codeunit CreateSalesLines;

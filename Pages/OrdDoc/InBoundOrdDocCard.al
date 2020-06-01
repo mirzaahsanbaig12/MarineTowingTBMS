@@ -68,11 +68,16 @@ page 50144 "Inbound Ord Doc Card"
                     Caption = 'Status';
                     Editable = false;
                 }
+                field(JobType; JobTypeNew)
+                {
+                    ApplicationArea = All;
+                }
 
                 field(PrtId; PrtId)
                 {
                     ApplicationArea = All;
                 }
+
 
             }
 

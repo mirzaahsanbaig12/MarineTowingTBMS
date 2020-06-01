@@ -79,6 +79,17 @@ table 50126 OrdDoc
         {
             DataClassification = ToBeClassified;
             Caption = 'Job Type';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field Changed';
+        }
+
+        field(50134; JobTypeNew; Option)
+        {
+
+            DataClassification = ToBeClassified;
+            OptionMembers = "SU","BR","NO","DC";
+            Caption = 'Job Type';
+
         }
 
         field(50121; Status; Option)

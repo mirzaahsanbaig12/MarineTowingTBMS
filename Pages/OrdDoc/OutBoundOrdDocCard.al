@@ -70,8 +70,12 @@ page 50142 "Outbound Ord Doc Card"
                     Caption = 'Status';
                     Editable = false;
                 }
+                field(JobType; JobTypeNew)
+                {
+                    ApplicationArea = All;
+                }
 
-                field(LocId; LocId)
+                field(PrtId; PrtId)
                 {
                     ApplicationArea = All;
                 }
