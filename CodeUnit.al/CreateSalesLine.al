@@ -5,6 +5,7 @@ codeunit 50115 CreateSalesLines
         //SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
         RepositionChargeSL: Record "Sales Line";
+        OvertimeChargeSL: Record "Sales Line";
         logDocRec: Record LogDoc;
         logDetRec: Record LogDet;
         lineNo: Integer;
@@ -22,6 +23,9 @@ codeunit 50115 CreateSalesLines
         StartPort: Code[20];
         EndPort: code[20];
         locationRec: Record "Location Register";
+        overtimeMins: Integer;
+        Duration1: Duration;
+        hoursDiff: Decimal;
 
 
     begin
@@ -237,7 +241,43 @@ codeunit 50115 CreateSalesLines
 
                         end;
 
+                        //<overtimeRate>
+                        tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                        if tariffRec.FindFirst() then begin
+
+                            overtimeMins := tariffRec.JobStandardTime;
+                            Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
+                            hoursDiff := Round(Duration1 / 3600000, 1, '=');
+
+                            if (hoursDiff > overtimeMins) and ((hoursDiff - overtimeMins) >= 15)
+                            then begin
+
+                                fixRate := hoursDiff * tugBoatRec.HourlyRate;
+
+                                OvertimeChargeSL."Document No." := SalesOrderNo;
+                                OvertimeChargeSL.Init();
+                                lineNo := lineNo + 100;
+                                OvertimeChargeSL.Validate("Line No.", lineNo);
+                                OvertimeChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                OvertimeChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                OvertimeChargeSL.Validate("No.", Format(RevAccount));
+                                OvertimeChargeSL.Validate("Quantity", 1);
+
+                                OvertimeChargeSL.Validate("Unit Price", fixRate);
+                                OvertimeChargeSL.Validate("Line Amount", fixRate);
+                                OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                                LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
+                                OvertimeChargeSL.Validate(Description, LineDesc);
+                                if OvertimeChargeSL.Insert(true)
+                                then
+                                    ;
+
+                            end;
+
+                        end;
+
                     end;
+                //</overtimeRate>
                 until logDetRec.Next() = 0;
             end;
         end;

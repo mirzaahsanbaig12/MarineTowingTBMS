@@ -22,6 +22,12 @@ pageextension 50114 DispatcherExt extends "Service Dispatcher Role Center"
                 RunObject = page "InBound Ord Doc List";
             }
 
+            action("Logs")
+            {
+                ApplicationArea = All;
+                RunObject = page "Log Billing List";
+            }
+
             action("Vessel")
 
             {
