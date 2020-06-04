@@ -26,7 +26,11 @@ codeunit 50115 CreateSalesLines
         overtimeMins: Integer;
         Duration1: Duration;
         hoursDiff: Decimal;
-
+        tempStartDate: DateTime;
+        CompInfo: Record "Company Information";
+        CustomizedCalendarChange: Record "Customized Calendar Change";
+        CalendarMgmt: Codeunit "Calendar Management";
+        baseCalendar: Record "Base Calendar";
 
     begin
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
@@ -243,10 +247,27 @@ codeunit 50115 CreateSalesLines
 
                         //<overtimeRate>
                         tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                        baseCalendar.Reset();
+                        CustomizedCalendarChange.Reset();
+                        CompInfo.Get();
+                        baseCalendar.SetRange(Code, CompInfo."Base Calendar Code");
+                        if baseCalendar.FindFirst() then begin
+                            CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
+                        end;
                         if tariffRec.FindFirst() then begin
 
+                            //calculation working dates
+                            tempStartDate := logDetRec.TimeStart;
+                            REPEAT
+                                IF NOT CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
+                                    Duration1 := Duration1 + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), 000000T) - tempStartDate);
+                                end;
+                                tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
+
+                            UNTIL logDetRec.Timefinish < tempStartDate;
+
                             overtimeMins := tariffRec.JobStandardTime;
-                            Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
+                            //Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
                             hoursDiff := Round(Duration1 / 3600000, 1, '=');
 
                             if (hoursDiff > overtimeMins) and ((hoursDiff - overtimeMins) >= 15)
