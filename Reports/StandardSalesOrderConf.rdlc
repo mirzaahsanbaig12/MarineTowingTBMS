@@ -421,6 +421,12 @@ End Function
         <Field Name="LineNo_Line">
           <DataField>LineNo_Line</DataField>
         </Field>
+        <Field Name="TBMSDescription">
+          <DataField>TBMSDescription</DataField>
+        </Field>
+        <Field Name="TBMSDescription2">
+          <DataField>TBMSDescription2</DataField>
+        </Field>
         <Field Name="AmountExcludingVAT_Line">
           <DataField>AmountExcludingVAT_Line</DataField>
         </Field>
