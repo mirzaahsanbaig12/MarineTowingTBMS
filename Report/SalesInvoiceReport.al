@@ -424,6 +424,12 @@ report 50113 "TBMS Sales Invoice"
                 column(LineNo_Line; "Line No.")
                 {
                 }
+
+                column(TBMSDescription; TBMSDescription)
+                { }
+
+                column(TBMSDescription2; TBMSDescription2)
+                { }
                 column(AmountExcludingVAT_Line; Amount)
                 {
                     AutoFormatExpression = GetCurrencyCode;

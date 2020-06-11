@@ -1,4 +1,4 @@
-tableextension 50112 SalesLineExt extends "Sales Line"
+tableextension 50115 SalesInvoiceExt extends "Sales Invoice Line"
 {
     fields
     {
@@ -14,7 +14,6 @@ tableextension 50112 SalesLineExt extends "Sales Line"
             DataClassification = ToBeClassified;
             Caption = 'Line Description 2';
         }
-
     }
 
     var

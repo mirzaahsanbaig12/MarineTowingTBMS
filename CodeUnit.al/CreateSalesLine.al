@@ -31,6 +31,9 @@ codeunit 50115 CreateSalesLines
         CustomizedCalendarChange: Record "Customized Calendar Change";
         CalendarMgmt: Codeunit "Calendar Management";
         baseCalendar: Record "Base Calendar";
+        lineDesc1: text[200];
+        lineDesc2: text[200];
+
 
     begin
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
@@ -165,22 +168,28 @@ codeunit 50115 CreateSalesLines
                     if logDocRec.JobType = logDocRec.JobType::Docking
                    then begin
                         LineDesc := format(logDocRec.VesId) + ' Docking From ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                        lineDesc1 := format(logDocRec.VesId) + ' Docking From ' + logDetRec.DestinationStr;
+                        lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                     end;
 
                     if logDocRec.JobType = logDocRec.JobType::Undocking
                    then begin
                         LineDesc := format(logDocRec.VesId) + ' Undocking From ' + logDetRec.LocStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                        lineDesc1 := format(logDocRec.VesId) + ' Undocking From ' + logDetRec.LocStr;
+                        lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                     end;
 
                     if logDocRec.JobType = logDocRec.JobType::Shifting
                    then begin
                         if DT2Date(logDetRec.TimeStart) = DT2Date(logDetRec.Timefinish) then begin
                             LineDesc := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
-
+                            lineDesc1 := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
+                            lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                         end;
                         if DT2Date(logDetRec.TimeStart) <> DT2Date(logDetRec.Timefinish) then begin
                             LineDesc := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
-
+                            lineDesc1 := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
+                            lineDesc2 := format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
                         end;
                     end;
 
@@ -193,6 +202,13 @@ codeunit 50115 CreateSalesLines
                         LineDesc := LineDesc + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + logDetRec.LocStr;
                         LineDesc := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + logDetRec.DestinationStr;
                         LineDesc := LineDesc + ' 5 @ ' + Format(tugBoatRec.HourlyRate);
+
+                        LineDesc1 := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
+                        LineDesc1 := LineDesc1 + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + logDetRec.LocStr;
+
+                        LineDesc2 := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + logDetRec.DestinationStr;
+                        LineDesc2 := LineDesc + ' 5 @ ' + Format(tugBoatRec.HourlyRate);
+
                     end;
 
                     SalesLine."Document No." := SalesOrderNo;
@@ -202,12 +218,13 @@ codeunit 50115 CreateSalesLines
                     SalesLine.Validate("Document Type", SalesLine."Document Type"::Order);
                     SalesLine.Validate("Type", SalesLine.Type::"G/L Account");
                     SalesLine.Validate("No.", Format(RevAccount));
-                    SalesLine.Validate(TBMSDescription, LineDesc);
                     SalesLine.Validate("Quantity", 1);
                     SalesLine.Validate("Unit Price", fixRate);
                     SalesLine.Validate("Line Amount", fixRate);
                     SalesLine.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                     SalesLine.Validate(Description, LineDesc);
+                    SalesLine.Validate(TBMSDescription, lineDesc1);
+                    SalesLine.Validate(TBMSDescription2, lineDesc2);
                     if SalesLine.Insert(true) then begin
                         locationRec.SetFilter(LocId, logDetRec.LocStr);
                         if locationRec.FindFirst() then
@@ -237,6 +254,7 @@ codeunit 50115 CreateSalesLines
                                 RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                 LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
                                 RepositionChargeSL.Validate(Description, LineDesc);
+                                RepositionChargeSL.Validate(TBMSDescription, LineDesc);
                                 if RepositionChargeSL.Insert(true)
                                 then
                                     ;
@@ -289,6 +307,7 @@ codeunit 50115 CreateSalesLines
                                 OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                 LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
                                 OvertimeChargeSL.Validate(Description, LineDesc);
+                                OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
                                 if OvertimeChargeSL.Insert(true)
                                 then
                                     ;

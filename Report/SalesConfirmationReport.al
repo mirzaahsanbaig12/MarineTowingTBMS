@@ -381,6 +381,12 @@ report 50112 "TBMS Sales Confirmation"
                 column(LineNo_Line; "Line No.")
                 {
                 }
+                column(TBMSDescription; TBMSDescription)
+                { }
+
+                column(TBMSDescription2; TBMSDescription2)
+                { }
+
                 column(AmountExcludingVAT_Line; Amount)
                 {
                     AutoFormatExpression = "Currency Code";
