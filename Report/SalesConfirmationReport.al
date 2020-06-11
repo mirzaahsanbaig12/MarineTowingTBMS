@@ -1042,7 +1042,7 @@ report 50112 "TBMS Sales Confirmation"
         EMailLbl: Label 'Email';
         HomePageLbl: Label 'Home Page';
         InvDiscBaseAmtLbl: Label 'Invoice Discount Base Amount';
-        InvDiscountAmtLbl: Label 'Invoice Discount';
+        InvDiscountAmtLbl: Label 'Discount';
         InvNoLbl: Label 'Order No.';
         LineAmtAfterInvDiscLbl: Label 'Payment Discount on VAT';
         LocalCurrencyLbl: Label 'Local Currency';
@@ -1199,15 +1199,15 @@ report 50112 "TBMS Sales Confirmation"
             if TotalAmountVAT <> 0 then
                 ReportTotalsLine.Add(TotalExclVATText, TotalAmount, true, false, false);
         end;
-        if TotalAmountVAT <> 0 then begin
-            GetTaxSummarizedLines(TempSalesTaxAmountLine);
-            TempSalesTaxAmountLine.SetCurrentKey("Print Order");
-            TempSalesTaxAmountLine.Ascending(true);
-            if TempSalesTaxAmountLine.FindSet then
-                repeat
-                    ReportTotalsLine.Add(TempSalesTaxAmountLine."Print Description", TempSalesTaxAmountLine."Tax Amount", false, true, false);
-                until TempSalesTaxAmountLine.Next = 0;
-        end;
+        // if TotalAmountVAT <> 0 then begin
+        //     GetTaxSummarizedLines(TempSalesTaxAmountLine);
+        //     TempSalesTaxAmountLine.SetCurrentKey("Print Order");
+        //     TempSalesTaxAmountLine.Ascending(true);
+        //     if TempSalesTaxAmountLine.FindSet then
+        //         repeat
+        //             ReportTotalsLine.Add(TempSalesTaxAmountLine."Print Description", TempSalesTaxAmountLine."Tax Amount", false, true, false);
+        //         until TempSalesTaxAmountLine.Next = 0;
+        // end;
     end;
 
     local procedure CreateUSReportTotalLines()
@@ -1215,7 +1215,7 @@ report 50112 "TBMS Sales Confirmation"
         ReportTotalsLine.DeleteAll;
         ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal, true, false, false);
         ReportTotalsLine.Add(InvDiscountAmtLbl, TotalInvDiscAmount, false, false, false);
-        ReportTotalsLine.Add(TotalTaxLbl, TotalAmountVAT, false, true, false);
+        //ReportTotalsLine.Add(TotalTaxLbl, TotalAmountVAT, false, true, false);
     end;
 
     local procedure GetTaxSummarizedLines(var TempSalesTaxAmountLine: Record "Sales Tax Amount Line" temporary)

@@ -118,6 +118,7 @@ page 50130 "Tariff Register Card"
 
                 field(AmountPercent; AmountPercent)
                 {
+                    Caption = 'Maximum Charge Type';
                     ApplicationArea = All;
                 }
 

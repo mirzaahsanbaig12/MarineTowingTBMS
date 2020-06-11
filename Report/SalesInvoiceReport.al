@@ -1236,7 +1236,7 @@ report 50113 "TBMS Sales Invoice"
         EMailLbl: Label 'Email';
         HomePageLbl: Label 'Home Page';
         InvDiscBaseAmtLbl: Label 'Invoice Discount Base Amount';
-        InvDiscountAmtLbl: Label 'Invoice Discount';
+        InvDiscountAmtLbl: Label 'Discount';
         InvNoLbl: Label 'Invoice No.';
         LineAmtAfterInvDiscLbl: Label 'Payment Discount on VAT';
         LocalCurrencyLbl: Label 'Local Currency';
@@ -1433,8 +1433,8 @@ report 50113 "TBMS Sales Invoice"
                 else
                     ReportTotalsLine.Add(TotalExclVATText, TotalAmount, true, false, false);
         end;
-        if TotalAmountVAT <> 0 then
-            ReportTotalsLine.Add(VATAmountLine.VATAmountText, TotalAmountVAT, false, true, false);
+        // if TotalAmountVAT <> 0 then
+        //     ReportTotalsLine.Add(VATAmountLine.VATAmountText, TotalAmountVAT, false, true, false);
     end;
 
     local procedure GetLineFeeNoteOnReportHist(SalesInvoiceHeaderNo: Code[20])
