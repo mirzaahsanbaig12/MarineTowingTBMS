@@ -33,9 +33,15 @@ codeunit 50115 CreateSalesLines
         baseCalendar: Record "Base Calendar";
         lineDesc1: text[200];
         lineDesc2: text[200];
-
+        TotalOverTimeCharges: Decimal;
+        TotalBaseCharges: Decimal;
+        TotalDiscountAmount: Decimal;
+        DiscountSL: Record "Sales Line";
 
     begin
+        TotalOverTimeCharges := 0;
+        TotalBaseCharges := 0;
+        TotalDiscountAmount := 0;
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
         if logDocRec.FindFirst() then begin
 
@@ -225,6 +231,9 @@ codeunit 50115 CreateSalesLines
                     SalesLine.Validate(Description, LineDesc);
                     SalesLine.Validate(TBMSDescription, lineDesc1);
                     SalesLine.Validate(TBMSDescription2, lineDesc2);
+
+                    TotalBaseCharges += fixRate;
+
                     if SalesLine.Insert(true) then begin
                         locationRec.SetFilter(LocId, logDetRec.LocStr);
                         if locationRec.FindFirst() then
@@ -308,6 +317,9 @@ codeunit 50115 CreateSalesLines
                                 LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
                                 OvertimeChargeSL.Validate(Description, LineDesc);
                                 OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
+
+                                TotalOverTimeCharges += fixRate;
+
                                 if OvertimeChargeSL.Insert(true)
                                 then
                                     ;
@@ -319,6 +331,35 @@ codeunit 50115 CreateSalesLines
                     end;
                 //</overtimeRate>
                 until logDetRec.Next() = 0;
+            end;
+
+            //CREATE DISCOUNT LINE
+            if contractRec.DiscPer > 0 then begin
+                if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                    TotalDiscountAmount := 0 - (contractRec.DiscPer * (TotalOverTimeCharges + TotalBaseCharges));
+                    LineDesc := 'Discount of ' + Format(contractRec.DiscPer * 100) + ' on total of $' + Format(TotalOverTimeCharges + TotalBaseCharges) + '';
+                end
+                else
+                    if contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges" then begin
+                        TotalDiscountAmount := 0 - (contractRec.DiscPer * TotalBaseCharges);
+                        LineDesc := 'Discount of ' + Format(contractRec.DiscPer * 100) + ' on total of $' + Format(TotalBaseCharges) + '';
+                    end;
+
+                DiscountSL.Init();
+                DiscountSL."Document No." := SalesOrderNo;
+
+                lineNo := lineNo + 100;
+                DiscountSL.Validate("Line No.", lineNo);
+                DiscountSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                DiscountSL.Validate("Type", SalesLine.Type::"G/L Account");
+                DiscountSL.Validate("No.", Format(RevAccount));
+                DiscountSL.Validate("Quantity", 1);
+                DiscountSL.Validate("Unit Price", TotalDiscountAmount);
+                DiscountSL.Validate("Line Amount", TotalDiscountAmount);
+                DiscountSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                DiscountSL.Validate(Description, LineDesc);
+
+                DiscountSL.Insert(true);
             end;
         end;
     end;
