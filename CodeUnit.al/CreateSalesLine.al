@@ -264,9 +264,11 @@ codeunit 50115 CreateSalesLines
                                 LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
                                 RepositionChargeSL.Validate(Description, LineDesc);
                                 RepositionChargeSL.Validate(TBMSDescription, LineDesc);
-                                if RepositionChargeSL.Insert(true)
-                                then
-                                    ;
+                                if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
+                                    if RepositionChargeSL.Insert(true)
+                                    then
+                                        ;
+                                end;
 
                             end;
 
@@ -319,11 +321,11 @@ codeunit 50115 CreateSalesLines
                                 OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
 
                                 TotalOverTimeCharges += fixRate;
-
-                                if OvertimeChargeSL.Insert(true)
-                                then
-                                    ;
-
+                                if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
+                                    if OvertimeChargeSL.Insert(true)
+                                     then
+                                        ;
+                                end;
                             end;
 
                         end;
@@ -358,8 +360,9 @@ codeunit 50115 CreateSalesLines
                 DiscountSL.Validate("Line Amount", TotalDiscountAmount);
                 DiscountSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                 DiscountSL.Validate(Description, LineDesc);
-
-                DiscountSL.Insert(true);
+                if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
+                    DiscountSL.Insert(true);
+                end;
             end;
         end;
     end;
