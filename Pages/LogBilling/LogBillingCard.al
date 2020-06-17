@@ -136,6 +136,7 @@ page 50148 "Log Billing"
                 }
                 field(OTType; OTType)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
