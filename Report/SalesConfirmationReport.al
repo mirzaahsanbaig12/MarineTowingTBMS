@@ -417,7 +417,7 @@ report 50112 "TBMS Sales Confirmation"
                 column(LineDiscountPercentText_Line; LineDiscountPctText)
                 {
                 }
-                column(LineAmount_Line; FormattedLineAmount)
+                column(LineAmount_Line; Amount + "Line Discount Amount")
                 {
                     AutoFormatExpression = "Currency Code";
                     AutoFormatType = 1;
@@ -1185,6 +1185,7 @@ report 50112 "TBMS Sales Confirmation"
         TaxArea: Record "Tax Area";
     begin
         ReportTotalsLine.DeleteAll;
+        Header.CalcFields("TBMS Discount");
         if Header."Tax Area Code" <> '' then
             if TaxArea.Get(Header."Tax Area Code") then;
         if (Header."Tax Area Code" = '') or (TaxArea."Country/Region" = TaxArea."Country/Region"::US) then begin
@@ -1193,12 +1194,15 @@ report 50112 "TBMS Sales Confirmation"
         end;
 
         if (TotalInvDiscAmount <> 0) or (TotalAmountVAT <> 0) then
-            ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal, true, false, false);
+            ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount", true, false, false);
         if TotalInvDiscAmount <> 0 then begin
             ReportTotalsLine.Add(InvDiscountAmtLbl, TotalInvDiscAmount, false, false, false);
             if TotalAmountVAT <> 0 then
                 ReportTotalsLine.Add(TotalExclVATText, TotalAmount, true, false, false);
         end;
+
+        if Header."TBMS Discount" <> 0 then
+            ReportTotalsLine.Add(Header."TBMS Discount Description", Header."TBMS Discount", true, false, false);
         // if TotalAmountVAT <> 0 then begin
         //     GetTaxSummarizedLines(TempSalesTaxAmountLine);
         //     TempSalesTaxAmountLine.SetCurrentKey("Print Order");
@@ -1213,8 +1217,9 @@ report 50112 "TBMS Sales Confirmation"
     local procedure CreateUSReportTotalLines()
     begin
         ReportTotalsLine.DeleteAll;
-        ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal, true, false, false);
-        ReportTotalsLine.Add(InvDiscountAmtLbl, TotalInvDiscAmount, false, false, false);
+        ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount", true, false, false);
+        ReportTotalsLine.Add(Header."TBMS Discount Description", Header."TBMS Discount", true, false, false);
+        //ReportTotalsLine.Add(InvDiscountAmtLbl, TotalInvDiscAmount, false, false, false);
         //ReportTotalsLine.Add(TotalTaxLbl, TotalAmountVAT, false, true, false);
     end;
 

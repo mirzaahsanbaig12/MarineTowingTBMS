@@ -460,7 +460,7 @@ report 50113 "TBMS Sales Invoice"
                 column(LineDiscountPercentText_Line; LineDiscountPctText)
                 {
                 }
-                column(LineAmount_Line; FormattedLineAmount)
+                column(LineAmount_Line; Amount + "Line Discount Amount")
                 {
                     AutoFormatExpression = GetCurrencyCode;
                     AutoFormatType = 1;
@@ -1423,8 +1423,9 @@ report 50113 "TBMS Sales Invoice"
     local procedure CreateReportTotalLines()
     begin
         ReportTotalsLine.DeleteAll;
-        if (TotalInvDiscAmount <> 0) or (TotalAmountVAT <> 0) then
-            ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal, true, false, false);
+        Header.CalcFields("TBMS Discount");
+        if (TotalSubTotal <> 0) then
+            ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount", true, false, false);
         if TotalInvDiscAmount <> 0 then begin
             ReportTotalsLine.Add(InvDiscountAmtLbl, TotalInvDiscAmount, false, false, false);
             if TotalAmountVAT <> 0 then
@@ -1433,6 +1434,8 @@ report 50113 "TBMS Sales Invoice"
                 else
                     ReportTotalsLine.Add(TotalExclVATText, TotalAmount, true, false, false);
         end;
+        if Header."TBMS Discount" <> 0 then
+            ReportTotalsLine.Add(Header."TBMS Discount Description", Header."TBMS Discount", true, false, false);
         // if TotalAmountVAT <> 0 then
         //     ReportTotalsLine.Add(VATAmountLine.VATAmountText, TotalAmountVAT, false, true, false);
     end;

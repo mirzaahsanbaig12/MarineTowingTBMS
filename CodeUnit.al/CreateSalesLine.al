@@ -2,7 +2,7 @@ codeunit 50115 CreateSalesLines
 {
     procedure CreateSalesLines(_LogDocNumber: Integer; SalesOrderNo: Code[50])
     var
-        //SalesHeader: Record "Sales Header";
+        SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
         RepositionChargeSL: Record "Sales Line";
         OvertimeChargeSL: Record "Sales Line";
@@ -212,8 +212,8 @@ codeunit 50115 CreateSalesLines
                         LineDesc1 := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
                         LineDesc1 := LineDesc1 + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + logDetRec.LocStr;
 
-                        LineDesc2 := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + logDetRec.DestinationStr;
-                        LineDesc2 := LineDesc + ' 5 @ ' + Format(tugBoatRec.HourlyRate);
+                        LineDesc2 := ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + logDetRec.DestinationStr;
+                        LineDesc2 := LineDesc2 + ' 5 @ ' + Format(tugBoatRec.HourlyRate);
 
                     end;
 
@@ -231,6 +231,11 @@ codeunit 50115 CreateSalesLines
                     SalesLine.Validate(Description, LineDesc);
                     SalesLine.Validate(TBMSDescription, lineDesc1);
                     SalesLine.Validate(TBMSDescription2, lineDesc2);
+                    if contractRec.DiscPer > 0 then begin
+                        if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin
+                            SalesLine.Validate("Line Discount %", contractRec.DiscPer * 100);
+                        end
+                    end;
 
                     TotalBaseCharges += fixRate;
 
@@ -264,6 +269,13 @@ codeunit 50115 CreateSalesLines
                                 LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
                                 RepositionChargeSL.Validate(Description, LineDesc);
                                 RepositionChargeSL.Validate(TBMSDescription, LineDesc);
+
+                                if contractRec.DiscPer > 0 then begin
+                                    if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                                        RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                    end
+                                end;
+
                                 if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
                                     if RepositionChargeSL.Insert(true)
                                     then
@@ -320,6 +332,12 @@ codeunit 50115 CreateSalesLines
                                 OvertimeChargeSL.Validate(Description, LineDesc);
                                 OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
 
+                                if contractRec.DiscPer > 0 then begin
+                                    if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                                        OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                    end
+                                end;
+
                                 TotalOverTimeCharges += fixRate;
                                 if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
                                     if OvertimeChargeSL.Insert(true)
@@ -335,35 +353,26 @@ codeunit 50115 CreateSalesLines
                 until logDetRec.Next() = 0;
             end;
 
-            //CREATE DISCOUNT LINE
+            // SET DISCOUNT ON HEADER
             if contractRec.DiscPer > 0 then begin
                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
                     TotalDiscountAmount := 0 - (contractRec.DiscPer * (TotalOverTimeCharges + TotalBaseCharges));
-                    LineDesc := 'Discount of ' + Format(contractRec.DiscPer * 100) + ' on total of $' + Format(TotalOverTimeCharges + TotalBaseCharges) + '';
+                    LineDesc := 'Discount of ' + Format(contractRec.DiscPer * 100) + '% on total of $' + Format(TotalOverTimeCharges + TotalBaseCharges) + '';
                 end
                 else
                     if contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges" then begin
                         TotalDiscountAmount := 0 - (contractRec.DiscPer * TotalBaseCharges);
-                        LineDesc := 'Discount of ' + Format(contractRec.DiscPer * 100) + ' on total of $' + Format(TotalBaseCharges) + '';
+                        LineDesc := 'Discount of ' + Format(contractRec.DiscPer * 100) + '% on total of $' + Format(TotalBaseCharges) + '';
                     end;
 
-                DiscountSL.Init();
-                DiscountSL."Document No." := SalesOrderNo;
+                SalesHeader.Reset();
+                if SalesHeader.Get(SalesHeader."Document Type"::Order, SalesOrderNo) then begin
+                    SalesHeader.Validate("TBMS Discount Description", LineDesc);
 
-                lineNo := lineNo + 100;
-                DiscountSL.Validate("Line No.", lineNo);
-                DiscountSL.Validate("Document Type", SalesLine."Document Type"::Order);
-                DiscountSL.Validate("Type", SalesLine.Type::"G/L Account");
-                DiscountSL.Validate("No.", Format(RevAccount));
-                DiscountSL.Validate("Quantity", 1);
-                DiscountSL.Validate("Unit Price", TotalDiscountAmount);
-                DiscountSL.Validate("Line Amount", TotalDiscountAmount);
-                DiscountSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                DiscountSL.Validate(Description, LineDesc);
-                if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
-                    DiscountSL.Insert(true);
+                    SalesHeader.Modify(true);
                 end;
             end;
         end;
     end;
+
 }

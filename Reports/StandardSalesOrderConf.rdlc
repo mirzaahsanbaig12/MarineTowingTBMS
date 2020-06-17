@@ -463,6 +463,9 @@ End Function
         <Field Name="LineAmount_Line">
           <DataField>LineAmount_Line</DataField>
         </Field>
+        <Field Name="LineAmount_LineFormat">
+          <DataField>LineAmount_LineFormat</DataField>
+        </Field>
         <Field Name="LineAmount_Line_Lbl">
           <DataField>LineAmount_Line_Lbl</DataField>
         </Field>
