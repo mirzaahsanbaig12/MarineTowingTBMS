@@ -127,4 +127,32 @@ table 50121 "Vessel"
 
     end;
 
+    procedure GetVesselLongName(): Text
+    var
+        vesLongName: Text;
+        vesPrefix: Text;
+        vesName: Text;
+    begin
+        case VesType of
+            VesType::"Motor Vessel":
+                vesPrefix := 'M/V';
+            VesType::"Motor Tanker":
+                vesPrefix := 'M/T';
+            VesType::Tug:
+                if Name.Contains('&') then
+                    vesPrefix := Name.Split('&').Get(1);
+            VesType::Barge:
+                if Name.Contains('&') then
+                    vesPrefix := Name.Split('&').Get(2);
+        end;
+
+        vesName := Name;
+        if Name.Contains('&') then
+            vesName := 'T/' + vesName.Split('&').Get(1) + ' & ' + 'B/' + vesName.Split('&').Get(2);
+
+        vesLongName := vesPrefix + ' ' + vesName + ' AND/OR OWNERS/OPERATOR.';
+
+        exit(vesLongName);
+    end;
+
 }

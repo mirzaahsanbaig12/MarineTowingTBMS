@@ -20,7 +20,7 @@ report 50113 "TBMS Sales Invoice"
             column(LogDocNumber; LogDocNumber)
             {
             }
-            column(Vessel; Vessel)
+            column(Vessel; VesselLongName)
             {
             }
             column(CompanyAddress1; CompanyAddr[1])
@@ -1062,6 +1062,7 @@ report 50113 "TBMS Sales Invoice"
                 PaymentServiceSetup: Record "Payment Service Setup";
                 EnvInfoProxy: Codeunit "Env. Info Proxy";
                 O365SalesInvoiceMgmt: Codeunit "O365 Sales Invoice Mgmt";
+                VesselRec: Record Vessel;
             begin
                 /*if EnvInfoProxy.IsInvoicing then begin
                     "Language Code" := Language.GetUserLanguageCode;
@@ -1121,6 +1122,9 @@ report 50113 "TBMS Sales Invoice"
                 TotalAmountVAT := 0;
                 TotalAmountInclVAT := 0;
                 TotalPaymentDiscOnVAT := 0;
+
+                if VesselRec.Get(Vessel) then
+                    VesselLongName := VesselRec.GetVesselLongName();
             end;
 
             trigger OnPreDataItem()
@@ -1325,6 +1329,7 @@ report 50113 "TBMS Sales Invoice"
         TotalVATBaseLCY: Decimal;
         TotalVATAmountLCY: Decimal;
         PrevLineAmount: Decimal;
+        VesselLongName: Text;
         NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
         TotalAmountExclInclVATValue: Decimal;
         DisplayAdditionalFeeNote: Boolean;

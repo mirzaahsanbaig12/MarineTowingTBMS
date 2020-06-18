@@ -20,7 +20,7 @@ report 50112 "TBMS Sales Confirmation"
             column(LogDocNumber; LogDocNumber)
             {
             }
-            column(Vessel; Vessel)
+            column(Vessel; VesselLongName)
             {
 
             }
@@ -372,6 +372,7 @@ report 50112 "TBMS Sales Confirmation"
             column(ShowWorkDescription; ShowWorkDescription)
             {
             }
+
             dataitem(Line; "Sales Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");
@@ -879,6 +880,7 @@ report 50112 "TBMS Sales Confirmation"
                 CurrencyExchangeRate: Record "Currency Exchange Rate";
                 ArchiveManagement: Codeunit ArchiveManagement;
                 SalesPost: Codeunit "Sales-Post";
+                VesselRec: Record Vessel;
             begin
                 FirstLineHasBeenOutput := false;
                 Clear(Line);
@@ -926,6 +928,9 @@ report 50112 "TBMS Sales Confirmation"
                 TotalAmountVAT := 0;
                 TotalAmountInclVAT := 0;
                 TotalPaymentDiscOnVAT := 0;
+
+                if VesselRec.Get(Vessel) then
+                    VesselLongName := VesselRec.GetVesselLongName();
             end;
         }
     }
@@ -1119,6 +1124,7 @@ report 50112 "TBMS Sales Confirmation"
         TotalVATBaseLCY: Decimal;
         TotalVATAmountLCY: Decimal;
         PrevLineAmount: Decimal;
+        VesselLongName: Text;
         NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
         GreetingLbl: Label 'Hello';
         ClosingLbl: Label 'Sincerely';
