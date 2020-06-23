@@ -54,6 +54,7 @@ page 50144 "Inbound Ord Doc Card"
 
                 field(LocDetNumber; LocDetNumber)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 

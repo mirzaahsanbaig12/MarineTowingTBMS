@@ -18,6 +18,10 @@ page 50141 "Outbound Ord Doc List"
                 {
                     ApplicationArea = All;
                 }
+                field(JobType; JobTypeNew)
+                {
+                    ApplicationArea = All;
+                }
                 field(JobDate; JobDate)
                 {
                     ApplicationArea = All;
@@ -48,6 +52,7 @@ page 50141 "Outbound Ord Doc List"
 
                 field(LocDetNumber; LocDetNumber)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
@@ -65,20 +70,20 @@ page 50141 "Outbound Ord Doc List"
     {
         area(Processing)
         {
-            action("Customer List")
-            {
-                ApplicationArea = All;
-                Caption = 'Customer';
+            // action("Customer List")
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Customer';
 
-                trigger OnAction()
-                begin
-                    customerList.Run();
-                end;
-            }
+            //     trigger OnAction()
+            //     begin
+            //         customerList.Run();
+            //     end;
+            // }
             action("Cancel Records")
             {
                 ApplicationArea = All;
-                Caption = 'Cancel Records';
+                Caption = 'Logs Cancel';
 
                 trigger OnAction()
                 begin
@@ -88,7 +93,7 @@ page 50141 "Outbound Ord Doc List"
             action("Log Records")
             {
                 ApplicationArea = All;
-                Caption = 'Log Records';
+                Caption = 'Create Log';
 
                 trigger OnAction()
                 begin

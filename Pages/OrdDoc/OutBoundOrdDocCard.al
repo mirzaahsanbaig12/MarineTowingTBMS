@@ -53,6 +53,7 @@ page 50142 "Outbound Ord Doc Card"
 
                 field(LocDetNumber; LocDetNumber)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                     Caption = 'Location Det Number';
                 }

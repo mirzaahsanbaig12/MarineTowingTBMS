@@ -2,7 +2,8 @@ table 50121 "Vessel"
 {
     DataClassification = ToBeClassified;
     Caption = 'Vessel';
-    LookupPageId = "Vessel Register Card";
+    LookupPageId = "Vessel Register List";
+    DrillDownPageId = "Vessel Register List";
 
     fields
     {

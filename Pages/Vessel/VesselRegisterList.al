@@ -5,7 +5,9 @@ page 50134 "Vessel Register List"
     UsageCategory = Administration;
     SourceTable = Vessel;
     Caption = 'Vessel List';
-    CardPageId = 50135;
+    CardPageId = "Vessel Register Card";
+    Editable = false;
+
 
     layout
     {
