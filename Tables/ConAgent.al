@@ -33,10 +33,11 @@ table 50124 ConAgent
 
         }
 
-        field(50114; CommonType; Code[5])
+        field(50114; CommonType; Option)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Commission';
+            Caption = 'Commission Type';
+            OptionMembers = "DISCOUNTABLE","GROSS","NET","NET/NET";
         }
 
         field(50115; CommonPer; Decimal)
@@ -49,7 +50,7 @@ table 50124 ConAgent
         field(50116; DiscType; Text[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Discount';
+            Caption = 'Confidential Discount';
         }
 
         field(50117; DiscPer; Decimal)
