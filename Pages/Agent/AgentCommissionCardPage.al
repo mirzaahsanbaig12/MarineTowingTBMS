@@ -1,8 +1,6 @@
 page 50167 AgentCommissionCardPage
 {
     PageType = Card;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = Customer;
     Editable = false;
     Permissions = tabledata Customer = r;
@@ -10,7 +8,7 @@ page 50167 AgentCommissionCardPage
     {
         area(Content)
         {
-            group(GroupName)
+            group("General")
             {
 
                 field("No."; "No.")
@@ -33,6 +31,7 @@ page 50167 AgentCommissionCardPage
 
             part(CommissionLines; AgentCommissionSubForm)
             {
+                Caption = 'Commission Lines';
                 ApplicationArea = Basic, Suite;
                 Editable = false;
                 SubPageLink = AgentNo = FIELD("No.");
@@ -44,15 +43,15 @@ page 50167 AgentCommissionCardPage
     {
         area(Processing)
         {
-            action(ActionName)
-            {
-                ApplicationArea = All;
+            // action(ActionName)
+            // {
+            //     ApplicationArea = All;
 
-                trigger OnAction()
-                begin
+            //     trigger OnAction()
+            //     begin
 
-                end;
-            }
+            //     end;
+            // }
         }
     }
 

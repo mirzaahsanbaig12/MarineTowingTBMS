@@ -1,20 +1,15 @@
 page 50168 AgentCommissionSubForm
 {
     PageType = ListPart;
-    ApplicationArea = All;
-    UsageCategory = Lists;
     SourceTable = AgentCommissionLine;
     Editable = false;
+    Caption = 'Commission Lines';
     layout
     {
         area(Content)
         {
-            repeater(GroupName)
+            repeater(Lines)
             {
-                field("Agent No"; AgentNo)
-                {
-                    ApplicationArea = All;
-                }
                 field("Contract"; ConNumber)
                 {
                     ApplicationArea = All;
@@ -24,6 +19,10 @@ page 50168 AgentCommissionSubForm
                     ApplicationArea = All;
                 }
                 field("Total Amount"; TotalAmount)
+                {
+                    ApplicationArea = All;
+                }
+                field(CommissionPer; CommissionPer)
                 {
                     ApplicationArea = All;
                 }
@@ -39,15 +38,15 @@ page 50168 AgentCommissionSubForm
     {
         area(Processing)
         {
-            action(ActionName)
-            {
-                ApplicationArea = All;
+            // action(ActionName)
+            // {
+            //     ApplicationArea = All;
 
-                trigger OnAction();
-                begin
+            //     trigger OnAction();
+            //     begin
 
-                end;
-            }
+            //     end;
+            // }
         }
     }
 }

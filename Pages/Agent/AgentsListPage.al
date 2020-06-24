@@ -3,7 +3,7 @@ page 50166 AgentsListPage
     Caption = 'Agents';
     PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = Customer;
     SourceTableView = WHERE(TBMSAgent = const(true));
     Editable = false;
@@ -13,7 +13,7 @@ page 50166 AgentsListPage
     {
         area(Content)
         {
-            repeater(GroupName)
+            repeater("Agents List")
             {
 
                 field("No."; "No.")
@@ -50,15 +50,15 @@ page 50166 AgentsListPage
     {
         area(Processing)
         {
-            action(ActionName)
-            {
-                ApplicationArea = All;
+            //     action(ActionName)
+            //     {
+            //         ApplicationArea = All;
 
-                trigger OnAction()
-                begin
+            //         trigger OnAction()
+            //         begin
 
-                end;
-            }
+            //         end;
+            //     }
         }
     }
 

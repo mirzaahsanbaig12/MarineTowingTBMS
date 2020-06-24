@@ -29,11 +29,10 @@ codeunit 50116 CreateAgentCommissionLine
                         AgentConLine.SetRange(AgentNo, ConAgent.BusId);
 
                         if AgentConLine.FindFirst() then begin
-                            Message('Already exists');
                         end
                         else begin
-
                             NewAgentComLine.Init();
+                            NewAgentComLine.Validate("No.", NewAgentComLine.GetNextNo());
                             NewAgentComLine.Validate(AgentNo, ConAgent.BusId);
                             NewAgentComLine.Validate(ConNumber, SalesHeader.ConNumber);
                             NewAgentComLine."Document No." := SalesHeader."No.";

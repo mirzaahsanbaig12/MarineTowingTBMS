@@ -1,7 +1,7 @@
 table 50137 AgentCommissionLine
 {
     DataClassification = ToBeClassified;
-
+    Caption = 'Commission Lines';
     fields
     {
         field(50110; "No."; Integer)
@@ -18,7 +18,7 @@ table 50137 AgentCommissionLine
         field(50112; ConNumber; Integer)
         {
             DataClassification = ToBeClassified;
-            Description = 'ConNumber';
+            Description = 'Contract';
             TableRelation = Contract;
         }
         field(50113; CommissionPer; Decimal)
@@ -44,6 +44,7 @@ table 50137 AgentCommissionLine
             AutoFormatExpression = 'USD';
             AutoFormatType = 1;
             DataClassification = ToBeClassified;
+            Caption = 'Sales Order Total';
 
             trigger OnValidate()
             var
@@ -56,6 +57,7 @@ table 50137 AgentCommissionLine
             DataClassification = ToBeClassified;
             AutoFormatExpression = 'USD';
             AutoFormatType = 1;
+            Caption = 'Commission Amount';
         }
     }
 
@@ -94,6 +96,19 @@ table 50137 AgentCommissionLine
     var
     begin
         CommissionAmount := TotalAmount * CommissionPer;
+    end;
+
+    procedure GetNextNo(): Integer
+    var
+        No: Integer;
+        agentComLine: Record AgentCommissionLine;
+    begin
+        if agentComLine.FindLast() then
+            No := agentComLine."No." + 1
+        else
+            No := 1;
+
+        exit(No);
     end;
 
 }
