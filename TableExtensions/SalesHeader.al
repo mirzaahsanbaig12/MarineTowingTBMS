@@ -34,6 +34,11 @@ tableextension 50113 SalesHeaderExt extends "Sales Header"
             Caption = 'Discount Description';
             Editable = false;
         }
+        field(50114; ConNumber; Integer)
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Contract;
+        }
     }
 
     var

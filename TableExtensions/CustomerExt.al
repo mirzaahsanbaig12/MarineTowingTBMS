@@ -32,6 +32,16 @@ tableextension 50110 CustomerExt extends Customer
             OptionMembers = "","Internal","External";
         }
 
+        field(50114; AgentCommission; Decimal)
+        {
+            FieldClass = FlowField;
+            AutoFormatExpression = "Currency Code";
+            AutoFormatType = 1;
+            CalcFormula = Sum (AgentCommissionLine.CommissionAmount WHERE(AgentNo = FIELD("No.")));
+            Caption = 'Total Commission';
+            Editable = false;
+        }
+
     }
 
     var
