@@ -470,6 +470,7 @@ table 50129 LogDoc
 
     procedure LogDocfieldError()
     begin
+
         if ConNumber = 0 then
             FieldError(ConNumber, 'cannot be null');
 
@@ -479,8 +480,8 @@ table 50129 LogDoc
         if VesId = '' then
             FieldError(VesId, 'cannot be null');
 
-        if Datelog = 0DT then
-            FieldError(Datelog, 'cannot be null');
+        //if Datelog = 0DT then
+        //    FieldError(Datelog, 'cannot be null');
 
         if BusOwner = '' then
             FieldError(BusOwner, 'cannot be null');

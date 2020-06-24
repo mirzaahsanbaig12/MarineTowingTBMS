@@ -182,9 +182,14 @@ table 50126 OrdDoc
         myInt: Integer;
 
     trigger OnInsert()
+
     begin
         ORDocNumber := GetORDocNumber();
+
     end;
+
+
+
 
     trigger OnModify()
     begin
@@ -221,7 +226,10 @@ table 50126 OrdDoc
     procedure CreateLog(): Integer
     var
         logDoc: Record LogDoc;
+        ContractRec: Record Contract;
+
     begin
+
         if (Status <> Status::Canceled) OR (Status <> Status::Logged) then begin
             logDoc.Init();
             logDoc.Validate(Datelog, CurrentDateTime);
@@ -232,15 +240,37 @@ table 50126 OrdDoc
             logDoc.Validate(PilId, PilId);
             logDoc.Validate(Tonnage, Tonnage);
             logDoc.Validate(ORDocNumber, ORDocNumber);
-            if logDoc.Insert(true) then begin
-                Rec.Validate(Status, Status::Logged);
-                Rec.Modify(true);
-                exit(logDoc.LogDocNumber);
-            end;
-            exit(0);
+            logDoc.Validate(LogDocNumber, logDoc.GetLogDocNumber());
+            logDoc.Validate(VesId, VesId);
+            logDoc.Validate(BusOwner, BusOwner);
 
+            if BusOwner = '' then begin
+                FieldError(BusOwner, 'cannot be null');
+            end;
+
+            ContractRec.SetFilter(BusOc, BusOwner);
+            if ContractRec.FindFirst() then begin
+
+
+
+                logDoc.ConNumber := ContractRec.ConNumber;
+                logDoc.CmpId := logDoc.getCompanyFromContract(logDoc.ConNumber);
+                logDoc.BillingOptions := logDoc.getBillingOptionsFromContract(logDoc.ConNumber);
+
+
+                if logDoc.Insert(true) then begin
+                    Rec.Validate(Status, Status::Logged);
+                    Rec.Modify(true);
+                    exit(logDoc.LogDocNumber);
+                end;
+            end
+            else
+                Message('Logs cannot be created beacuse no contract is defined for owner');
         end;
+        exit(0);
+
     end;
+
 
     procedure CancelSchedule()
     begin
