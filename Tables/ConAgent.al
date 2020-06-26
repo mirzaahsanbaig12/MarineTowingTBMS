@@ -23,8 +23,8 @@ table 50124 ConAgent
         field(50112; BusId; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Customer;
             Caption = 'Agent Name';
+            TableRelation = Customer where(TBMSAgent = const(true));
         }
 
         field(50113; DbId; Code[5])
