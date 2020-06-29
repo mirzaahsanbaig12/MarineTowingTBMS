@@ -68,17 +68,14 @@ page 50138 "Contract Card"
                 {
                     ApplicationArea = All;
                 }
-
-                field(DiscPer; DiscPer)
-                {
-                    ApplicationArea = All;
-                }
-
                 field(DiscType; DiscType)
                 {
                     ApplicationArea = All;
                 }
-
+                field(DiscPer; DiscPer)
+                {
+                    ApplicationArea = All;
+                }
                 field(TarBase; TarBase)
                 {
                     ApplicationArea = All;
