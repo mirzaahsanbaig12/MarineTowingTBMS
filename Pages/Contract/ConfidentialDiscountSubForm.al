@@ -1,13 +1,13 @@
-page 50140 "Contract Agent SubForm"
+page 50170 "Confidential Discount SubForm"
 {
     AutoSplitKey = false;
-    Caption = 'Contract Agent';
+    Caption = 'Confidential Discount';
     DelayedInsert = true;
     LinksAllowed = false;
     MultipleNewLines = false;
     PageType = ListPart;
     SourceTable = ConAgent;
-
+    SourceTableView = WHERE(IsConfidential = const(true));
 
     layout
     {
@@ -27,17 +27,7 @@ page 50140 "Contract Agent SubForm"
                     Visible = false;
 
                 }
-
                 field(BusId; BusId)
-                {
-                    ApplicationArea = All;
-                }
-                field(CommonType; CommonType)
-                {
-                    ApplicationArea = All;
-                }
-
-                field(CommonPer; CommonPer)
                 {
                     ApplicationArea = All;
                 }
@@ -76,6 +66,7 @@ page 50140 "Contract Agent SubForm"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         ConNumber := ConNumberCode;
+        IsConfidential := true;
     end;
 
     var

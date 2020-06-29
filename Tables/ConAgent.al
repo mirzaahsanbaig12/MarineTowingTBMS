@@ -61,7 +61,12 @@ table 50124 ConAgent
             AutoFormatType = 10;
         }
 
-
+        field(50118; IsConfidential; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Is Confidential';
+            InitValue = false;
+        }
     }
 
     keys

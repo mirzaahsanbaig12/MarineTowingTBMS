@@ -127,6 +127,17 @@ page 50138 "Contract Card"
 
                 }
             }
+            group("Confidential Discount")
+            {
+                part(ConfidentialDiscount; "Confidential Discount SubForm")
+                {
+                    Caption = 'Confidential Discount';
+                    ApplicationArea = Basic, Suite;
+                    SubPageLink = ConNumber = FIELD(ConNumber);
+                    UpdatePropagation = Both;
+                    //Editable = true;
+                }
+            }
         }
 
 
@@ -153,17 +164,19 @@ page 50138 "Contract Card"
     trigger OnAfterGetRecord()
     begin
         CurrPage.contractAgent.Page.SetConNumber(ConNumber);
+        CurrPage.ConfidentialDiscount.Page.SetConNumber(ConNumber);
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         CurrPage.contractAgent.Page.SetConNumber(contractRec.GetLastLineNo());
+        CurrPage.ConfidentialDiscount.Page.SetConNumber(contractRec.GetLastLineNo());
     end;
 
     trigger OnOpenPage()
     begin
         CurrPage.contractAgent.Page.SetConNumber(ConNumber);
-
+        CurrPage.ConfidentialDiscount.Page.SetConNumber(ConNumber);
     end;
 
 

@@ -2,6 +2,42 @@ pageextension 50115 Operations extends "Order Processor Role Center"
 {
     actions
     {
+        addafter("Sales &Invoice")
+        {
+            action("Logs1")
+            {
+                Caption = 'Logs';
+                ApplicationArea = All;
+                RunObject = page "Log Billing List";
+            }
+
+            action("Outbound Vessel1")
+            {
+                Caption = 'Outbond Vessel';
+                ApplicationArea = All;
+                RunObject = page "Outbound Ord Doc List";
+            }
+
+            action("Inbound Vessel1")
+            {
+                Caption = 'Inbound Vessel';
+                ApplicationArea = All;
+                RunObject = page "InBound Ord Doc List";
+            }
+
+            action("SalesOrder1")
+            {
+                ApplicationArea = All;
+                Caption = 'Sales Orders';
+                RunObject = page "Sales Order List";
+            }
+            action("PostedSalesOrder1")
+            {
+                ApplicationArea = All;
+                Caption = 'Posted Sales Invoices';
+                RunObject = page "Posted Sales Invoices";
+            }
+        }
         addafter(Action76)
         {
             group(TBMS)
@@ -41,8 +77,6 @@ pageextension 50115 Operations extends "Order Processor Role Center"
                         ApplicationArea = All;
                         RunObject = page "InBound Ord Doc List";
                     }
-
-
                 }
 
                 action("Tariff")
