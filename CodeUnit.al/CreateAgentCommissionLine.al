@@ -10,9 +10,16 @@ codeunit 50116 CreateAgentCommissionLine
         SalesHeader: Record "Sales Header";
         AgentConLine: Record AgentCommissionLine;
         NewAgentComLine: Record AgentCommissionLine;
+        PurchaseHeader: Record "Purchase Header";
+        NewPurchaseHeader: Record "Purchase Header";
+        NewPurchaseLine: Record "Purchase Line";
         ConAgent: Record ConAgent;
+        NoSeriesMgmt: Codeunit NoSeriesManagement;
     begin
         SalesHeader.Reset();
+        NewPurchaseHeader.Reset();
+        NewPurchaseLine.Reset();
+
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
         if SalesHeader.FindSet() then begin
             REPEAT
@@ -22,25 +29,39 @@ codeunit 50116 CreateAgentCommissionLine
                 ConAgent.SetRange(ConNumber, SalesHeader.ConNumber);
                 if ConAgent.FindSet() then begin
                     repeat
-                        //Message('agent no ' + Format(ConAgent.BusId));
-                        AgentConLine.Reset();
-                        AgentConLine.SetRange("Document No.", SalesHeader."No.");
-                        AgentConLine.SetRange(ConNumber, SalesHeader.ConNumber);
-                        AgentConLine.SetRange(AgentNo, ConAgent.BusId);
+                        // //Message('agent no ' + Format(ConAgent.BusId));
+                        PurchaseHeader.Reset();
+                        PurchaseHeader.SetRange("Buy-from Vendor No.", ConAgent.BusId);
+                        PurchaseHeader.SetRange(SalesOrderNo, SalesHeader."No.");
 
-                        if AgentConLine.FindFirst() then begin
+                        if PurchaseHeader.FindFirst() then begin
+
                         end
                         else begin
-                            NewAgentComLine.Init();
-                            NewAgentComLine.Validate("No.", NewAgentComLine.GetNextNo());
-                            NewAgentComLine.Validate(AgentNo, ConAgent.BusId);
-                            NewAgentComLine.Validate(ConNumber, SalesHeader.ConNumber);
-                            NewAgentComLine."Document No." := SalesHeader."No.";
-                            NewAgentComLine.Validate(TotalAmount, SalesHeader."Amount Including VAT");
-                            NewAgentComLine.Validate(CommissionPer, ConAgent.CommonPer);
-                            NewAgentComLine.Insert();
-                            Commit();
+                            NewPurchaseHeader.Init();
+                            NewPurchaseHeader.Validate("No.", NoSeriesMgmt.GetNextNo('P-INV', Today, false));
+                            NewPurchaseHeader.Validate(SalesOrderNo, SalesHeader."No.");
+                            NewPurchaseHeader.Validate("Buy-from Vendor No.", ConAgent.BusId);
+
                         end;
+                    // AgentConLine.Reset();
+                    // AgentConLine.SetRange("Document No.", SalesHeader."No.");
+                    // AgentConLine.SetRange(ConNumber, SalesHeader.ConNumber);
+                    // AgentConLine.SetRange(AgentNo, ConAgent.BusId);
+
+                    // if AgentConLine.FindFirst() then begin
+                    // end
+                    // else begin
+                    //     NewAgentComLine.Init();
+                    //     NewAgentComLine.Validate("No.", NewAgentComLine.GetNextNo());//ignore
+                    //     NewAgentComLine.Validate(AgentNo, ConAgent.BusId); //ignore
+                    //     NewAgentComLine.Validate(ConNumber, SalesHeader.ConNumber); //ignore
+                    //     NewAgentComLine."Document No." := SalesHeader."No."; //ignore
+                    //     NewAgentComLine.Validate(TotalAmount, SalesHeader."Amount Including VAT"); //ignore
+                    //     NewAgentComLine.Validate(CommissionPer, ConAgent.CommonPer); //         CommissionAmount := TotalAmount * CommissionPer;
+                    //     NewAgentComLine.Insert();
+                    //     Commit();
+                    // end;
                     until ConAgent.Next() = 0;
                 end;
             UNTIL SalesHeader.NEXT = 0;
