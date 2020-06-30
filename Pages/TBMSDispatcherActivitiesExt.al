@@ -19,6 +19,21 @@ page 50169 "TBMS Dispatcher Activities"
                     ApplicationArea = all;
                     DrillDownPageId = "Fuel Cost List";
                 }
+                field(OpenOutbound; OpenOutbound)
+                {
+                    ApplicationArea = all;
+                    DrillDownPageId = "Outbound Ord Doc List";
+                }
+                field(OpenInbound; OpenInbound)
+                {
+                    ApplicationArea = all;
+                    DrillDownPageId = "InBound Ord Doc List";
+                }
+                field(OpenLogs; OpenLogs)
+                {
+                    ApplicationArea = all;
+                    DrillDownPageId = "Log Billing List";
+                }
             }
         }
     }

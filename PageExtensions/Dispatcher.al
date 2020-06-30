@@ -103,6 +103,7 @@ pageextension 50114 DispatcherExt extends "Service Dispatcher Role Center"
             {
                 ApplicationArea = All;
                 RunObject = page "Log Billing List";
+                RunPageView = WHERE("Status" = CONST("Open"));
             }
         }
         // Add changes to page actions here
