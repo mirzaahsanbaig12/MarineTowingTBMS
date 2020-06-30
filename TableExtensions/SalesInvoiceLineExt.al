@@ -1,4 +1,4 @@
-tableextension 50115 SalesInvoiceExt extends "Sales Invoice Line"
+tableextension 50115 SalesInvoiceExtTBMS extends "Sales Invoice Line"
 {
     fields
     {

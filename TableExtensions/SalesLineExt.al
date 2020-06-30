@@ -1,4 +1,4 @@
-tableextension 50112 SalesLineExt extends "Sales Line"
+tableextension 50112 SalesLineExtTBMS extends "Sales Line"
 {
     fields
     {

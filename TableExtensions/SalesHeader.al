@@ -1,4 +1,4 @@
-tableextension 50113 SalesHeaderExt extends "Sales Header"
+tableextension 50113 SalesHeaderExtTBMS extends "Sales Header"
 {
     fields
     {

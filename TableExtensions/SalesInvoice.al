@@ -1,4 +1,4 @@
-tableextension 50114 SalesInvoiceHeaderExt extends "Sales Invoice Header"
+tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
 {
     fields
     {

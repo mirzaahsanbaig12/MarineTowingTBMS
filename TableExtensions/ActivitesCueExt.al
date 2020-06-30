@@ -1,4 +1,4 @@
-tableextension 50111 ActivitiesCueExt extends "Activities Cue"
+tableextension 50111 ActivitiesCueExtTBMS extends "Activities Cue"
 {
     fields
     {

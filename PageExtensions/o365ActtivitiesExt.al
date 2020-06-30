@@ -1,4 +1,4 @@
-pageextension 50112 o365ActtivitiesExt extends "O365 Activities"
+pageextension 50112 o365ActtivitiesExtTBMS extends "O365 Activities"
 {
     layout
     {

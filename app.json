@@ -22,6 +22,11 @@
       "publisher": "Microsoft",
       "name": "Base Application",
       "version": "15.0.36626.38549"
+    },
+    { "appId": "e3823cfc-5b5c-4a5e-8e47-bce0fb703b9b",
+      "name": "Marine Towing",
+      "publisher": "Adapt Dynamics",
+      "version": "1.0.0.062420201"
     }
   ],
   "screenshots": [],
