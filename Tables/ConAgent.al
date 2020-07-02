@@ -51,6 +51,16 @@ table 50124 ConAgent
         {
             DataClassification = ToBeClassified;
             Caption = 'Confidential Discount';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field type change';
+
+
+        }
+        field(50119; DiscType1; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Confidential Discount';
+            OptionMembers = "DISCOUNTABLE","GROSS","NET","NET/NET";
         }
 
         field(50117; DiscPer; Decimal)

@@ -64,6 +64,9 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="TBMS_Print_C__Discount">
+          <DataField>TBMS_Print_C__Discount</DataField>
+        </Field>
         <Field Name="CompanyAddress1">
           <DataField>CompanyAddress1</DataField>
         </Field>

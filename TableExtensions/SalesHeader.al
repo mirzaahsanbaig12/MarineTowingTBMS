@@ -39,6 +39,22 @@ tableextension 50113 SalesHeaderExtTBMS extends "Sales Header"
             DataClassification = ToBeClassified;
             TableRelation = Contract;
         }
+
+        field(50115; "TBMS Confidental Discount"; Decimal)
+        {
+            Caption = 'Confidental Discount';
+            Editable = false;
+            FieldClass = FlowField;
+
+            CalcFormula = Sum ("Sales Line".Amount WHERE("Document Type" = FIELD("Document Type"),
+                                                                         "Document No." = FIELD("No."),
+                                                                         "TBMSIsFieldConfidentalLine" = const(true)));
+        }
+        field(50116; "TBMS Print C. Discount"; Boolean)
+        {
+            Caption = 'Print Confidental Discount';
+            DataClassification = ToBeClassified;
+        }
     }
 
     var

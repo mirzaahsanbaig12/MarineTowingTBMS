@@ -37,6 +37,8 @@ codeunit 50115 CreateSalesLines
         TotalBaseCharges: Decimal;
         TotalDiscountAmount: Decimal;
         DiscountSL: Record "Sales Line";
+        ConAgent: Record ConAgent;
+        SalesHeaderAmount: Decimal;
 
     begin
         TotalOverTimeCharges := 0;
@@ -372,6 +374,53 @@ codeunit 50115 CreateSalesLines
                     SalesHeader.Modify(true);
                 end;
             end;
+
+
+            // set Confidental Discount
+
+            if SalesHeader.Get(SalesHeader."Document Type"::Order, SalesOrderNo) then begin
+
+                SalesHeader.CalcFields(Amount);
+                SalesHeaderAmount := SalesHeader.Amount;
+                //Message('Sales Header NO : %1 and amount %2', SalesOrderNo, SalesHeaderAmount);
+                ConAgent.SetFilter(IsConfidential, format(True));
+                Conagent.SetFilter(ConNumber, format(contractRec.ConNumber));
+                if ConAgent.FindFirst() then begin
+                    repeat
+
+                        SalesLine."Document No." := SalesOrderNo;
+                        SalesLine.Init();
+                        lineNo := lineNo + 100;
+                        SalesLine.Validate("Line No.", lineNo);
+                        SalesLine.Validate("Document Type", SalesLine."Document Type"::Order);
+                        SalesLine.Validate("Type", SalesLine.Type::"G/L Account");
+                        SalesLine.Validate("No.", Format(RevAccount));
+                        SalesLine.Validate("Quantity", 1);
+                        SalesLine.Validate(TBMSIsFieldConfidentalLine, true);
+                        SalesLine.Validate("Unit Price", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
+                        SalesLine.Validate("Line Amount", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
+
+                        SalesLine.Validate(Description, 'Confidental Discount');
+                        SalesLine.Validate(TBMSDescription, 'Confidental Discount');
+                        SalesLine.Validate(TBMSDescription2);
+                        if contractRec.DiscPer > 0 then begin
+                            if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin
+                                SalesLine.Validate("Line Discount %", contractRec.DiscPer * 100);
+                            end
+                        end;
+
+                        TotalBaseCharges += fixRate;
+
+                        SalesLine.Insert(true);
+
+                    until ConAgent.Next() = 0
+                end;
+
+            End;
+
+
+
+
         end;
     end;
 

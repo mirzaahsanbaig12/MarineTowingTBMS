@@ -72,6 +72,14 @@ tableextension 50116 SalesCueExt extends "Sales Cue"
             AutoFormatExpression = '1,USD';
             AutoFormatType = 10;
         }
+
+        field(50118; FuelCost; Decimal)
+        {
+            FieldClass = Normal;
+            Caption = 'Current Fuel Cost';
+            AutoFormatExpression = '1,USD';
+            AutoFormatType = 10;
+        }
     }
 
     var

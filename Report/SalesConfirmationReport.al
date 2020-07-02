@@ -14,6 +14,10 @@ report 50112 "TBMS Sales Confirmation"
             DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Sales Order';
+
+            column(TBMS_Print_C__Discount; "TBMS Print C. Discount")
+            {
+            }
             column(CompanyAddress1; CompanyAddr[1])
             {
             }
@@ -379,9 +383,10 @@ report 50112 "TBMS Sales Confirmation"
                 DataItemLinkReference = Header;
                 DataItemTableView = SORTING("Document No.", "Line No.");
                 UseTemporary = true;
+
                 column(LineNo_Line; "Line No.")
-                {
-                }
+                { }
+
                 column(TBMSDescription; TBMSDescription)
                 { }
 
@@ -526,6 +531,12 @@ report 50112 "TBMS Sales Confirmation"
 
                 trigger OnAfterGetRecord()
                 begin
+                    if (TBMSIsFieldConfidentalLine = true) AND (TBMSPrintConfDiscLines = false)
+                   then begin
+                        CurrReport.Skip();
+                    end;
+
+
                     if Type = Type::"G/L Account" then
                         "No." := '';
 
@@ -555,6 +566,8 @@ report 50112 "TBMS Sales Confirmation"
 
                 trigger OnPreDataItem()
                 begin
+
+
                     MoreLines := Find('+');
                     while MoreLines and (Description = '') and ("No." = '') and (Quantity = 0) and (Amount = 0) do
                         MoreLines := Next(-1) <> 0;
@@ -943,9 +956,19 @@ report 50112 "TBMS Sales Confirmation"
         {
             area(content)
             {
+
+
                 group(Options)
                 {
                     Caption = 'Options';
+                    field(TBMSPrintConfDiscLines; TBMSPrintConfDiscLines)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Print Confidential Discount Lines';
+                        Enabled = LogInteractionEnable;
+                        ToolTip = 'Specifies if you want to print confidental discount lines.';
+                    }
+
                     field(LogInteraction; LogInteraction)
                     {
                         ApplicationArea = Basic, Suite;
@@ -1037,6 +1060,7 @@ report 50112 "TBMS Sales Confirmation"
     end;
 
     var
+        TBMSPrintConfDiscLines: Boolean;
         SalesConfirmationLbl: Label 'Order Confirmation';
         SalespersonLbl: Label 'Sales person';
         CompanyInfoBankAccNoLbl: Label 'Account No.';
@@ -1192,6 +1216,8 @@ report 50112 "TBMS Sales Confirmation"
     begin
         ReportTotalsLine.DeleteAll;
         Header.CalcFields("TBMS Discount");
+        Header.CalcFields("TBMS Confidental Discount");
+
         if Header."Tax Area Code" <> '' then
             if TaxArea.Get(Header."Tax Area Code") then;
         if (Header."Tax Area Code" = '') or (TaxArea."Country/Region" = TaxArea."Country/Region"::US) then begin
@@ -1199,8 +1225,16 @@ report 50112 "TBMS Sales Confirmation"
             exit;
         end;
 
-        if (TotalInvDiscAmount <> 0) or (TotalAmountVAT <> 0) then
-            ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount", true, false, false);
+        if TBMSPrintConfDiscLines = true
+        then begin
+            if (TotalInvDiscAmount <> 0) or (TotalAmountVAT <> 0) then
+                ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount", true, false, false);
+        end
+        else begin
+            if (TotalInvDiscAmount <> 0) or (TotalAmountVAT <> 0) then
+                ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount" - Header."TBMS Confidental Discount", true, false, false);
+        end;
+
         if TotalInvDiscAmount <> 0 then begin
             ReportTotalsLine.Add(InvDiscountAmtLbl, TotalInvDiscAmount, false, false, false);
             if TotalAmountVAT <> 0 then

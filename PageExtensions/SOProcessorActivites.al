@@ -2,12 +2,29 @@ pageextension 50116 SOPrcoessorActivities extends "SO Processor Activities"
 {
     layout
     {
+
+        modify("Sales Quotes - Open")
+        {
+            Visible = false;
+        }
+
+        addafter("Sales Quotes - Open")
+        {
+            field(FuelCost; FuelCost)
+            {
+                ApplicationArea = all;
+                DrillDownPageId = "Fuel Cost List";
+            }
+        }
         addafter("Sales Orders - Open")
         {
 
 
+
+
             field("AXP unposted sales Invoice Tot"; "AXP unposted sales Invoice Tot")
             {
+
                 ApplicationArea = All;
                 DrillDownPageId = "Sales Invoice List";
             }
@@ -44,17 +61,16 @@ pageextension 50116 SOPrcoessorActivities extends "SO Processor Activities"
                 DrillDownPageId = "Posted Sales Invoices";
             }
 
-
-
-
             field("AXP unposted purchase invoice"; "AXP unposted purchase invoice")
             {
+                Visible = false;
                 ApplicationArea = All;
                 DrillDownPageId = "Purchase Invoices";
             }
 
             field("AXP posted purchase invoice"; "AXP posted purchase invoice")
             {
+                Visible = false;
                 ApplicationArea = All;
                 DrillDownPageId = "Posted Purchase Invoices";
             }
@@ -67,6 +83,23 @@ pageextension 50116 SOPrcoessorActivities extends "SO Processor Activities"
         // Add changes to page actions here
     }
 
+    trigger OnAfterGetRecord()
+    begin
+        FuelCost := GetFuelCost.GetFuelCost();
+        CurrPage.Update();
+    End;
+
+    trigger OnOpenPage()
+    begin
+        RESET;
+        IF NOT GET THEN BEGIN
+            INIT;
+            INSERT;
+        END;
+    end;
+
+
     var
-        myInt: Integer;
+        FuelCost: Decimal;
+        GetFuelCost: Codeunit GetData;
 }

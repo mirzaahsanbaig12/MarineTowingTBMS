@@ -32,7 +32,7 @@ page 50170 "Confidential Discount SubForm"
                     ApplicationArea = All;
                 }
 
-                field(DiscType; DiscType)
+                field(DiscType; DiscType1)
                 {
                     ApplicationArea = all;
                 }
