@@ -14,6 +14,11 @@ tableextension 50115 SalesInvoiceExtTBMS extends "Sales Invoice Line"
             DataClassification = ToBeClassified;
             Caption = 'Line Description 2';
         }
+        field(50112; TBMSIsFieldConfidentalLine; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Is Confidental Line';
+        }
     }
 
     var

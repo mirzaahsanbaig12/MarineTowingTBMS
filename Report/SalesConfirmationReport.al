@@ -15,9 +15,7 @@ report 50112 "TBMS Sales Confirmation"
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
             RequestFilterHeading = 'Sales Order';
 
-            column(TBMS_Print_C__Discount; "TBMS Print C. Discount")
-            {
-            }
+
             column(CompanyAddress1; CompanyAddr[1])
             {
             }

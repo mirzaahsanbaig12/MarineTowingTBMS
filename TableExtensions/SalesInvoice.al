@@ -26,6 +26,16 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
 
         }
 
+        field(50115; "TBMS Confidental Discount"; Decimal)
+        {
+            Caption = 'Confidental Discount';
+            Editable = false;
+            FieldClass = FlowField;
+
+            CalcFormula = Sum ("Sales Invoice Line"."Line Discount Amount" where("Document No." = FIELD("No."), "Document No." = FIELD("No."),
+                                                                         "TBMSIsFieldConfidentalLine" = const(true)));
+        }
+
         field(50113; "TBMS Discount Description"; Text[300])
         {
             DataClassification = ToBeClassified;

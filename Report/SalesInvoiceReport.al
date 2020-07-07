@@ -613,6 +613,10 @@ report 50113 "TBMS Sales Invoice"
                 var
                     EnvironmentInfo: Codeunit "Environment Information";
                 begin
+                    if (TBMSIsFieldConfidentalLine = true) AND (TBMSPrintConfDiscLines = false)
+                    then begin
+                        CurrReport.Skip();
+                    end;
                     InitializeShipmentLine;
                     if Type = Type::"G/L Account" then
                         "No." := '';
@@ -1145,6 +1149,14 @@ report 50113 "TBMS Sales Invoice"
                 group(Options)
                 {
                     Caption = 'Options';
+
+                    field(TBMSPrintConfDiscLines; TBMSPrintConfDiscLines)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Print Confidential Discount Lines';
+                        Enabled = LogInteractionEnable;
+                        ToolTip = 'Specifies if you want to print confidental discount lines.';
+                    }
                     field(LogInteraction; LogInteraction)
                     {
                         ApplicationArea = Basic, Suite;
@@ -1231,6 +1243,7 @@ report 50113 "TBMS Sales Invoice"
     end;
 
     var
+        TBMSPrintConfDiscLines: Boolean;
         SalespersonLbl: Label 'Salesperson';
         CompanyInfoBankAccNoLbl: Label 'Account No.';
         CompanyInfoBankNameLbl: Label 'Bank';
@@ -1429,8 +1442,21 @@ report 50113 "TBMS Sales Invoice"
     begin
         ReportTotalsLine.DeleteAll;
         Header.CalcFields("TBMS Discount");
-        if (TotalSubTotal <> 0) then
-            ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount", true, false, false);
+        Header.CalcFields("TBMS Confidental Discount");
+
+        if TBMSPrintConfDiscLines = true then begin
+            if (TotalSubTotal <> 0) then
+                ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount", true, false, false);
+
+        end
+        else begin
+
+            if (TotalSubTotal <> 0) then
+                ReportTotalsLine.Add(SubtotalLbl, TotalSubTotal + Header."TBMS Discount" - Header."TBMS Confidental Discount", true, false, false);
+
+
+        end;
+
         if TotalInvDiscAmount <> 0 then begin
             ReportTotalsLine.Add(InvDiscountAmtLbl, TotalInvDiscAmount, false, false, false);
             if TotalAmountVAT <> 0 then
