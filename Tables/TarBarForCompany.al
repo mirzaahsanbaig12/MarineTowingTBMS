@@ -41,8 +41,9 @@ table 50134 TarBrForCompany
         field(50116; Rate; Decimal)
         {
             DataClassification = ToBeClassified;
-            AutoFormatType = 10;
-            AutoFormatExpression = '1,USD';
+            //AutoFormatType = 10;
+            //AutoFormatExpression = '1,USD';
+            DecimalPlaces = 0 : 5;
         }
 
         field(50117; CmpId; Code[20])
