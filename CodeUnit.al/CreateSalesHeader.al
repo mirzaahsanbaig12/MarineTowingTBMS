@@ -24,9 +24,9 @@ codeunit 50114 CreateSalesHeader
                     else
                         customerAcc := logDocRec.BusOwner;
                 end;
-                Message('out');
+
                 if InvoiceNotes.Get(contractRec."Invoice Note Id") then begin
-                    Message('in');
+
                     InvoiceNotes.CalcFields(Descr);
                     SalesHeader."Invoice Notes" := InvoiceNotes.GetNotesDescription();
                 end;
