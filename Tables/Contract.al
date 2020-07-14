@@ -189,6 +189,12 @@ table 50123 Contract
             DataClassification = ToBeClassified;
             Caption = 'Shifting';
         }
+        field(50134; "Invoice Note Id"; code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Notes';
+            TableRelation = "Invoice Notes".TerId WHERE(Status = CONST(Active));
+        }
 
     }
 

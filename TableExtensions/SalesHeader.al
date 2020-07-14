@@ -55,6 +55,12 @@ tableextension 50113 SalesHeaderExtTBMS extends "Sales Header"
             Caption = 'Print Confidental Discount';
             DataClassification = ToBeClassified;
         }
+        field(50117; "Invoice Notes"; Text[2048])
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Invoice Notes';
+            Caption = 'Invoice Notes';
+        }
     }
 
     var

@@ -112,6 +112,10 @@ page 50138 "Contract Card"
                 {
                     ApplicationArea = All;
                 }
+                field("Invoice Note Id"; "Invoice Note Id")
+                {
+                    ApplicationArea = All;
+                }
             }
             group("Contract Agent")
             {

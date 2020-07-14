@@ -416,6 +416,10 @@ report 50113 "TBMS Sales Invoice"
             column(PaymentInstructions_Txt; PaymentInstructionsTxt)
             {
             }
+            column(Invoice_Notes; "Invoice Notes")
+            {
+
+            }
             dataitem(Line; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");

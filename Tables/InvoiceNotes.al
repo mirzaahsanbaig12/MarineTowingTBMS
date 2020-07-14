@@ -2,7 +2,7 @@ table 50135 "Invoice Notes"
 {
     DataClassification = ToBeClassified;
     Caption = 'Invoive Notes';
-    LookupPageId = "Invoice Note Card";
+    LookupPageId = "Invoice Notes List";
 
     fields
     {

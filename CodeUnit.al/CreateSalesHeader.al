@@ -6,8 +6,10 @@ codeunit 50114 CreateSalesHeader
         logDocRec: Record LogDoc;
         customerAcc: code[50];
         contractRec: Record Contract;
+        InvoiceNotes: Record "Invoice Notes";
     begin
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
+        SalesHeader.Init();
         if logDocRec.FindFirst() then begin
 
             customerAcc := logDocRec.BusOwner;
@@ -22,10 +24,15 @@ codeunit 50114 CreateSalesHeader
                     else
                         customerAcc := logDocRec.BusOwner;
                 end;
+                Message('out');
+                if InvoiceNotes.Get(contractRec."Invoice Note Id") then begin
+                    Message('in');
+                    InvoiceNotes.CalcFields(Descr);
+                    SalesHeader."Invoice Notes" := InvoiceNotes.GetNotesDescription();
+                end;
             end;
 
             SalesHeader."Document Type" := SalesHeader."Document Type"::Order;
-            SalesHeader.Init();
             SalesHeader.Validate("Sell-to Customer No.", customerAcc);
             SalesHeader.Validate("LogDocNumber", logDocRec.LogDocNumber);
             SalesHeader.Validate("Vessel", logDocRec.VesId);

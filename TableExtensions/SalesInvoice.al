@@ -42,6 +42,12 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
             Caption = 'Discount Description';
             Editable = false;
         }
+        field(50117; "Invoice Notes"; Text[2048])
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Invoice Notes';
+            Caption = 'Invoice Notes';
+        }
 
     }
 
