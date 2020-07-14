@@ -165,6 +165,14 @@ table 50123 Contract
                     Validate(TarCustomer, TarCustRec.TarId);
                 end;
 
+
+            end;
+
+            trigger OnValidate()
+            begin
+                if TarCustomerName = ''
+                then
+                    Validate(TarCustomer, '');
             end;
 
         }

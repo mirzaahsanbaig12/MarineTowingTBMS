@@ -69,7 +69,15 @@ codeunit 50115 CreateSalesLines
                     if logDocRec.JobType = logDocRec.JobType::Shifting
                     then begin
 
-                        tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                        if contractRec.TarCustomer = ''
+                        then begin
+                            tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                        end
+                        else begin
+                            tariffRec.SetFilter(TarId, contractRec.TarCustomer);
+
+                        end;
+
                         if tariffRec.FindFirst() then begin
 
                             baseRateRec.SetFilter(TarId, tariffRec.TarId);
@@ -128,7 +136,14 @@ codeunit 50115 CreateSalesLines
 
             if (contractRec.AssistFixedRate = false) and (contractRec.TarCustomer = '')
             then begin
-                tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                if contractRec.TarCustomer = ''
+                then begin
+                    tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                end
+                else begin
+                    tariffRec.SetFilter(TarId, contractRec.TarCustomer);
+
+                end;
                 if tariffRec.FindFirst()
                 then begin
                     baseRateRec.SetFilter(TarId, tariffRec.TarId);
@@ -252,7 +267,15 @@ codeunit 50115 CreateSalesLines
                             EndPort := locationRec.PrtId;
 
                         if (StartPort = 'C') and (EndPort = 'D') then begin
-                            tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                            if contractRec.TarCustomer = ''
+                            then begin
+                                tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                            end
+                            else begin
+                                tariffRec.SetFilter(TarId, contractRec.TarCustomer);
+
+                            end;
+
                             if tariffRec.FindFirst() then begin
 
 
@@ -289,7 +312,14 @@ codeunit 50115 CreateSalesLines
                         end;
 
                         //<overtimeRate>
-                        tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                        if contractRec.TarCustomer = ''
+                           then begin
+                            tariffRec.SetFilter(TarId, CompanyRec.TarId);
+                        end
+                        else begin
+                            tariffRec.SetFilter(TarId, contractRec.TarCustomer);
+                        end;
+
                         baseCalendar.Reset();
                         CustomizedCalendarChange.Reset();
                         CompInfo.Get();

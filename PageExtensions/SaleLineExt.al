@@ -10,6 +10,12 @@ pageextension 50113 SalesLineExt extends "Sales Order Subform"
                 ApplicationArea = All;
                 Visible = false;
             }
+
+            field("Posting Date"; "Posting Date")
+            {
+                ApplicationArea = All;
+                Visible = false;
+            }
         }
         addafter("TotalSalesLine.""Line Amount""")
         {
