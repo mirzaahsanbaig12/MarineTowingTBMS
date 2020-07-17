@@ -35,8 +35,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTTarId</rd:DefaultName>
-            <Top>1.04389in</Top>
-            <Left>2.96463in</Left>
+            <Top>1.03in</Top>
+            <Left>3.48546in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <Style>
@@ -57,10 +57,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTDescr.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrDescr.Value, "DataSet_Result") &lt;&gt; "", First(Fields!TrDescr.Value, "DataSet_Result"),First(Fields!CTDescr.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTDescr.Value, "DataSet_Result") &lt;&gt; First(Fields!TrDescr.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -70,8 +71,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTDescr</rd:DefaultName>
-            <Top>1.24875in</Top>
-            <Left>2.96463in</Left>
+            <Top>1.23486in</Top>
+            <Left>3.48546in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>1</ZIndex>
@@ -93,7 +94,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTTariffType.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrTariffType.Value, "DataSet_Result") &lt;&gt; "" , First(Fields!TrTariffType.Value, "DataSet_Result"),First(Fields!CTTariffType.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -107,8 +108,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTDescr1</rd:DefaultName>
-            <Top>1.45361in</Top>
-            <Left>2.96463in</Left>
+            <Top>1.43972in</Top>
+            <Left>3.48546in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>2</ZIndex>
@@ -225,111 +226,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="TrTarId">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrTarId.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrTarId</rd:DefaultName>
-            <Top>1.04389in</Top>
-            <Left>5.30491in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>6</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrDescr">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrDescr.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrDescr</rd:DefaultName>
-            <Top>1.24875in</Top>
-            <Left>5.30491in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrTariffType">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrTariffType.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrTariffType</rd:DefaultName>
-            <Top>1.45361in</Top>
-            <Left>5.30491in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>8</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox12">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -353,7 +249,7 @@
             <Left>0.56533in</Left>
             <Height>0.13542in</Height>
             <Width>1in</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -371,11 +267,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTDateBegining.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrDateBegining.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTDateBegining.Value, "DataSet_Result") &lt;&gt; First(Fields!TrDateBegining.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTDateEnding.Value, "DataSet_Result") &lt;&gt; First(Fields!TrDateEnding.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -385,11 +281,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTDateEnding</rd:DefaultName>
-            <Top>1.65847in</Top>
-            <Left>2.96463in</Left>
+            <Top>1.64458in</Top>
+            <Left>3.48554in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -408,7 +304,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTDateEnding.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrDateEnding.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -422,11 +318,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTDateEnding1</rd:DefaultName>
-            <Top>1.87722in</Top>
-            <Left>2.9646in</Left>
+            <Top>1.86333in</Top>
+            <Left>3.48543in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -461,77 +357,7 @@
             <Left>0.5653in</Left>
             <Height>0.13542in</Height>
             <Width>1in</Width>
-            <ZIndex>12</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrDateBegining">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrDateBegining.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrDateBegining</rd:DefaultName>
-            <Top>1.67236in</Top>
-            <Left>5.30491in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>13</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrDateEnding">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrDateEnding.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrDateEnding</rd:DefaultName>
-            <Top>1.87722in</Top>
-            <Left>5.30488in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -549,7 +375,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Company Tariff</Value>
+                    <Value>Billing Tariff</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -561,10 +387,10 @@
             </Paragraphs>
             <rd:DefaultName>CTCmpId</rd:DefaultName>
             <Top>0.65847in</Top>
-            <Left>2.96462in</Left>
+            <Left>3.48554in</Left>
             <Height>0.25in</Height>
             <Width>1.61458in</Width>
-            <ZIndex>15</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -582,7 +408,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTStatus.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrStatus.Value, "DataSet_Result") &lt;&gt; "" ,First(Fields!TrStatus.Value, "DataSet_Result"),First(Fields!CTStatus.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -596,11 +422,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTStatus</rd:DefaultName>
-            <Top>2.08209in</Top>
-            <Left>2.96463in</Left>
+            <Top>2.0682in</Top>
+            <Left>3.48554in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>16</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -635,250 +461,7 @@
             <Left>0.56533in</Left>
             <Height>0.13542in</Height>
             <Width>1in</Width>
-            <ZIndex>17</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CTCmpId2">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Customer Tariff</Value>
-                    <Style>
-                      <FontSize>12pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CTCmpId</rd:DefaultName>
-            <Top>0.65847in</Top>
-            <Left>5.30491in</Left>
-            <Height>0.25in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>18</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrStatus">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrStatus.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrStatus</rd:DefaultName>
-            <Top>2.09598in</Top>
-            <Left>5.30224in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>19</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobStandardTime">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobStandardTime.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobStandardTime</rd:DefaultName>
-            <Top>2.75916in</Top>
-            <Left>5.30431in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>20</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobShiftType">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobShiftType.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobShiftType</rd:DefaultName>
-            <Top>2.9536in</Top>
-            <Left>5.30432in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>21</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobUDPer">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobUDPer.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobUDPer</rd:DefaultName>
-            <Top>3.16194in</Top>
-            <Left>5.30432in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>22</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobSpPer">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobSpPer.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobSpPer</rd:DefaultName>
-            <Top>3.3286in</Top>
-            <Left>5.30428in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>23</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobShiftAmount">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobShiftAmount.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobShiftAmount</rd:DefaultName>
-            <Top>3.52305in</Top>
-            <Left>5.30424in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>24</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -896,7 +479,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CtJobStandardTime.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrJobStandardTime.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -911,10 +494,10 @@
             </Paragraphs>
             <rd:DefaultName>CtJobStandardTime</rd:DefaultName>
             <Top>2.74527in</Top>
-            <Left>2.96403in</Left>
+            <Left>3.48553in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>13</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -933,7 +516,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobShiftType.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobShiftType.Value, "DataSet_Result")&lt;&gt; "", First(Fields!TrJobShiftType.Value, "DataSet_Result"),First(Fields!CTJobShiftType.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -948,10 +531,10 @@
             </Paragraphs>
             <rd:DefaultName>CTJobShiftType</rd:DefaultName>
             <Top>2.93971in</Top>
-            <Left>2.96404in</Left>
+            <Left>3.48554in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -970,7 +553,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobUDPer.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobUDPer.Value, "DataSet_Result") &lt;&gt; 0 , First(Fields!TrJobUDPer.Value, "DataSet_Result"),First(Fields!CTJobUDPer.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -984,11 +567,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobUDPer</rd:DefaultName>
-            <Top>3.13416in</Top>
-            <Left>2.96404in</Left>
+            <Top>3.14804in</Top>
+            <Left>3.48554in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>27</ZIndex>
+            <ZIndex>15</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1007,7 +590,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobSpPer.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobSpPer.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrJobSpPer.Value, "DataSet_Result"),First(Fields!CTJobSpPer.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1022,10 +605,10 @@
             </Paragraphs>
             <rd:DefaultName>CTJobSpPer</rd:DefaultName>
             <Top>3.30082in</Top>
-            <Left>2.964in</Left>
+            <Left>3.4855in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1044,7 +627,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobShiftAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrJobShiftAmount.Value, "DataSet_Result")&lt;&gt;0 ,First(Fields!TrJobShiftAmount.Value, "DataSet_Result"),First(Fields!CTJobShiftAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1059,10 +642,10 @@
             </Paragraphs>
             <rd:DefaultName>CTJobShiftAmount</rd:DefaultName>
             <Top>3.50916in</Top>
-            <Left>2.96396in</Left>
+            <Left>3.48546in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1097,7 +680,7 @@
             <Left>0.56473in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>18</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1131,7 +714,7 @@
             <Left>0.56474in</Left>
             <Height>0.125in</Height>
             <Width>2.04513in</Width>
-            <ZIndex>31</ZIndex>
+            <ZIndex>19</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1165,7 +748,7 @@
             <Left>0.56474in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>20</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1199,7 +782,7 @@
             <Left>0.5647in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>33</ZIndex>
+            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1233,7 +816,7 @@
             <Left>0.56466in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>34</ZIndex>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1251,11 +834,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTJobShiftTime.Value, "DataSet_Result")</Value>
+                    <Value>=IIf( First(Fields!TrJobShiftTime.Value, "DataSet_Result") &lt;&gt; 0 , First(Fields!TrJobShiftTime.Value, "DataSet_Result"), First(Fields!CTJobShiftTime.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTJobShiftTime.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobShiftTime.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTJobShiftTime.Value, "DataSet_Result")&lt;&gt;First(Fields!TrJobShiftTime.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1265,51 +848,16 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftTime</rd:DefaultName>
-            <Top>3.74591in</Top>
-            <Left>2.96196in</Left>
+            <Top>3.73137in</Top>
+            <Left>3.48553in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>35</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
               <VerticalAlign>Top</VerticalAlign>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobShiftTime">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobShiftTime.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobShiftTime</rd:DefaultName>
-            <Top>3.7036in</Top>
-            <Left>5.30431in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>36</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -1339,7 +887,7 @@
             <Left>0.56473in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>37</ZIndex>
+            <ZIndex>24</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1373,7 +921,7 @@
             <Left>0.56296in</Left>
             <Height>0.38194in</Height>
             <Width>6.35667in</Width>
-            <ZIndex>38</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1409,7 +957,7 @@
             <Left>0.56398in</Left>
             <Height>0.29861in</Height>
             <Width>6.35416in</Width>
-            <ZIndex>39</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1439,11 +987,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>3.94035in</Top>
+            <Top>3.92581in</Top>
             <Left>0.56391in</Left>
             <Height>0.29861in</Height>
             <Width>6.28124in</Width>
-            <ZIndex>40</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1462,11 +1010,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSType.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrFSType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTFSType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSType.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTFSType.Value, "DataSet_Result")&lt;&gt;First(Fields!TrFSType.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1476,46 +1024,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>4.30084in</Top>
-            <Left>2.96463in</Left>
+            <Top>4.22442in</Top>
+            <Left>3.48538in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>41</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CTFSDiscountFlag">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrFSDiscountFlag.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>4.49528in</Top>
-            <Left>5.30423in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>42</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1549,7 +1062,7 @@
             <Left>0.5646in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>43</ZIndex>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1583,42 +1096,7 @@
             <Left>0.56465in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>44</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CTFSType2">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrFSType.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>4.30084in</Top>
-            <Left>5.30419in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>45</ZIndex>
+            <ZIndex>30</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1636,11 +1114,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSDiscountFlag.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrFSDiscountFlag.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTType.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTFSDiscountFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSDiscountFlag.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1650,11 +1128,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>4.49528in</Top>
-            <Left>2.96395in</Left>
+            <Top>4.41886in</Top>
+            <Left>3.48542in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>46</ZIndex>
+            <ZIndex>31</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1672,11 +1150,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPerBase.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPerBase.Value, "DataSet_Result") &lt;&gt; 0,First(Fields!TrFSPerBase.Value, "DataSet_Result"),First(Fields!CTFSPerBase.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTType.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTFSPerBase.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSPerBase.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1686,11 +1164,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPerBase</rd:DefaultName>
-            <Top>4.70363in</Top>
-            <Left>2.96395in</Left>
+            <Top>4.62721in</Top>
+            <Left>3.48542in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>47</ZIndex>
+            <ZIndex>32</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1708,7 +1186,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPerInc.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPerInc.Value, "DataSet_Result") &lt;&gt; 0,First(Fields!TrFSPerInc.Value, "DataSet_Result"),First(Fields!CTFSPerInc.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1722,11 +1200,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPerInc</rd:DefaultName>
-            <Top>4.89807in</Top>
-            <Left>2.96396in</Left>
+            <Top>4.82165in</Top>
+            <Left>3.48543in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>48</ZIndex>
+            <ZIndex>33</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1744,7 +1222,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPrcBase.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPrcBase.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrFSPrcBase.Value, "DataSet_Result"),First(Fields!CTFSPrcBase.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1758,11 +1236,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcBase</rd:DefaultName>
-            <Top>5.09251in</Top>
-            <Left>2.96386in</Left>
+            <Top>5.02998in</Top>
+            <Left>3.48533in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>49</ZIndex>
+            <ZIndex>34</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1780,7 +1258,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTFSPrcInc.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrFSPrcInc.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrFSPrcInc.Value, "DataSet_Result"),First(Fields!CTFSPrcInc.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1794,11 +1272,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcInc</rd:DefaultName>
-            <Top>5.30085in</Top>
-            <Left>2.96197in</Left>
+            <Top>5.22443in</Top>
+            <Left>3.48532in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>50</ZIndex>
+            <ZIndex>35</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1832,7 +1310,7 @@
             <Left>0.56455in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>51</ZIndex>
+            <ZIndex>36</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1866,7 +1344,7 @@
             <Left>0.56455in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>52</ZIndex>
+            <ZIndex>37</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1900,7 +1378,7 @@
             <Left>0.56465in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>53</ZIndex>
+            <ZIndex>38</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1934,143 +1412,7 @@
             <Left>0.56465in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>54</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrFSPerBase">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrFSPerBase.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>4.70363in</Top>
-            <Left>5.30423in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>55</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrFSPerInc">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrFSPerInc.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>4.89807in</Top>
-            <Left>5.30424in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>56</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrFSPrcBase">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrFSPrcBase.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>5.1064in</Top>
-            <Left>5.30414in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>57</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrFSPrcInc">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrFSPrcInc.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>5.30085in</Top>
-            <Left>5.30413in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>58</ZIndex>
+            <ZIndex>39</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2088,11 +1430,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTAmountPercent.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrAmountPercent.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTAmountPercent.Value, "DataSet_Result") &lt;&gt; First(Fields!TrAmountPercent.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTAmountPercent.Value, "DataSet_Result")  &lt;&gt; First(Fields!TrAmountPercent.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2102,11 +1444,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcIncFormat</rd:DefaultName>
-            <Top>5.49529in</Top>
-            <Left>2.96197in</Left>
+            <Top>5.41887in</Top>
+            <Left>3.48532in</Left>
             <Height>0.125in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>59</ZIndex>
+            <ZIndex>40</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2124,7 +1466,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTMaxiumCharge.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrMaxiumCharge.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrMaxiumCharge.Value, "DataSet_Result"),First(Fields!CTMaxiumCharge.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2138,11 +1480,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTMaxiumCharge</rd:DefaultName>
-            <Top>5.68974in</Top>
-            <Left>2.96197in</Left>
+            <Top>5.61332in</Top>
+            <Left>3.48543in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>60</ZIndex>
+            <ZIndex>41</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2176,7 +1518,7 @@
             <Left>0.56455in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>61</ZIndex>
+            <ZIndex>42</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2210,77 +1552,7 @@
             <Left>0.56466in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>62</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrAmountPercent">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrAmountPercent.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrAmountPercent</rd:DefaultName>
-            <Top>5.49529in</Top>
-            <Left>5.30413in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>63</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrMaxiumCharge">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrMaxiumCharge.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrMaxiumCharge</rd:DefaultName>
-            <Top>5.68974in</Top>
-            <Left>5.30424in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>64</ZIndex>
+            <ZIndex>43</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2298,11 +1570,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTATBFlag.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrOTATBFlag.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTATBFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTATBFlag.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!TrOTATBFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!CTOTATBFlag.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2312,11 +1584,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTATBFlag</rd:DefaultName>
-            <Top>6.34894in</Top>
-            <Left>2.96437in</Left>
+            <Top>6.32117in</Top>
+            <Left>3.48517in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>65</ZIndex>
+            <ZIndex>44</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2334,11 +1606,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTMinAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrOTMinAmount.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrOTMinAmount.Value, "DataSet_Result"),First(Fields!CTOTMinAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTMinAmount.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTMinAmount.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTOTMinAmount.Value, "DataSet_Result") - First(Fields!TrOTMinAmount.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2348,11 +1620,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTMinAmount</rd:DefaultName>
-            <Top>6.55381in</Top>
-            <Left>2.96451in</Left>
+            <Top>6.51215in</Top>
+            <Left>3.48531in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>66</ZIndex>
+            <ZIndex>45</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2370,11 +1642,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTRateAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrOTRateAmount.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrOTRateAmount.Value, "DataSet_Result"),First(Fields!CTOTRateAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTRateAmount.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTRateAmount.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTOTRateAmount.Value, "DataSet_Result") - First(Fields!TrOTRateAmount.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2384,11 +1656,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTRateAmount</rd:DefaultName>
-            <Top>6.75867in</Top>
-            <Left>2.96438in</Left>
+            <Top>6.7309in</Top>
+            <Left>3.48518in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>67</ZIndex>
+            <ZIndex>46</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2406,7 +1678,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTShiftAmount.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrOTShiftAmount.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrOTShiftAmount.Value, "DataSet_Result"),First(Fields!CTOTShiftAmount.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2420,11 +1692,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>6.96353in</Top>
-            <Left>2.96437in</Left>
+            <Top>6.93576in</Top>
+            <Left>3.48517in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>68</ZIndex>
+            <ZIndex>47</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2442,11 +1714,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTOTType.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!TrOTType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTType.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!TrOTType.Value, "DataSet_Result") &lt;&gt; First(Fields!CTOTType.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2456,11 +1728,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTType</rd:DefaultName>
-            <Top>7.19617in</Top>
-            <Left>2.96436in</Left>
+            <Top>7.1684in</Top>
+            <Left>3.48516in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>69</ZIndex>
+            <ZIndex>48</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2494,7 +1766,7 @@
             <Left>0.56507in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>70</ZIndex>
+            <ZIndex>49</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2528,7 +1800,7 @@
             <Left>0.56521in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>71</ZIndex>
+            <ZIndex>50</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2562,7 +1834,7 @@
             <Left>0.56507in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>72</ZIndex>
+            <ZIndex>51</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2596,7 +1868,7 @@
             <Left>0.56506in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>73</ZIndex>
+            <ZIndex>52</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2630,182 +1902,7 @@
             <Left>0.56505in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>74</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrOTATBFlag">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrOTATBFlag.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrOTATBFlag</rd:DefaultName>
-            <Top>6.34894in</Top>
-            <Left>5.30466in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>75</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrOTMinAmount">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrOTMinAmount.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrOTMinAmount</rd:DefaultName>
-            <Top>6.55381in</Top>
-            <Left>5.30479in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>76</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrOTRateAmount">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrOTRateAmount.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrOTRateAmount</rd:DefaultName>
-            <Top>6.75867in</Top>
-            <Left>5.30466in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>77</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrOTShiftAmount">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrOTShiftAmount.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrOTShiftAmount</rd:DefaultName>
-            <Top>6.97742in</Top>
-            <Left>5.30464in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>78</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrOTType">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrOTType.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrOTType</rd:DefaultName>
-            <Top>7.19617in</Top>
-            <Left>5.30464in</Left>
-            <Height>0.13542in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>79</ZIndex>
+            <ZIndex>53</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2838,7 +1935,7 @@
             <Left>0.56478in</Left>
             <Height>0.29861in</Height>
             <Width>6.28123in</Width>
-            <ZIndex>80</ZIndex>
+            <ZIndex>54</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2872,187 +1969,12 @@
             <Left>0.56215in</Left>
             <Height>0.29861in</Height>
             <Width>6.28128in</Width>
-            <ZIndex>81</ZIndex>
+            <ZIndex>55</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
               <BackgroundColor>Silver</BackgroundColor>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrTCATBFlag">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrTCATBFlag.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrTCATBFlag</rd:DefaultName>
-            <Top>8.48523in</Top>
-            <Left>5.30253in</Left>
-            <Height>0.16667in</Height>
-            <Width>1.54166in</Width>
-            <ZIndex>82</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrTCType">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrTCType.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrTCType</rd:DefaultName>
-            <Top>8.72134in</Top>
-            <Left>5.30252in</Left>
-            <Height>0.16667in</Height>
-            <Width>1.54166in</Width>
-            <ZIndex>83</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrTCRate">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrTCRate.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrTCRate</rd:DefaultName>
-            <Top>8.94357in</Top>
-            <Left>5.30252in</Left>
-            <Height>0.16667in</Height>
-            <Width>1.54166in</Width>
-            <ZIndex>84</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrBRInc">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrBRInc.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrBRInc</rd:DefaultName>
-            <Top>9.63057in</Top>
-            <Left>5.30224in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>85</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrBRAmt">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrBRAmt.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrBRAmt</rd:DefaultName>
-            <Top>9.82501in</Top>
-            <Left>5.30248in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54168in</Width>
-            <ZIndex>86</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -3081,10 +2003,10 @@
             </Paragraphs>
             <rd:DefaultName>CTTCATBFlag</rd:DefaultName>
             <Top>8.48523in</Top>
-            <Left>2.96224in</Left>
+            <Left>3.48515in</Left>
             <Height>0.16667in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>87</ZIndex>
+            <ZIndex>56</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3102,7 +2024,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTTCType.Value, "DataSet_Result")</Value>
+                    <Value>= First(Fields!CTTCType.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -3116,11 +2038,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTTCType</rd:DefaultName>
-            <Top>8.73126in</Top>
-            <Left>2.96224in</Left>
+            <Top>8.72134in</Top>
+            <Left>3.48515in</Left>
             <Height>0.17659in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>88</ZIndex>
+            <ZIndex>57</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3138,7 +2060,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTTCRate.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrTCRate.Value, "DataSet_Result") &lt;&gt; 0 , First(Fields!TrTCRate.Value, "DataSet_Result"),First(Fields!CTTCRate.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -3153,10 +2075,10 @@
             </Paragraphs>
             <rd:DefaultName>CTTCRate</rd:DefaultName>
             <Top>8.95349in</Top>
-            <Left>2.96224in</Left>
+            <Left>3.48515in</Left>
             <Height>0.16667in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>89</ZIndex>
+            <ZIndex>58</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3174,7 +2096,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTBRInc.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrBRInc.Value, "DataSet_Result") &lt;&gt; 0 ,First(Fields!TrBRInc.Value, "DataSet_Result"),First(Fields!CTBRInc.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -3189,10 +2111,10 @@
             </Paragraphs>
             <rd:DefaultName>CTBRInc</rd:DefaultName>
             <Top>9.63057in</Top>
-            <Left>2.96197in</Left>
+            <Left>3.48489in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>90</ZIndex>
+            <ZIndex>59</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3210,7 +2132,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CTBRAmt.Value, "DataSet_Result")</Value>
+                    <Value>=IIf(First(Fields!TrBRAmt.Value, "DataSet_Result") &lt;&gt; 0,First(Fields!TrBRAmt.Value, "DataSet_Result"),First(Fields!CTBRAmt.Value, "DataSet_Result"))</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -3225,10 +2147,10 @@
             </Paragraphs>
             <rd:DefaultName>CTBRAmt</rd:DefaultName>
             <Top>9.8389in</Top>
-            <Left>2.96222in</Left>
+            <Left>3.48514in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>91</ZIndex>
+            <ZIndex>60</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3262,7 +2184,7 @@
             <Left>0.56295in</Left>
             <Height>0.16667in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>92</ZIndex>
+            <ZIndex>61</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3296,7 +2218,7 @@
             <Left>0.56294in</Left>
             <Height>0.16667in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>93</ZIndex>
+            <ZIndex>62</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3330,7 +2252,7 @@
             <Left>0.56293in</Left>
             <Height>0.16667in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>94</ZIndex>
+            <ZIndex>63</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3364,7 +2286,7 @@
             <Left>0.56267in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>95</ZIndex>
+            <ZIndex>64</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3398,7 +2320,7 @@
             <Left>0.56293in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>96</ZIndex>
+            <ZIndex>65</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3431,7 +2353,7 @@
             <Left>0.56296in</Left>
             <Height>0.29861in</Height>
             <Width>6.28123in</Width>
-            <ZIndex>97</ZIndex>
+            <ZIndex>66</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>

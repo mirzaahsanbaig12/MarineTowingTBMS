@@ -4,6 +4,8 @@ report 50110 "Billing Tariff"
     ApplicationArea = All;
     DefaultLayout = RDLC;
     RDLCLayout = 'Billing Tariff.rdlc';
+    Caption = 'Compare Tariff';
+
 
 
     dataset
@@ -102,6 +104,16 @@ report 50110 "Billing Tariff"
             }*/
 
         }
+
+
+
+
+    }
+
+    requestpage
+    {
+        SaveValues = true;
+
     }
 }
 
