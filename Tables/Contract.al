@@ -90,7 +90,7 @@ table 50123 Contract
         {
             DataClassification = ToBeClassified;
             OptionMembers = "Gross On All Charges","Gross On Base Charges";
-            Caption = 'Type';
+            Caption = 'Discount Type';
         }
 
         field(50123; DiscPer; Decimal)
@@ -130,6 +130,12 @@ table 50123 Contract
         {
             DataClassification = ToBeClassified;
             Caption = 'Fixed Rate';
+
+            trigger OnValidate()
+            begin
+                if AssistFixedRate = true then
+                    DeltaBilling := false;
+            end;
         }
 
         field(50129; Rate; Decimal)
@@ -143,6 +149,12 @@ table 50123 Contract
             DataClassification = ToBeClassified;
             Caption = 'Customer Tariff';
             TableRelation = Tariff where(TariffType = const(Customer));
+
+            trigger OnValidate()
+            begin
+                if TarCustomer = '' then
+                    DeltaBilling := false;
+            end;
 
         }
 
@@ -194,6 +206,18 @@ table 50123 Contract
             DataClassification = ToBeClassified;
             Caption = 'Notes';
             TableRelation = "Invoice Notes".TerId WHERE(Status = CONST(Active));
+        }
+        field(50135; DeltaBilling; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Delta';
+
+            trigger OnValidate()
+            begin
+                if (AssistFixedRate = true) OR (TarCustomer = '') then begin
+                    DeltaBilling := false;
+                end;
+            end;
         }
 
     }
@@ -273,5 +297,4 @@ table 50123 Contract
 
         exit(Result);
     end;
-
 }

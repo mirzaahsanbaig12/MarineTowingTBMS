@@ -97,7 +97,11 @@ page 50138 "Contract Card"
                 {
                     ApplicationArea = All;
                 }
-
+                field(DeltaBilling; DeltaBilling)
+                {
+                    ApplicationArea = All;
+                    Enabled = (AssistFixedRate = false) AND (TarCustomer <> '');
+                }
                 field(AssistFixedRate; AssistFixedRate)
                 {
                     ApplicationArea = All;
