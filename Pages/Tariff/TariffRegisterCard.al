@@ -174,6 +174,7 @@ page 50130 "Tariff Register Card"
                 field(OTShiftAmount; OTShiftAmount)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
             }
 

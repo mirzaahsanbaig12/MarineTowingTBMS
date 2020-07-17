@@ -20,6 +20,12 @@ tableextension 50112 SalesLineExtTBMS extends "Sales Line"
             DataClassification = ToBeClassified;
             Caption = 'Is Confidental Line';
         }
+        field(50113; LogDocNumber; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Log #';
+            TableRelation = LogDoc;
+        }
 
 
     }

@@ -11,6 +11,17 @@ pageextension 50125 SalesInvoiceLineExt extends "Sales Invoice Subform"
                 Visible = false;
             }
         }
+        addafter(Description)
+        {
+            field(LogDocNumber; LogDocNumber)
+            {
+                ApplicationArea = All;
+                Caption = 'Log #';
+                Editable = false;
+                DrillDown = true;
+                DrillDownPageId = "Log Billing";
+            }
+        }
     }
 
     actions

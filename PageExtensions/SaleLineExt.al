@@ -17,6 +17,17 @@ pageextension 50113 SalesLineExt extends "Sales Order Subform"
                 Visible = false;
             }
         }
+        addafter(Description)
+        {
+            field(LogDocNumber; LogDocNumber)
+            {
+                ApplicationArea = All;
+                Caption = 'Log #';
+                Editable = false;
+                DrillDown = true;
+                DrillDownPageId = "Log Billing";
+            }
+        }
         addafter("TotalSalesLine.""Line Amount""")
         {
             field("TBMS Discount"; tbmsDiscount)

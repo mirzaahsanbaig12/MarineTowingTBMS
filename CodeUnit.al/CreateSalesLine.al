@@ -42,6 +42,9 @@ codeunit 50115 CreateSalesLines
         SalesHeaderAmount: Decimal;
         VesselRec: Record Vessel;
         FuelSurchargeAmount: Decimal;
+        FuelSurchargePercent: Decimal;
+        LogFuelRate: Decimal;
+        FuelSurchargeDesc: Text;
     begin
         TotalOverTimeCharges := 0;
         TotalBaseCharges := 0;
@@ -149,7 +152,10 @@ codeunit 50115 CreateSalesLines
                             baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
 
                         if baseRateRec.FindLast() then begin
-                            FuelSurchargeAmount := (((logDocRec.FuelCost - tariffRec.FSPrcBase) / tariffRec.FSPrcInc) / 100) * baseRateRec.Rate;
+                            FuelSurchargePercent := (logDocRec.FuelCost - tariffRec.FSPrcBase) DIV tariffRec.FSPrcInc;
+                            FuelSurchargeAmount := (FuelSurchargePercent / 100) * baseRateRec.Rate;
+                            FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
+                            LogFuelRate := logDocRec.FuelCost;
                         end;
                     end;
                 end;
@@ -230,13 +236,13 @@ codeunit 50115 CreateSalesLines
                 if logDocRec.JobType = logDocRec.JobType::Shifting
                then begin
                     if DT2Date(logDetRec.TimeStart) = DT2Date(logDetRec.Timefinish) then begin
-                        LineDesc := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
-                        lineDesc1 := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
+                        LineDesc := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                        lineDesc1 := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
                         lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
                     end;
                     if DT2Date(logDetRec.TimeStart) <> DT2Date(logDetRec.Timefinish) then begin
-                        LineDesc := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
-                        lineDesc1 := format(logDocRec.VesId) + 'Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
+                        LineDesc := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
+                        lineDesc1 := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
                         lineDesc2 := format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
                     end;
                 end;
@@ -273,6 +279,7 @@ codeunit 50115 CreateSalesLines
                 SalesLine.Validate(Description, LineDesc);
                 SalesLine.Validate(TBMSDescription, lineDesc1);
                 SalesLine.Validate(TBMSDescription2, lineDesc2);
+                SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                 if contractRec.DiscPer > 0 then begin
                     if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin
                         SalesLine.Validate("Line Discount %", contractRec.DiscPer * 100);
@@ -319,7 +326,7 @@ codeunit 50115 CreateSalesLines
                             LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
                             RepositionChargeSL.Validate(Description, LineDesc);
                             RepositionChargeSL.Validate(TBMSDescription, LineDesc);
-
+                            RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
                             if contractRec.DiscPer > 0 then begin
                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
                                     RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
@@ -388,7 +395,7 @@ codeunit 50115 CreateSalesLines
                             LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
                             OvertimeChargeSL.Validate(Description, LineDesc);
                             OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
-
+                            OvertimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
                             if contractRec.DiscPer > 0 then begin
                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
                                     OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
@@ -458,6 +465,7 @@ codeunit 50115 CreateSalesLines
                     SalesLine.Validate(Description, 'Confidental Discount');
                     SalesLine.Validate(TBMSDescription, 'Confidental Discount');
                     SalesLine.Validate(TBMSDescription2);
+                    SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                     if contractRec.DiscPer > 0 then begin
                         if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin
                             SalesLine.Validate("Line Discount %", contractRec.DiscPer * 100);
@@ -473,7 +481,7 @@ codeunit 50115 CreateSalesLines
         End;
 
         //Create Fuel Surcharge line
-        FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
+
         FuelSurchargesSL."Document No." := SalesOrderNo;
         FuelSurchargesSL.Init();
         lineNo := lineNo + 100;
@@ -484,10 +492,10 @@ codeunit 50115 CreateSalesLines
         FuelSurchargesSL.Validate("Quantity", 1);
         FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
         FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-
-        FuelSurchargesSL.Validate(Description, 'Fuel Surcharge');
-        FuelSurchargesSL.Validate(TBMSDescription, 'Fuel Surcharge');
-        FuelSurchargesSL.Validate(TBMSDescription2, 'Fuel Surcharge');
+        FuelSurchargeDesc := 'Fuel Surcharge of ' + Format(FuelSurchargePercent) + '% on log rate of ' + Format(LogFuelRate);
+        FuelSurchargesSL.Validate(Description, FuelSurchargeDesc);
+        FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
+        FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
         FuelSurchargesSL.Insert(true);
     end;
 
