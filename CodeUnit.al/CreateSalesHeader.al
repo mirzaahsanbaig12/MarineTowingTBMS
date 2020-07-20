@@ -37,6 +37,7 @@ codeunit 50114 CreateSalesHeader
             SalesHeader.Validate("LogDocNumber", logDocRec.LogDocNumber);
             SalesHeader.Validate("Vessel", logDocRec.VesId);
             SalesHeader.Validate(ConNumber, logDocRec.ConNumber);
+            SalesHeader.Validate(logdate, DT2Date(logDocRec.Datelog));
 
             if SalesHeader.Insert(true) then begin
                 exit(SalesHeader."No."); // return sales order no

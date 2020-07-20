@@ -61,6 +61,12 @@ tableextension 50113 SalesHeaderExtTBMS extends "Sales Header"
             Description = 'Invoice Notes';
             Caption = 'Invoice Notes';
         }
+
+        field(50118; LogDate; Date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Log Date';
+        }
     }
 
     var

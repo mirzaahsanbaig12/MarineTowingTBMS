@@ -421,6 +421,12 @@ End Function
         <Field Name="LineNo_Line">
           <DataField>LineNo_Line</DataField>
         </Field>
+        <Field Name="LogDate">
+          <DataField>LogDate</DataField>
+        </Field>
+        <Field Name="LogDateString">
+          <DataField>LogDateString</DataField>
+        </Field>
         <Field Name="TBMSDescription">
           <DataField>TBMSDescription</DataField>
         </Field>

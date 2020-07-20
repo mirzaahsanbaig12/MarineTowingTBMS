@@ -26,6 +26,8 @@ report 50112 "TBMS Sales Confirmation"
             {
 
             }
+
+
             column(CompanyAddress2; CompanyAddr[2])
             {
             }
@@ -384,6 +386,15 @@ report 50112 "TBMS Sales Confirmation"
 
                 column(LineNo_Line; "Line No.")
                 { }
+
+                column(LogDate; LogDate)
+                {
+                    AutoFormatExpression = format(LogDate);
+                }
+
+                column(LogDateString; LogDateString)
+                { }
+
 
                 column(TBMSDescription; TBMSDescription)
                 { }

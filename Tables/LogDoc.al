@@ -124,19 +124,20 @@ table 50129 LogDoc
             TableRelation = "Pilot Association";
             Caption = 'Pilot';
             ValidateTableRelation = false;
-            trigger OnLookup()
-            var
-                pilotAssocRec: Record "Pilot Association";
-            begin
-                if PilId <> '' then
-                    pilotAssocRec.Get(PilId);
+            /* trigger OnLookup()
+             var
+                 pilotAssocRec: Record "Pilot Association";
+             begin
+                 if PilId <> '' then
+                     pilotAssocRec.Get(PilId);
 
-                if pilotAssocRec.LookupPilotAssoc(pilotAssocRec) then begin
-                    PilId := pilotAssocRec.PaId;
+                 if pilotAssocRec.LookupPilotAssoc(pilotAssocRec) then begin
+                     PilId := pilotAssocRec.PaId;
 
-                end;
+                 end;
 
-            end;
+             end;
+             */
         }
 
         field(50122; LocStr; code[20])

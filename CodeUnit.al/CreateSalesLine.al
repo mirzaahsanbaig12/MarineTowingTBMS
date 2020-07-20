@@ -24,6 +24,9 @@ codeunit 50115 CreateSalesLines
         StartPort: Code[20];
         EndPort: code[20];
         locationRec: Record "Location Register";
+        locStart: Record "Location Register";
+        LocEnd: Record "Location Register";
+
         overtimeMins: Integer;
         Duration1: Duration;
         hoursDiff: Decimal;
@@ -218,31 +221,33 @@ codeunit 50115 CreateSalesLines
                 tugBoatRec.SetFilter(TugId, logDetRec.TugId);
                 tugBoatRec.FindFirst();
 
+                LocEnd.Get(logDetRec.DestinationStr);
+                locStart.Get(logDetRec.LocStr);
 
                 if logDocRec.JobType = logDocRec.JobType::Docking
                then begin
-                    LineDesc := format(logDocRec.VesId) + ' Docking From ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
-                    lineDesc1 := format(logDocRec.VesId) + ' Docking From ' + logDetRec.DestinationStr;
-                    lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                    LineDesc := /*format(logDocRec.VesId) + */' Vessel Docking AT ' + LocEnd.Description + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
+                    lineDesc1 :=/* format(logDocRec.VesId) + */' Vessel Docking AT ' + LocEnd.Description;
+                    lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
                 end;
 
                 if logDocRec.JobType = logDocRec.JobType::Undocking
                then begin
-                    LineDesc := format(logDocRec.VesId) + ' Undocking From ' + logDetRec.LocStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
-                    lineDesc1 := format(logDocRec.VesId) + ' Undocking From ' + logDetRec.LocStr;
-                    lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                    LineDesc := /*format(logDocRec.VesId) + */' Vessel Undocking AT ' + locStart.Description + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
+                    lineDesc1 := /*format(logDocRec.VesId) + */' Vessel Undocking AT ' + locStart.Description;
+                    lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
                 end;
 
                 if logDocRec.JobType = logDocRec.JobType::Shifting
                then begin
                     if DT2Date(logDetRec.TimeStart) = DT2Date(logDetRec.Timefinish) then begin
-                        LineDesc := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
-                        lineDesc1 := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
-                        lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' @ $' + format(fixRate);
+                        LineDesc := /*format(logDocRec.VesId) +*/ 'Shifted Vessel  From ' + locStart.Description + ' To ' + LocEnd.Description + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
+                        lineDesc1 := /*format(logDocRec.VesId) +*/ 'Shifted Vessel  From ' + locStart.Description + ' To ' + LocEnd.Description;
+                        lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
                     end;
                     if DT2Date(logDetRec.TimeStart) <> DT2Date(logDetRec.Timefinish) then begin
-                        LineDesc := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr + ' ' + format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
-                        lineDesc1 := format(logDocRec.VesId) + ' Vessel Shifting From ' + logDetRec.LocStr + ' To ' + logDetRec.DestinationStr;
+                        LineDesc := /*format(logDocRec.VesId) + */' Shifted Vessel  From ' + locStart.Description + ' To ' + LocEnd.Description + ' ' + format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
+                        lineDesc1 := /*format(logDocRec.VesId) + */' Shifted Vessel  From ' + locStart.Description + ' To ' + LocEnd.Description;
                         lineDesc2 := format(logDetRec.TimeStart) + ' - ' + Format(logDetRec.Timefinish) + ' @ $' + format(fixRate);
                     end;
                 end;
@@ -253,14 +258,14 @@ codeunit 50115 CreateSalesLines
                     fixRate := hours / 3600000;
                     fixRate := Round(fixRate, 1, '=') * tugBoatRec.HourlyRate;
                     LineDesc := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
-                    LineDesc := LineDesc + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + logDetRec.LocStr;
-                    LineDesc := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + logDetRec.DestinationStr;
+                    LineDesc := LineDesc + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + locStart.Description;
+                    LineDesc := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + LocEnd.Description;
                     LineDesc := LineDesc + ' 5 @ ' + Format(tugBoatRec.HourlyRate);
 
                     LineDesc1 := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
-                    LineDesc1 := LineDesc1 + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + logDetRec.LocStr;
+                    LineDesc1 := LineDesc1 + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + locStart.Description;
 
-                    LineDesc2 := ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + logDetRec.DestinationStr;
+                    LineDesc2 := ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + LocEnd.Description;
                     LineDesc2 := LineDesc2 + ' 5 @ ' + Format(tugBoatRec.HourlyRate);
 
                 end;
@@ -280,6 +285,10 @@ codeunit 50115 CreateSalesLines
                 SalesLine.Validate(TBMSDescription, lineDesc1);
                 SalesLine.Validate(TBMSDescription2, lineDesc2);
                 SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                SalesLine.Validate(LogDate, DT2Date(logDocRec.Datelog));
+                SalesLine.Validate(LogDateString, format(DT2Date(logDocRec.Datelog)));
+                Message('date %1', DT2Date(logDocRec.Datelog));
+
                 if contractRec.DiscPer > 0 then begin
                     if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin
                         SalesLine.Validate("Line Discount %", contractRec.DiscPer * 100);
@@ -289,6 +298,7 @@ codeunit 50115 CreateSalesLines
                 TotalBaseCharges += fixRate;
 
                 if SalesLine.Insert(true) then begin
+                    locationRec.Reset();
                     locationRec.SetFilter(LocId, logDetRec.LocStr);
                     if locationRec.FindFirst() then
                         StartPort := locationRec.PrtId;

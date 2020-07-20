@@ -27,6 +27,18 @@ tableextension 50112 SalesLineExtTBMS extends "Sales Line"
             TableRelation = LogDoc;
         }
 
+        field(50114; LogDate; Date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Log Date';
+        }
+
+        field(50115; LogDateString; Text[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Log Date';
+        }
+
 
     }
 

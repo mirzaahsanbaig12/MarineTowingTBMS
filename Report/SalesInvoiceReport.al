@@ -23,6 +23,9 @@ report 50113 "TBMS Sales Invoice"
             column(Vessel; VesselLongName)
             {
             }
+
+            column(LogDate; LogDate)
+            { }
             column(CompanyAddress1; CompanyAddr[1])
             {
             }

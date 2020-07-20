@@ -49,6 +49,14 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
             Caption = 'Invoice Notes';
         }
 
+        field(50118; LogDate; Date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Log Date';
+        }
+
+
+
     }
 
     var
