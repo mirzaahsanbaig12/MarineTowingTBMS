@@ -33,7 +33,7 @@ page 50140 "Contract Agent SubForm"
                 {
                     ApplicationArea = All;
                 }
-                field(CommonType; CommonType)
+                field(CommonType; CommonType1)
                 {
                     ApplicationArea = All;
                 }

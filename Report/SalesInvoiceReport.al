@@ -608,8 +608,8 @@ report 50113 "TBMS Sales Invoice"
                         Clear(AssemblyLine);
                         if not DisplayAssemblyInformation then
                             CurrReport.Break;
-                        GetAssemblyLinesForDocument(
-                          AssemblyLine, ValueEntry."Document Type"::"Sales Invoice", Line."Document No.", Line."Line No.");
+                        // GetAssemblyLinesForDocument(
+                        //  AssemblyLine, ValueEntry."Document Type"::"Sales Invoice", Line."Document No.", Line."Line No.");
                     end;
                 }
 

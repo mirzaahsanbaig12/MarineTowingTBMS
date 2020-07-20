@@ -33,11 +33,12 @@ table 50124 ConAgent
 
         }
 
-        field(50114; CommonType; Option)
+        field(50114; CommonType; text[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Commission Type';
-            OptionMembers = "DISCOUNTABLE","GROSS","NET","NET/NET";
+            Caption = 'Confidential Discount';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field type change';
         }
 
         field(50115; CommonPer; Decimal)
@@ -76,6 +77,13 @@ table 50124 ConAgent
             DataClassification = ToBeClassified;
             Caption = 'Is Confidential';
             InitValue = false;
+        }
+
+        field(50120; CommonType1; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Commission Type';
+            OptionMembers = "DISCOUNTABLE","GROSS","NET","NET/NET";
         }
     }
 

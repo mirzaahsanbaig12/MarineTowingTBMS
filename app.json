@@ -2,7 +2,7 @@
   "id": "f63a091e-8557-45b4-8a02-b8c75821b82f",
   "name": "Marine Towing TBMS",
   "publisher": "AX Pulse",
-  "version": "1.0.0.0717202001",
+  "version": "1.0.0.0717202002",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -26,7 +26,7 @@
     { "appId": "e3823cfc-5b5c-4a5e-8e47-bce0fb703b9b",
       "name": "Marine Towing",
       "publisher": "Adapt Dynamics",
-      "version": "1.0.0.062420201"
+      "version": "1.0.0.071720201"
     }
   ],
   "screenshots": [],
