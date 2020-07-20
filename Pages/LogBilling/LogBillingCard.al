@@ -142,6 +142,7 @@ page 50148 "Log Billing"
 
                 field(ShipFlag; ShipFlag)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
