@@ -478,6 +478,9 @@ End Function
         <Field Name="TBMSDescription">
           <DataField>TBMSDescription</DataField>
         </Field>
+        <Field Name="LogDateString">
+          <DataField>LogDateString</DataField>
+        </Field>
         <Field Name="TBMSDescription2">
           <DataField>TBMSDescription2</DataField>
         </Field>
