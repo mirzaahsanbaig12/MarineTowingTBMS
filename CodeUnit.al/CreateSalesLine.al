@@ -232,7 +232,7 @@ codeunit 50115 CreateSalesLines
                 end;
 
                 if logDocRec.JobType = logDocRec.JobType::Undocking
-               then begin
+                   then begin
                     LineDesc := /*format(logDocRec.VesId) + */' Vessel Undocking AT ' + locStart.Description + ' ' + format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);
                     lineDesc1 := /*format(logDocRec.VesId) + */' Vessel Undocking AT ' + locStart.Description;
                     lineDesc2 := format(DT2Time(logDetRec.TimeStart)) + ' - ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + tugBoatRec.Name + ' @ $' + format(fixRate);

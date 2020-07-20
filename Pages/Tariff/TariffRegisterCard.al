@@ -104,11 +104,13 @@ page 50130 "Tariff Register Card"
                 field(FSPrcInc; FSPrcInc)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(FSPerBase; FSPerBase)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(FSPerInc; FSPerInc)
