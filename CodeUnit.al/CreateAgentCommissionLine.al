@@ -17,19 +17,24 @@ codeunit 50116 CreateAgentCommissionLine
         ConAgent: Record ConAgent;
         NoSeriesMgt: Codeunit NoSeriesManagement;
         InvoiceCreated: Integer;
+        PurchaseInvoiceNo: Code[20];
     begin
         SalesHeader.Reset();
-        NewPurchaseHeader.Reset();
-        NewPurchaseLine.Reset();
         InvoiceCreated := 0;
 
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
         if SalesHeader.FindSet() then begin
             REPEAT
+                NewPurchaseHeader.Reset();
+                NewPurchaseLine.Reset();
+                NewPurchaseHeader.Init();
+                NewPurchaseLine.Init();
+
                 SalesHeader.CalcFields("Amount Including VAT");
 
                 ConAgent.Reset();
                 ConAgent.SetRange(ConNumber, SalesHeader.ConNumber);
+                ConAgent.SetRange(IsConfidential, false);
                 if ConAgent.FindSet() then begin
                     repeat
                         if (ConAgent.BusId <> '') then begin
@@ -45,9 +50,10 @@ codeunit 50116 CreateAgentCommissionLine
 
                             //check for purchase invoice and posted purchase invoice existng record
                             if (NOT PurchaseHeader.FindFirst()) and (NOT PurchaseInvoice.FindFirst()) then begin
+                                PurchaseInvoiceNo := NoSeriesMgt.GetNextNo('P-INV', Today, false);
 
                                 NewPurchaseHeader.Init();
-                                NewPurchaseHeader.Validate("No.", NoSeriesMgt.GetNextNo('P-INV', Today, true));
+                                NewPurchaseHeader.Validate("No.", PurchaseInvoiceNo);
                                 NewPurchaseHeader.Validate("Document Type", NewPurchaseHeader."Document Type"::Invoice);
                                 NewPurchaseHeader.Validate("Vendor Invoice No.", SalesHeader."No.");
                                 NewPurchaseHeader.Validate(SalesOrderNo, SalesHeader."No.");
@@ -58,7 +64,7 @@ codeunit 50116 CreateAgentCommissionLine
                                     NewPurchaseLine.Init();
                                     NewPurchaseLine.Validate("Line No.", 1000);
                                     NewPurchaseLine.Validate("Document Type", NewPurchaseLine."Document Type"::Invoice);
-                                    NewPurchaseLine.Validate("Document No.", NewPurchaseHeader."No."); // Invoice number
+                                    NewPurchaseLine.Validate("Document No.", PurchaseInvoiceNo); // Invoice number
                                     NewPurchaseLine.Validate(Type, NewPurchaseLine.Type::"G/L Account"); // Line type
                                     NewPurchaseLine.Validate("No.", format(61200)); // GL account number
                                     NewPurchaseLine.Validate(Quantity, 1);
@@ -90,8 +96,8 @@ codeunit 50116 CreateAgentCommissionLine
                                 //     NewAgentComLine.Insert();
                                 //     Commit();
                             end;
-
                         end;
+
                     until ConAgent.Next() = 0;
                 end;
             UNTIL SalesHeader.NEXT = 0;
