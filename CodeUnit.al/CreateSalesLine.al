@@ -168,7 +168,7 @@ codeunit 50115 CreateSalesLines
 
         //contract find get tonnage rate
 
-        if (contractRec.AssistFixedRate = false) and (contractRec.TarCustomer = '')
+        if (contractRec.AssistFixedRate = false)
         then begin
             if contractRec.TarCustomer = ''
             then begin
@@ -176,10 +176,14 @@ codeunit 50115 CreateSalesLines
             end
             else begin
                 tariffRec.SetFilter(TarId, contractRec.TarCustomer);
-
             end;
+
+
             if tariffRec.FindFirst()
             then begin
+
+                //Message('Connunber %1 , Tarid %2', contractRec.ConNumber, tariffRec.TarId);
+
                 baseRateRec.SetFilter(TarId, tariffRec.TarId);
                 if logDocRec.Tonnage > 30000 then
                     baseRateRec.SetFilter(TonnageEnd, format(30000))
@@ -287,7 +291,7 @@ codeunit 50115 CreateSalesLines
                 SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                 SalesLine.Validate(LogDate, DT2Date(logDocRec.Datelog));
                 SalesLine.Validate(LogDateString, format(DT2Date(logDocRec.Datelog)));
-                Message('date %1', DT2Date(logDocRec.Datelog));
+                //Message('date %1', DT2Date(logDocRec.Datelog));
 
                 if contractRec.DiscPer > 0 then begin
                     if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin
