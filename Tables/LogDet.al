@@ -36,21 +36,21 @@ table 50130 LogDet
             DataClassification = ToBeClassified;
 
             TableRelation = "Location Register";
-            ValidateTableRelation = false;
-            trigger OnLookup()
-            var
-                locationRec: Record "Location Register";
-            begin
-                if LocStr <> '' then
-                    locationRec.Get(LocStr);
+            // ValidateTableRelation = false;
+            // trigger OnLookup()
+            // var
+            //     locationRec: Record "Location Register";
+            // begin
+            //     if LocStr <> '' then
+            //         locationRec.Get(LocStr);
 
-                //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
-                if locationRec.LookupLocations(locationRec) then begin
-                    LocStr := locationRec.LocId;
+            //     //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+            //     if locationRec.LookupLocations(locationRec) then begin
+            //         LocStr := locationRec.LocId;
 
-                end;
+            //     end;
 
-            end;
+            // end;
         }
 
         field(50122; DestinationStr; code[20])
@@ -59,21 +59,21 @@ table 50130 LogDet
             DataClassification = ToBeClassified;
 
             TableRelation = "Location Register";
-            ValidateTableRelation = false;
-            trigger OnLookup()
-            var
-                locationRec: Record "Location Register";
-            begin
-                if DestinationStr <> '' then
-                    locationRec.Get(DestinationStr);
+            // ValidateTableRelation = false;
+            // trigger OnLookup()
+            // var
+            //     locationRec: Record "Location Register";
+            // begin
+            //     if DestinationStr <> '' then
+            //         locationRec.Get(DestinationStr);
 
-                //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
-                if locationRec.LookupLocations(locationRec) then begin
-                    DestinationStr := locationRec.LocId;
+            //     //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+            //     if locationRec.LookupLocations(locationRec) then begin
+            //         DestinationStr := locationRec.LocId;
 
-                end;
+            //     end;
 
-            end;
+            // end;
         }
 
         field(50123; TugId; code[5])
@@ -84,21 +84,21 @@ table 50130 LogDet
             DataClassification = ToBeClassified;
 
             TableRelation = "Tug Boat";
-            ValidateTableRelation = false;
-            trigger OnLookup()
-            var
-                tugBoatRec: Record "Tug Boat";
-            begin
-                if TugId <> '' then
-                    tugBoatRec.Get(TugId);
+            // ValidateTableRelation = false;
+            // trigger OnLookup()
+            // var
+            //     tugBoatRec: Record "Tug Boat";
+            // begin
+            //     if TugId <> '' then
+            //         tugBoatRec.Get(TugId);
 
-                //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
-                if tugBoatRec.LookupTariff(tugBoatRec) then begin
-                    TugId := tugBoatRec.TugId;
+            //     //tugBoatRec.SetFilter(TariffType, format(TarCustRec.TariffType::Customer));
+            //     if tugBoatRec.LookupTariff(tugBoatRec) then begin
+            //         TugId := tugBoatRec.TugId;
 
-                end;
+            //     end;
 
-            end;
+            // end;
         }
 
         field(50124; TarId; code[20])

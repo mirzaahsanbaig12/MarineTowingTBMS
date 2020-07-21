@@ -22,10 +22,11 @@ page 50120 "Location Register List"
                     ApplicationArea = All;
                 }
 
-                /*field(PrtId; PrtId)
+                field(PrtId; PrtId)
                 {
                     ApplicationArea = All;
-                }*/
+                    Caption = 'Zone';
+                }
 
                 field(Status; Status)
                 {

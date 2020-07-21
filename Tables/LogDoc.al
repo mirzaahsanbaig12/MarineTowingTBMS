@@ -101,20 +101,20 @@ table 50129 LogDoc
             TableRelation = Dispatcher;
             Caption = 'Dispatcher';
 
-            ValidateTableRelation = false;
-            trigger OnLookup()
-            var
-                dispatcherRec: Record Dispatcher;
-            begin
-                if DisId <> '' then
-                    dispatcherRec.Get(DisId);
+            // ValidateTableRelation = false;
+            // trigger OnLookup()
+            // var
+            //     dispatcherRec: Record Dispatcher;
+            // begin
+            //     if DisId <> '' then
+            //         dispatcherRec.Get(DisId);
 
-                if dispatcherRec.LookupDispatcher(dispatcherRec) then begin
-                    DisId := dispatcherRec.DisId;
+            //     if dispatcherRec.LookupDispatcher(dispatcherRec) then begin
+            //         DisId := dispatcherRec.DisId;
 
-                end;
+            //     end;
 
-            end;
+            // end;
 
         }
 
