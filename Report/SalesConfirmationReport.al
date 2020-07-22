@@ -437,7 +437,7 @@ report 50112 "TBMS Sales Confirmation"
                     AutoFormatExpression = "Currency Code";
                     AutoFormatType = 1;
                 }
-                column(LineAmount_Line_Lbl; "Line Amount")
+                column(LineAmount_Line_Lbl; 'Line Amount')
                 {
                 }
                 column(ItemNo_Line; "No.")

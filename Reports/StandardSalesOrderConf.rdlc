@@ -475,9 +475,6 @@ End Function
         <Field Name="LineAmount_Line_Lbl">
           <DataField>LineAmount_Line_Lbl</DataField>
         </Field>
-        <Field Name="LineAmount_Line_LblFormat">
-          <DataField>LineAmount_Line_LblFormat</DataField>
-        </Field>
         <Field Name="ItemNo_Line">
           <DataField>ItemNo_Line</DataField>
         </Field>

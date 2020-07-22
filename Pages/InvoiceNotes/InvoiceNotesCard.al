@@ -16,21 +16,7 @@ page 50155 "Invoice Note Card"
                 {
                     ApplicationArea = All;
                 }
-                group("Description")
-                {
-                    Caption = 'Description';
-                    field(NotesDescription; NotesDescription)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        MultiLine = true;
-                        ShowCaption = false;
 
-                        trigger OnValidate()
-                        begin
-                            SetNotesDescription(NotesDescription);
-                        end;
-                    }
-                }
                 field(Status; Status)
                 {
                     ApplicationArea = All;
@@ -39,6 +25,20 @@ page 50155 "Invoice Note Card"
                 field(InoMemos; InoMemos)
                 {
                     ApplicationArea = All;
+                }
+            }
+            group(group2)
+            {
+                Caption = 'Description';
+                field(NotesDescription; NotesDescription)
+                {
+                    ApplicationArea = Basic, Suite;
+                    MultiLine = true;
+                    ShowCaption = false;
+                    trigger OnValidate()
+                    begin
+                        SetNotesDescription(NotesDescription);
+                    end;
                 }
             }
 

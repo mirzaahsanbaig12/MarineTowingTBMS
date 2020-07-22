@@ -20,6 +20,10 @@ report 50113 "TBMS Sales Invoice"
             column(LogDocNumber; LogDocNumber)
             {
             }
+            column(External_Document_No_; "External Document No.")
+            {
+
+            }
             column(Vessel; VesselLongName)
             {
             }
@@ -475,7 +479,7 @@ report 50113 "TBMS Sales Invoice"
                     AutoFormatExpression = GetCurrencyCode;
                     AutoFormatType = 1;
                 }
-                column(LineAmount_Line_Lbl; "Line Amount")
+                column(LineAmount_Line_Lbl; 'Line Amount')
                 {
                 }
                 column(ItemNo_Line; "No.")
