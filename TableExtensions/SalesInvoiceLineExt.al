@@ -36,6 +36,12 @@ tableextension 50115 SalesInvoiceExtTBMS extends "Sales Invoice Line"
             DataClassification = ToBeClassified;
             Caption = 'Log Date';
         }
+
+        field(50116; TBMSlongDesc; Text[300])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Description';
+        }
     }
 
     var

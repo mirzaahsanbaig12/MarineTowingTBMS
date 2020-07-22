@@ -301,7 +301,8 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate("Unit Price", fixRate);
                             SalesLine.Validate("Line Amount", fixRate);
                             SalesLine.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                            SalesLine.Validate(Description, LineDesc);
+                            //SalesLine.Validate(Description, LineDesc);
+                            SalesLine.Validate(TBMSlongDesc, LineDesc);
                             SalesLine.Validate(TBMSDescription, lineDesc1);
                             SalesLine.Validate(TBMSDescription2, lineDesc2);
                             SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -337,7 +338,8 @@ codeunit 50115 CreateSalesLines
                                         RepositionChargeSL.Validate("Line Amount", tariffRec.FlatRate);
                                         RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                         LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
-                                        RepositionChargeSL.Validate(Description, LineDesc);
+                                        //RepositionChargeSL.Validate(Description, LineDesc);
+                                        RepositionChargeSL.Validate(TBMSlongDesc, LineDesc);
                                         RepositionChargeSL.Validate(TBMSDescription, LineDesc);
                                         RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
                                         if contractRec.DiscPer > 0 then begin
@@ -397,7 +399,8 @@ codeunit 50115 CreateSalesLines
                                         OvertimeChargeSL.Validate("Line Amount", fixRate);
                                         OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                         LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
-                                        OvertimeChargeSL.Validate(Description, LineDesc);
+                                        //OvertimeChargeSL.Validate(Description, LineDesc);
+                                        OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                         OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
                                         OvertimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
                                         if contractRec.DiscPer > 0 then begin
@@ -473,8 +476,7 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate(TBMSIsFieldConfidentalLine, true);
                             SalesLine.Validate("Unit Price", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
                             SalesLine.Validate("Line Amount", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
-
-                            SalesLine.Validate(Description, 'Confidental Discount');
+                            SalesLine.Validate(TBMSlongDesc, 'Confidental Discount');
                             SalesLine.Validate(TBMSDescription, 'Confidental Discount');
                             SalesLine.Validate(TBMSDescription2);
                             SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -506,7 +508,7 @@ codeunit 50115 CreateSalesLines
                 FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
                 FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
                 FuelSurchargeDesc := 'Fuel Surcharge of ' + Format(FuelSurchargePercent) + '% on log rate of ' + Format(LogFuelRate);
-                FuelSurchargesSL.Validate(Description, FuelSurchargeDesc);
+                FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
                 FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
                 FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
                 FuelSurchargesSL.Insert(true);

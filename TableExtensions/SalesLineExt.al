@@ -39,6 +39,12 @@ tableextension 50112 SalesLineExtTBMS extends "Sales Line"
             Caption = 'Log Date';
         }
 
+        field(50116; TBMSlongDesc; Text[300])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Description';
+        }
+
 
     }
 
