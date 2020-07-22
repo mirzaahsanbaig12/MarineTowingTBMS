@@ -367,8 +367,8 @@ codeunit 50115 CreateSalesLines
                                         if (minsDiff > overtimeMins) and ((minsDiff - overtimeMins) >= 15)
                                         then begin
 
-                                            //fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
-                                            fixRate := baseRateRec.Rate * (tariffRec.OTRateAmount / 100);
+                                            fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
+                                            //fixRate := baseRateRec.Rate * (tariffRec.OTRateAmount / 100);
 
                                             OvertimeChargeSL."Document No." := SalesOrderNo;
                                             OvertimeChargeSL.Init();
