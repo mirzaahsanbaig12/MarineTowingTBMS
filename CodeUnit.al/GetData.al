@@ -132,9 +132,6 @@ codeunit 50111 GetData
                             logdocRec.Modify();
                         until logdocRec.Next() = 0;
                     end;
-
-
-
                 end;
 
 
@@ -179,23 +176,33 @@ codeunit 50111 GetData
     local procedure two(var SalesHeader: Record "Sales Header")
     var
         logdocRec: Record LogDoc;
-    begin
-        if SalesHeader.LogDocNumber <> 0
-        then begin
-            logdocRec.SetFilter(LogDocNumber, Format(SalesHeader.LogDocNumber));
-            if logdocRec.FindFirst()
-            then begin
-                repeat
-                    if logdocRec.Status = logdocRec.Status::Invoiced
-                    then begin
-                        logdocRec.Status := logdocRec.Status::Reopen;
-                        logdocRec.SalesOrderNo := '';
-                    end;
-                    logdocRec.Modify();
-                until logdocRec.Next() = 0;
-            end;
+        salesLineRec: Record "Sales Line";
 
+    begin
+
+        salesLineRec.SetFilter("Document No.", SalesHeader."No.");
+        if salesLineRec.FindFirst() then begin
+            repeat
+
+                if saleslineRec.LogDocNumber <> 0
+                then begin
+                    logdocRec.SetFilter(LogDocNumber, Format(salesLineRec.LogDocNumber));
+                    if logdocRec.FindFirst()
+                    then begin
+                        repeat
+                            if logdocRec.Status = logdocRec.Status::Invoiced
+                            then begin
+                                logdocRec.Status := logdocRec.Status::Reopen;
+                                logdocRec.SalesOrderNo := '';
+                            end;
+                            logdocRec.Modify();
+                        until logdocRec.Next() = 0;
+                    end;
+
+                end;
+            until salesLineRec.Next() = 0;
         end;
+
 
     end;
 
