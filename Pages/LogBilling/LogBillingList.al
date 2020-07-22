@@ -138,7 +138,7 @@ page 50147 "Log Billing List"
                 var
                     info: Text;
                 Begin
-                    info := 'Selected records may have different vessel, job type , agent , owner or contract';
+                    info := 'Selected records may have different vessel, agent , owner or contract';
                     CurrPage.SetSelectionFilter(logDocRec);
                     if logDocRec.FindFirst() then begin
                         SameRecs := true;
@@ -146,7 +146,7 @@ page 50147 "Log Billing List"
                         logDocRecFirst.TransferFields(logDocRec);
                         repeat
 
-                            if (logDocRecFirst.JobType <> logDocRec.JobType) or
+                            if //(logDocRecFirst.JobType <> logDocRec.JobType) or
                                (logDocRecFirst.VesId <> logDocRec.VesId) or
                                (logDocRecFirst.BusLA <> logDocRec.BusLA) or
                                (logDocRecFirst.BusOwner <> logDocRec.BusOwner) or
