@@ -155,6 +155,7 @@ page 50130 "Tariff Register Card"
             {
                 field(OTATBFlag; OTATBFlag)
                 {
+                    Visible = false;
                     ApplicationArea = All;
                 }
 
@@ -209,14 +210,19 @@ page 50130 "Tariff Register Card"
                         trigger OnValidate()
                         begin
                             CurrPage."Tariff Base Rate Subfrom".Page.SetPrtId(PrtId);
+                            GetFlatRate();
                         end;
                     }
 
-                    field(FlatRate; FlatRate)
+                    field(FlatRateField; flatRateVar)
                     {
                         ApplicationArea = All;
+                        Caption = 'Repositioning Charge';
+                        trigger OnValidate()
+                        begin
+                            SetFlatRate();
+                        end;
                     }
-
                 }
 
                 group("Rate")
@@ -252,6 +258,28 @@ page 50130 "Tariff Register Card"
     begin
         CurrPage."Tariff Base Rate Subfrom".Page.SetPrtId(PrtId);
         CurrPage."Tariff Base Rate Subfrom".Page.SetTarId(TarId);
+        GetFlatRate();
     end;
+
+    local procedure GetFlatRate()
+    var
+
+    begin
+        if PortZone.Get(PrtId) then
+            flatRateVar := PortZone.FlatRate;
+    end;
+
+    local procedure SetFlatRate()
+    var
+    begin
+        if PortZone.Get(PrtId) then begin
+            PortZone.Validate(FlatRate, flatRateVar);
+            PortZone.Modify(true);
+        end;
+    end;
+
+    var
+        flatRateVar: Decimal;
+        PortZone: Record "Port Zone";
 
 }

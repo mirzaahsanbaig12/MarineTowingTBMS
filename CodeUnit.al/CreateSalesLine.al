@@ -30,7 +30,7 @@ codeunit 50115 CreateSalesLines
 
         overtimeMins: Integer;
         Duration1: Duration;
-        hoursDiff: Decimal;
+        minsDiff: Decimal;
         tempStartDate: DateTime;
         CompInfo: Record "Company Information";
         CustomizedCalendarChange: Record "Customized Calendar Change";
@@ -49,6 +49,7 @@ codeunit 50115 CreateSalesLines
         FuelSurchargePercent: Decimal;
         LogFuelRate: Decimal;
         FuelSurchargeDesc: Text;
+        IsFixedRate: Boolean;
     begin
         TotalOverTimeCharges := 0;
         TotalBaseCharges := 0;
@@ -60,6 +61,7 @@ codeunit 50115 CreateSalesLines
         if logDocRec.FindFirst() then begin
 
             fixRate := 0;
+            IsFixedRate := false;
             RevAccount := '40100';
             customerAcc := logDocRec.BusOwner;
 
@@ -86,11 +88,17 @@ codeunit 50115 CreateSalesLines
 
                     //check contract have fixed rate set then assign fix rate    
                     if contractRec.AssistFixedRate then begin
-                        fixRate := contractRec.Rate;
+                        if (logDocRec.JobType = logDocRec.JobType::Docking) OR (logDocRec.JobType = logDocRec.JobType::Undocking) then
+                            fixRate := contractRec.Rate;
+
+                        if logDocRec.JobType = logDocRec.JobType::Shifting then
+                            fixRate := contractRec.AssistRate;
+
                         if fixRate = 0 then begin
                             Message('Fix rate on contract# %1 is zero', contractRec.ConNumber);
                             exit;
                         end;
+                        IsFixedRate := true;
                     end;
 
                     //if customer tarif is not defined on contract then use company tarif
@@ -108,31 +116,6 @@ codeunit 50115 CreateSalesLines
                     end
                     else
                         customerAcc := logDocRec.BusOwner;
-
-                    //CALCULATE FUEL SURCHARGE AMOUNT
-                    // if contractRec.TarCustomer = '' then begin
-                    //     tariffRec.SetFilter(TarId, CompanyRec.TarId);
-                    // end
-                    // else begin
-                    //     tariffRec.SetFilter(TarId, contractRec.TarCustomer);
-                    // end;
-
-                    /*if tariffRec.FindFirst() then begin
-                        baseRateRec.SetFilter(TarId, tariffRec.TarId);
-                        if logDocRec.Tonnage > 30000
-                        then
-                            baseRateRec.SetFilter(TonnageEnd, format(30000))
-                        else
-                            baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
-
-                        if baseRateRec.FindLast() then begin
-                            FuelSurchargePercent := (logDocRec.FuelCost - tariffRec.FSPrcBase) DIV tariffRec.FSPrcInc;
-                            FuelSurchargeAmount := (FuelSurchargePercent / 100) * baseRateRec.Rate;
-                            FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
-                            LogFuelRate := logDocRec.FuelCost;
-                        end;
-                    end;
-                    */
 
                     //get salesline no start
                     SalesLine.SetFilter("Document Type", format(SalesLine."Document Type"::Order));
@@ -179,7 +162,7 @@ codeunit 50115 CreateSalesLines
 
                                 //calculation for shifting start
 
-                                if fixRate = 0 then begin
+                                if IsFixedRate = false then begin
                                     if (logDocRec.JobType = logDocRec.JobType::Shifting) then begin
 
                                         baseRateRec.SetFilter(PrtId, locStart.PrtId);
@@ -228,16 +211,14 @@ codeunit 50115 CreateSalesLines
                                             else
                                                 fixRate := baseRateRec.Rate;
                                         end;
-
                                     end;
-
-                                end;
-                                if baseRateRec.FindLast() then begin
-                                    //fuel surcharge calcautions  
-                                    FuelSurchargePercent := (logDocRec.FuelCost - tariffRec.FSPrcBase) DIV tariffRec.FSPrcInc;
-                                    FuelSurchargeAmount := (FuelSurchargePercent / 100) * baseRateRec.Rate;
-                                    FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
-                                    LogFuelRate := logDocRec.FuelCost;
+                                    if baseRateRec.FindLast() then begin
+                                        //fuel surcharge calcautions  
+                                        FuelSurchargePercent := (logDocRec.FuelCost - tariffRec.FSPrcBase) DIV tariffRec.FSPrcInc;
+                                        FuelSurchargeAmount := (FuelSurchargePercent / 100) * baseRateRec.Rate;
+                                        FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
+                                        LogFuelRate := logDocRec.FuelCost;
+                                    end;
                                 end;
                             end;
 
@@ -320,106 +301,108 @@ codeunit 50115 CreateSalesLines
 
                             if SalesLine.Insert(true) then begin
 
-                                //respostionion charge line start                                    
-                                if (locStart.PrtId = 'C') and (LocEnd.PrtId = 'D') then begin
 
-                                    if tariffRec.FindFirst() then begin
+                                if IsFixedRate = false then begin
+                                    //respostionion charge line start 
+                                    if (locStart.PrtId = 'C') and (LocEnd.PrtId = 'D') then begin
 
-                                        RepositionChargeSL."Document No." := SalesOrderNo;
-                                        RepositionChargeSL.Init();
-                                        lineNo := lineNo + 100;
-                                        RepositionChargeSL.Validate("Line No.", lineNo);
-                                        RepositionChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
-                                        RepositionChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
-                                        RepositionChargeSL.Validate("No.", Format(RevAccount));
-                                        RepositionChargeSL.Validate("Quantity", 1);
+                                        if tariffRec.FindFirst() then begin
 
-                                        RepositionChargeSL.Validate("Unit Price", tariffRec.FlatRate);
-                                        RepositionChargeSL.Validate("Line Amount", tariffRec.FlatRate);
-                                        RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                        LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
-                                        //RepositionChargeSL.Validate(Description, LineDesc);
-                                        RepositionChargeSL.Validate(TBMSlongDesc, LineDesc);
-                                        RepositionChargeSL.Validate(TBMSDescription, LineDesc);
-                                        RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
-                                        if contractRec.DiscPer > 0 then begin
-                                            if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
-                                            end
-                                        end;
-                                        if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
+                                            RepositionChargeSL."Document No." := SalesOrderNo;
+                                            RepositionChargeSL.Init();
+                                            lineNo := lineNo + 100;
+                                            RepositionChargeSL.Validate("Line No.", lineNo);
+                                            RepositionChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                            RepositionChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                            RepositionChargeSL.Validate("No.", Format(RevAccount));
+                                            RepositionChargeSL.Validate("Quantity", 1);
+
+                                            RepositionChargeSL.Validate("Unit Price", tariffRec.FlatRate);
+                                            RepositionChargeSL.Validate("Line Amount", tariffRec.FlatRate);
+                                            RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                                            LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
+                                            //RepositionChargeSL.Validate(Description, LineDesc);
+                                            RepositionChargeSL.Validate(TBMSlongDesc, LineDesc);
+                                            RepositionChargeSL.Validate(TBMSDescription, LineDesc);
+                                            RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                            if contractRec.DiscPer > 0 then begin
+                                                if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                                                    RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                end
+                                            end;
                                             if RepositionChargeSL.Insert(true)
                                             then
                                                 ;
                                         end;
                                     end;
+                                    //respostionion charge line end 
+                                    //Overtime charge line start
+                                    baseCalendar.Reset();
+                                    CustomizedCalendarChange.Reset();
+                                    CompInfo.Get();
+                                    baseCalendar.SetRange(Code, CompInfo."Base Calendar Code");
+                                    if baseCalendar.FindFirst() then begin
+                                        CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
+                                    end;
+                                    if tariffRec.FindFirst() then begin
 
-                                    //respostionion charge line end   
-                                end;
+                                        //calculation working dates
+                                        tempStartDate := logDetRec.TimeStart;
+                                        REPEAT
+                                            IF NOT CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
+                                                Duration1 := Duration1 + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), 000000T) - tempStartDate);
+                                            end;
+                                            tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
 
-                                //Overtime charge line start
-                                baseCalendar.Reset();
-                                CustomizedCalendarChange.Reset();
-                                CompInfo.Get();
-                                baseCalendar.SetRange(Code, CompInfo."Base Calendar Code");
-                                if baseCalendar.FindFirst() then begin
-                                    CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
-                                end;
-                                if tariffRec.FindFirst() then begin
+                                        UNTIL logDetRec.Timefinish < tempStartDate;
 
-                                    //calculation working dates
-                                    tempStartDate := logDetRec.TimeStart;
-                                    REPEAT
-                                        IF NOT CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
-                                            Duration1 := Duration1 + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), 000000T) - tempStartDate);
-                                        end;
-                                        tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
+                                        if logDocRec.JobType = logDocRec.JobType::Shifting then
+                                            overtimeMins := tariffRec.JobShiftTime
+                                        else
+                                            overtimeMins := tariffRec.JobStandardTime;
 
-                                    UNTIL logDetRec.Timefinish < tempStartDate;
+                                        //Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
+                                        minsDiff := Round(Duration1 / 60000, 1, '=');
 
-                                    overtimeMins := tariffRec.JobStandardTime;
-                                    //Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
-                                    hoursDiff := Round(Duration1 / 3600000, 1, '=');
+                                        if (minsDiff > overtimeMins) and ((minsDiff - overtimeMins) >= 15)
+                                        then begin
 
-                                    if (hoursDiff > overtimeMins) and ((hoursDiff - overtimeMins) >= 15)
-                                    then begin
+                                            //fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
+                                            fixRate := baseRateRec.Rate * (tariffRec.OTRateAmount / 100);
 
-                                        fixRate := hoursDiff * tugBoatRec.HourlyRate;
+                                            OvertimeChargeSL."Document No." := SalesOrderNo;
+                                            OvertimeChargeSL.Init();
+                                            lineNo := lineNo + 100;
+                                            OvertimeChargeSL.Validate("Line No.", lineNo);
+                                            OvertimeChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                            OvertimeChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                            OvertimeChargeSL.Validate("No.", Format(RevAccount));
+                                            OvertimeChargeSL.Validate("Quantity", 1);
 
-                                        OvertimeChargeSL."Document No." := SalesOrderNo;
-                                        OvertimeChargeSL.Init();
-                                        lineNo := lineNo + 100;
-                                        OvertimeChargeSL.Validate("Line No.", lineNo);
-                                        OvertimeChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
-                                        OvertimeChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
-                                        OvertimeChargeSL.Validate("No.", Format(RevAccount));
-                                        OvertimeChargeSL.Validate("Quantity", 1);
+                                            OvertimeChargeSL.Validate("Unit Price", fixRate);
+                                            OvertimeChargeSL.Validate("Line Amount", fixRate);
+                                            OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                                            LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
+                                            //OvertimeChargeSL.Validate(Description, LineDesc);
+                                            OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
+                                            OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
+                                            OvertimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                            if contractRec.DiscPer > 0 then begin
+                                                if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                                                    OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                end
+                                            end;
 
-                                        OvertimeChargeSL.Validate("Unit Price", fixRate);
-                                        OvertimeChargeSL.Validate("Line Amount", fixRate);
-                                        OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                        LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
-                                        //OvertimeChargeSL.Validate(Description, LineDesc);
-                                        OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
-                                        OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
-                                        OvertimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
-                                        if contractRec.DiscPer > 0 then begin
-                                            if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
-                                            end
-                                        end;
+                                            TotalOverTimeCharges += fixRate;
 
-                                        TotalOverTimeCharges += fixRate;
-                                        if tariffRec.FSType = tariffRec.FSType::"All Charges" then begin
                                             if OvertimeChargeSL.Insert(true)
                                              then
                                                 ;
+
                                         end;
                                     end;
-
+                                    //Overtime charge line end
                                 end;
-                                //Overtime charge line end
-
                             end;
                         until logDetRec.Next() = 0;
                         //log details lines end
@@ -496,24 +479,25 @@ codeunit 50115 CreateSalesLines
                 //set Confidental Discount end
 
                 //Create Fuel Surcharge line
-
-                FuelSurchargesSL."Document No." := SalesOrderNo;
-                FuelSurchargesSL.Init();
-                lineNo := lineNo + 100;
-                FuelSurchargesSL.Validate("Line No.", lineNo);
-                FuelSurchargesSL.Validate("Document Type", SalesLine."Document Type"::Order);
-                FuelSurchargesSL.Validate("Type", SalesLine.Type::"G/L Account");
-                FuelSurchargesSL.Validate("No.", Format(RevAccount));
-                FuelSurchargesSL.Validate("Quantity", 1);
-                FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
-                FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-                FuelSurchargeDesc := 'Fuel Surcharge of ' + Format(FuelSurchargePercent) + '% on log rate of ' + Format(LogFuelRate);
-                FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
-                FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
-                FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
-                FuelSurchargesSL.Insert(true);
-                //Create Fuel Surcharge line end
-                //Log document contract <> 0
+                if IsFixedRate = false then begin
+                    FuelSurchargesSL."Document No." := SalesOrderNo;
+                    FuelSurchargesSL.Init();
+                    lineNo := lineNo + 100;
+                    FuelSurchargesSL.Validate("Line No.", lineNo);
+                    FuelSurchargesSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                    FuelSurchargesSL.Validate("Type", SalesLine.Type::"G/L Account");
+                    FuelSurchargesSL.Validate("No.", Format(RevAccount));
+                    FuelSurchargesSL.Validate("Quantity", 1);
+                    FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
+                    FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
+                    FuelSurchargeDesc := 'Fuel Surcharge of ' + Format(FuelSurchargePercent) + '% on log rate of ' + Format(LogFuelRate);
+                    FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
+                    FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
+                    FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                    FuelSurchargesSL.Insert(true);
+                    //Create Fuel Surcharge line end
+                    //Log document contract <> 0
+                end;
             end;
         end;
     end;

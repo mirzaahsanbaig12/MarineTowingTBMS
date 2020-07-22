@@ -37,6 +37,11 @@ table 50114 "Port Zone"
             TableRelation = "Company Register";
             Caption = 'Company';
         }
+        field(50115; FlatRate; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Repositioning Charge';
+        }
     }
 
     keys
