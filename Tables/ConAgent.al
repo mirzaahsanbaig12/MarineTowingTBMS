@@ -61,7 +61,8 @@ table 50124 ConAgent
         {
             DataClassification = ToBeClassified;
             Caption = 'Confidential Discount';
-            OptionMembers = "DISCOUNTABLE","GROSS","NET","NET/NET";
+            OptionMembers = "","DISCOUNTABLE","GROSS","NET","NET/NET";
+
         }
 
         field(50117; DiscPer; Decimal)
@@ -83,7 +84,7 @@ table 50124 ConAgent
         {
             DataClassification = ToBeClassified;
             Caption = 'Commission Type';
-            OptionMembers = "DISCOUNTABLE","GROSS","NET","NET/NET";
+            OptionMembers = "","DISCOUNTABLE","GROSS","NET","NET/NET";
         }
     }
 
@@ -100,6 +101,15 @@ table 50124 ConAgent
 
     trigger OnInsert()
     begin
+        if IsConfidential then begin
+            if DiscPer = 0 then
+                FieldError(DiscPer, 'value cannot be zero');
+        end
+        else begin
+
+            if CommonPer = 0 then
+                FieldError(CommonPer, 'cannot be zero');
+        end;
 
     end;
 
