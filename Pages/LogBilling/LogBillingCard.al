@@ -268,6 +268,13 @@ page 50148 "Log Billing"
         ShowHideMenu();
     end;
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        if not SalesOrderMenu then
+            SalesOrderNo := '';
+
+    end;
+
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Datelog := System.CurrentDateTime;
