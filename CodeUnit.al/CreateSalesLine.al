@@ -29,9 +29,10 @@ codeunit 50115 CreateSalesLines
         locStart: Record "Location Register";
         LocEnd: Record "Location Register";
 
-        overtimeMins: Integer;
+        StandardJobMins: Integer;
         Duration1: Duration;
         minsDiff: Decimal;
+        JobDurationMins: Decimal;
         tempStartDate: DateTime;
         CompInfo: Record "Company Information";
         CustomizedCalendarChange: Record "Customized Calendar Change";
@@ -337,18 +338,19 @@ codeunit 50115 CreateSalesLines
                                         end;
                                     end;
                                     //respostionion charge line end 
-                                    //ADDITIONAL TIME CHARGE END
+                                    //ADDITIONAL TIME CHARGE START
                                     if tariffRec.FindFirst() then begin
 
                                         if logDocRec.JobType = logDocRec.JobType::Shifting then
-                                            overtimeMins := tariffRec.JobShiftTime
+                                            StandardJobMins := tariffRec.JobShiftTime
                                         else
-                                            overtimeMins := tariffRec.JobStandardTime;
+                                            StandardJobMins := tariffRec.JobStandardTime;
 
-                                        Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
-                                        minsDiff := Round(Duration1 / 60000, 1, '=');
+                                        JobDurationMins := logDetRec.Timefinish - logDetRec.TimeStart;
+                                        JobDurationMins := Round(JobDurationMins / 60000, 1, '=');
+                                        minsDiff := JobDurationMins - StandardJobMins;
 
-                                        if (minsDiff > overtimeMins) and ((minsDiff - overtimeMins) >= 15)
+                                        if (JobDurationMins > StandardJobMins) and ((minsDiff) >= 15)
                                         then begin
 
                                             fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
@@ -404,14 +406,14 @@ codeunit 50115 CreateSalesLines
                                         UNTIL logDetRec.Timefinish < tempStartDate;
 
                                         if logDocRec.JobType = logDocRec.JobType::Shifting then
-                                            overtimeMins := tariffRec.JobShiftTime
+                                            StandardJobMins := tariffRec.JobShiftTime
                                         else
-                                            overtimeMins := tariffRec.JobStandardTime;
+                                            StandardJobMins := tariffRec.JobStandardTime;
 
                                         //Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
                                         minsDiff := Round(Duration1 / 60000, 1, '=');
 
-                                        if (minsDiff > overtimeMins) and ((minsDiff - overtimeMins) >= 15)
+                                        if (minsDiff > StandardJobMins) and ((minsDiff - StandardJobMins) >= 15)
                                         then begin
 
                                             fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
