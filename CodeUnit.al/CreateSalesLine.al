@@ -487,7 +487,7 @@ codeunit 50115 CreateSalesLines
 
                 // set Confidental Discount start
 
-                if SalesHeader.Get(SalesHeader."Document Type"::Order, SalesOrderNo) then begin
+                /*if SalesHeader.Get(SalesHeader."Document Type"::Order, SalesOrderNo) then begin
 
                     SalesHeader.CalcFields(Amount);
                     SalesHeaderAmount := SalesHeader.Amount;
@@ -525,6 +525,7 @@ codeunit 50115 CreateSalesLines
                         until ConAgent.Next() = 0
                     end;
                 end;
+                */
                 //set Confidental Discount end
 
                 //Create Fuel Surcharge line
