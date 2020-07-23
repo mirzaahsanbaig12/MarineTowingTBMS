@@ -333,6 +333,7 @@ codeunit 50115 CreateSalesLines
                                                 RepositionChargeSL.Validate(TBMSlongDesc, LineDesc);
                                                 RepositionChargeSL.Validate(TBMSDescription, LineDesc);
                                                 RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                                RepositionChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                                 if contractRec.DiscPer > 0 then begin
                                                     if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
                                                         RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
@@ -378,6 +379,7 @@ codeunit 50115 CreateSalesLines
                                             AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                             AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
                                             AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                            AdditionalTimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                             if contractRec.DiscPer > 0 then begin
                                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
                                                     AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
@@ -444,6 +446,7 @@ codeunit 50115 CreateSalesLines
                                             OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                             OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
                                             OvertimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                            OvertimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                             if contractRec.DiscPer > 0 then begin
                                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
                                                     OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
@@ -552,6 +555,7 @@ codeunit 50115 CreateSalesLines
                     FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
                     FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
                     FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                    FuelSurchargesSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                     FuelSurchargesSL.Insert(true);
                     //Create Fuel Surcharge line end
                     //Log document contract <> 0
