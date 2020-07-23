@@ -48,7 +48,7 @@ page 50130 "Tariff Register Card"
 
             }
 
-            group("Job Docking/ UnDocking and Shifting")
+            group("Additional Time")
             {
                 field(JobStandardTime; JobStandardTime)
                 {
