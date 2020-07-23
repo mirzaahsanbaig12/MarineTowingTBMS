@@ -28,7 +28,7 @@ codeunit 50115 CreateSalesLines
         locationRec: Record "Location Register";
         locStart: Record "Location Register";
         LocEnd: Record "Location Register";
-
+        PortZoneRec: Record "Port Zone";
         StandardJobMins: Integer;
         Duration1: Duration;
         minsDiff: Decimal;
@@ -52,6 +52,7 @@ codeunit 50115 CreateSalesLines
         LogFuelRate: Decimal;
         FuelSurchargeDesc: Text;
         IsFixedRate: Boolean;
+        PortZoneId: Code[5];
     begin
         TotalOverTimeCharges := 0;
         TotalBaseCharges := 0;
@@ -306,37 +307,44 @@ codeunit 50115 CreateSalesLines
 
                                 if IsFixedRate = false then begin
                                     //respostionion charge line start 
-                                    if (locStart.PrtId = 'C') and (LocEnd.PrtId = 'D') then begin
+                                    if tariffRec.FindFirst() then begin
+                                        if logDocRec.JobType = logDocRec.JobType::Docking then
+                                            PortZoneId := LocEnd.PrtId;
+                                        if logDocRec.JobType = logDocRec.JobType::Undocking then
+                                            PortZoneId := locStart.PrtId;
+                                        if logDocRec.JobType = logDocRec.JobType::Shifting then
+                                            PortZoneId := locStart.PrtId;
 
-                                        if tariffRec.FindFirst() then begin
+                                        if PortZoneRec.Get(PortZoneId) then begin
+                                            if PortZoneRec.FlatRate <> 0 then begin
+                                                RepositionChargeSL."Document No." := SalesOrderNo;
+                                                RepositionChargeSL.Init();
+                                                lineNo := lineNo + 100;
+                                                RepositionChargeSL.Validate("Line No.", lineNo);
+                                                RepositionChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                                RepositionChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                                RepositionChargeSL.Validate("No.", Format(RevAccount));
+                                                RepositionChargeSL.Validate("Quantity", 1);
 
-                                            RepositionChargeSL."Document No." := SalesOrderNo;
-                                            RepositionChargeSL.Init();
-                                            lineNo := lineNo + 100;
-                                            RepositionChargeSL.Validate("Line No.", lineNo);
-                                            RepositionChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
-                                            RepositionChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
-                                            RepositionChargeSL.Validate("No.", Format(RevAccount));
-                                            RepositionChargeSL.Validate("Quantity", 1);
-
-                                            RepositionChargeSL.Validate("Unit Price", tariffRec.FlatRate);
-                                            RepositionChargeSL.Validate("Line Amount", tariffRec.FlatRate);
-                                            RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                            LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
-                                            //RepositionChargeSL.Validate(Description, LineDesc);
-                                            RepositionChargeSL.Validate(TBMSlongDesc, LineDesc);
-                                            RepositionChargeSL.Validate(TBMSDescription, LineDesc);
-                                            RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
-                                            if contractRec.DiscPer > 0 then begin
-                                                if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                    RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
-                                                end
+                                                RepositionChargeSL.Validate("Unit Price", PortZoneRec.FlatRate);
+                                                RepositionChargeSL.Validate("Line Amount", PortZoneRec.FlatRate);
+                                                RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                                                LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
+                                                RepositionChargeSL.Validate(TBMSlongDesc, LineDesc);
+                                                RepositionChargeSL.Validate(TBMSDescription, LineDesc);
+                                                RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                                if contractRec.DiscPer > 0 then begin
+                                                    if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                                                        RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                    end
+                                                end;
+                                                if RepositionChargeSL.Insert(true)
+                                                then
+                                                    ;
                                             end;
-                                            if RepositionChargeSL.Insert(true)
-                                            then
-                                                ;
                                         end;
                                     end;
+
                                     //respostionion charge line end 
                                     //ADDITIONAL TIME CHARGE START
                                     if tariffRec.FindFirst() then begin
