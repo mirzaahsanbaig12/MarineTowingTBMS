@@ -53,6 +53,7 @@ codeunit 50115 CreateSalesLines
         FuelSurchargeDesc: Text;
         IsFixedRate: Boolean;
         PortZoneId: Code[5];
+        SalesLineCharges: Decimal;
     begin
         TotalOverTimeCharges := 0;
         TotalBaseCharges := 0;
@@ -155,7 +156,7 @@ codeunit 50115 CreateSalesLines
                                 if logDocRec.Tonnage > 30000 then
                                     baseRateRec.SetFilter(TonnageEnd, format(30000))
                                 else
-                                    baseRateRec.SetFilter(TonnageEnd, format(logDocRec.Tonnage));
+                                    baseRateRec.SetFilter(TonnageEnd, '<=%1', logDocRec.Tonnage);
 
                                 if logDocRec.JobType = logDocRec.JobType::Docking then
                                     baseRateRec.SetFilter(PrtId, LocEnd.PrtId);
@@ -282,6 +283,7 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate("Type", SalesLine.Type::"G/L Account");
                             SalesLine.Validate("No.", Format(RevAccount));
                             SalesLine.Validate("Quantity", 1);
+                            SalesLineCharges := fixRate;
                             SalesLine.Validate("Unit Price", fixRate);
                             SalesLine.Validate("Line Amount", fixRate);
                             SalesLine.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
@@ -426,8 +428,8 @@ codeunit 50115 CreateSalesLines
                                         if (minsDiff > StandardJobMins) and ((minsDiff - StandardJobMins) >= 15)
                                         then begin
 
-                                            fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
-                                            //fixRate := baseRateRec.Rate * (tariffRec.OTRateAmount / 100);
+                                            //fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
+                                            fixRate := SalesLineCharges * (tariffRec.OTRateAmount / 100);
 
                                             OvertimeChargeSL."Document No." := SalesOrderNo;
                                             OvertimeChargeSL.Init();
