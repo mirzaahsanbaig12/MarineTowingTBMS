@@ -250,7 +250,7 @@ page 50147 "Log Billing List"
         salesHeaderRec: Record "Sales Header";
 
 
-    procedure setConfidentalDiscount(_salesHeaderNo: code[20])
+    procedure setConfidentalDiscount(_salesHeaderNo: code[50])
 
     var
         salesHeaderLocalRec: Record "Sales Header";
@@ -261,8 +261,7 @@ page 50147 "Log Billing List"
         contractRec: Record Contract;
     begin
 
-        //get salesline no start
-        Message('sales header no  %1', _salesHeaderNo);
+
         SalesLine.SetFilter("Document Type", format(SalesLine."Document Type"::Order));
         SalesLine.SetFilter("Document No.", _salesHeaderNo);
 
@@ -270,7 +269,7 @@ page 50147 "Log Billing List"
             lineNo := SalesLine."Line No."
         end
         else
-            lineNo := 1000;
+            lineNo := 100;
 
         //get salesline no end
 
@@ -291,9 +290,9 @@ page 50147 "Log Billing List"
                 repeat
 
 
-                    SalesLine."Document No." := SalesOrderNo;
+                    SalesLine."Document No." := _salesHeaderNo;
                     SalesLine.Init();
-                    lineNo := lineNo + 100;
+                    lineNo := lineNo + 1000;
                     SalesLine.Validate("Line No.", lineNo);
                     SalesLine.Validate("Document Type", SalesLine."Document Type"::Order);
                     SalesLine.Validate("Type", SalesLine.Type::"G/L Account");
@@ -305,7 +304,7 @@ page 50147 "Log Billing List"
                     SalesLine.Validate(TBMSlongDesc, 'Confidential Discount');
                     SalesLine.Validate(TBMSDescription, 'Confidential Discount');
                     SalesLine.Validate(TBMSDescription2);
-                    SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                    //SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                     if contractRec.DiscPer > 0 then begin
                         if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin
                             SalesLine.Validate("Line Discount %", contractRec.DiscPer * 100);
@@ -313,6 +312,7 @@ page 50147 "Log Billing List"
                     end;
 
                     SalesLine.Insert(true);
+
 
                 until ConAgent.Next() = 0
             end;
