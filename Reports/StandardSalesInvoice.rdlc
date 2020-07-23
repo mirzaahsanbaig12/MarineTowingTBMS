@@ -523,9 +523,6 @@ End Function
         <Field Name="LineAmount_Line">
           <DataField>LineAmount_Line</DataField>
         </Field>
-        <Field Name="LineAmount_LineFormat">
-          <DataField>LineAmount_LineFormat</DataField>
-        </Field>
         <Field Name="LineAmount_Line_Lbl">
           <DataField>LineAmount_Line_Lbl</DataField>
         </Field>
@@ -834,9 +831,6 @@ End Function
         </Field>
         <Field Name="TotalAmountIncludingVAT">
           <DataField>TotalAmountIncludingVAT</DataField>
-        </Field>
-        <Field Name="TotalAmountIncludingVATFormat">
-          <DataField>TotalAmountIncludingVATFormat</DataField>
         </Field>
         <Field Name="TotalVATAmount">
           <DataField>TotalVATAmount</DataField>

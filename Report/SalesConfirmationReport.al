@@ -432,10 +432,11 @@ report 50112 "TBMS Sales Confirmation"
                 column(LineDiscountPercentText_Line; LineDiscountPctText)
                 {
                 }
-                column(LineAmount_Line; Amount + "Line Discount Amount")
+                column(LineAmount_Line; '$' + format(Amount + "Line Discount Amount"))
                 {
-                    AutoFormatExpression = "Currency Code";
-                    AutoFormatType = 1;
+                    //AutoFormatType = 10;
+                    //AutoFormatExpression = '1,USD';
+                    //AutoFormatType = 1;
                 }
                 column(LineAmount_Line_Lbl; 'Line Amount')
                 {
@@ -768,7 +769,7 @@ report 50112 "TBMS Sales Confirmation"
                 column(Amount_ReportTotalsLine; Amount)
                 {
                 }
-                column(AmountFormatted_ReportTotalsLine; "Amount Formatted")
+                column(AmountFormatted_ReportTotalsLine; '$' + format("Amount Formatted"))
                 {
                 }
                 column(FontBold_ReportTotalsLine; "Font Bold")
@@ -842,10 +843,10 @@ report 50112 "TBMS Sales Confirmation"
                 column(TotalVATBaseLCY; TotalVATBaseLCY)
                 {
                 }
-                column(TotalAmountIncludingVAT; TotalAmountInclVAT)
+                column(TotalAmountIncludingVAT; '$' + format(TotalAmountInclVAT))
                 {
-                    AutoFormatExpression = Header."Currency Code";
-                    AutoFormatType = 1;
+                    //AutoFormatExpression = Header."Currency Code";
+                    //AutoFormatType = 1;
                 }
                 column(TotalVATAmount; TotalAmountVAT)
                 {
