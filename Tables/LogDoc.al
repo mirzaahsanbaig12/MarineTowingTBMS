@@ -389,6 +389,15 @@ table 50129 LogDoc
             Editable = false;
         }
 
+
+        field(50159; SalesInvoiceNo; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Posted Sales Invoice';
+            TableRelation = "Sales Invoice Header";
+            Editable = false;
+        }
+
     }
 
     keys
