@@ -8,6 +8,7 @@ codeunit 50115 CreateSalesLines
         RepositionChargeSL: Record "Sales Line";
         OvertimeChargeSL: Record "Sales Line";
         FuelSurchargesSL: Record "Sales Line";
+        AdditionalTimeChargeSL: Record "Sales Line";
         logDocRec: Record LogDoc;
         logDetRec: Record LogDet;
         lineNo: Integer;
@@ -336,6 +337,52 @@ codeunit 50115 CreateSalesLines
                                         end;
                                     end;
                                     //respostionion charge line end 
+                                    //ADDITIONAL TIME CHARGE END
+                                    if tariffRec.FindFirst() then begin
+
+                                        if logDocRec.JobType = logDocRec.JobType::Shifting then
+                                            overtimeMins := tariffRec.JobShiftTime
+                                        else
+                                            overtimeMins := tariffRec.JobStandardTime;
+
+                                        Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
+                                        minsDiff := Round(Duration1 / 60000, 1, '=');
+
+                                        if (minsDiff > overtimeMins) and ((minsDiff - overtimeMins) >= 15)
+                                        then begin
+
+                                            fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
+                                            AdditionalTimeChargeSL."Document No." := SalesOrderNo;
+                                            AdditionalTimeChargeSL.Init();
+                                            lineNo := lineNo + 100;
+                                            AdditionalTimeChargeSL.Validate("Line No.", lineNo);
+                                            AdditionalTimeChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                            AdditionalTimeChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                            AdditionalTimeChargeSL.Validate("No.", Format(RevAccount));
+                                            AdditionalTimeChargeSL.Validate("Quantity", 1);
+
+                                            AdditionalTimeChargeSL.Validate("Unit Price", fixRate);
+                                            AdditionalTimeChargeSL.Validate("Line Amount", fixRate);
+                                            AdditionalTimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                                            LineDesc := 'Additional Time Charge for ' + logDetRec.TugId;
+                                            AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
+                                            AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
+                                            AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                            if contractRec.DiscPer > 0 then begin
+                                                if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                                                    AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                end
+                                            end;
+
+                                            TotalOverTimeCharges += fixRate;
+
+                                            if AdditionalTimeChargeSL.Insert(true)
+                                             then
+                                                ;
+
+                                        end;
+                                    end;
+                                    //ADDITIONAL TIME CHARGE END
                                     //Overtime charge line start
                                     baseCalendar.Reset();
                                     CustomizedCalendarChange.Reset();
@@ -459,8 +506,8 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate(TBMSIsFieldConfidentalLine, true);
                             SalesLine.Validate("Unit Price", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
                             SalesLine.Validate("Line Amount", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
-                            SalesLine.Validate(TBMSlongDesc, 'Confidental Discount');
-                            SalesLine.Validate(TBMSDescription, 'Confidental Discount');
+                            SalesLine.Validate(TBMSlongDesc, 'Confidential Discount');
+                            SalesLine.Validate(TBMSDescription, 'Confidential Discount');
                             SalesLine.Validate(TBMSDescription2);
                             SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                             if contractRec.DiscPer > 0 then begin

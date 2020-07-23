@@ -311,7 +311,7 @@ table 50129 LogDoc
         field(50148; FuelCost; Decimal)
         {
             DataClassification = ToBeClassified;
-
+            DecimalPlaces = 0 : 4;
             Caption = 'Fuel Cost';
 
             TableRelation = "Fuel Cost".FuelCost;
