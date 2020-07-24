@@ -305,10 +305,8 @@ codeunit 50115 CreateSalesLines
                             TotalBaseCharges += fixRate;
 
                             if SalesLine.Insert(true) then begin
-
-
                                 if IsFixedRate = false then begin
-                                    //respostionion charge line start 
+                                    //REOSITION START
                                     if tariffRec.FindFirst() then begin
                                         if logDocRec.JobType = logDocRec.JobType::Docking then
                                             PortZoneId := LocEnd.PrtId;
@@ -347,11 +345,9 @@ codeunit 50115 CreateSalesLines
                                             end;
                                         end;
                                     end;
-
-                                    //respostionion charge line end 
+                                    //REPOSITION END
                                     //ADDITIONAL TIME CHARGE START
                                     if tariffRec.FindFirst() then begin
-
                                         if logDocRec.JobType = logDocRec.JobType::Shifting then
                                             StandardJobMins := tariffRec.JobShiftTime
                                         else
@@ -397,7 +393,7 @@ codeunit 50115 CreateSalesLines
                                         end;
                                     end;
                                     //ADDITIONAL TIME CHARGE END
-                                    //Overtime charge line start
+                                    //OVERTIME START
                                     baseCalendar.Reset();
                                     CustomizedCalendarChange.Reset();
                                     CompInfo.Get();
@@ -463,13 +459,33 @@ codeunit 50115 CreateSalesLines
 
                                         end;
                                     end;
-                                    //Overtime charge line end
+                                    //OVERTIME END
+                                    //FUEL SURCHARGE START
+                                    if IsFixedRate = false then begin
+                                        FuelSurchargesSL."Document No." := SalesOrderNo;
+                                        FuelSurchargesSL.Init();
+                                        lineNo := lineNo + 100;
+                                        FuelSurchargesSL.Validate("Line No.", lineNo);
+                                        FuelSurchargesSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                        FuelSurchargesSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                        FuelSurchargesSL.Validate("No.", Format(RevAccount));
+                                        FuelSurchargesSL.Validate("Quantity", 1);
+                                        FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
+                                        FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
+                                        FuelSurchargeDesc := 'Fuel Surcharge of ' + Format(FuelSurchargePercent) + '% on log rate of ' + Format(LogFuelRate);
+                                        FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
+                                        FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
+                                        FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                        FuelSurchargesSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
+                                        FuelSurchargesSL.Insert(true);
+                                        //Log document contract <> 0
+                                    end;
+                                    //FUEL SURCHARGE END
                                 end;
                             end;
                         until logDetRec.Next() = 0;
                         //log details lines end
                     end;
-
                     //contract find end
                 end;
                 //log doc find end
@@ -540,28 +556,6 @@ codeunit 50115 CreateSalesLines
                 end;
                 */
                 //set Confidental Discount end
-
-                //Create Fuel Surcharge line
-                if IsFixedRate = false then begin
-                    FuelSurchargesSL."Document No." := SalesOrderNo;
-                    FuelSurchargesSL.Init();
-                    lineNo := lineNo + 100;
-                    FuelSurchargesSL.Validate("Line No.", lineNo);
-                    FuelSurchargesSL.Validate("Document Type", SalesLine."Document Type"::Order);
-                    FuelSurchargesSL.Validate("Type", SalesLine.Type::"G/L Account");
-                    FuelSurchargesSL.Validate("No.", Format(RevAccount));
-                    FuelSurchargesSL.Validate("Quantity", 1);
-                    FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
-                    FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-                    FuelSurchargeDesc := 'Fuel Surcharge of ' + Format(FuelSurchargePercent) + '% on log rate of ' + Format(LogFuelRate);
-                    FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
-                    FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
-                    FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
-                    FuelSurchargesSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
-                    FuelSurchargesSL.Insert(true);
-                    //Create Fuel Surcharge line end
-                    //Log document contract <> 0
-                end;
             end;
         end;
     end;

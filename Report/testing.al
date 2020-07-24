@@ -11,7 +11,11 @@ report 50133 "API Call"
 
     trigger OnPostReport()
     var
+        TimeStart: DateTime;
+        Timefinish: DateTime;
     begin
+        TimeStart := CREATEDATETIME(20200722D, 030000T);
+        Timefinish := CREATEDATETIME(20200722D, 050000T);
         CalcWorkingHours();
     end;
 
@@ -77,6 +81,50 @@ report 50133 "API Call"
         DOWNLOADFROMSTREAM(fileInstream, 'Export', '', 'All Files (*.*)|*.*', fileName);
     end;
 
+    local procedure GetOverTimeHours(startDT: DateTime; endDT: DateTime): Duration
+    var
+        CompInfo: Record "Company Information";
+        CustomizedCalendarChange: Record "Customized Calendar Change";
+        CalendarMgmt: Codeunit "Calendar Management";
+        baseCalendar: Record "Base Calendar";
+        tempStartDate: DateTime;
+        OvertimeDuration: Duration;
+        tempTime: Time;
+        isOverTimeHour: Boolean;
+    begin
+        baseCalendar.Reset();
+        CustomizedCalendarChange.Reset();
+        CompInfo.Get();
+        baseCalendar.SetRange(Code, CompInfo."Base Calendar Code");
+        Message(CompInfo."Base Calendar Code");
+        if baseCalendar.FindFirst() then begin
+            CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
+        end;
+
+        tempStartDate := startDT;
+        Message(format(tempStartDate));
+        REPEAT
+            //CHECK IF HOLIDAY
+            IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
+                OvertimeDuration := OvertimeDuration + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), DT2Time(tempStartDate)) - tempStartDate);
+                Message('Holiday');
+            end
+            else begin
+                //CHECK FOR NON WORKING HOURS ON WORKING DAY
+                tempTime := DT2Time(tempStartDate);
+                if (tempTime < 080000T) OR (tempTime > 170000T) then begin
+                    isOverTimeHour := true;
+                    Message(format(tempTime));
+                end;
+                Message('working day');
+            end;
+            tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
+            Message('loop');
+        UNTIL endDT < tempStartDate;
+
+        exit(OvertimeDuration);
+    end;
+
     local procedure CalcWorkingHours()
     var
         tempStartDate: DateTime;
@@ -96,12 +144,12 @@ report 50133 "API Call"
         if baseCalendar.FindFirst() then begin
             CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
         end;
-        TimeStart := CREATEDATETIME(20200501D, 020000T);
-        Timefinish := CREATEDATETIME(20200510D, 020000T);
+        TimeStart := CREATEDATETIME(20200725D, 050000T);
+        Timefinish := CREATEDATETIME(20200725D, 020000T);
         tempStartDate := TimeStart;
 
         REPEAT
-            IF NOT CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
+            IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
                 hours := hours + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), 000000T) - tempStartDate);
             end;
             tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
