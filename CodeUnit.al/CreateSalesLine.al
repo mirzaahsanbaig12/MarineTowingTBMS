@@ -329,7 +329,7 @@ codeunit 50115 CreateSalesLines
                                                 RepositionChargeSL.Validate("Unit Price", PortZoneRec.FlatRate);
                                                 RepositionChargeSL.Validate("Line Amount", PortZoneRec.FlatRate);
                                                 RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                                LineDesc := 'Repositioning Charge for ' + logDetRec.TugId;
+                                                LineDesc := 'Repositioning Charge for ' + tugBoatRec.Name;
                                                 RepositionChargeSL.Validate(TBMSlongDesc, LineDesc);
                                                 RepositionChargeSL.Validate(TBMSDescription, LineDesc);
                                                 RepositionChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -373,7 +373,7 @@ codeunit 50115 CreateSalesLines
                                             AdditionalTimeChargeSL.Validate("Unit Price", fixRate);
                                             AdditionalTimeChargeSL.Validate("Line Amount", fixRate);
                                             AdditionalTimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                            LineDesc := 'Additional Time Charge for ' + logDetRec.TugId;
+                                            LineDesc := 'Additional Time Charge for ' + tugBoatRec.name;
                                             AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                             AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
                                             AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -439,7 +439,7 @@ codeunit 50115 CreateSalesLines
                                             OvertimeChargeSL.Validate("Unit Price", fixRate);
                                             OvertimeChargeSL.Validate("Line Amount", fixRate);
                                             OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                            LineDesc := 'Over Time Charge for ' + logDetRec.TugId;
+                                            LineDesc := 'Over Time Charge for ' + tugBoatRec.Name;
                                             //OvertimeChargeSL.Validate(Description, LineDesc);
                                             OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                             OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
@@ -556,6 +556,28 @@ codeunit 50115 CreateSalesLines
                 end;
                 */
                 //set Confidental Discount end
+
+                //Create Fuel Surcharge line
+                if IsFixedRate = false then begin
+                    FuelSurchargesSL."Document No." := SalesOrderNo;
+                    FuelSurchargesSL.Init();
+                    lineNo := lineNo + 100;
+                    FuelSurchargesSL.Validate("Line No.", lineNo);
+                    FuelSurchargesSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                    FuelSurchargesSL.Validate("Type", SalesLine.Type::"G/L Account");
+                    FuelSurchargesSL.Validate("No.", Format(RevAccount));
+                    FuelSurchargesSL.Validate("Quantity", 1);
+                    FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
+                    FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
+                    FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.Name + '' + Format(FuelSurchargePercent) + '% on $ ' + format(LogFuelRate);//+ '  ' + FORMAT(LogFuelRate, 20, 1);//format(LogFuelRate);
+                    FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
+                    FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
+                    FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                    FuelSurchargesSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
+                    FuelSurchargesSL.Insert(true);
+                    //Create Fuel Surcharge line end
+                    //Log document contract <> 0
+                end;
             end;
         end;
     end;
