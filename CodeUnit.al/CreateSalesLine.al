@@ -60,8 +60,8 @@ codeunit 50115 CreateSalesLines
         TotalOverTimeCharges := 0;
         TotalBaseCharges := 0;
         TotalDiscountAmount := 0;
-        PriceFormatStr := '<Integer><Decimals,3>';
-        RateFormatStr := '<Integer><Decimals>';
+        PriceFormatStr := '<Integer Thousand><Decimals,3>';
+        RateFormatStr := '<Integer Thousand><Decimals>';
         logDocRec.SetFilter(LogDocNumber, format(_LogDocNumber));
 
         if logDocRec.FindFirst() then begin
@@ -218,13 +218,6 @@ codeunit 50115 CreateSalesLines
                                                 fixRate := baseRateRec.Rate;
                                         end;
                                     end;
-                                    if baseRateRec.FindLast() then begin
-                                        //fuel surcharge calcautions  
-                                        FuelSurchargePercent := (logDocRec.FuelCost - tariffRec.FSPrcBase) DIV tariffRec.FSPrcInc;
-                                        FuelSurchargeAmount := (FuelSurchargePercent / 100) * baseRateRec.Rate;
-                                        FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
-                                        LogFuelRate := logDocRec.FuelCost;
-                                    end;
                                 end;
                             end;
 
@@ -338,7 +331,7 @@ codeunit 50115 CreateSalesLines
                                                 RepositionChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                                 if contractRec.DiscPer > 0 then begin
                                                     if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                        RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                        RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
                                                     end
                                                 end;
                                                 if RepositionChargeSL.Insert(true)
@@ -382,7 +375,7 @@ codeunit 50115 CreateSalesLines
                                             AdditionalTimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                             if contractRec.DiscPer > 0 then begin
                                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                    AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                    AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
                                                 end
                                             end;
 
@@ -449,7 +442,7 @@ codeunit 50115 CreateSalesLines
                                             OvertimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                             if contractRec.DiscPer > 0 then begin
                                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                    OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                    OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
                                                 end
                                             end;
 
@@ -464,6 +457,14 @@ codeunit 50115 CreateSalesLines
                                     //OVERTIME END
                                     //FUEL SURCHARGE START
                                     if IsFixedRate = false then begin
+
+                                        //fuel surcharge calcautions  
+                                        FuelSurchargePercent := (logDocRec.FuelCost - tariffRec.FSPrcBase) DIV tariffRec.FSPrcInc;
+                                        FuelSurchargeAmount := (FuelSurchargePercent / 100) * SalesLineCharges;
+                                        FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
+                                        LogFuelRate := logDocRec.FuelCost;
+
+
                                         FuelSurchargesSL."Document No." := SalesOrderNo;
                                         FuelSurchargesSL.Init();
                                         lineNo := lineNo + 100;
@@ -474,7 +475,7 @@ codeunit 50115 CreateSalesLines
                                         FuelSurchargesSL.Validate("Quantity", 1);
                                         FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
                                         FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-                                        FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on log rate of $' + Format(LogFuelRate, 0, RateFormatStr);
+                                        FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on log rate of $' + Format(SalesLineCharges, 0, RateFormatStr);
                                         FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
                                         FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
                                         FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);

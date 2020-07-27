@@ -14,9 +14,9 @@ report 50133 "API Call"
         TimeStart: DateTime;
         Timefinish: DateTime;
     begin
-        TimeStart := CREATEDATETIME(20200722D, 030000T);
-        Timefinish := CREATEDATETIME(20200722D, 050000T);
-        CalcWorkingHours();
+        TimeStart := CREATEDATETIME(20200725D, 030000T);
+        Timefinish := CREATEDATETIME(20200725D, 050000T);
+        GetOverTimeHours(TimeStart, Timefinish);
     end;
 
     local procedure CallApi()
@@ -96,13 +96,11 @@ report 50133 "API Call"
         CustomizedCalendarChange.Reset();
         CompInfo.Get();
         baseCalendar.SetRange(Code, CompInfo."Base Calendar Code");
-        Message(CompInfo."Base Calendar Code");
         if baseCalendar.FindFirst() then begin
             CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
         end;
 
         tempStartDate := startDT;
-        Message(format(tempStartDate));
         REPEAT
             //CHECK IF HOLIDAY
             IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
@@ -120,8 +118,9 @@ report 50133 "API Call"
             end;
             tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
             Message('loop');
+            Message(Format(OvertimeDuration));
         UNTIL endDT < tempStartDate;
-
+        Message('final:%1', format(OvertimeDuration));
         exit(OvertimeDuration);
     end;
 

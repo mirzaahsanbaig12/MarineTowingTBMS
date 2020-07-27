@@ -167,6 +167,8 @@ page 50144 "Inbound Ord Doc Card"
         getVesselTonnage: Codeunit GetData;
         ShowCreateLogAction: Boolean;
         ShowCancelAction: Boolean;
+        logDocPage: page "Log Billing";
+        logDocRec: Record OrdDoc;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -209,7 +211,18 @@ page 50144 "Inbound Ord Doc Card"
         logId := Rec.CreateLog();
         ShowHideActions();
         CurrPage.Update();
-        Message('Log created. Log Number: %1', logId);
+
+        if (logId <> 0) then
+            if Dialog.CONFIRM('Log %1 has been created \ Do you want to open Log?', TRUE, logId)
+            then begin
+                logDocRec.SetFilter(LogDocNumber, format(logId));
+                if logDocRec.FindFirst() then begin
+                    logDocPage.SetRecord(logDocRec);
+                    logDocPage.Run();
+                end;
+            end;
+
+
 
     end;
 

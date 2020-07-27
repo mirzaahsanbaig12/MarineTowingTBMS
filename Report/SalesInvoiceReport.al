@@ -474,7 +474,7 @@ report 50113 "TBMS Sales Invoice"
                 column(LineDiscountPercentText_Line; LineDiscountPctText)
                 {
                 }
-                column(LineAmount_Line; '$' + format(Amount + "Line Discount Amount", 0, '<Integer><Decimals,3>'))
+                column(LineAmount_Line; '$' + format(Amount + "Line Discount Amount", 0, '<Integer Thousand><Decimals,3>'))
                 {
                     //AutoFormatType = 10;
                     //AutoFormatExpression = '1,USD';
