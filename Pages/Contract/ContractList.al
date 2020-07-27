@@ -39,6 +39,23 @@ page 50137 "Contract List"
                 {
                     ApplicationArea = all;
                 }
+                field(BillingOptions; BillingOptions)
+                {
+                    ApplicationArea = All;
+                }
+                field(TarCustomer; TarCustomer)
+                {
+                    ApplicationArea = All;
+                }
+                field(DeltaBilling; DeltaBilling)
+                {
+                    ApplicationArea = All;
+                    Enabled = (AssistFixedRate = false) AND (TarCustomer <> '');
+                }
+                field(AssistFixedRate; AssistFixedRate)
+                {
+                    ApplicationArea = All;
+                }
             }
 
         }
