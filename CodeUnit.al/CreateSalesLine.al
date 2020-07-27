@@ -331,7 +331,7 @@ codeunit 50115 CreateSalesLines
                                                 RepositionChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                                 if contractRec.DiscPer > 0 then begin
                                                     if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                        RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                        RepositionChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
                                                     end
                                                 end;
                                                 if RepositionChargeSL.Insert(true)
@@ -375,7 +375,7 @@ codeunit 50115 CreateSalesLines
                                             AdditionalTimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                             if contractRec.DiscPer > 0 then begin
                                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                    AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                    AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
                                                 end
                                             end;
 
@@ -442,7 +442,7 @@ codeunit 50115 CreateSalesLines
                                             OvertimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
                                             if contractRec.DiscPer > 0 then begin
                                                 if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                    OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer);
+                                                    OvertimeChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
                                                 end
                                             end;
 
