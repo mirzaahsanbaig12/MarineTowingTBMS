@@ -15,7 +15,7 @@ report 50133 "API Call"
         Timefinish: DateTime;
     begin
         TimeStart := CREATEDATETIME(20200724D, 070000T);
-        Timefinish := CREATEDATETIME(20200724D, 230000T);
+        Timefinish := CREATEDATETIME(20200725D, 020000T);
         GetOverTimeHours(TimeStart, Timefinish);
     end;
 
@@ -106,7 +106,6 @@ report 50133 "API Call"
         REPEAT
             //CHECK IF HOLIDAY
             tempTime := DT2Time(tempStartDateTime);
-            Message('loop, Date:%1', tempTime);
             IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDateTime), CustomizedCalendarChange) then begin
                 //CHECK IF DAY IS SATURDAY OR SUNDAY (6 OR 7)
                 if (DATE2DWY(DT2Date(tempStartDateTime), 1) = 6) OR (DATE2DWY(DT2Date(tempStartDateTime), 1) = 7) then begin
@@ -115,7 +114,6 @@ report 50133 "API Call"
                 else begin
                     isHoliday := true;
                 end;
-
                 //ADD 1 hour in overtime duration
                 OvertimeDuration += 3600000;
             end
@@ -123,7 +121,6 @@ report 50133 "API Call"
                 //CHECK FOR NON WORKING HOURS ON WORKING DAY
                 if NOT ((tempTime >= 080000T) AND (tempTime <= 170000T)) then begin //IF NOT WORKING HOURS
                     isOverTimeHour := true;
-                    Message('is overtime');
                     //ADD 1 hour in overtime duration
                     OvertimeDuration += 3600000;
                 end;
@@ -133,10 +130,7 @@ report 50133 "API Call"
                 tempStartDateTime := CreateDateTime(CalcDate('+1D', DT2Date(tempStartDateTime)), 000000T)
             else
                 tempStartDateTime := CreateDateTime(DT2DATE(tempStartDateTime), tempTime + 3600000);
-
         UNTIL endDT < tempStartDateTime;
-        Message('final:%1', format(OvertimeDuration));
-        Message('IsWeekEnd: %1, IsHoliday:%2, IsWorkingDay:%3', isWeekend, isHoliday, isOverTimeHour);
         exit(OvertimeDuration);
     end;
 

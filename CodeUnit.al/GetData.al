@@ -225,8 +225,58 @@ codeunit 50111 GetData
 
     end;
 
+    local procedure GetOverTimeHours(startDT: DateTime; endDT: DateTime): Duration
+    var
+        CompInfo: Record "Company Information";
+        CustomizedCalendarChange: Record "Customized Calendar Change";
+        CalendarMgmt: Codeunit "Calendar Management";
+        baseCalendar: Record "Base Calendar";
+        tempStartDateTime: DateTime;
+        OvertimeDuration: Duration;
+        tempTime: Time;
+        isOverTimeHour: Boolean;
+        isHoliday: Boolean;
+        isWeekend: Boolean;
+    begin
+        baseCalendar.Reset();
+        CustomizedCalendarChange.Reset();
+        CompInfo.Get();
+        baseCalendar.SetRange(Code, CompInfo."Base Calendar Code");
+        if baseCalendar.FindFirst() then begin
+            CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
+        end;
 
-
+        tempStartDateTime := startDT;
+        REPEAT
+            //CHECK IF HOLIDAY
+            tempTime := DT2Time(tempStartDateTime);
+            IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDateTime), CustomizedCalendarChange) then begin
+                //CHECK IF DAY IS SATURDAY OR SUNDAY (6 OR 7)
+                if (DATE2DWY(DT2Date(tempStartDateTime), 1) = 6) OR (DATE2DWY(DT2Date(tempStartDateTime), 1) = 7) then begin
+                    isWeekend := true;
+                end
+                else begin
+                    isHoliday := true;
+                end;
+                //ADD 1 hour in overtime duration
+                OvertimeDuration += 3600000;
+            end
+            else begin
+                //CHECK FOR NON WORKING HOURS ON WORKING DAY
+                if NOT ((tempTime >= 080000T) AND (tempTime <= 170000T)) then begin //IF NOT WORKING HOURS
+                    isOverTimeHour := true;
+                    //ADD 1 hour in overtime duration
+                    OvertimeDuration += 3600000;
+                end;
+            end;
+            //ADD 1 Hour and continue loop till end datetime
+            if tempTime = 230000T then
+                tempStartDateTime := CreateDateTime(CalcDate('+1D', DT2Date(tempStartDateTime)), 000000T)
+            else
+                tempStartDateTime := CreateDateTime(DT2DATE(tempStartDateTime), tempTime + 3600000);
+        UNTIL endDT < tempStartDateTime;
+        exit(OvertimeDuration);
+    end;
 
 }
 
