@@ -33,7 +33,7 @@ codeunit 50115 CreateSalesLines
         Duration1: Duration;
         minsDiff: Decimal;
         JobDurationMins: Decimal;
-        tempStartDate: DateTime;
+        tempStartDateTime: DateTime;
         CompInfo: Record "Company Information";
         CustomizedCalendarChange: Record "Customized Calendar Change";
         CalendarMgmt: Codeunit "Calendar Management";
@@ -56,6 +56,13 @@ codeunit 50115 CreateSalesLines
         SalesLineCharges: Decimal;
         PriceFormatStr: Text;
         RateFormatStr: Text;
+        TempDate: date;
+        isWeekend: Boolean;
+        isHoliday: Boolean;
+        tempTime: Time;
+        OvertimeDuration: Duration;
+        isOverTimeHour: Boolean;
+        overtimeCharges: Decimal;
     begin
         TotalOverTimeCharges := 0;
         TotalBaseCharges := 0;
@@ -399,29 +406,81 @@ codeunit 50115 CreateSalesLines
                                     if tariffRec.FindFirst() then begin
 
                                         //calculation working dates
-                                        tempStartDate := logDetRec.TimeStart;
+                                        //OLD CODE START
+                                        // tempStartDate := logDetRec.TimeStart;
+                                        // REPEAT
+                                        //     IF NOT CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
+                                        //         Duration1 := Duration1 + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), 000000T) - tempStartDate);
+                                        //     end;
+                                        //     tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
+
+                                        // UNTIL logDetRec.Timefinish < tempStartDate;
+
+                                        // if logDocRec.JobType = logDocRec.JobType::Shifting then
+                                        //     StandardJobMins := tariffRec.JobShiftTime
+                                        // else
+                                        //     StandardJobMins := tariffRec.JobStandardTime;
+
+                                        // //Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
+                                        // minsDiff := Round(Duration1 / 60000, 1, '=');
+                                        //OLD CODE END
+
+                                        baseCalendar.Reset();
+                                        CustomizedCalendarChange.Reset();
+                                        CompInfo.Get();
+                                        baseCalendar.SetRange(Code, CompInfo."Base Calendar Code");
+                                        if baseCalendar.FindFirst() then begin
+                                            CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
+                                        end;
+
+                                        tempStartDateTime := logDetRec.TimeStart;
+
                                         REPEAT
-                                            IF NOT CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
-                                                Duration1 := Duration1 + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), 000000T) - tempStartDate);
+                                            //CHECK IF HOLIDAY
+                                            tempTime := DT2Time(tempStartDateTime);
+                                            IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDateTime), CustomizedCalendarChange) then begin
+                                                //CHECK IF DAY IS SATURDAY OR SUNDAY (6 OR 7)
+                                                if (DATE2DWY(DT2Date(tempStartDateTime), 1) = 6) OR (DATE2DWY(DT2Date(tempStartDateTime), 1) = 7) then begin
+                                                    isWeekend := true;
+                                                end
+                                                else begin
+                                                    isHoliday := true;
+                                                end;
+                                                //ADD 1 hour in overtime duration
+                                                OvertimeDuration += 3600000;
+                                            end
+                                            else begin
+                                                //CHECK FOR NON WORKING HOURS ON WORKING DAY
+                                                if NOT ((tempTime >= 080000T) AND (tempTime <= 170000T)) then begin //IF NOT WORKING HOURS
+                                                    isOverTimeHour := true;
+                                                    //ADD 1 hour in overtime duration
+                                                    OvertimeDuration += 3600000;
+                                                end;
                                             end;
-                                            tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
+                                            //ADD 1 Hour and continue loop till end datetime
+                                            //ADD 1 day if time is 2300 hours (11 PM)
+                                            if tempTime = 230000T then
+                                                tempStartDateTime := CreateDateTime(CalcDate('+1D', DT2Date(tempStartDateTime)), 000000T)
+                                            else
+                                                tempStartDateTime := CreateDateTime(DT2DATE(tempStartDateTime), tempTime + 3600000);
+                                        UNTIL logDetRec.Timefinish < tempStartDateTime;
 
-                                        UNTIL logDetRec.Timefinish < tempStartDate;
 
-                                        if logDocRec.JobType = logDocRec.JobType::Shifting then
-                                            StandardJobMins := tariffRec.JobShiftTime
-                                        else
-                                            StandardJobMins := tariffRec.JobStandardTime;
-
-                                        //Duration1 := logDetRec.Timefinish - logDetRec.TimeStart;
-                                        minsDiff := Round(Duration1 / 60000, 1, '=');
-
-                                        if (minsDiff > StandardJobMins) and ((minsDiff - StandardJobMins) >= 15)
+                                        if OvertimeDuration > 0
                                         then begin
+                                            if isHoliday then
+                                                LineDesc := 'Holiday Overtime Charge'
+                                            else
+                                                if isWeekend then
+                                                    LineDesc := 'Weekend Overtime Charge'
+                                                else
+                                                    if isOverTimeHour then
+                                                        LineDesc := 'Overtime Charge';
 
                                             //fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
-                                            fixRate := SalesLineCharges * (tariffRec.OTRateAmount / 100);
+                                            //fixRate := SalesLineCharges * (tariffRec.OTRateAmount / 100);
 
+                                            overtimeCharges := ((OvertimeDuration / 3600000) * tugBoatRec.HourlyRate) * (tariffRec.OTRateAmount / 100);
                                             OvertimeChargeSL."Document No." := SalesOrderNo;
                                             OvertimeChargeSL.Init();
                                             lineNo := lineNo + 100;
@@ -431,10 +490,10 @@ codeunit 50115 CreateSalesLines
                                             OvertimeChargeSL.Validate("No.", Format(RevAccount));
                                             OvertimeChargeSL.Validate("Quantity", 1);
 
-                                            OvertimeChargeSL.Validate("Unit Price", fixRate);
-                                            OvertimeChargeSL.Validate("Line Amount", fixRate);
+                                            OvertimeChargeSL.Validate("Unit Price", overtimeCharges);
+                                            OvertimeChargeSL.Validate("Line Amount", overtimeCharges);
                                             OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                            LineDesc := 'Over Time Charge for ' + tugBoatRec.Name;
+                                            //LineDesc := 'Over Time Charge for ' + tugBoatRec.Name;
                                             //OvertimeChargeSL.Validate(Description, LineDesc);
                                             OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                             OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
