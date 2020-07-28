@@ -137,12 +137,16 @@ page 50147 "Log Billing List"
                 trigger OnAction()
                 var
                     info: Text;
+                    multipleLogs: Boolean;
+                    i: Integer;
                 Begin
                     info := 'Selected records may have different vessel, agent , owner or contract';
                     CurrPage.SetSelectionFilter(logDocRec);
                     if logDocRec.FindFirst() then begin
                         SameRecs := true;
                         StatusSO := false;
+                        multipleLogs := false;
+                        i := 0;
                         logDocRecFirst.TransferFields(logDocRec);
                         repeat
 
@@ -153,8 +157,10 @@ page 50147 "Log Billing List"
                                (logDocRecFirst.ConNumber <> logDocRec.ConNumber)
                                then begin
                                 SameRecs := false;
-
-                            end;
+                                i := 0;
+                            end
+                            else
+                                i := i + 1;
 
                             if (logDocRec.Status = logDocRec.Status::SO) or (logDocRec.Status = logDocRec.Status::Invoiced)
                                    then begin
@@ -176,7 +182,11 @@ page 50147 "Log Billing List"
                     if (SameRecs) and (logDocRec.FindFirst())
                     then begin
 
-                        salesOrder := CreateSalesHeader.CreateSalesHeader(logDocRecFirst.LogDocNumber);
+                        if (i > 1) then
+                            multipleLogs := true;
+
+
+                        salesOrder := CreateSalesHeader.CreateSalesHeader(logDocRecFirst.LogDocNumber, multipleLogs);
 
                         if salesOrder <> '1111'
                         then begin
@@ -301,6 +311,9 @@ page 50147 "Log Billing List"
                     SalesLine.Validate(TBMSIsFieldConfidentalLine, true);
                     SalesLine.Validate("Unit Price", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
                     SalesLine.Validate("Line Amount", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
+                    if not salesHeaderLocalRec.mulipleLogs then
+                        SalesLine.Validate(LogDocNumber, salesHeaderLocalRec.LogDocNumber);
+
                     SalesLine.Validate(TBMSlongDesc, 'Confidential Discount');
                     SalesLine.Validate(TBMSDescription, 'Confidential Discount');
                     SalesLine.Validate(TBMSDescription2);

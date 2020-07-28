@@ -55,6 +55,12 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
             Caption = 'Log Date';
         }
 
+        field(50119; mulipleLogs; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Multiple Logs';
+        }
+
 
 
     }

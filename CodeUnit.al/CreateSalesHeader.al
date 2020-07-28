@@ -1,6 +1,6 @@
 codeunit 50114 CreateSalesHeader
 {
-    procedure CreateSalesHeader(_LogDocNumber: Integer): code[50];
+    procedure CreateSalesHeader(_LogDocNumber: Integer; _multipleLogs: Boolean): code[50];
     var
         SalesHeader: Record "Sales Header";
         logDocRec: Record LogDoc;
@@ -38,6 +38,11 @@ codeunit 50114 CreateSalesHeader
             SalesHeader.Validate("Vessel", logDocRec.VesId);
             SalesHeader.Validate(ConNumber, logDocRec.ConNumber);
             SalesHeader.Validate(logdate, DT2Date(logDocRec.Datelog));
+
+            if _multipleLogs then
+                SalesHeader.Validate(mulipleLogs, true)
+            else
+                SalesHeader.Validate(mulipleLogs, false);
 
             if SalesHeader.Insert(true) then begin
                 exit(SalesHeader."No."); // return sales order no

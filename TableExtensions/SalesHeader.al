@@ -67,6 +67,12 @@ tableextension 50113 SalesHeaderExtTBMS extends "Sales Header"
             DataClassification = ToBeClassified;
             Caption = 'Log Date';
         }
+
+        field(50119; mulipleLogs; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Multiple Logs';
+        }
     }
 
     var
