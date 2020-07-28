@@ -14,8 +14,8 @@ report 50133 "API Call"
         TimeStart: DateTime;
         Timefinish: DateTime;
     begin
-        TimeStart := CREATEDATETIME(20200725D, 030000T);
-        Timefinish := CREATEDATETIME(20200725D, 050000T);
+        TimeStart := CREATEDATETIME(20200724D, 070000T);
+        Timefinish := CREATEDATETIME(20200724D, 230000T);
         GetOverTimeHours(TimeStart, Timefinish);
     end;
 
@@ -87,10 +87,12 @@ report 50133 "API Call"
         CustomizedCalendarChange: Record "Customized Calendar Change";
         CalendarMgmt: Codeunit "Calendar Management";
         baseCalendar: Record "Base Calendar";
-        tempStartDate: DateTime;
+        tempStartDateTime: DateTime;
         OvertimeDuration: Duration;
         tempTime: Time;
         isOverTimeHour: Boolean;
+        isHoliday: Boolean;
+        isWeekend: Boolean;
     begin
         baseCalendar.Reset();
         CustomizedCalendarChange.Reset();
@@ -100,27 +102,41 @@ report 50133 "API Call"
             CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
         end;
 
-        tempStartDate := startDT;
+        tempStartDateTime := startDT;
         REPEAT
             //CHECK IF HOLIDAY
-            IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDate), CustomizedCalendarChange) then begin
-                OvertimeDuration := OvertimeDuration + (CreateDateTime(CalcDate('+1D', DT2Date(tempStartDate)), DT2Time(tempStartDate)) - tempStartDate);
-                Message('Holiday');
+            tempTime := DT2Time(tempStartDateTime);
+            Message('loop, Date:%1', tempTime);
+            IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDateTime), CustomizedCalendarChange) then begin
+                //CHECK IF DAY IS SATURDAY OR SUNDAY (6 OR 7)
+                if (DATE2DWY(DT2Date(tempStartDateTime), 1) = 6) OR (DATE2DWY(DT2Date(tempStartDateTime), 1) = 7) then begin
+                    isWeekend := true;
+                end
+                else begin
+                    isHoliday := true;
+                end;
+
+                //ADD 1 hour in overtime duration
+                OvertimeDuration += 3600000;
             end
             else begin
                 //CHECK FOR NON WORKING HOURS ON WORKING DAY
-                tempTime := DT2Time(tempStartDate);
-                if (tempTime < 080000T) OR (tempTime > 170000T) then begin
+                if NOT ((tempTime >= 080000T) AND (tempTime <= 170000T)) then begin //IF NOT WORKING HOURS
                     isOverTimeHour := true;
-                    Message(format(tempTime));
+                    Message('is overtime');
+                    //ADD 1 hour in overtime duration
+                    OvertimeDuration += 3600000;
                 end;
-                Message('working day');
             end;
-            tempStartDate := CreateDateTime(CALCDATE('+1D', DT2DATE(tempStartDate)), 000000T);
-            Message('loop');
-            Message(Format(OvertimeDuration));
-        UNTIL endDT < tempStartDate;
+            //ADD 1 Hour and continue loop till end datetime
+            if tempTime = 230000T then
+                tempStartDateTime := CreateDateTime(CalcDate('+1D', DT2Date(tempStartDateTime)), 000000T)
+            else
+                tempStartDateTime := CreateDateTime(DT2DATE(tempStartDateTime), tempTime + 3600000);
+
+        UNTIL endDT < tempStartDateTime;
         Message('final:%1', format(OvertimeDuration));
+        Message('IsWeekEnd: %1, IsHoliday:%2, IsWorkingDay:%3', isWeekend, isHoliday, isOverTimeHour);
         exit(OvertimeDuration);
     end;
 
