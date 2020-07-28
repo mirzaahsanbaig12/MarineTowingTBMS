@@ -226,6 +226,9 @@ table 50126 OrdDoc
     procedure CreateLog(): Integer
     var
         logDoc: Record LogDoc;
+        logDetRec: Record LogDet;
+        ordTugRec: Record OrdTug;
+        ordLocRec: Record OrdLoc;
         ContractRec: Record Contract;
 
     begin
@@ -261,12 +264,37 @@ table 50126 OrdDoc
                 if logDoc.Insert(true) then begin
                     Rec.Validate(Status, Status::Logged);
                     Rec.Modify(true);
-                    exit(logDoc.LogDocNumber);
+
+                    //log details tab start
+                    ordTugRec.SetFilter(ORDocNumber, format(ORDocNumber));
+                    if ordTugRec.FindFirst() then begin
+                        repeat
+                            Message('hereeeeeee');
+
+                            logDetRec.Validate(TugId, ordTugRec.TugId);
+                            logDetRec.Validate(LogDocNumber, logDoc.LogDocNumber);
+
+                            ordLocRec.SetFilter(ORDocNumber, format(ORDocNumber));
+                            ordLocRec.SetAscending(LineNumber, true);
+                            ordLocRec.FindFirst();
+
+                            logDetRec.Validate(LocStr, ordLocRec.LocId);
+
+                            ordLocRec.SetFilter(ORDocNumber, format(ORDocNumber));
+                            ordLocRec.SetAscending(LineNumber, true);
+                            ordLocRec.FindLast();
+
+                            logDetRec.Validate(DestinationStr, ordLocRec.LocId);
+                            logDetRec.Insert();
+                        until ordTugRec.Next() = 0
+                    end;
                 end;
-            end
-            else
-                Message('Logs cannot be created beacuse no contract is defined for owner');
-        end;
+                //log details tab end
+                exit(logDoc.LogDocNumber);
+            end;
+        end
+        else
+            Message('Logs cannot be created beacuse no contract is defined for owner');
         exit(0);
 
     end;
