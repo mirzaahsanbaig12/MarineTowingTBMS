@@ -227,6 +227,7 @@ table 50126 OrdDoc
     var
         logDoc: Record LogDoc;
         logDetRec: Record LogDet;
+        logDetRecl: Record LogDet;
         ordTugRec: Record OrdTug;
         ordLocRec: Record OrdLoc;
         ContractRec: Record Contract;
@@ -269,7 +270,17 @@ table 50126 OrdDoc
                     ordTugRec.SetFilter(ORDocNumber, format(ORDocNumber));
                     if ordTugRec.FindFirst() then begin
                         repeat
-                            Message('hereeeeeee');
+
+                            logDetRecl.SetAscending(LineNumber, true);
+
+                            if logDetRecl.FindLast() then
+                                logDetRec.LineNumber := logDetRecl.LineNumber + 1
+                            else
+                                logDetRec.LineNumber := 1;
+
+
+
+
 
                             logDetRec.Validate(TugId, ordTugRec.TugId);
                             logDetRec.Validate(LogDocNumber, logDoc.LogDocNumber);
@@ -285,7 +296,7 @@ table 50126 OrdDoc
                             ordLocRec.FindLast();
 
                             logDetRec.Validate(DestinationStr, ordLocRec.LocId);
-                            logDetRec.Insert();
+                            logDetRec.Insert(true);
                         until ordTugRec.Next() = 0
                     end;
                 end;
