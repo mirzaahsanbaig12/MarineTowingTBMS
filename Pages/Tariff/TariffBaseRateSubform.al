@@ -23,6 +23,8 @@ page 50136 "Tariff Base Rate Subfrom"
                 {
                     ApplicationArea = All;
                     Caption = 'Rate';
+                    DecimalPlaces = 2;
+                    AutoFormatType = 0;
                 }
                 field(TarId; TarId)
                 {
