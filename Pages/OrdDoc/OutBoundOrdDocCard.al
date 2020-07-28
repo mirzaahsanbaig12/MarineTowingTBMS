@@ -168,7 +168,7 @@ page 50142 "Outbound Ord Doc Card"
         ShowCancelAction: Boolean;
         IsPageDisabled: Boolean;
         logDocPage: page "Log Billing";
-        logDocRec: Record OrdDoc;
+        logDocRec: Record LogDoc;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
