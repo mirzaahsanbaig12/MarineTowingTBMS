@@ -189,7 +189,8 @@ report 50133 "API Call"
         csvLine: Text;
         WebRequest: Codeunit "Http Web Request Mgt.";
         WebRequestHelper: Codeunit "Web Request Helper";
-        test: Record "Sales Header";
+        test: Page "Sales Order";
+
 
 
 }

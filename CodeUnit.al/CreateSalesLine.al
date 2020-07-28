@@ -81,7 +81,7 @@ codeunit 50115 CreateSalesLines
             end;
 
             if logDocRec.ConNumber = 0 then begin
-                Message('Contract is not defined on log # %1', logDocRec.LogDocNumber);
+                Error('Contract is not defined on log # %1', logDocRec.LogDocNumber);
                 exit;
             end;
 
@@ -93,7 +93,8 @@ codeunit 50115 CreateSalesLines
                 if contractRec.FindFirst() then begin
 
                     //check contract have fixed rate set then assign fix rate    
-                    if contractRec.AssistFixedRate then begin
+                    //IGNORE FIX RATE FOR HOURLY TYPE
+                    if (logDocRec.JobType <> logDocRec.JobType::Hourly) AND (contractRec.AssistFixedRate) then begin
                         if (logDocRec.JobType = logDocRec.JobType::Docking) OR (logDocRec.JobType = logDocRec.JobType::Undocking) then
                             fixRate := contractRec.Rate;
 
@@ -101,8 +102,7 @@ codeunit 50115 CreateSalesLines
                             fixRate := contractRec.AssistRate;
 
                         if fixRate = 0 then begin
-                            Message('Fix rate on contract# %1 is zero', contractRec.ConNumber);
-                            exit;
+                            Error('Fix rate on contract# %1 is zero', contractRec.ConNumber);
                         end;
                         IsFixedRate := true;
                     end;
