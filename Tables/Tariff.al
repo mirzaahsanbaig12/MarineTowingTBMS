@@ -86,7 +86,7 @@ table 50118 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Fuel Price Incr';
-            DecimalPlaces = 5;
+            DecimalPlaces = 4;
         }
 
         field(50123; FSPerBase; Decimal)
