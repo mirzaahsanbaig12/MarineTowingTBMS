@@ -101,11 +101,7 @@ page 50130 "Tariff Register Card"
                     ApplicationArea = All;
                 }
 
-                field(FSPrcInc; FSPrcInc)
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
+
 
                 field(FSPerBase; FSPerBase)
                 {
@@ -116,6 +112,7 @@ page 50130 "Tariff Register Card"
                 field(FSPerInc; FSPerInc)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(AmountPercent; AmountPercent)
@@ -129,7 +126,10 @@ page 50130 "Tariff Register Card"
                     ApplicationArea = All;
                 }
 
-
+                field(FSPrcInc; FSPrcInc)
+                {
+                    ApplicationArea = All;
+                }
             }
 
 
