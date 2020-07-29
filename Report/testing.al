@@ -15,7 +15,7 @@ report 50133 "API Call"
         Timefinish: DateTime;
     begin
         TimeStart := CREATEDATETIME(20200724D, 070000T);
-        Timefinish := CREATEDATETIME(20200725D, 020000T);
+        Timefinish := CREATEDATETIME(20200724D, 090000T);
         GetOverTimeHours(TimeStart, Timefinish);
     end;
 
@@ -116,6 +116,8 @@ report 50133 "API Call"
                 end;
                 //ADD 1 hour in overtime duration
                 OvertimeDuration += 3600000;
+
+                Message(CustomizedCalendarChange.Description);
             end
             else begin
                 //CHECK FOR NON WORKING HOURS ON WORKING DAY

@@ -441,7 +441,11 @@ codeunit 50115 CreateSalesLines
                                             IF CalendarMgmt.IsNonworkingDay(DT2DATE(tempStartDateTime), CustomizedCalendarChange) then begin
                                                 //CHECK IF DAY IS SATURDAY OR SUNDAY (6 OR 7)
                                                 if (DATE2DWY(DT2Date(tempStartDateTime), 1) = 6) OR (DATE2DWY(DT2Date(tempStartDateTime), 1) = 7) then begin
-                                                    isWeekend := true;
+                                                    //CHECK IF IT IS A HOLIDAY ON SATURDAY OR SUNDAY
+                                                    if CustomizedCalendarChange.Description.ToLower().Contains('holiday') then
+                                                        isHoliday := true
+                                                    else
+                                                        isWeekend := true;
                                                 end
                                                 else begin
                                                     isHoliday := true;
