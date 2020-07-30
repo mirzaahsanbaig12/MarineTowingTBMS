@@ -349,52 +349,59 @@ codeunit 50115 CreateSalesLines
                                     end;
                                     //REPOSITION END
                                     //ADDITIONAL TIME CHARGE START
-                                    if tariffRec.FindFirst() then begin
-                                        if logDocRec.JobType = logDocRec.JobType::Shifting then
-                                            StandardJobMins := tariffRec.JobShiftTime
-                                        else
-                                            StandardJobMins := tariffRec.JobStandardTime;
+                                    //No additional charge for hourly type
+                                    if logDocRec.JobType <> logDocRec.JobType::Hourly then begin
 
-                                        JobDurationMins := logDetRec.Timefinish - logDetRec.TimeStart;
-                                        JobDurationMins := Round(JobDurationMins / 60000, 1, '=');
-                                        minsDiff := JobDurationMins - StandardJobMins;
+                                        if tariffRec.FindFirst() then begin
+                                            if logDocRec.JobType = logDocRec.JobType::Shifting then
+                                                StandardJobMins := tariffRec.JobShiftTime
+                                            else
+                                                StandardJobMins := tariffRec.JobStandardTime;
 
-                                        if (JobDurationMins > StandardJobMins) and ((minsDiff) >= 15)
-                                        then begin
+                                            JobDurationMins := logDetRec.Timefinish - logDetRec.TimeStart;
+                                            JobDurationMins := Round(JobDurationMins / 60000, 1, '=');
+                                            minsDiff := JobDurationMins - StandardJobMins;
 
-                                            fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
-                                            AdditionalTimeChargeSL."Document No." := SalesOrderNo;
-                                            AdditionalTimeChargeSL.Init();
-                                            lineNo := lineNo + 100;
-                                            AdditionalTimeChargeSL.Validate("Line No.", lineNo);
-                                            AdditionalTimeChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
-                                            AdditionalTimeChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
-                                            AdditionalTimeChargeSL.Validate("No.", Format(RevAccount));
-                                            AdditionalTimeChargeSL.Validate("Quantity", 1);
+                                            //Additional charge after 10mins of grace period
+                                            if (JobDurationMins > StandardJobMins) and ((minsDiff) > 10)
+                                            then begin
 
-                                            AdditionalTimeChargeSL.Validate("Unit Price", fixRate);
-                                            AdditionalTimeChargeSL.Validate("Line Amount", fixRate);
-                                            AdditionalTimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
-                                            LineDesc := 'Additional Time Charge for ' + tugBoatRec.name;
-                                            AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
-                                            AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
-                                            AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
-                                            AdditionalTimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
-                                            if contractRec.DiscPer > 0 then begin
-                                                if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
-                                                    AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
-                                                end
+                                                // Additional charges need to be billed for each 30 mins   
+                                                // for each min above 30 mins mark, charges for next 30 mins will be added 
+                                                fixRate := Round((minsDiff / 30), 1, '>') * (tugBoatRec.HourlyRate / 2);
+                                                AdditionalTimeChargeSL."Document No." := SalesOrderNo;
+                                                AdditionalTimeChargeSL.Init();
+                                                lineNo := lineNo + 100;
+                                                AdditionalTimeChargeSL.Validate("Line No.", lineNo);
+                                                AdditionalTimeChargeSL.Validate("Document Type", SalesLine."Document Type"::Order);
+                                                AdditionalTimeChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
+                                                AdditionalTimeChargeSL.Validate("No.", Format(RevAccount));
+                                                AdditionalTimeChargeSL.Validate("Quantity", 1);
+
+                                                AdditionalTimeChargeSL.Validate("Unit Price", fixRate);
+                                                AdditionalTimeChargeSL.Validate("Line Amount", fixRate);
+                                                AdditionalTimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
+                                                LineDesc := 'Additional Time Charge for ' + tugBoatRec.name;
+                                                AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
+                                                AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
+                                                AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
+                                                AdditionalTimeChargeSL.Validate(LogDate, DT2Date(logDocRec.Datelog));
+                                                if contractRec.DiscPer > 0 then begin
+                                                    if contractRec.DiscType = contractRec.DiscType::"Gross On All Charges" then begin
+                                                        AdditionalTimeChargeSL.Validate("Line Discount %", contractRec.DiscPer * 100);
+                                                    end
+                                                end;
+
+                                                TotalOverTimeCharges += fixRate;
+
+                                                if AdditionalTimeChargeSL.Insert(true)
+                                                 then
+                                                    ;
                                             end;
-
-                                            TotalOverTimeCharges += fixRate;
-
-                                            if AdditionalTimeChargeSL.Insert(true)
-                                             then
-                                                ;
-
                                         end;
                                     end;
                                     //ADDITIONAL TIME CHARGE END
+
                                     //OVERTIME START
                                     baseCalendar.Reset();
                                     CustomizedCalendarChange.Reset();

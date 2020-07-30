@@ -29,7 +29,7 @@ table 50118 "Tariff"
         field(50113; JobStandardTime; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Standard Time';
+            Caption = 'Docking/Undocking Time';
         }
         field(50114; JobShiftTime; Integer)
         {
@@ -59,7 +59,7 @@ table 50118 "Tariff"
         field(50118; JobShiftAmount; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Shift Adj Amount';
+            Caption = 'Shift Adj Percentage';
         }
 
         field(50119; FSType; Option)

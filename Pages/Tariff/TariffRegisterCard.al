@@ -69,6 +69,7 @@ page 50130 "Tariff Register Card"
                 field(JobShiftType; JobShiftType)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
                 field(JobUDPer; JobUDPer)
@@ -151,33 +152,43 @@ page 50130 "Tariff Register Card"
                 }
             }
             */
+
+
             group("Over Time Rate")
             {
-                field(OTATBFlag; OTATBFlag)
+                grid(OvertimeGrid)
                 {
-                    Visible = false;
-                    ApplicationArea = All;
-                }
 
-                field(OTType; OTType)
-                {
-                    ApplicationArea = All;
-                }
+                    GridLayout = Columns;
+                    // field(OTATBFlag; OTATBFlag)
+                    // {
+                    //     Visible = false;
+                    //     ApplicationArea = All;
+                    // }
 
-                field(OTRateAmount; OTRateAmount)
-                {
-                    ApplicationArea = All;
-                }
+                    // field(OTType; OTType)
+                    // {
+                    //     ApplicationArea = All;
+                    //     Visible = false;
+                    // }
 
-                field(OTMinAmount; OTMinAmount)
-                {
-                    ApplicationArea = All;
-                }
+                    field(OTRateAmount; OTRateAmount)
+                    {
+                        ApplicationArea = All;
+                        ColumnSpan = 1;
+                    }
 
-                field(OTShiftAmount; OTShiftAmount)
-                {
-                    ApplicationArea = All;
-                    Visible = false;
+                    // field(OTMinAmount; OTMinAmount)
+                    // {
+                    //     ApplicationArea = All;
+                    //     Visible = false;
+                    // }
+
+                    // field(OTShiftAmount; OTShiftAmount)
+                    // {
+                    //     ApplicationArea = All;
+                    //     Visible = false;
+                    // }
                 }
             }
 
