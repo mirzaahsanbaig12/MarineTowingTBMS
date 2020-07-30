@@ -181,31 +181,30 @@ codeunit 50115 CreateSalesLines
                                         baseRateRec.SetFilter(PrtId, locStart.PrtId);
 
                                         if baseRateRec.FindLast() then begin
-                                            if tariffRec.JobShiftType = tariffRec.JobShiftType::Amount then begin
-                                                if logDocRec.Tonnage > 30000 then begin
 
-                                                    TonnageDiff := logDocRec.Tonnage - 30000;
-                                                    TonnageDiff := Round(TonnageDiff / tariffRec.BRInc, 1, '=');
-                                                    fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount + (TonnageDiff * tariffRec.BRAmt);
-                                                end
-                                                else
-                                                    fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount;
+                                            //COMMENTING FOR AMOUNT TYPE ONLY PERCENT WILL BE USED
+                                            // if tariffRec.JobShiftType = tariffRec.JobShiftType::Amount then begin
+                                            //     if logDocRec.Tonnage > 30000 then begin
+
+                                            //         TonnageDiff := logDocRec.Tonnage - 30000;
+                                            //         TonnageDiff := Round(TonnageDiff / tariffRec.BRInc, 1, '=');
+                                            //         fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount + (TonnageDiff * tariffRec.BRAmt);
+                                            //     end
+                                            //     else
+                                            //         fixRate := baseRateRec.Rate + tariffRec.JobShiftAmount;
+                                            // end;
+
+                                            if logDocRec.Tonnage > 30000 then begin
+                                                TonnageDiff := logDocRec.Tonnage - 30000;
+                                                TonnageDiff := Round(TonnageDiff / tariffRec.BRInc, 1, '=');
+                                                fixRate := baseRateRec.Rate + (baseRateRec.Rate * (tariffRec.JobShiftAmount / 100));
+                                                fixRate := fixRate + (TonnageDiff * tariffRec.BRAmt);
+                                            end
+                                            else begin
+                                                fixRate := baseRateRec.Rate + (baseRateRec.Rate * (tariffRec.JobShiftAmount / 100));
+                                                //fixRate := fixRate + baseRateRec.Rate;
                                             end;
 
-
-                                            if tariffRec.JobShiftType = tariffRec.JobShiftType::Percentage then begin
-                                                if logDocRec.Tonnage > 30000 then begin
-
-                                                    TonnageDiff := logDocRec.Tonnage - 30000;
-                                                    TonnageDiff := Round(TonnageDiff / tariffRec.BRInc, 1, '=');
-                                                    fixRate := baseRateRec.Rate + ((baseRateRec.Rate * tariffRec.JobShiftAmount) / 100);
-                                                    fixRate := fixRate + baseRateRec.Rate + (TonnageDiff * tariffRec.BRAmt);
-                                                end
-                                                else begin
-                                                    fixRate := baseRateRec.Rate + ((baseRateRec.Rate * tariffRec.JobShiftAmount) / 100);
-                                                    fixRate := fixRate + baseRateRec.Rate;
-                                                end;
-                                            end;
                                         end;
                                     end
 
@@ -474,7 +473,7 @@ codeunit 50115 CreateSalesLines
                                                 tempStartDateTime := CreateDateTime(CalcDate('+1D', DT2Date(tempStartDateTime)), 000000T)
                                             else
                                                 tempStartDateTime := CreateDateTime(DT2DATE(tempStartDateTime), tempTime + 3600000);
-                                        UNTIL logDetRec.Timefinish < tempStartDateTime;
+                                        UNTIL logDetRec.Timefinish <= tempStartDateTime;
 
 
                                         if OvertimeDuration > 0
@@ -491,7 +490,12 @@ codeunit 50115 CreateSalesLines
                                             //fixRate := (minsDiff / 60) * tugBoatRec.HourlyRate;
                                             //fixRate := SalesLineCharges * (tariffRec.OTRateAmount / 100);
 
-                                            overtimeCharges := ((OvertimeDuration / 3600000) * tugBoatRec.HourlyRate) * (tariffRec.OTRateAmount / 100);
+                                            if logDocRec.JobType = logDocRec.JobType::Hourly then begin
+                                                overtimeCharges := ((OvertimeDuration / 3600000) * tugBoatRec.HourlyRate) * (tariffRec.OTRateAmount / 100)
+                                            end
+                                            else
+                                                overtimeCharges := baseRateRec.Rate * (tariffRec.OTRateAmount / 100);
+
                                             OvertimeChargeSL."Document No." := SalesOrderNo;
                                             OvertimeChargeSL.Init();
                                             lineNo := lineNo + 100;
