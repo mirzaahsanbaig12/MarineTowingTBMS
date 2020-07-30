@@ -56,6 +56,10 @@ table 50122 TarBr
         {
             Clustered = true;
         }
+        key(TonnageKey; TonnageEnd)
+        {
+
+        }
     }
 
     var
