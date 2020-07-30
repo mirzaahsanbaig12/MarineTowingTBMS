@@ -161,7 +161,8 @@ codeunit 50115 CreateSalesLines
 
                                 baseRateRec.Reset();
                                 baseRateRec.SetFilter(TarId, tariffRec.TarId);
-
+                                baseRateRec.SetCurrentKey(TonnageEnd);
+                                baseRateRec.SetAscending(TonnageEnd, true);
                                 if logDocRec.Tonnage > 30000 then
                                     baseRateRec.SetFilter(TonnageEnd, format(30000))
                                 else
@@ -213,7 +214,6 @@ codeunit 50115 CreateSalesLines
                                     else begin
                                         if (baseRateRec.FindLast())
                                       then begin
-
                                             if logDocRec.Tonnage > 30000 then begin
 
                                                 TonnageDiff := logDocRec.Tonnage - 30000;
