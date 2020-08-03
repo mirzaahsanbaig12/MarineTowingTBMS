@@ -77,6 +77,20 @@ table 50112 "Tug Boat"
             DataClassification = ToBeClassified;
             Caption = 'Hourly Rate';
         }
+
+        field(50121; ExternaTug; Boolean)
+        {
+            Caption = 'External Tug';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50122; AcctRev; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Description = 'Revenue Account';
+            Caption = 'Revenue Account';
+            TableRelation = "G/L Account";
+        }
     }
 
 

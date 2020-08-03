@@ -55,6 +55,15 @@ page 50115 "Tug Register Card"
                     ApplicationArea = All;
                 }
 
+                field(ExternaTug; ExternaTug)
+                {
+                    ApplicationArea = All;
+                }
+                field(AcctRev; AcctRev)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(HourlyRate; HourlyRate)
                 {
                     ApplicationArea = All;
