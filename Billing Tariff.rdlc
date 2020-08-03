@@ -11,271 +11,6 @@
       <rd:DataSourceID>4bb6ce0c-344e-48ec-82d5-414950828727</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="CTCmpId">
-          <DataField>CTCmpId</DataField>
-        </Field>
-        <Field Name="CTTarId">
-          <DataField>CTTarId</DataField>
-        </Field>
-        <Field Name="CTDescr">
-          <DataField>CTDescr</DataField>
-        </Field>
-        <Field Name="CTTariffType">
-          <DataField>CTTariffType</DataField>
-        </Field>
-        <Field Name="CTDateBegining">
-          <DataField>CTDateBegining</DataField>
-        </Field>
-        <Field Name="CTDateEnding">
-          <DataField>CTDateEnding</DataField>
-        </Field>
-        <Field Name="CTStatus">
-          <DataField>CTStatus</DataField>
-        </Field>
-        <Field Name="CtJobStandardTime">
-          <DataField>CtJobStandardTime</DataField>
-        </Field>
-        <Field Name="CTJobShiftType">
-          <DataField>CTJobShiftType</DataField>
-        </Field>
-        <Field Name="CTJobShiftTime">
-          <DataField>CTJobShiftTime</DataField>
-        </Field>
-        <Field Name="CTJobUDPer">
-          <DataField>CTJobUDPer</DataField>
-        </Field>
-        <Field Name="CTJobUDPerFormat">
-          <DataField>CTJobUDPerFormat</DataField>
-        </Field>
-        <Field Name="CTJobSpPer">
-          <DataField>CTJobSpPer</DataField>
-        </Field>
-        <Field Name="CTJobSpPerFormat">
-          <DataField>CTJobSpPerFormat</DataField>
-        </Field>
-        <Field Name="CTJobShiftAmount">
-          <DataField>CTJobShiftAmount</DataField>
-        </Field>
-        <Field Name="CTJobShiftAmountFormat">
-          <DataField>CTJobShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="CTFSType">
-          <DataField>CTFSType</DataField>
-        </Field>
-        <Field Name="CTFSDiscountFlag">
-          <DataField>CTFSDiscountFlag</DataField>
-        </Field>
-        <Field Name="CTFSPerBase">
-          <DataField>CTFSPerBase</DataField>
-        </Field>
-        <Field Name="CTFSPerBaseFormat">
-          <DataField>CTFSPerBaseFormat</DataField>
-        </Field>
-        <Field Name="CTFSPerInc">
-          <DataField>CTFSPerInc</DataField>
-        </Field>
-        <Field Name="CTFSPerIncFormat">
-          <DataField>CTFSPerIncFormat</DataField>
-        </Field>
-        <Field Name="CTFSPrcBase">
-          <DataField>CTFSPrcBase</DataField>
-        </Field>
-        <Field Name="CTFSPrcBaseFormat">
-          <DataField>CTFSPrcBaseFormat</DataField>
-        </Field>
-        <Field Name="CTFSPrcInc">
-          <DataField>CTFSPrcInc</DataField>
-        </Field>
-        <Field Name="CTFSPrcIncFormat">
-          <DataField>CTFSPrcIncFormat</DataField>
-        </Field>
-        <Field Name="CTAmountPercent">
-          <DataField>CTAmountPercent</DataField>
-        </Field>
-        <Field Name="CTMaxiumCharge">
-          <DataField>CTMaxiumCharge</DataField>
-        </Field>
-        <Field Name="CTMaxiumChargeFormat">
-          <DataField>CTMaxiumChargeFormat</DataField>
-        </Field>
-        <Field Name="CTOTATBFlag">
-          <DataField>CTOTATBFlag</DataField>
-        </Field>
-        <Field Name="CTOTMinAmount">
-          <DataField>CTOTMinAmount</DataField>
-        </Field>
-        <Field Name="CTOTMinAmountFormat">
-          <DataField>CTOTMinAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTRateAmount">
-          <DataField>CTOTRateAmount</DataField>
-        </Field>
-        <Field Name="CTOTRateAmountFormat">
-          <DataField>CTOTRateAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTShiftAmount">
-          <DataField>CTOTShiftAmount</DataField>
-        </Field>
-        <Field Name="CTOTShiftAmountFormat">
-          <DataField>CTOTShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTType">
-          <DataField>CTOTType</DataField>
-        </Field>
-        <Field Name="CTTCATBFlag">
-          <DataField>CTTCATBFlag</DataField>
-        </Field>
-        <Field Name="CTTCType">
-          <DataField>CTTCType</DataField>
-        </Field>
-        <Field Name="CTTCRate">
-          <DataField>CTTCRate</DataField>
-        </Field>
-        <Field Name="CTTCRateFormat">
-          <DataField>CTTCRateFormat</DataField>
-        </Field>
-        <Field Name="CTBRInc">
-          <DataField>CTBRInc</DataField>
-        </Field>
-        <Field Name="CTBRAmt">
-          <DataField>CTBRAmt</DataField>
-        </Field>
-        <Field Name="TrTarId">
-          <DataField>TrTarId</DataField>
-        </Field>
-        <Field Name="TrDescr">
-          <DataField>TrDescr</DataField>
-        </Field>
-        <Field Name="TrTariffType">
-          <DataField>TrTariffType</DataField>
-        </Field>
-        <Field Name="TrDateBegining">
-          <DataField>TrDateBegining</DataField>
-        </Field>
-        <Field Name="TrDateEnding">
-          <DataField>TrDateEnding</DataField>
-        </Field>
-        <Field Name="TrStatus">
-          <DataField>TrStatus</DataField>
-        </Field>
-        <Field Name="TrJobStandardTime">
-          <DataField>TrJobStandardTime</DataField>
-        </Field>
-        <Field Name="TrJobShiftType">
-          <DataField>TrJobShiftType</DataField>
-        </Field>
-        <Field Name="TrJobShiftTime">
-          <DataField>TrJobShiftTime</DataField>
-        </Field>
-        <Field Name="TrJobUDPer">
-          <DataField>TrJobUDPer</DataField>
-        </Field>
-        <Field Name="TrJobUDPerFormat">
-          <DataField>TrJobUDPerFormat</DataField>
-        </Field>
-        <Field Name="TrJobSpPer">
-          <DataField>TrJobSpPer</DataField>
-        </Field>
-        <Field Name="TrJobSpPerFormat">
-          <DataField>TrJobSpPerFormat</DataField>
-        </Field>
-        <Field Name="TrJobShiftAmount">
-          <DataField>TrJobShiftAmount</DataField>
-        </Field>
-        <Field Name="TrJobShiftAmountFormat">
-          <DataField>TrJobShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="TrFSType">
-          <DataField>TrFSType</DataField>
-        </Field>
-        <Field Name="TrFSDiscountFlag">
-          <DataField>TrFSDiscountFlag</DataField>
-        </Field>
-        <Field Name="TrFSPerBase">
-          <DataField>TrFSPerBase</DataField>
-        </Field>
-        <Field Name="TrFSPerBaseFormat">
-          <DataField>TrFSPerBaseFormat</DataField>
-        </Field>
-        <Field Name="TrFSPerInc">
-          <DataField>TrFSPerInc</DataField>
-        </Field>
-        <Field Name="TrFSPerIncFormat">
-          <DataField>TrFSPerIncFormat</DataField>
-        </Field>
-        <Field Name="TrFSPrcBase">
-          <DataField>TrFSPrcBase</DataField>
-        </Field>
-        <Field Name="TrFSPrcBaseFormat">
-          <DataField>TrFSPrcBaseFormat</DataField>
-        </Field>
-        <Field Name="TrFSPrcInc">
-          <DataField>TrFSPrcInc</DataField>
-        </Field>
-        <Field Name="TrFSPrcIncFormat">
-          <DataField>TrFSPrcIncFormat</DataField>
-        </Field>
-        <Field Name="TrAmountPercent">
-          <DataField>TrAmountPercent</DataField>
-        </Field>
-        <Field Name="TrMaxiumCharge">
-          <DataField>TrMaxiumCharge</DataField>
-        </Field>
-        <Field Name="TrMaxiumChargeFormat">
-          <DataField>TrMaxiumChargeFormat</DataField>
-        </Field>
-        <Field Name="TrOTATBFlag">
-          <DataField>TrOTATBFlag</DataField>
-        </Field>
-        <Field Name="TrOTMinAmount">
-          <DataField>TrOTMinAmount</DataField>
-        </Field>
-        <Field Name="TrOTMinAmountFormat">
-          <DataField>TrOTMinAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTRateAmount">
-          <DataField>TrOTRateAmount</DataField>
-        </Field>
-        <Field Name="TrOTRateAmountFormat">
-          <DataField>TrOTRateAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTShiftAmount">
-          <DataField>TrOTShiftAmount</DataField>
-        </Field>
-        <Field Name="TrOTShiftAmountFormat">
-          <DataField>TrOTShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTType">
-          <DataField>TrOTType</DataField>
-        </Field>
-        <Field Name="TrTCATBFlag">
-          <DataField>TrTCATBFlag</DataField>
-        </Field>
-        <Field Name="TrTCType">
-          <DataField>TrTCType</DataField>
-        </Field>
-        <Field Name="TrTCRate">
-          <DataField>TrTCRate</DataField>
-        </Field>
-        <Field Name="TrTCRateFormat">
-          <DataField>TrTCRateFormat</DataField>
-        </Field>
-        <Field Name="TrBRInc">
-          <DataField>TrBRInc</DataField>
-        </Field>
-        <Field Name="TrBRAmt">
-          <DataField>TrBRAmt</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -2495,12 +2230,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -2540,4 +2269,269 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="CTCmpId">
+          <DataField>CTCmpId</DataField>
+        </Field>
+        <Field Name="CTTarId">
+          <DataField>CTTarId</DataField>
+        </Field>
+        <Field Name="CTDescr">
+          <DataField>CTDescr</DataField>
+        </Field>
+        <Field Name="CTTariffType">
+          <DataField>CTTariffType</DataField>
+        </Field>
+        <Field Name="CTDateBegining">
+          <DataField>CTDateBegining</DataField>
+        </Field>
+        <Field Name="CTDateEnding">
+          <DataField>CTDateEnding</DataField>
+        </Field>
+        <Field Name="CTStatus">
+          <DataField>CTStatus</DataField>
+        </Field>
+        <Field Name="CtJobStandardTime">
+          <DataField>CtJobStandardTime</DataField>
+        </Field>
+        <Field Name="CTJobShiftType">
+          <DataField>CTJobShiftType</DataField>
+        </Field>
+        <Field Name="CTJobShiftTime">
+          <DataField>CTJobShiftTime</DataField>
+        </Field>
+        <Field Name="CTJobUDPer">
+          <DataField>CTJobUDPer</DataField>
+        </Field>
+        <Field Name="CTJobUDPerFormat">
+          <DataField>CTJobUDPerFormat</DataField>
+        </Field>
+        <Field Name="CTJobSpPer">
+          <DataField>CTJobSpPer</DataField>
+        </Field>
+        <Field Name="CTJobSpPerFormat">
+          <DataField>CTJobSpPerFormat</DataField>
+        </Field>
+        <Field Name="CTJobShiftAmount">
+          <DataField>CTJobShiftAmount</DataField>
+        </Field>
+        <Field Name="CTJobShiftAmountFormat">
+          <DataField>CTJobShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="CTFSType">
+          <DataField>CTFSType</DataField>
+        </Field>
+        <Field Name="CTFSDiscountFlag">
+          <DataField>CTFSDiscountFlag</DataField>
+        </Field>
+        <Field Name="CTFSPerBase">
+          <DataField>CTFSPerBase</DataField>
+        </Field>
+        <Field Name="CTFSPerBaseFormat">
+          <DataField>CTFSPerBaseFormat</DataField>
+        </Field>
+        <Field Name="CTFSPerInc">
+          <DataField>CTFSPerInc</DataField>
+        </Field>
+        <Field Name="CTFSPerIncFormat">
+          <DataField>CTFSPerIncFormat</DataField>
+        </Field>
+        <Field Name="CTFSPrcBase">
+          <DataField>CTFSPrcBase</DataField>
+        </Field>
+        <Field Name="CTFSPrcBaseFormat">
+          <DataField>CTFSPrcBaseFormat</DataField>
+        </Field>
+        <Field Name="CTFSPrcInc">
+          <DataField>CTFSPrcInc</DataField>
+        </Field>
+        <Field Name="CTFSPrcIncFormat">
+          <DataField>CTFSPrcIncFormat</DataField>
+        </Field>
+        <Field Name="CTAmountPercent">
+          <DataField>CTAmountPercent</DataField>
+        </Field>
+        <Field Name="CTMaxiumCharge">
+          <DataField>CTMaxiumCharge</DataField>
+        </Field>
+        <Field Name="CTMaxiumChargeFormat">
+          <DataField>CTMaxiumChargeFormat</DataField>
+        </Field>
+        <Field Name="CTOTATBFlag">
+          <DataField>CTOTATBFlag</DataField>
+        </Field>
+        <Field Name="CTOTMinAmount">
+          <DataField>CTOTMinAmount</DataField>
+        </Field>
+        <Field Name="CTOTMinAmountFormat">
+          <DataField>CTOTMinAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTRateAmount">
+          <DataField>CTOTRateAmount</DataField>
+        </Field>
+        <Field Name="CTOTRateAmountFormat">
+          <DataField>CTOTRateAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTShiftAmount">
+          <DataField>CTOTShiftAmount</DataField>
+        </Field>
+        <Field Name="CTOTShiftAmountFormat">
+          <DataField>CTOTShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTType">
+          <DataField>CTOTType</DataField>
+        </Field>
+        <Field Name="CTTCATBFlag">
+          <DataField>CTTCATBFlag</DataField>
+        </Field>
+        <Field Name="CTTCType">
+          <DataField>CTTCType</DataField>
+        </Field>
+        <Field Name="CTTCRate">
+          <DataField>CTTCRate</DataField>
+        </Field>
+        <Field Name="CTTCRateFormat">
+          <DataField>CTTCRateFormat</DataField>
+        </Field>
+        <Field Name="CTBRInc">
+          <DataField>CTBRInc</DataField>
+        </Field>
+        <Field Name="CTBRAmt">
+          <DataField>CTBRAmt</DataField>
+        </Field>
+        <Field Name="TrTarId">
+          <DataField>TrTarId</DataField>
+        </Field>
+        <Field Name="TrDescr">
+          <DataField>TrDescr</DataField>
+        </Field>
+        <Field Name="TrTariffType">
+          <DataField>TrTariffType</DataField>
+        </Field>
+        <Field Name="TrDateBegining">
+          <DataField>TrDateBegining</DataField>
+        </Field>
+        <Field Name="TrDateEnding">
+          <DataField>TrDateEnding</DataField>
+        </Field>
+        <Field Name="TrStatus">
+          <DataField>TrStatus</DataField>
+        </Field>
+        <Field Name="TrJobStandardTime">
+          <DataField>TrJobStandardTime</DataField>
+        </Field>
+        <Field Name="TrJobShiftType">
+          <DataField>TrJobShiftType</DataField>
+        </Field>
+        <Field Name="TrJobShiftTime">
+          <DataField>TrJobShiftTime</DataField>
+        </Field>
+        <Field Name="TrJobUDPer">
+          <DataField>TrJobUDPer</DataField>
+        </Field>
+        <Field Name="TrJobUDPerFormat">
+          <DataField>TrJobUDPerFormat</DataField>
+        </Field>
+        <Field Name="TrJobSpPer">
+          <DataField>TrJobSpPer</DataField>
+        </Field>
+        <Field Name="TrJobSpPerFormat">
+          <DataField>TrJobSpPerFormat</DataField>
+        </Field>
+        <Field Name="TrJobShiftAmount">
+          <DataField>TrJobShiftAmount</DataField>
+        </Field>
+        <Field Name="TrJobShiftAmountFormat">
+          <DataField>TrJobShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="TrFSType">
+          <DataField>TrFSType</DataField>
+        </Field>
+        <Field Name="TrFSDiscountFlag">
+          <DataField>TrFSDiscountFlag</DataField>
+        </Field>
+        <Field Name="TrFSPerBase">
+          <DataField>TrFSPerBase</DataField>
+        </Field>
+        <Field Name="TrFSPerBaseFormat">
+          <DataField>TrFSPerBaseFormat</DataField>
+        </Field>
+        <Field Name="TrFSPerInc">
+          <DataField>TrFSPerInc</DataField>
+        </Field>
+        <Field Name="TrFSPerIncFormat">
+          <DataField>TrFSPerIncFormat</DataField>
+        </Field>
+        <Field Name="TrFSPrcBase">
+          <DataField>TrFSPrcBase</DataField>
+        </Field>
+        <Field Name="TrFSPrcBaseFormat">
+          <DataField>TrFSPrcBaseFormat</DataField>
+        </Field>
+        <Field Name="TrFSPrcInc">
+          <DataField>TrFSPrcInc</DataField>
+        </Field>
+        <Field Name="TrFSPrcIncFormat">
+          <DataField>TrFSPrcIncFormat</DataField>
+        </Field>
+        <Field Name="TrAmountPercent">
+          <DataField>TrAmountPercent</DataField>
+        </Field>
+        <Field Name="TrMaxiumCharge">
+          <DataField>TrMaxiumCharge</DataField>
+        </Field>
+        <Field Name="TrMaxiumChargeFormat">
+          <DataField>TrMaxiumChargeFormat</DataField>
+        </Field>
+        <Field Name="TrOTATBFlag">
+          <DataField>TrOTATBFlag</DataField>
+        </Field>
+        <Field Name="TrOTMinAmount">
+          <DataField>TrOTMinAmount</DataField>
+        </Field>
+        <Field Name="TrOTMinAmountFormat">
+          <DataField>TrOTMinAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTRateAmount">
+          <DataField>TrOTRateAmount</DataField>
+        </Field>
+        <Field Name="TrOTRateAmountFormat">
+          <DataField>TrOTRateAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTShiftAmount">
+          <DataField>TrOTShiftAmount</DataField>
+        </Field>
+        <Field Name="TrOTShiftAmountFormat">
+          <DataField>TrOTShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTType">
+          <DataField>TrOTType</DataField>
+        </Field>
+        <Field Name="TrTCATBFlag">
+          <DataField>TrTCATBFlag</DataField>
+        </Field>
+        <Field Name="TrTCType">
+          <DataField>TrTCType</DataField>
+        </Field>
+        <Field Name="TrTCRate">
+          <DataField>TrTCRate</DataField>
+        </Field>
+        <Field Name="TrTCRateFormat">
+          <DataField>TrTCRateFormat</DataField>
+        </Field>
+        <Field Name="TrBRInc">
+          <DataField>TrBRInc</DataField>
+        </Field>
+        <Field Name="TrBRAmt">
+          <DataField>TrBRAmt</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

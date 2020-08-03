@@ -264,7 +264,7 @@ codeunit 50115 CreateSalesLines
                             then begin
                                 //in minutes calculation
                                 HourlyJobDuration := logDetRec.Timefinish - logDetRec.TimeStart;
-                                HourlyJobDuration := hours / 60000;
+                                HourlyJobDuration := HourlyJobDuration / 60000;
                                 hours := logDetRec.Timefinish - logDetRec.TimeStart;
                                 //hours := Round(hours / 60000, 1.00, '>');
 
@@ -273,8 +273,7 @@ codeunit 50115 CreateSalesLines
                                     fixRate := tugBoatRec.HourlyRate
                                 else begin
                                     //Bill in 5 mins increments
-                                    Message('time: %1 --%2', (HourlyJobDuration / 5), Round((HourlyJobDuration / 5), 1, '>'));
-                                    fixRate := Round((HourlyJobDuration / 5), 1, '>') * (tugBoatRec.HourlyRate / 12);
+                                    fixRate := Round((HourlyJobDuration / 5), 1, '>') * (Round(tugBoatRec.HourlyRate / 12, 0.01, '>'));
                                 end;
 
                                 //fixRate := Round(fixRate, 1, '=') * tugBoatRec.HourlyRate;
