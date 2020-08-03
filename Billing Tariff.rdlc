@@ -11,6 +11,271 @@
       <rd:DataSourceID>4bb6ce0c-344e-48ec-82d5-414950828727</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="CTCmpId">
+          <DataField>CTCmpId</DataField>
+        </Field>
+        <Field Name="CTTarId">
+          <DataField>CTTarId</DataField>
+        </Field>
+        <Field Name="CTDescr">
+          <DataField>CTDescr</DataField>
+        </Field>
+        <Field Name="CTTariffType">
+          <DataField>CTTariffType</DataField>
+        </Field>
+        <Field Name="CTDateBegining">
+          <DataField>CTDateBegining</DataField>
+        </Field>
+        <Field Name="CTDateEnding">
+          <DataField>CTDateEnding</DataField>
+        </Field>
+        <Field Name="CTStatus">
+          <DataField>CTStatus</DataField>
+        </Field>
+        <Field Name="CtJobStandardTime">
+          <DataField>CtJobStandardTime</DataField>
+        </Field>
+        <Field Name="CTJobShiftType">
+          <DataField>CTJobShiftType</DataField>
+        </Field>
+        <Field Name="CTJobShiftTime">
+          <DataField>CTJobShiftTime</DataField>
+        </Field>
+        <Field Name="CTJobUDPer">
+          <DataField>CTJobUDPer</DataField>
+        </Field>
+        <Field Name="CTJobUDPerFormat">
+          <DataField>CTJobUDPerFormat</DataField>
+        </Field>
+        <Field Name="CTJobSpPer">
+          <DataField>CTJobSpPer</DataField>
+        </Field>
+        <Field Name="CTJobSpPerFormat">
+          <DataField>CTJobSpPerFormat</DataField>
+        </Field>
+        <Field Name="CTJobShiftAmount">
+          <DataField>CTJobShiftAmount</DataField>
+        </Field>
+        <Field Name="CTJobShiftAmountFormat">
+          <DataField>CTJobShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="CTFSType">
+          <DataField>CTFSType</DataField>
+        </Field>
+        <Field Name="CTFSDiscountFlag">
+          <DataField>CTFSDiscountFlag</DataField>
+        </Field>
+        <Field Name="CTFSPerBase">
+          <DataField>CTFSPerBase</DataField>
+        </Field>
+        <Field Name="CTFSPerBaseFormat">
+          <DataField>CTFSPerBaseFormat</DataField>
+        </Field>
+        <Field Name="CTFSPerInc">
+          <DataField>CTFSPerInc</DataField>
+        </Field>
+        <Field Name="CTFSPerIncFormat">
+          <DataField>CTFSPerIncFormat</DataField>
+        </Field>
+        <Field Name="CTFSPrcBase">
+          <DataField>CTFSPrcBase</DataField>
+        </Field>
+        <Field Name="CTFSPrcBaseFormat">
+          <DataField>CTFSPrcBaseFormat</DataField>
+        </Field>
+        <Field Name="CTFSPrcInc">
+          <DataField>CTFSPrcInc</DataField>
+        </Field>
+        <Field Name="CTFSPrcIncFormat">
+          <DataField>CTFSPrcIncFormat</DataField>
+        </Field>
+        <Field Name="CTAmountPercent">
+          <DataField>CTAmountPercent</DataField>
+        </Field>
+        <Field Name="CTMaxiumCharge">
+          <DataField>CTMaxiumCharge</DataField>
+        </Field>
+        <Field Name="CTMaxiumChargeFormat">
+          <DataField>CTMaxiumChargeFormat</DataField>
+        </Field>
+        <Field Name="CTOTATBFlag">
+          <DataField>CTOTATBFlag</DataField>
+        </Field>
+        <Field Name="CTOTMinAmount">
+          <DataField>CTOTMinAmount</DataField>
+        </Field>
+        <Field Name="CTOTMinAmountFormat">
+          <DataField>CTOTMinAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTRateAmount">
+          <DataField>CTOTRateAmount</DataField>
+        </Field>
+        <Field Name="CTOTRateAmountFormat">
+          <DataField>CTOTRateAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTShiftAmount">
+          <DataField>CTOTShiftAmount</DataField>
+        </Field>
+        <Field Name="CTOTShiftAmountFormat">
+          <DataField>CTOTShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTType">
+          <DataField>CTOTType</DataField>
+        </Field>
+        <Field Name="CTTCATBFlag">
+          <DataField>CTTCATBFlag</DataField>
+        </Field>
+        <Field Name="CTTCType">
+          <DataField>CTTCType</DataField>
+        </Field>
+        <Field Name="CTTCRate">
+          <DataField>CTTCRate</DataField>
+        </Field>
+        <Field Name="CTTCRateFormat">
+          <DataField>CTTCRateFormat</DataField>
+        </Field>
+        <Field Name="CTBRInc">
+          <DataField>CTBRInc</DataField>
+        </Field>
+        <Field Name="CTBRAmt">
+          <DataField>CTBRAmt</DataField>
+        </Field>
+        <Field Name="TrTarId">
+          <DataField>TrTarId</DataField>
+        </Field>
+        <Field Name="TrDescr">
+          <DataField>TrDescr</DataField>
+        </Field>
+        <Field Name="TrTariffType">
+          <DataField>TrTariffType</DataField>
+        </Field>
+        <Field Name="TrDateBegining">
+          <DataField>TrDateBegining</DataField>
+        </Field>
+        <Field Name="TrDateEnding">
+          <DataField>TrDateEnding</DataField>
+        </Field>
+        <Field Name="TrStatus">
+          <DataField>TrStatus</DataField>
+        </Field>
+        <Field Name="TrJobStandardTime">
+          <DataField>TrJobStandardTime</DataField>
+        </Field>
+        <Field Name="TrJobShiftType">
+          <DataField>TrJobShiftType</DataField>
+        </Field>
+        <Field Name="TrJobShiftTime">
+          <DataField>TrJobShiftTime</DataField>
+        </Field>
+        <Field Name="TrJobUDPer">
+          <DataField>TrJobUDPer</DataField>
+        </Field>
+        <Field Name="TrJobUDPerFormat">
+          <DataField>TrJobUDPerFormat</DataField>
+        </Field>
+        <Field Name="TrJobSpPer">
+          <DataField>TrJobSpPer</DataField>
+        </Field>
+        <Field Name="TrJobSpPerFormat">
+          <DataField>TrJobSpPerFormat</DataField>
+        </Field>
+        <Field Name="TrJobShiftAmount">
+          <DataField>TrJobShiftAmount</DataField>
+        </Field>
+        <Field Name="TrJobShiftAmountFormat">
+          <DataField>TrJobShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="TrFSType">
+          <DataField>TrFSType</DataField>
+        </Field>
+        <Field Name="TrFSDiscountFlag">
+          <DataField>TrFSDiscountFlag</DataField>
+        </Field>
+        <Field Name="TrFSPerBase">
+          <DataField>TrFSPerBase</DataField>
+        </Field>
+        <Field Name="TrFSPerBaseFormat">
+          <DataField>TrFSPerBaseFormat</DataField>
+        </Field>
+        <Field Name="TrFSPerInc">
+          <DataField>TrFSPerInc</DataField>
+        </Field>
+        <Field Name="TrFSPerIncFormat">
+          <DataField>TrFSPerIncFormat</DataField>
+        </Field>
+        <Field Name="TrFSPrcBase">
+          <DataField>TrFSPrcBase</DataField>
+        </Field>
+        <Field Name="TrFSPrcBaseFormat">
+          <DataField>TrFSPrcBaseFormat</DataField>
+        </Field>
+        <Field Name="TrFSPrcInc">
+          <DataField>TrFSPrcInc</DataField>
+        </Field>
+        <Field Name="TrFSPrcIncFormat">
+          <DataField>TrFSPrcIncFormat</DataField>
+        </Field>
+        <Field Name="TrAmountPercent">
+          <DataField>TrAmountPercent</DataField>
+        </Field>
+        <Field Name="TrMaxiumCharge">
+          <DataField>TrMaxiumCharge</DataField>
+        </Field>
+        <Field Name="TrMaxiumChargeFormat">
+          <DataField>TrMaxiumChargeFormat</DataField>
+        </Field>
+        <Field Name="TrOTATBFlag">
+          <DataField>TrOTATBFlag</DataField>
+        </Field>
+        <Field Name="TrOTMinAmount">
+          <DataField>TrOTMinAmount</DataField>
+        </Field>
+        <Field Name="TrOTMinAmountFormat">
+          <DataField>TrOTMinAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTRateAmount">
+          <DataField>TrOTRateAmount</DataField>
+        </Field>
+        <Field Name="TrOTRateAmountFormat">
+          <DataField>TrOTRateAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTShiftAmount">
+          <DataField>TrOTShiftAmount</DataField>
+        </Field>
+        <Field Name="TrOTShiftAmountFormat">
+          <DataField>TrOTShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTType">
+          <DataField>TrOTType</DataField>
+        </Field>
+        <Field Name="TrTCATBFlag">
+          <DataField>TrTCATBFlag</DataField>
+        </Field>
+        <Field Name="TrTCType">
+          <DataField>TrTCType</DataField>
+        </Field>
+        <Field Name="TrTCRate">
+          <DataField>TrTCRate</DataField>
+        </Field>
+        <Field Name="TrTCRateFormat">
+          <DataField>TrTCRateFormat</DataField>
+        </Field>
+        <Field Name="TrBRInc">
+          <DataField>TrBRInc</DataField>
+        </Field>
+        <Field Name="TrBRAmt">
+          <DataField>TrBRAmt</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -750,122 +1015,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="TrJobShiftType">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobShiftType.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTJobShiftType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobShiftType.Value, "DataSet_Result"),"Red","Black")</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobShiftType</rd:DefaultName>
-            <Top>2.9536in</Top>
-            <Left>5.30432in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>21</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobUDPer">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobUDPer.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTJobUDPer.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobUDPer.Value, "DataSet_Result"),"Red","Black")</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobUDPer</rd:DefaultName>
-            <Top>3.16194in</Top>
-            <Left>5.30432in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>22</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="TrJobSpPer">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TrJobSpPer.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>TrJobSpPer</rd:DefaultName>
-            <Top>3.3286in</Top>
-            <Left>5.30224in</Left>
-            <Height>0.125in</Height>
-            <Width>1.61458in</Width>
-            <ZIndex>23</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="TrJobShiftAmount">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -887,11 +1036,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrJobShiftAmount</rd:DefaultName>
-            <Top>3.52305in</Top>
-            <Left>5.30424in</Left>
+            <Top>2.99142in</Top>
+            <Left>5.3004in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
-            <ZIndex>24</ZIndex>
+            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -927,124 +1076,7 @@
             <Left>2.96403in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>25</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <VerticalAlign>Top</VerticalAlign>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CTJobShiftType">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!CTJobShiftType.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CTJobShiftType</rd:DefaultName>
-            <Top>2.93971in</Top>
-            <Left>2.96404in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>26</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <VerticalAlign>Top</VerticalAlign>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CTJobUDPer">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!CTJobUDPer.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CTJobUDPer</rd:DefaultName>
-            <Top>3.13416in</Top>
-            <Left>2.96404in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>27</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <VerticalAlign>Top</VerticalAlign>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CTJobSpPer">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!CTJobSpPer.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CTJobSpPer</rd:DefaultName>
-            <Top>3.30082in</Top>
-            <Left>2.964in</Left>
-            <Height>0.125in</Height>
-            <Width>1.54167in</Width>
-            <ZIndex>28</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1076,11 +1108,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftAmount</rd:DefaultName>
-            <Top>3.52305in</Top>
-            <Left>2.96396in</Left>
+            <Top>2.99142in</Top>
+            <Left>2.96012in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1115,118 +1147,7 @@
             <Left>0.56473in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>30</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox16">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Shift Adj Type</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>2.93971in</Top>
-            <Left>0.56474in</Left>
-            <Height>0.125in</Height>
-            <Width>2.04513in</Width>
-            <ZIndex>31</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox18">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Dead Ships/ Unattended Barges %</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.13416in</Top>
-            <Left>0.56474in</Left>
-            <Height>0.125in</Height>
-            <Width>2.04514in</Width>
-            <ZIndex>32</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox19">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Stand By Charge%</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.30082in</Top>
-            <Left>0.5647in</Left>
-            <Height>0.125in</Height>
-            <Width>2.04514in</Width>
-            <ZIndex>33</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
+            <ZIndex>24</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1256,11 +1177,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.50916in</Top>
-            <Left>0.56466in</Left>
+            <Top>2.97753in</Top>
+            <Left>0.56082in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>34</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1291,11 +1212,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftTime</rd:DefaultName>
-            <Top>3.74591in</Top>
-            <Left>2.96196in</Left>
+            <Top>3.21428in</Top>
+            <Left>2.95812in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>35</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1327,11 +1248,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrJobShiftTime</rd:DefaultName>
-            <Top>3.7036in</Top>
-            <Left>5.30431in</Left>
+            <Top>3.17197in</Top>
+            <Left>5.30047in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
-            <ZIndex>36</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1361,11 +1282,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.7036in</Top>
-            <Left>0.56473in</Left>
+            <Top>3.17197in</Top>
+            <Left>0.56089in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>37</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1399,7 +1320,7 @@
             <Left>0.56296in</Left>
             <Height>0.38194in</Height>
             <Width>6.35667in</Width>
-            <ZIndex>38</ZIndex>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1435,7 +1356,7 @@
             <Left>0.56398in</Left>
             <Height>0.29861in</Height>
             <Width>6.35416in</Width>
-            <ZIndex>39</ZIndex>
+            <ZIndex>30</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1465,11 +1386,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>3.94035in</Top>
-            <Left>0.56391in</Left>
+            <Top>3.40872in</Top>
+            <Left>0.56007in</Left>
             <Height>0.29861in</Height>
             <Width>6.28124in</Width>
-            <ZIndex>40</ZIndex>
+            <ZIndex>31</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1501,11 +1422,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>4.30084in</Top>
-            <Left>2.96463in</Left>
+            <Top>3.76921in</Top>
+            <Left>2.96079in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>41</ZIndex>
+            <ZIndex>32</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1537,11 +1458,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>4.49528in</Top>
-            <Left>5.30423in</Left>
+            <Top>3.96365in</Top>
+            <Left>5.30039in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>42</ZIndex>
+            <ZIndex>33</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1571,11 +1492,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.31473in</Top>
-            <Left>0.5646in</Left>
+            <Top>3.7831in</Top>
+            <Left>0.56076in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>43</ZIndex>
+            <ZIndex>34</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1605,11 +1526,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.52306in</Top>
-            <Left>0.56465in</Left>
+            <Top>3.99143in</Top>
+            <Left>0.56081in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>44</ZIndex>
+            <ZIndex>35</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1641,11 +1562,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>4.30084in</Top>
-            <Left>5.30419in</Left>
+            <Top>3.76921in</Top>
+            <Left>5.30035in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>45</ZIndex>
+            <ZIndex>36</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1677,11 +1598,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>4.49528in</Top>
-            <Left>2.96395in</Left>
+            <Top>3.96365in</Top>
+            <Left>2.96011in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>46</ZIndex>
+            <ZIndex>37</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1712,11 +1633,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPerBase</rd:DefaultName>
-            <Top>4.70363in</Top>
-            <Left>2.96395in</Left>
+            <Top>4.172in</Top>
+            <Left>2.96011in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>47</ZIndex>
+            <ZIndex>38</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1747,11 +1668,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPerInc</rd:DefaultName>
-            <Top>4.89807in</Top>
-            <Left>2.96396in</Left>
+            <Top>4.36644in</Top>
+            <Left>2.96012in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>48</ZIndex>
+            <ZIndex>39</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1782,11 +1703,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcBase</rd:DefaultName>
-            <Top>5.09251in</Top>
-            <Left>2.96386in</Left>
+            <Top>4.56088in</Top>
+            <Left>2.96002in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>49</ZIndex>
+            <ZIndex>40</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1817,11 +1738,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcInc</rd:DefaultName>
-            <Top>5.30085in</Top>
-            <Left>2.96197in</Left>
+            <Top>4.76922in</Top>
+            <Left>2.95813in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>50</ZIndex>
+            <ZIndex>41</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1851,11 +1772,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>5.1064in</Top>
-            <Left>0.56455in</Left>
+            <Top>4.57477in</Top>
+            <Left>0.56071in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>51</ZIndex>
+            <ZIndex>42</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1885,11 +1806,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>5.30085in</Top>
-            <Left>0.56455in</Left>
+            <Top>4.76922in</Top>
+            <Left>0.56071in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>52</ZIndex>
+            <ZIndex>43</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1919,11 +1840,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.71751in</Top>
-            <Left>0.56465in</Left>
+            <Top>4.18588in</Top>
+            <Left>0.56081in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>53</ZIndex>
+            <ZIndex>44</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1953,11 +1874,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.91196in</Top>
-            <Left>0.56465in</Left>
+            <Top>4.38033in</Top>
+            <Left>0.56081in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>54</ZIndex>
+            <ZIndex>45</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1988,11 +1909,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.70363in</Top>
-            <Left>5.30423in</Left>
+            <Top>4.172in</Top>
+            <Left>5.30039in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>55</ZIndex>
+            <ZIndex>46</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2023,11 +1944,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.89807in</Top>
-            <Left>5.30424in</Left>
+            <Top>4.36644in</Top>
+            <Left>5.3004in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>56</ZIndex>
+            <ZIndex>47</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2058,11 +1979,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>5.1064in</Top>
-            <Left>5.30414in</Left>
+            <Top>4.57477in</Top>
+            <Left>5.3003in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>57</ZIndex>
+            <ZIndex>48</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2093,11 +2014,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>5.30085in</Top>
-            <Left>5.30413in</Left>
+            <Top>4.76922in</Top>
+            <Left>5.30029in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>58</ZIndex>
+            <ZIndex>49</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2128,11 +2049,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcIncFormat</rd:DefaultName>
-            <Top>5.49529in</Top>
-            <Left>2.96197in</Left>
+            <Top>4.96366in</Top>
+            <Left>2.95813in</Left>
             <Height>0.125in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>59</ZIndex>
+            <ZIndex>50</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2163,11 +2084,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTMaxiumCharge</rd:DefaultName>
-            <Top>5.68974in</Top>
-            <Left>2.96197in</Left>
+            <Top>5.15811in</Top>
+            <Left>2.95813in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>60</ZIndex>
+            <ZIndex>51</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2197,11 +2118,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>5.49529in</Top>
-            <Left>0.56455in</Left>
+            <Top>4.96366in</Top>
+            <Left>0.56071in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>61</ZIndex>
+            <ZIndex>52</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2231,11 +2152,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>5.68974in</Top>
-            <Left>0.56466in</Left>
+            <Top>5.15811in</Top>
+            <Left>0.56082in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>62</ZIndex>
+            <ZIndex>53</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2267,11 +2188,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrAmountPercent</rd:DefaultName>
-            <Top>5.49529in</Top>
-            <Left>5.30413in</Left>
+            <Top>4.96366in</Top>
+            <Left>5.30029in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>63</ZIndex>
+            <ZIndex>54</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2302,11 +2223,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrMaxiumCharge</rd:DefaultName>
-            <Top>5.68974in</Top>
-            <Left>5.30424in</Left>
+            <Top>5.15811in</Top>
+            <Left>5.3004in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>64</ZIndex>
+            <ZIndex>55</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2337,11 +2258,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTATBFlag</rd:DefaultName>
-            <Top>6.34894in</Top>
-            <Left>2.96437in</Left>
+            <Top>5.81731in</Top>
+            <Left>2.96053in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>65</ZIndex>
+            <ZIndex>56</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2375,11 +2296,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTMinAmount</rd:DefaultName>
-            <Top>6.55381in</Top>
-            <Left>2.96451in</Left>
+            <Top>6.02218in</Top>
+            <Left>2.96067in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>66</ZIndex>
+            <ZIndex>57</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2413,11 +2334,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTRateAmount</rd:DefaultName>
-            <Top>6.75867in</Top>
-            <Left>2.96438in</Left>
+            <Top>6.22704in</Top>
+            <Left>2.96054in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>67</ZIndex>
+            <ZIndex>58</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2448,11 +2369,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>6.96353in</Top>
-            <Left>2.96437in</Left>
+            <Top>6.4319in</Top>
+            <Left>2.96053in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>68</ZIndex>
+            <ZIndex>59</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2486,11 +2407,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTType</rd:DefaultName>
-            <Top>7.19617in</Top>
-            <Left>2.96436in</Left>
+            <Top>6.66454in</Top>
+            <Left>2.96052in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
-            <ZIndex>69</ZIndex>
+            <ZIndex>60</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2523,11 +2444,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>6.34894in</Top>
-            <Left>0.56507in</Left>
+            <Top>5.81731in</Top>
+            <Left>0.56123in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>70</ZIndex>
+            <ZIndex>61</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2560,11 +2481,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>6.55381in</Top>
-            <Left>0.56521in</Left>
+            <Top>6.02218in</Top>
+            <Left>0.56137in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>71</ZIndex>
+            <ZIndex>62</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2597,11 +2518,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>6.75867in</Top>
-            <Left>0.56507in</Left>
+            <Top>6.22704in</Top>
+            <Left>0.56123in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>72</ZIndex>
+            <ZIndex>63</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2631,11 +2552,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>6.97742in</Top>
-            <Left>0.56506in</Left>
+            <Top>6.44579in</Top>
+            <Left>0.56122in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>73</ZIndex>
+            <ZIndex>64</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2668,11 +2589,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>7.18228in</Top>
-            <Left>0.56505in</Left>
+            <Top>6.65065in</Top>
+            <Left>0.56121in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>74</ZIndex>
+            <ZIndex>65</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2707,11 +2628,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrOTATBFlag</rd:DefaultName>
-            <Top>6.34894in</Top>
-            <Left>5.30466in</Left>
+            <Top>5.81731in</Top>
+            <Left>5.30082in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>75</ZIndex>
+            <ZIndex>66</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2746,11 +2667,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrOTMinAmount</rd:DefaultName>
-            <Top>6.55381in</Top>
-            <Left>5.30479in</Left>
+            <Top>6.02218in</Top>
+            <Left>5.30095in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>76</ZIndex>
+            <ZIndex>67</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2784,11 +2705,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrOTRateAmount</rd:DefaultName>
-            <Top>6.75867in</Top>
-            <Left>5.30466in</Left>
+            <Top>6.22704in</Top>
+            <Left>5.30082in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>77</ZIndex>
+            <ZIndex>68</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2820,11 +2741,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrOTShiftAmount</rd:DefaultName>
-            <Top>6.97742in</Top>
-            <Left>5.30464in</Left>
+            <Top>6.44579in</Top>
+            <Left>5.3008in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>78</ZIndex>
+            <ZIndex>69</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2858,11 +2779,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrOTType</rd:DefaultName>
-            <Top>7.19617in</Top>
-            <Left>5.30464in</Left>
+            <Top>6.66454in</Top>
+            <Left>5.3008in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>79</ZIndex>
+            <ZIndex>70</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2894,11 +2815,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>5.98089in</Top>
-            <Left>0.56478in</Left>
+            <Top>5.44926in</Top>
+            <Left>0.56094in</Left>
             <Height>0.29861in</Height>
             <Width>6.28123in</Width>
-            <ZIndex>80</ZIndex>
+            <ZIndex>71</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2928,11 +2849,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>7.50905in</Top>
-            <Left>0.56137in</Left>
+            <Top>6.97742in</Top>
+            <Left>0.55753in</Left>
             <Height>0.29861in</Height>
             <Width>6.28128in</Width>
-            <ZIndex>81</ZIndex>
+            <ZIndex>72</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2967,11 +2888,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRInc</rd:DefaultName>
-            <Top>7.89099in</Top>
-            <Left>5.30146in</Left>
+            <Top>7.35936in</Top>
+            <Left>5.29762in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>82</ZIndex>
+            <ZIndex>73</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3005,11 +2926,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRAmt</rd:DefaultName>
-            <Top>8.08543in</Top>
-            <Left>5.3017in</Left>
+            <Top>7.5538in</Top>
+            <Left>5.29786in</Left>
             <Height>0.125in</Height>
             <Width>1.54168in</Width>
-            <ZIndex>83</ZIndex>
+            <ZIndex>74</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3044,11 +2965,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRInc</rd:DefaultName>
-            <Top>7.89099in</Top>
-            <Left>2.96119in</Left>
+            <Top>7.35936in</Top>
+            <Left>2.95735in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>84</ZIndex>
+            <ZIndex>75</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3083,11 +3004,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRAmt</rd:DefaultName>
-            <Top>8.09932in</Top>
-            <Left>2.96144in</Left>
+            <Top>7.56769in</Top>
+            <Left>2.9576in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>85</ZIndex>
+            <ZIndex>76</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3120,11 +3041,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>7.89099in</Top>
-            <Left>0.56189in</Left>
+            <Top>7.35936in</Top>
+            <Left>0.55805in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>86</ZIndex>
+            <ZIndex>77</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3157,11 +3078,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>8.09932in</Top>
-            <Left>0.56215in</Left>
+            <Top>7.56769in</Top>
+            <Left>0.55831in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>87</ZIndex>
+            <ZIndex>78</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3221,6 +3142,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -3260,269 +3187,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="CTCmpId">
-          <DataField>CTCmpId</DataField>
-        </Field>
-        <Field Name="CTTarId">
-          <DataField>CTTarId</DataField>
-        </Field>
-        <Field Name="CTDescr">
-          <DataField>CTDescr</DataField>
-        </Field>
-        <Field Name="CTTariffType">
-          <DataField>CTTariffType</DataField>
-        </Field>
-        <Field Name="CTDateBegining">
-          <DataField>CTDateBegining</DataField>
-        </Field>
-        <Field Name="CTDateEnding">
-          <DataField>CTDateEnding</DataField>
-        </Field>
-        <Field Name="CTStatus">
-          <DataField>CTStatus</DataField>
-        </Field>
-        <Field Name="CtJobStandardTime">
-          <DataField>CtJobStandardTime</DataField>
-        </Field>
-        <Field Name="CTJobShiftType">
-          <DataField>CTJobShiftType</DataField>
-        </Field>
-        <Field Name="CTJobShiftTime">
-          <DataField>CTJobShiftTime</DataField>
-        </Field>
-        <Field Name="CTJobUDPer">
-          <DataField>CTJobUDPer</DataField>
-        </Field>
-        <Field Name="CTJobUDPerFormat">
-          <DataField>CTJobUDPerFormat</DataField>
-        </Field>
-        <Field Name="CTJobSpPer">
-          <DataField>CTJobSpPer</DataField>
-        </Field>
-        <Field Name="CTJobSpPerFormat">
-          <DataField>CTJobSpPerFormat</DataField>
-        </Field>
-        <Field Name="CTJobShiftAmount">
-          <DataField>CTJobShiftAmount</DataField>
-        </Field>
-        <Field Name="CTJobShiftAmountFormat">
-          <DataField>CTJobShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="CTFSType">
-          <DataField>CTFSType</DataField>
-        </Field>
-        <Field Name="CTFSDiscountFlag">
-          <DataField>CTFSDiscountFlag</DataField>
-        </Field>
-        <Field Name="CTFSPerBase">
-          <DataField>CTFSPerBase</DataField>
-        </Field>
-        <Field Name="CTFSPerBaseFormat">
-          <DataField>CTFSPerBaseFormat</DataField>
-        </Field>
-        <Field Name="CTFSPerInc">
-          <DataField>CTFSPerInc</DataField>
-        </Field>
-        <Field Name="CTFSPerIncFormat">
-          <DataField>CTFSPerIncFormat</DataField>
-        </Field>
-        <Field Name="CTFSPrcBase">
-          <DataField>CTFSPrcBase</DataField>
-        </Field>
-        <Field Name="CTFSPrcBaseFormat">
-          <DataField>CTFSPrcBaseFormat</DataField>
-        </Field>
-        <Field Name="CTFSPrcInc">
-          <DataField>CTFSPrcInc</DataField>
-        </Field>
-        <Field Name="CTFSPrcIncFormat">
-          <DataField>CTFSPrcIncFormat</DataField>
-        </Field>
-        <Field Name="CTAmountPercent">
-          <DataField>CTAmountPercent</DataField>
-        </Field>
-        <Field Name="CTMaxiumCharge">
-          <DataField>CTMaxiumCharge</DataField>
-        </Field>
-        <Field Name="CTMaxiumChargeFormat">
-          <DataField>CTMaxiumChargeFormat</DataField>
-        </Field>
-        <Field Name="CTOTATBFlag">
-          <DataField>CTOTATBFlag</DataField>
-        </Field>
-        <Field Name="CTOTMinAmount">
-          <DataField>CTOTMinAmount</DataField>
-        </Field>
-        <Field Name="CTOTMinAmountFormat">
-          <DataField>CTOTMinAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTRateAmount">
-          <DataField>CTOTRateAmount</DataField>
-        </Field>
-        <Field Name="CTOTRateAmountFormat">
-          <DataField>CTOTRateAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTShiftAmount">
-          <DataField>CTOTShiftAmount</DataField>
-        </Field>
-        <Field Name="CTOTShiftAmountFormat">
-          <DataField>CTOTShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTType">
-          <DataField>CTOTType</DataField>
-        </Field>
-        <Field Name="CTTCATBFlag">
-          <DataField>CTTCATBFlag</DataField>
-        </Field>
-        <Field Name="CTTCType">
-          <DataField>CTTCType</DataField>
-        </Field>
-        <Field Name="CTTCRate">
-          <DataField>CTTCRate</DataField>
-        </Field>
-        <Field Name="CTTCRateFormat">
-          <DataField>CTTCRateFormat</DataField>
-        </Field>
-        <Field Name="CTBRInc">
-          <DataField>CTBRInc</DataField>
-        </Field>
-        <Field Name="CTBRAmt">
-          <DataField>CTBRAmt</DataField>
-        </Field>
-        <Field Name="TrTarId">
-          <DataField>TrTarId</DataField>
-        </Field>
-        <Field Name="TrDescr">
-          <DataField>TrDescr</DataField>
-        </Field>
-        <Field Name="TrTariffType">
-          <DataField>TrTariffType</DataField>
-        </Field>
-        <Field Name="TrDateBegining">
-          <DataField>TrDateBegining</DataField>
-        </Field>
-        <Field Name="TrDateEnding">
-          <DataField>TrDateEnding</DataField>
-        </Field>
-        <Field Name="TrStatus">
-          <DataField>TrStatus</DataField>
-        </Field>
-        <Field Name="TrJobStandardTime">
-          <DataField>TrJobStandardTime</DataField>
-        </Field>
-        <Field Name="TrJobShiftType">
-          <DataField>TrJobShiftType</DataField>
-        </Field>
-        <Field Name="TrJobShiftTime">
-          <DataField>TrJobShiftTime</DataField>
-        </Field>
-        <Field Name="TrJobUDPer">
-          <DataField>TrJobUDPer</DataField>
-        </Field>
-        <Field Name="TrJobUDPerFormat">
-          <DataField>TrJobUDPerFormat</DataField>
-        </Field>
-        <Field Name="TrJobSpPer">
-          <DataField>TrJobSpPer</DataField>
-        </Field>
-        <Field Name="TrJobSpPerFormat">
-          <DataField>TrJobSpPerFormat</DataField>
-        </Field>
-        <Field Name="TrJobShiftAmount">
-          <DataField>TrJobShiftAmount</DataField>
-        </Field>
-        <Field Name="TrJobShiftAmountFormat">
-          <DataField>TrJobShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="TrFSType">
-          <DataField>TrFSType</DataField>
-        </Field>
-        <Field Name="TrFSDiscountFlag">
-          <DataField>TrFSDiscountFlag</DataField>
-        </Field>
-        <Field Name="TrFSPerBase">
-          <DataField>TrFSPerBase</DataField>
-        </Field>
-        <Field Name="TrFSPerBaseFormat">
-          <DataField>TrFSPerBaseFormat</DataField>
-        </Field>
-        <Field Name="TrFSPerInc">
-          <DataField>TrFSPerInc</DataField>
-        </Field>
-        <Field Name="TrFSPerIncFormat">
-          <DataField>TrFSPerIncFormat</DataField>
-        </Field>
-        <Field Name="TrFSPrcBase">
-          <DataField>TrFSPrcBase</DataField>
-        </Field>
-        <Field Name="TrFSPrcBaseFormat">
-          <DataField>TrFSPrcBaseFormat</DataField>
-        </Field>
-        <Field Name="TrFSPrcInc">
-          <DataField>TrFSPrcInc</DataField>
-        </Field>
-        <Field Name="TrFSPrcIncFormat">
-          <DataField>TrFSPrcIncFormat</DataField>
-        </Field>
-        <Field Name="TrAmountPercent">
-          <DataField>TrAmountPercent</DataField>
-        </Field>
-        <Field Name="TrMaxiumCharge">
-          <DataField>TrMaxiumCharge</DataField>
-        </Field>
-        <Field Name="TrMaxiumChargeFormat">
-          <DataField>TrMaxiumChargeFormat</DataField>
-        </Field>
-        <Field Name="TrOTATBFlag">
-          <DataField>TrOTATBFlag</DataField>
-        </Field>
-        <Field Name="TrOTMinAmount">
-          <DataField>TrOTMinAmount</DataField>
-        </Field>
-        <Field Name="TrOTMinAmountFormat">
-          <DataField>TrOTMinAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTRateAmount">
-          <DataField>TrOTRateAmount</DataField>
-        </Field>
-        <Field Name="TrOTRateAmountFormat">
-          <DataField>TrOTRateAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTShiftAmount">
-          <DataField>TrOTShiftAmount</DataField>
-        </Field>
-        <Field Name="TrOTShiftAmountFormat">
-          <DataField>TrOTShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTType">
-          <DataField>TrOTType</DataField>
-        </Field>
-        <Field Name="TrTCATBFlag">
-          <DataField>TrTCATBFlag</DataField>
-        </Field>
-        <Field Name="TrTCType">
-          <DataField>TrTCType</DataField>
-        </Field>
-        <Field Name="TrTCRate">
-          <DataField>TrTCRate</DataField>
-        </Field>
-        <Field Name="TrTCRateFormat">
-          <DataField>TrTCRateFormat</DataField>
-        </Field>
-        <Field Name="TrBRInc">
-          <DataField>TrBRInc</DataField>
-        </Field>
-        <Field Name="TrBRAmt">
-          <DataField>TrBRAmt</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
