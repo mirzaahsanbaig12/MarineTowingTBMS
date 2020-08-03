@@ -136,6 +136,7 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                     ApplicationArea = All;
                     Caption = 'Billing Tariff';
                     RunObject = report "Billing Tariff Single";
+                    Visible = false;
                 }
 
                 action("Calculate Commission")

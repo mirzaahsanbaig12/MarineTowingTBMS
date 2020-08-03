@@ -337,7 +337,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>To Date</Value>
+                    <Value>Start Date</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -443,7 +443,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>From Date</Value>
+                    <Value>End Date</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -776,9 +776,6 @@
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>21</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -815,9 +812,6 @@
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>22</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -849,13 +843,10 @@
             </Paragraphs>
             <rd:DefaultName>TrJobSpPer</rd:DefaultName>
             <Top>3.3286in</Top>
-            <Left>5.30224in</Left>
+            <Left>5.30428in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>23</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -964,9 +955,6 @@
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>26</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1003,9 +991,6 @@
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>27</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1042,9 +1027,6 @@
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>28</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1076,7 +1058,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftAmount</rd:DefaultName>
-            <Top>3.52305in</Top>
+            <Top>3.50916in</Top>
             <Left>2.96396in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
@@ -1150,9 +1132,6 @@
             <Height>0.125in</Height>
             <Width>2.04513in</Width>
             <ZIndex>31</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1187,9 +1166,6 @@
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>32</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1224,9 +1200,6 @@
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>33</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1418,7 +1391,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Additional Time</Value>
+                    <Value>Job Docking / Undocking and Shifting</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -2342,9 +2315,6 @@
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>65</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2380,9 +2350,6 @@
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>66</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2453,9 +2420,6 @@
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
             <ZIndex>68</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2491,9 +2455,6 @@
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
             <ZIndex>69</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2528,9 +2489,6 @@
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
             <ZIndex>70</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2565,9 +2523,6 @@
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
             <ZIndex>71</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2636,9 +2591,6 @@
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
             <ZIndex>73</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2673,9 +2625,6 @@
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
             <ZIndex>74</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2712,9 +2661,6 @@
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>75</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2751,9 +2697,6 @@
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>76</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2825,9 +2768,6 @@
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>78</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2863,9 +2803,6 @@
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>79</ZIndex>
-            <Visibility>
-              <Hidden>true</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2928,8 +2865,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>7.50905in</Top>
-            <Left>0.56137in</Left>
+            <Top>9.24863in</Top>
+            <Left>0.56215in</Left>
             <Height>0.29861in</Height>
             <Width>6.28128in</Width>
             <ZIndex>81</ZIndex>
@@ -2941,6 +2878,114 @@
                 <Style>None</Style>
               </Border>
               <BackgroundColor>Silver</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TrTCATBFlag">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!TrTCATBFlag.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTTCATBFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!TrTCATBFlag.Value, "DataSet_Result"),"Red","Black")</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TrTCATBFlag</rd:DefaultName>
+            <Top>8.48523in</Top>
+            <Left>5.30253in</Left>
+            <Height>0.16667in</Height>
+            <Width>1.54166in</Width>
+            <ZIndex>82</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TrTCType">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!TrTCType.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTTCType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrTCType.Value, "DataSet_Result"),"Red","Black")</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TrTCType</rd:DefaultName>
+            <Top>8.72134in</Top>
+            <Left>5.30252in</Left>
+            <Height>0.16667in</Height>
+            <Width>1.54166in</Width>
+            <ZIndex>83</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TrTCRate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!TrTCRate.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTTCRate.Value, "DataSet_Result") &lt;&gt; First(Fields!TrTCRate.Value, "DataSet_Result"),"Red","Black")</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TrTCRate</rd:DefaultName>
+            <Top>8.94357in</Top>
+            <Left>5.30252in</Left>
+            <Height>0.16667in</Height>
+            <Width>1.54166in</Width>
+            <ZIndex>84</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2967,11 +3012,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRInc</rd:DefaultName>
-            <Top>7.89099in</Top>
-            <Left>5.30146in</Left>
+            <Top>9.63057in</Top>
+            <Left>5.30224in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>82</ZIndex>
+            <ZIndex>85</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3005,14 +3050,119 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRAmt</rd:DefaultName>
-            <Top>8.08543in</Top>
-            <Left>5.3017in</Left>
+            <Top>9.82501in</Top>
+            <Left>5.30248in</Left>
             <Height>0.125in</Height>
             <Width>1.54168in</Width>
-            <ZIndex>83</ZIndex>
+            <ZIndex>86</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CTTCATBFlag">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!CTTCATBFlag.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTTCATBFlag</rd:DefaultName>
+            <Top>8.48523in</Top>
+            <Left>2.96224in</Left>
+            <Height>0.16667in</Height>
+            <Width>1.54167in</Width>
+            <ZIndex>87</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CTTCType">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!CTTCType.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTTCType</rd:DefaultName>
+            <Top>8.73126in</Top>
+            <Left>2.96224in</Left>
+            <Height>0.17659in</Height>
+            <Width>1.54167in</Width>
+            <ZIndex>88</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CTTCRate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!CTTCRate.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTTCRate</rd:DefaultName>
+            <Top>8.95349in</Top>
+            <Left>2.96224in</Left>
+            <Height>0.16667in</Height>
+            <Width>1.54166in</Width>
+            <ZIndex>89</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3044,11 +3194,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRInc</rd:DefaultName>
-            <Top>7.89099in</Top>
-            <Left>2.96119in</Left>
+            <Top>9.63057in</Top>
+            <Left>2.96197in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>84</ZIndex>
+            <ZIndex>90</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3083,14 +3233,116 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRAmt</rd:DefaultName>
-            <Top>8.09932in</Top>
-            <Left>2.96144in</Left>
+            <Top>9.8389in</Top>
+            <Left>2.96222in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>85</ZIndex>
+            <ZIndex>91</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CTOTShiftAmount4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Add To Base</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
+            <Top>8.48523in</Top>
+            <Left>0.56295in</Left>
+            <Height>0.16667in</Height>
+            <Width>2.04514in</Width>
+            <ZIndex>92</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CTOTShiftAmount5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Type</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
+            <Top>8.73126in</Top>
+            <Left>0.56294in</Left>
+            <Height>0.16667in</Height>
+            <Width>2.04514in</Width>
+            <ZIndex>93</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CTOTShiftAmount6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Amount Percent</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
+            <Top>8.95349in</Top>
+            <Left>0.56293in</Left>
+            <Height>0.16667in</Height>
+            <Width>2.04514in</Width>
+            <ZIndex>94</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3120,11 +3372,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>7.89099in</Top>
-            <Left>0.56189in</Left>
+            <Top>9.63057in</Top>
+            <Left>0.56267in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>86</ZIndex>
+            <ZIndex>95</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3157,11 +3409,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>8.09932in</Top>
-            <Left>0.56215in</Left>
+            <Top>9.8389in</Top>
+            <Left>0.56293in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>87</ZIndex>
+            <ZIndex>96</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -3175,8 +3427,42 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="CTCmpId7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Turning Charge</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTCmpId1</rd:DefaultName>
+            <Top>8.04798in</Top>
+            <Left>0.56296in</Left>
+            <Height>0.29861in</Height>
+            <Width>6.28123in</Width>
+            <ZIndex>97</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>Silver</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>8.44666in</Height>
+        <Height>10.14458in</Height>
         <Style>
           <Border>
             <Style>None</Style>
