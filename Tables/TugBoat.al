@@ -87,8 +87,8 @@ table 50112 "Tug Boat"
         field(50122; AcctRev; Code[20])
         {
             DataClassification = ToBeClassified;
-            Description = 'Revenue Account';
-            Caption = 'Revenue Account';
+            Description = 'General ledger code';
+            Caption = 'General ledger code';
             TableRelation = "G/L Account";
         }
     }

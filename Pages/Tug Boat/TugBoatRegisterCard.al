@@ -36,6 +36,11 @@ page 50115 "Tug Register Card"
                 {
                     ApplicationArea = All;
                 }
+                field(AcctRev; AcctRev)
+                {
+                    ApplicationArea = All;
+                }
+
                 field(Power; Power)
                 {
                     ApplicationArea = All;
@@ -56,10 +61,6 @@ page 50115 "Tug Register Card"
                 }
 
                 field(ExternaTug; ExternaTug)
-                {
-                    ApplicationArea = All;
-                }
-                field(AcctRev; AcctRev)
                 {
                     ApplicationArea = All;
                 }
