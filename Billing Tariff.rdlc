@@ -11,6 +11,271 @@
       <rd:DataSourceID>4bb6ce0c-344e-48ec-82d5-414950828727</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="CTCmpId">
+          <DataField>CTCmpId</DataField>
+        </Field>
+        <Field Name="CTTarId">
+          <DataField>CTTarId</DataField>
+        </Field>
+        <Field Name="CTDescr">
+          <DataField>CTDescr</DataField>
+        </Field>
+        <Field Name="CTTariffType">
+          <DataField>CTTariffType</DataField>
+        </Field>
+        <Field Name="CTDateBegining">
+          <DataField>CTDateBegining</DataField>
+        </Field>
+        <Field Name="CTDateEnding">
+          <DataField>CTDateEnding</DataField>
+        </Field>
+        <Field Name="CTStatus">
+          <DataField>CTStatus</DataField>
+        </Field>
+        <Field Name="CtJobStandardTime">
+          <DataField>CtJobStandardTime</DataField>
+        </Field>
+        <Field Name="CTJobShiftType">
+          <DataField>CTJobShiftType</DataField>
+        </Field>
+        <Field Name="CTJobShiftTime">
+          <DataField>CTJobShiftTime</DataField>
+        </Field>
+        <Field Name="CTJobUDPer">
+          <DataField>CTJobUDPer</DataField>
+        </Field>
+        <Field Name="CTJobUDPerFormat">
+          <DataField>CTJobUDPerFormat</DataField>
+        </Field>
+        <Field Name="CTJobSpPer">
+          <DataField>CTJobSpPer</DataField>
+        </Field>
+        <Field Name="CTJobSpPerFormat">
+          <DataField>CTJobSpPerFormat</DataField>
+        </Field>
+        <Field Name="CTJobShiftAmount">
+          <DataField>CTJobShiftAmount</DataField>
+        </Field>
+        <Field Name="CTJobShiftAmountFormat">
+          <DataField>CTJobShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="CTFSType">
+          <DataField>CTFSType</DataField>
+        </Field>
+        <Field Name="CTFSDiscountFlag">
+          <DataField>CTFSDiscountFlag</DataField>
+        </Field>
+        <Field Name="CTFSPerBase">
+          <DataField>CTFSPerBase</DataField>
+        </Field>
+        <Field Name="CTFSPerBaseFormat">
+          <DataField>CTFSPerBaseFormat</DataField>
+        </Field>
+        <Field Name="CTFSPerInc">
+          <DataField>CTFSPerInc</DataField>
+        </Field>
+        <Field Name="CTFSPerIncFormat">
+          <DataField>CTFSPerIncFormat</DataField>
+        </Field>
+        <Field Name="CTFSPrcBase">
+          <DataField>CTFSPrcBase</DataField>
+        </Field>
+        <Field Name="CTFSPrcBaseFormat">
+          <DataField>CTFSPrcBaseFormat</DataField>
+        </Field>
+        <Field Name="CTFSPrcInc">
+          <DataField>CTFSPrcInc</DataField>
+        </Field>
+        <Field Name="CTFSPrcIncFormat">
+          <DataField>CTFSPrcIncFormat</DataField>
+        </Field>
+        <Field Name="CTAmountPercent">
+          <DataField>CTAmountPercent</DataField>
+        </Field>
+        <Field Name="CTMaxiumCharge">
+          <DataField>CTMaxiumCharge</DataField>
+        </Field>
+        <Field Name="CTMaxiumChargeFormat">
+          <DataField>CTMaxiumChargeFormat</DataField>
+        </Field>
+        <Field Name="CTOTATBFlag">
+          <DataField>CTOTATBFlag</DataField>
+        </Field>
+        <Field Name="CTOTMinAmount">
+          <DataField>CTOTMinAmount</DataField>
+        </Field>
+        <Field Name="CTOTMinAmountFormat">
+          <DataField>CTOTMinAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTRateAmount">
+          <DataField>CTOTRateAmount</DataField>
+        </Field>
+        <Field Name="CTOTRateAmountFormat">
+          <DataField>CTOTRateAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTShiftAmount">
+          <DataField>CTOTShiftAmount</DataField>
+        </Field>
+        <Field Name="CTOTShiftAmountFormat">
+          <DataField>CTOTShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="CTOTType">
+          <DataField>CTOTType</DataField>
+        </Field>
+        <Field Name="CTTCATBFlag">
+          <DataField>CTTCATBFlag</DataField>
+        </Field>
+        <Field Name="CTTCType">
+          <DataField>CTTCType</DataField>
+        </Field>
+        <Field Name="CTTCRate">
+          <DataField>CTTCRate</DataField>
+        </Field>
+        <Field Name="CTTCRateFormat">
+          <DataField>CTTCRateFormat</DataField>
+        </Field>
+        <Field Name="CTBRInc">
+          <DataField>CTBRInc</DataField>
+        </Field>
+        <Field Name="CTBRAmt">
+          <DataField>CTBRAmt</DataField>
+        </Field>
+        <Field Name="TrTarId">
+          <DataField>TrTarId</DataField>
+        </Field>
+        <Field Name="TrDescr">
+          <DataField>TrDescr</DataField>
+        </Field>
+        <Field Name="TrTariffType">
+          <DataField>TrTariffType</DataField>
+        </Field>
+        <Field Name="TrDateBegining">
+          <DataField>TrDateBegining</DataField>
+        </Field>
+        <Field Name="TrDateEnding">
+          <DataField>TrDateEnding</DataField>
+        </Field>
+        <Field Name="TrStatus">
+          <DataField>TrStatus</DataField>
+        </Field>
+        <Field Name="TrJobStandardTime">
+          <DataField>TrJobStandardTime</DataField>
+        </Field>
+        <Field Name="TrJobShiftType">
+          <DataField>TrJobShiftType</DataField>
+        </Field>
+        <Field Name="TrJobShiftTime">
+          <DataField>TrJobShiftTime</DataField>
+        </Field>
+        <Field Name="TrJobUDPer">
+          <DataField>TrJobUDPer</DataField>
+        </Field>
+        <Field Name="TrJobUDPerFormat">
+          <DataField>TrJobUDPerFormat</DataField>
+        </Field>
+        <Field Name="TrJobSpPer">
+          <DataField>TrJobSpPer</DataField>
+        </Field>
+        <Field Name="TrJobSpPerFormat">
+          <DataField>TrJobSpPerFormat</DataField>
+        </Field>
+        <Field Name="TrJobShiftAmount">
+          <DataField>TrJobShiftAmount</DataField>
+        </Field>
+        <Field Name="TrJobShiftAmountFormat">
+          <DataField>TrJobShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="TrFSType">
+          <DataField>TrFSType</DataField>
+        </Field>
+        <Field Name="TrFSDiscountFlag">
+          <DataField>TrFSDiscountFlag</DataField>
+        </Field>
+        <Field Name="TrFSPerBase">
+          <DataField>TrFSPerBase</DataField>
+        </Field>
+        <Field Name="TrFSPerBaseFormat">
+          <DataField>TrFSPerBaseFormat</DataField>
+        </Field>
+        <Field Name="TrFSPerInc">
+          <DataField>TrFSPerInc</DataField>
+        </Field>
+        <Field Name="TrFSPerIncFormat">
+          <DataField>TrFSPerIncFormat</DataField>
+        </Field>
+        <Field Name="TrFSPrcBase">
+          <DataField>TrFSPrcBase</DataField>
+        </Field>
+        <Field Name="TrFSPrcBaseFormat">
+          <DataField>TrFSPrcBaseFormat</DataField>
+        </Field>
+        <Field Name="TrFSPrcInc">
+          <DataField>TrFSPrcInc</DataField>
+        </Field>
+        <Field Name="TrFSPrcIncFormat">
+          <DataField>TrFSPrcIncFormat</DataField>
+        </Field>
+        <Field Name="TrAmountPercent">
+          <DataField>TrAmountPercent</DataField>
+        </Field>
+        <Field Name="TrMaxiumCharge">
+          <DataField>TrMaxiumCharge</DataField>
+        </Field>
+        <Field Name="TrMaxiumChargeFormat">
+          <DataField>TrMaxiumChargeFormat</DataField>
+        </Field>
+        <Field Name="TrOTATBFlag">
+          <DataField>TrOTATBFlag</DataField>
+        </Field>
+        <Field Name="TrOTMinAmount">
+          <DataField>TrOTMinAmount</DataField>
+        </Field>
+        <Field Name="TrOTMinAmountFormat">
+          <DataField>TrOTMinAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTRateAmount">
+          <DataField>TrOTRateAmount</DataField>
+        </Field>
+        <Field Name="TrOTRateAmountFormat">
+          <DataField>TrOTRateAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTShiftAmount">
+          <DataField>TrOTShiftAmount</DataField>
+        </Field>
+        <Field Name="TrOTShiftAmountFormat">
+          <DataField>TrOTShiftAmountFormat</DataField>
+        </Field>
+        <Field Name="TrOTType">
+          <DataField>TrOTType</DataField>
+        </Field>
+        <Field Name="TrTCATBFlag">
+          <DataField>TrTCATBFlag</DataField>
+        </Field>
+        <Field Name="TrTCType">
+          <DataField>TrTCType</DataField>
+        </Field>
+        <Field Name="TrTCRate">
+          <DataField>TrTCRate</DataField>
+        </Field>
+        <Field Name="TrTCRateFormat">
+          <DataField>TrTCRateFormat</DataField>
+        </Field>
+        <Field Name="TrBRInc">
+          <DataField>TrBRInc</DataField>
+        </Field>
+        <Field Name="TrBRAmt">
+          <DataField>TrBRAmt</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -735,8 +1000,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrJobStandardTime</rd:DefaultName>
-            <Top>2.75916in</Top>
-            <Left>5.30431in</Left>
+            <Top>2.73138in</Top>
+            <Left>5.27191in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>20</ZIndex>
@@ -771,8 +1036,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrJobShiftAmount</rd:DefaultName>
-            <Top>2.9536in</Top>
-            <Left>5.29193in</Left>
+            <Top>2.92582in</Top>
+            <Left>5.27215in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>21</ZIndex>
@@ -797,7 +1062,6 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CtJobStandardTime.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobStandardTime.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -807,8 +1071,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CtJobStandardTime</rd:DefaultName>
-            <Top>2.74527in</Top>
-            <Left>2.96403in</Left>
+            <Top>2.71749in</Top>
+            <Left>2.94403in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>22</ZIndex>
@@ -843,8 +1107,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftAmount</rd:DefaultName>
-            <Top>2.93971in</Top>
-            <Left>2.95165in</Left>
+            <Top>2.91193in</Top>
+            <Left>2.94174in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>23</ZIndex>
@@ -878,8 +1142,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>2.74527in</Top>
-            <Left>0.56473in</Left>
+            <Top>2.71749in</Top>
+            <Left>0.55482in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>24</ZIndex>
@@ -912,8 +1176,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>2.93971in</Top>
-            <Left>0.55235in</Left>
+            <Top>2.91193in</Top>
+            <Left>0.54244in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>25</ZIndex>
@@ -947,8 +1211,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftTime</rd:DefaultName>
-            <Top>3.17646in</Top>
-            <Left>2.94965in</Left>
+            <Top>3.14868in</Top>
+            <Left>2.93974in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>26</ZIndex>
@@ -974,6 +1238,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTJobShiftTime.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobShiftTime.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -983,8 +1248,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrJobShiftTime</rd:DefaultName>
-            <Top>3.13415in</Top>
-            <Left>5.292in</Left>
+            <Top>3.10637in</Top>
+            <Left>5.28209in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>27</ZIndex>
@@ -1017,8 +1282,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.13415in</Top>
-            <Left>0.55242in</Left>
+            <Top>3.10637in</Top>
+            <Left>0.54251in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>28</ZIndex>
@@ -1103,7 +1368,7 @@
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
             <Top>2.34313in</Top>
             <Left>0.56398in</Left>
-            <Height>0.29861in</Height>
+            <Height>0.25893in</Height>
             <Width>6.35416in</Width>
             <ZIndex>30</ZIndex>
             <Style>
@@ -1135,8 +1400,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>3.38542in</Top>
-            <Left>0.55322in</Left>
+            <Top>3.35764in</Top>
+            <Left>0.54331in</Left>
             <Height>0.29861in</Height>
             <Width>6.28124in</Width>
             <ZIndex>31</ZIndex>
@@ -1171,8 +1436,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>3.74591in</Top>
-            <Left>2.95394in</Left>
+            <Top>3.71813in</Top>
+            <Left>2.94403in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>32</ZIndex>
@@ -1197,7 +1462,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTType.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTType.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTFSDiscountFlag.Value, "DataSet_Result") &lt;&gt; First(Fields!TrFSDiscountFlag.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1207,8 +1472,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>3.94035in</Top>
-            <Left>5.29354in</Left>
+            <Top>3.91257in</Top>
+            <Left>5.28363in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>33</ZIndex>
@@ -1241,8 +1506,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.7598in</Top>
-            <Left>0.55391in</Left>
+            <Top>3.73202in</Top>
+            <Left>0.544in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>34</ZIndex>
@@ -1275,8 +1540,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.96813in</Top>
-            <Left>0.55396in</Left>
+            <Top>3.94035in</Top>
+            <Left>0.54405in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>35</ZIndex>
@@ -1311,8 +1576,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>3.74591in</Top>
-            <Left>5.2935in</Left>
+            <Top>3.71813in</Top>
+            <Left>5.28359in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>36</ZIndex>
@@ -1347,8 +1612,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>3.94035in</Top>
-            <Left>2.95326in</Left>
+            <Top>3.91257in</Top>
+            <Left>2.94335in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>37</ZIndex>
@@ -1382,8 +1647,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcBase</rd:DefaultName>
-            <Top>4.14868in</Top>
-            <Left>2.95066in</Left>
+            <Top>4.1209in</Top>
+            <Left>2.94075in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>38</ZIndex>
@@ -1417,8 +1682,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcInc</rd:DefaultName>
-            <Top>4.35702in</Top>
-            <Left>2.94877in</Left>
+            <Top>4.32924in</Top>
+            <Left>2.93886in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>39</ZIndex>
@@ -1451,8 +1716,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.16257in</Top>
-            <Left>0.55135in</Left>
+            <Top>4.13479in</Top>
+            <Left>0.54144in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>40</ZIndex>
@@ -1485,8 +1750,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.35702in</Top>
-            <Left>0.55135in</Left>
+            <Top>4.32924in</Top>
+            <Left>0.54144in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>41</ZIndex>
@@ -1520,8 +1785,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.16257in</Top>
-            <Left>5.29094in</Left>
+            <Top>4.13479in</Top>
+            <Left>5.28103in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>42</ZIndex>
@@ -1555,8 +1820,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.35702in</Top>
-            <Left>5.29093in</Left>
+            <Top>4.32924in</Top>
+            <Left>5.28102in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>43</ZIndex>
@@ -1590,8 +1855,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcIncFormat</rd:DefaultName>
-            <Top>4.55146in</Top>
-            <Left>2.94877in</Left>
+            <Top>4.52368in</Top>
+            <Left>2.93886in</Left>
             <Height>0.125in</Height>
             <Width>1.54166in</Width>
             <ZIndex>44</ZIndex>
@@ -1625,8 +1890,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTMaxiumCharge</rd:DefaultName>
-            <Top>4.74591in</Top>
-            <Left>2.94877in</Left>
+            <Top>4.71813in</Top>
+            <Left>2.93886in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>45</ZIndex>
@@ -1659,8 +1924,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.55146in</Top>
-            <Left>0.55135in</Left>
+            <Top>4.52368in</Top>
+            <Left>0.54144in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>46</ZIndex>
@@ -1693,8 +1958,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.74591in</Top>
-            <Left>0.55146in</Left>
+            <Top>4.71813in</Top>
+            <Left>0.54155in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>47</ZIndex>
@@ -1729,8 +1994,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrAmountPercent</rd:DefaultName>
-            <Top>4.55146in</Top>
-            <Left>5.29093in</Left>
+            <Top>4.52368in</Top>
+            <Left>5.28102in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>48</ZIndex>
@@ -1765,8 +2030,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrMaxiumCharge</rd:DefaultName>
-            <Top>4.74591in</Top>
-            <Left>5.29104in</Left>
+            <Top>4.71813in</Top>
+            <Left>5.28113in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>49</ZIndex>
@@ -1800,8 +2065,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTRateAmount</rd:DefaultName>
-            <Top>5.42596in</Top>
-            <Left>2.94182in</Left>
+            <Top>5.39818in</Top>
+            <Left>2.93191in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
             <ZIndex>50</ZIndex>
@@ -1834,8 +2099,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>5.42596in</Top>
-            <Left>0.54251in</Left>
+            <Top>5.39818in</Top>
+            <Left>0.5326in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
             <ZIndex>51</ZIndex>
@@ -1870,8 +2135,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrOTRateAmount</rd:DefaultName>
-            <Top>5.42596in</Top>
-            <Left>5.2821in</Left>
+            <Top>5.39818in</Top>
+            <Left>5.27219in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
             <ZIndex>52</ZIndex>
@@ -1903,8 +2168,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>5.00235in</Top>
-            <Left>0.54791in</Left>
+            <Top>4.97457in</Top>
+            <Left>0.538in</Left>
             <Height>0.29861in</Height>
             <Width>6.28123in</Width>
             <ZIndex>53</ZIndex>
@@ -1937,8 +2202,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>5.7319in</Top>
-            <Left>0.54173in</Left>
+            <Top>5.70412in</Top>
+            <Left>0.53182in</Left>
             <Height>0.29861in</Height>
             <Width>6.28128in</Width>
             <ZIndex>54</ZIndex>
@@ -1976,8 +2241,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRInc</rd:DefaultName>
-            <Top>6.11384in</Top>
-            <Left>5.28182in</Left>
+            <Top>6.08606in</Top>
+            <Left>5.27191in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>55</ZIndex>
@@ -2014,8 +2279,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRAmt</rd:DefaultName>
-            <Top>6.30828in</Top>
-            <Left>5.28206in</Left>
+            <Top>6.2805in</Top>
+            <Left>5.27215in</Left>
             <Height>0.125in</Height>
             <Width>1.54168in</Width>
             <ZIndex>56</ZIndex>
@@ -2053,8 +2318,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRInc</rd:DefaultName>
-            <Top>6.11384in</Top>
-            <Left>2.94155in</Left>
+            <Top>6.08606in</Top>
+            <Left>2.93164in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>57</ZIndex>
@@ -2092,8 +2357,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRAmt</rd:DefaultName>
-            <Top>6.32217in</Top>
-            <Left>2.9418in</Left>
+            <Top>6.29439in</Top>
+            <Left>2.93189in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>58</ZIndex>
@@ -2129,8 +2394,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>6.11384in</Top>
-            <Left>0.54225in</Left>
+            <Top>6.08606in</Top>
+            <Left>0.53234in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>59</ZIndex>
@@ -2166,8 +2431,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>6.32217in</Top>
-            <Left>0.54251in</Left>
+            <Top>6.29439in</Top>
+            <Left>0.5326in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>60</ZIndex>
@@ -2230,6 +2495,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -2269,269 +2540,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="CTCmpId">
-          <DataField>CTCmpId</DataField>
-        </Field>
-        <Field Name="CTTarId">
-          <DataField>CTTarId</DataField>
-        </Field>
-        <Field Name="CTDescr">
-          <DataField>CTDescr</DataField>
-        </Field>
-        <Field Name="CTTariffType">
-          <DataField>CTTariffType</DataField>
-        </Field>
-        <Field Name="CTDateBegining">
-          <DataField>CTDateBegining</DataField>
-        </Field>
-        <Field Name="CTDateEnding">
-          <DataField>CTDateEnding</DataField>
-        </Field>
-        <Field Name="CTStatus">
-          <DataField>CTStatus</DataField>
-        </Field>
-        <Field Name="CtJobStandardTime">
-          <DataField>CtJobStandardTime</DataField>
-        </Field>
-        <Field Name="CTJobShiftType">
-          <DataField>CTJobShiftType</DataField>
-        </Field>
-        <Field Name="CTJobShiftTime">
-          <DataField>CTJobShiftTime</DataField>
-        </Field>
-        <Field Name="CTJobUDPer">
-          <DataField>CTJobUDPer</DataField>
-        </Field>
-        <Field Name="CTJobUDPerFormat">
-          <DataField>CTJobUDPerFormat</DataField>
-        </Field>
-        <Field Name="CTJobSpPer">
-          <DataField>CTJobSpPer</DataField>
-        </Field>
-        <Field Name="CTJobSpPerFormat">
-          <DataField>CTJobSpPerFormat</DataField>
-        </Field>
-        <Field Name="CTJobShiftAmount">
-          <DataField>CTJobShiftAmount</DataField>
-        </Field>
-        <Field Name="CTJobShiftAmountFormat">
-          <DataField>CTJobShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="CTFSType">
-          <DataField>CTFSType</DataField>
-        </Field>
-        <Field Name="CTFSDiscountFlag">
-          <DataField>CTFSDiscountFlag</DataField>
-        </Field>
-        <Field Name="CTFSPerBase">
-          <DataField>CTFSPerBase</DataField>
-        </Field>
-        <Field Name="CTFSPerBaseFormat">
-          <DataField>CTFSPerBaseFormat</DataField>
-        </Field>
-        <Field Name="CTFSPerInc">
-          <DataField>CTFSPerInc</DataField>
-        </Field>
-        <Field Name="CTFSPerIncFormat">
-          <DataField>CTFSPerIncFormat</DataField>
-        </Field>
-        <Field Name="CTFSPrcBase">
-          <DataField>CTFSPrcBase</DataField>
-        </Field>
-        <Field Name="CTFSPrcBaseFormat">
-          <DataField>CTFSPrcBaseFormat</DataField>
-        </Field>
-        <Field Name="CTFSPrcInc">
-          <DataField>CTFSPrcInc</DataField>
-        </Field>
-        <Field Name="CTFSPrcIncFormat">
-          <DataField>CTFSPrcIncFormat</DataField>
-        </Field>
-        <Field Name="CTAmountPercent">
-          <DataField>CTAmountPercent</DataField>
-        </Field>
-        <Field Name="CTMaxiumCharge">
-          <DataField>CTMaxiumCharge</DataField>
-        </Field>
-        <Field Name="CTMaxiumChargeFormat">
-          <DataField>CTMaxiumChargeFormat</DataField>
-        </Field>
-        <Field Name="CTOTATBFlag">
-          <DataField>CTOTATBFlag</DataField>
-        </Field>
-        <Field Name="CTOTMinAmount">
-          <DataField>CTOTMinAmount</DataField>
-        </Field>
-        <Field Name="CTOTMinAmountFormat">
-          <DataField>CTOTMinAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTRateAmount">
-          <DataField>CTOTRateAmount</DataField>
-        </Field>
-        <Field Name="CTOTRateAmountFormat">
-          <DataField>CTOTRateAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTShiftAmount">
-          <DataField>CTOTShiftAmount</DataField>
-        </Field>
-        <Field Name="CTOTShiftAmountFormat">
-          <DataField>CTOTShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="CTOTType">
-          <DataField>CTOTType</DataField>
-        </Field>
-        <Field Name="CTTCATBFlag">
-          <DataField>CTTCATBFlag</DataField>
-        </Field>
-        <Field Name="CTTCType">
-          <DataField>CTTCType</DataField>
-        </Field>
-        <Field Name="CTTCRate">
-          <DataField>CTTCRate</DataField>
-        </Field>
-        <Field Name="CTTCRateFormat">
-          <DataField>CTTCRateFormat</DataField>
-        </Field>
-        <Field Name="CTBRInc">
-          <DataField>CTBRInc</DataField>
-        </Field>
-        <Field Name="CTBRAmt">
-          <DataField>CTBRAmt</DataField>
-        </Field>
-        <Field Name="TrTarId">
-          <DataField>TrTarId</DataField>
-        </Field>
-        <Field Name="TrDescr">
-          <DataField>TrDescr</DataField>
-        </Field>
-        <Field Name="TrTariffType">
-          <DataField>TrTariffType</DataField>
-        </Field>
-        <Field Name="TrDateBegining">
-          <DataField>TrDateBegining</DataField>
-        </Field>
-        <Field Name="TrDateEnding">
-          <DataField>TrDateEnding</DataField>
-        </Field>
-        <Field Name="TrStatus">
-          <DataField>TrStatus</DataField>
-        </Field>
-        <Field Name="TrJobStandardTime">
-          <DataField>TrJobStandardTime</DataField>
-        </Field>
-        <Field Name="TrJobShiftType">
-          <DataField>TrJobShiftType</DataField>
-        </Field>
-        <Field Name="TrJobShiftTime">
-          <DataField>TrJobShiftTime</DataField>
-        </Field>
-        <Field Name="TrJobUDPer">
-          <DataField>TrJobUDPer</DataField>
-        </Field>
-        <Field Name="TrJobUDPerFormat">
-          <DataField>TrJobUDPerFormat</DataField>
-        </Field>
-        <Field Name="TrJobSpPer">
-          <DataField>TrJobSpPer</DataField>
-        </Field>
-        <Field Name="TrJobSpPerFormat">
-          <DataField>TrJobSpPerFormat</DataField>
-        </Field>
-        <Field Name="TrJobShiftAmount">
-          <DataField>TrJobShiftAmount</DataField>
-        </Field>
-        <Field Name="TrJobShiftAmountFormat">
-          <DataField>TrJobShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="TrFSType">
-          <DataField>TrFSType</DataField>
-        </Field>
-        <Field Name="TrFSDiscountFlag">
-          <DataField>TrFSDiscountFlag</DataField>
-        </Field>
-        <Field Name="TrFSPerBase">
-          <DataField>TrFSPerBase</DataField>
-        </Field>
-        <Field Name="TrFSPerBaseFormat">
-          <DataField>TrFSPerBaseFormat</DataField>
-        </Field>
-        <Field Name="TrFSPerInc">
-          <DataField>TrFSPerInc</DataField>
-        </Field>
-        <Field Name="TrFSPerIncFormat">
-          <DataField>TrFSPerIncFormat</DataField>
-        </Field>
-        <Field Name="TrFSPrcBase">
-          <DataField>TrFSPrcBase</DataField>
-        </Field>
-        <Field Name="TrFSPrcBaseFormat">
-          <DataField>TrFSPrcBaseFormat</DataField>
-        </Field>
-        <Field Name="TrFSPrcInc">
-          <DataField>TrFSPrcInc</DataField>
-        </Field>
-        <Field Name="TrFSPrcIncFormat">
-          <DataField>TrFSPrcIncFormat</DataField>
-        </Field>
-        <Field Name="TrAmountPercent">
-          <DataField>TrAmountPercent</DataField>
-        </Field>
-        <Field Name="TrMaxiumCharge">
-          <DataField>TrMaxiumCharge</DataField>
-        </Field>
-        <Field Name="TrMaxiumChargeFormat">
-          <DataField>TrMaxiumChargeFormat</DataField>
-        </Field>
-        <Field Name="TrOTATBFlag">
-          <DataField>TrOTATBFlag</DataField>
-        </Field>
-        <Field Name="TrOTMinAmount">
-          <DataField>TrOTMinAmount</DataField>
-        </Field>
-        <Field Name="TrOTMinAmountFormat">
-          <DataField>TrOTMinAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTRateAmount">
-          <DataField>TrOTRateAmount</DataField>
-        </Field>
-        <Field Name="TrOTRateAmountFormat">
-          <DataField>TrOTRateAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTShiftAmount">
-          <DataField>TrOTShiftAmount</DataField>
-        </Field>
-        <Field Name="TrOTShiftAmountFormat">
-          <DataField>TrOTShiftAmountFormat</DataField>
-        </Field>
-        <Field Name="TrOTType">
-          <DataField>TrOTType</DataField>
-        </Field>
-        <Field Name="TrTCATBFlag">
-          <DataField>TrTCATBFlag</DataField>
-        </Field>
-        <Field Name="TrTCType">
-          <DataField>TrTCType</DataField>
-        </Field>
-        <Field Name="TrTCRate">
-          <DataField>TrTCRate</DataField>
-        </Field>
-        <Field Name="TrTCRateFormat">
-          <DataField>TrTCRateFormat</DataField>
-        </Field>
-        <Field Name="TrBRInc">
-          <DataField>TrBRInc</DataField>
-        </Field>
-        <Field Name="TrBRAmt">
-          <DataField>TrBRAmt</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
