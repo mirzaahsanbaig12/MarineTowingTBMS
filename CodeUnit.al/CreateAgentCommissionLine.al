@@ -50,8 +50,8 @@ codeunit 50116 CreateAgentCommissionLine
 
                             //check for purchase invoice and posted purchase invoice existng record
                             if (NOT PurchaseHeader.FindFirst()) and (NOT PurchaseInvoice.FindFirst()) then begin
-                                PurchaseInvoiceNo := NoSeriesMgt.GetNextNo('P-INV', Today, false);
-
+                                PurchaseInvoiceNo := NoSeriesMgt.GetNextNo('P-INV', Today, true);
+                                
                                 NewPurchaseHeader.Init();
                                 NewPurchaseHeader.Validate("No.", PurchaseInvoiceNo);
                                 NewPurchaseHeader.Validate("Document Type", NewPurchaseHeader."Document Type"::Invoice);
@@ -64,7 +64,7 @@ codeunit 50116 CreateAgentCommissionLine
                                     NewPurchaseLine.Init();
                                     NewPurchaseLine.Validate("Line No.", 1000);
                                     NewPurchaseLine.Validate("Document Type", NewPurchaseLine."Document Type"::Invoice);
-                                    NewPurchaseLine.Validate("Document No.", PurchaseInvoiceNo); // Invoice number
+                                    NewPurchaseLine.Validate("Document No.", NewPurchaseHeader."No."); // Invoice number
                                     NewPurchaseLine.Validate(Type, NewPurchaseLine.Type::"G/L Account"); // Line type
                                     NewPurchaseLine.Validate("No.", format(61200)); // GL account number
                                     NewPurchaseLine.Validate(Quantity, 1);
