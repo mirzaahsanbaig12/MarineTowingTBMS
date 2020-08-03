@@ -337,7 +337,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Start Date</Value>
+                    <Value>To Date</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -443,7 +443,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>End Date</Value>
+                    <Value>From Date</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -771,8 +771,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrJobShiftAmount</rd:DefaultName>
-            <Top>2.9536in</Top>
-            <Left>5.29193in</Left>
+            <Top>2.99142in</Top>
+            <Left>5.3004in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>21</ZIndex>
@@ -843,8 +843,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftAmount</rd:DefaultName>
-            <Top>2.93971in</Top>
-            <Left>2.95165in</Left>
+            <Top>2.99142in</Top>
+            <Left>2.96012in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>23</ZIndex>
@@ -912,8 +912,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>2.93971in</Top>
-            <Left>0.55235in</Left>
+            <Top>2.97753in</Top>
+            <Left>0.56082in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>25</ZIndex>
@@ -947,8 +947,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTJobShiftTime</rd:DefaultName>
-            <Top>3.17646in</Top>
-            <Left>2.94965in</Left>
+            <Top>3.21428in</Top>
+            <Left>2.95812in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>26</ZIndex>
@@ -974,6 +974,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <Color>=IIf(First(Fields!CTJobShiftTime.Value, "DataSet_Result") &lt;&gt; First(Fields!TrJobShiftTime.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -983,8 +984,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrJobShiftTime</rd:DefaultName>
-            <Top>3.13415in</Top>
-            <Left>5.292in</Left>
+            <Top>3.17197in</Top>
+            <Left>5.30047in</Left>
             <Height>0.125in</Height>
             <Width>1.61458in</Width>
             <ZIndex>27</ZIndex>
@@ -1017,8 +1018,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.13415in</Top>
-            <Left>0.55242in</Left>
+            <Top>3.17197in</Top>
+            <Left>0.56089in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>28</ZIndex>
@@ -1085,20 +1086,6 @@
                   <TextAlign>Left</TextAlign>
                 </Style>
               </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
             <Top>2.34313in</Top>
@@ -1135,8 +1122,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>3.38542in</Top>
-            <Left>0.55322in</Left>
+            <Top>3.40872in</Top>
+            <Left>0.56007in</Left>
             <Height>0.29861in</Height>
             <Width>6.28124in</Width>
             <ZIndex>31</ZIndex>
@@ -1171,8 +1158,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>3.74591in</Top>
-            <Left>2.95394in</Left>
+            <Top>3.76921in</Top>
+            <Left>2.96079in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>32</ZIndex>
@@ -1207,8 +1194,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>3.94035in</Top>
-            <Left>5.29354in</Left>
+            <Top>3.96365in</Top>
+            <Left>5.30039in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>33</ZIndex>
@@ -1241,8 +1228,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.7598in</Top>
-            <Left>0.55391in</Left>
+            <Top>3.7831in</Top>
+            <Left>0.56076in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>34</ZIndex>
@@ -1275,8 +1262,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.96813in</Top>
-            <Left>0.55396in</Left>
+            <Top>3.99143in</Top>
+            <Left>0.56081in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>35</ZIndex>
@@ -1311,8 +1298,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSType</rd:DefaultName>
-            <Top>3.74591in</Top>
-            <Left>5.2935in</Left>
+            <Top>3.76921in</Top>
+            <Left>5.30035in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>36</ZIndex>
@@ -1347,8 +1334,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSDiscountFlag</rd:DefaultName>
-            <Top>3.94035in</Top>
-            <Left>2.95326in</Left>
+            <Top>3.96365in</Top>
+            <Left>2.96011in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>37</ZIndex>
@@ -1382,8 +1369,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcBase</rd:DefaultName>
-            <Top>4.14868in</Top>
-            <Left>2.95066in</Left>
+            <Top>4.19283in</Top>
+            <Left>2.95618in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>38</ZIndex>
@@ -1417,8 +1404,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcInc</rd:DefaultName>
-            <Top>4.35702in</Top>
-            <Left>2.94877in</Left>
+            <Top>4.40117in</Top>
+            <Left>2.95429in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>39</ZIndex>
@@ -1451,8 +1438,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.16257in</Top>
-            <Left>0.55135in</Left>
+            <Top>4.20672in</Top>
+            <Left>0.55687in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>40</ZIndex>
@@ -1485,8 +1472,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.35702in</Top>
-            <Left>0.55135in</Left>
+            <Top>4.40117in</Top>
+            <Left>0.55687in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>41</ZIndex>
@@ -1520,8 +1507,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.16257in</Top>
-            <Left>5.29094in</Left>
+            <Top>4.20672in</Top>
+            <Left>5.29646in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>42</ZIndex>
@@ -1555,8 +1542,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.35702in</Top>
-            <Left>5.29093in</Left>
+            <Top>4.41506in</Top>
+            <Left>5.29645in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>43</ZIndex>
@@ -1590,8 +1577,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTFSPrcIncFormat</rd:DefaultName>
-            <Top>4.55146in</Top>
-            <Left>2.94877in</Left>
+            <Top>4.59561in</Top>
+            <Left>2.95429in</Left>
             <Height>0.125in</Height>
             <Width>1.54166in</Width>
             <ZIndex>44</ZIndex>
@@ -1625,8 +1612,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTMaxiumCharge</rd:DefaultName>
-            <Top>4.74591in</Top>
-            <Left>2.94877in</Left>
+            <Top>4.79006in</Top>
+            <Left>2.95429in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>45</ZIndex>
@@ -1659,8 +1646,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.55146in</Top>
-            <Left>0.55135in</Left>
+            <Top>4.59561in</Top>
+            <Left>0.55687in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>46</ZIndex>
@@ -1693,8 +1680,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>4.74591in</Top>
-            <Left>0.55146in</Left>
+            <Top>4.79006in</Top>
+            <Left>0.55698in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
             <ZIndex>47</ZIndex>
@@ -1729,8 +1716,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrAmountPercent</rd:DefaultName>
-            <Top>4.55146in</Top>
-            <Left>5.29093in</Left>
+            <Top>4.59561in</Top>
+            <Left>5.29645in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>48</ZIndex>
@@ -1755,7 +1742,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTMaxiumCharge.Value, "DataSet_Result") &lt;&gt; First(Fields!TrMaxiumCharge.Value, "DataSet_Result"),"Red","Black")</Color>
+                      <Color>=IIf(First(Fields!CTMaxiumCharge.Value, "DataSet_Result") &lt;&gt; First(Fields!TrMaxiumCharge.Value, "DataSet_Result"),"Red","Black"</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1765,8 +1752,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrMaxiumCharge</rd:DefaultName>
-            <Top>4.74591in</Top>
-            <Left>5.29104in</Left>
+            <Top>4.79006in</Top>
+            <Left>5.29656in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
             <ZIndex>49</ZIndex>
@@ -1800,11 +1787,49 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTRateAmount</rd:DefaultName>
-            <Top>5.42596in</Top>
-            <Left>2.94182in</Left>
+            <Top>5.47705in</Top>
+            <Left>2.95222in</Left>
             <Height>0.13542in</Height>
             <Width>1.54166in</Width>
             <ZIndex>50</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CTOTShiftAmount">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!CTOTShiftAmount.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
+            <Top>5.68191in</Top>
+            <Left>2.95221in</Left>
+            <Height>0.13542in</Height>
+            <Width>1.54166in</Width>
+            <ZIndex>51</ZIndex>
+            <Visibility>
+              <Hidden>true</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1834,11 +1859,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>5.42596in</Top>
-            <Left>0.54251in</Left>
+            <Top>5.47705in</Top>
+            <Left>0.55291in</Left>
             <Height>0.13542in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>51</ZIndex>
+            <ZIndex>52</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1860,7 +1885,6 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
-                      <Color>=IIf(First(Fields!CTOTRateAmount.Value, "DataSet_Result") &lt;&gt; First(Fields!TrOTRateAmount.Value, "DataSet_Result"),"Red","Black")</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1870,11 +1894,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrOTRateAmount</rd:DefaultName>
-            <Top>5.42596in</Top>
-            <Left>5.2821in</Left>
+            <Top>5.47705in</Top>
+            <Left>5.28804in</Left>
             <Height>0.13542in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>52</ZIndex>
+            <ZIndex>53</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1903,11 +1927,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>5.00235in</Top>
-            <Left>0.54791in</Left>
+            <Top>5.08121in</Top>
+            <Left>0.5571in</Left>
             <Height>0.29861in</Height>
             <Width>6.28123in</Width>
-            <ZIndex>53</ZIndex>
+            <ZIndex>54</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1937,11 +1961,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTCmpId1</rd:DefaultName>
-            <Top>5.7319in</Top>
-            <Left>0.54173in</Left>
+            <Top>5.68191in</Top>
+            <Left>0.54843in</Left>
             <Height>0.29861in</Height>
             <Width>6.28128in</Width>
-            <ZIndex>54</ZIndex>
+            <ZIndex>55</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -1976,11 +2000,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRInc</rd:DefaultName>
-            <Top>6.11384in</Top>
-            <Left>5.28182in</Left>
+            <Top>6.06385in</Top>
+            <Left>5.28852in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>55</ZIndex>
+            <ZIndex>56</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2014,11 +2038,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TrBRAmt</rd:DefaultName>
-            <Top>6.30828in</Top>
-            <Left>5.28206in</Left>
+            <Top>6.25829in</Top>
+            <Left>5.28876in</Left>
             <Height>0.125in</Height>
             <Width>1.54168in</Width>
-            <ZIndex>56</ZIndex>
+            <ZIndex>57</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2053,11 +2077,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRInc</rd:DefaultName>
-            <Top>6.11384in</Top>
-            <Left>2.94155in</Left>
+            <Top>6.06385in</Top>
+            <Left>2.94825in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>57</ZIndex>
+            <ZIndex>58</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2092,11 +2116,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTBRAmt</rd:DefaultName>
-            <Top>6.32217in</Top>
-            <Left>2.9418in</Left>
+            <Top>6.27218in</Top>
+            <Left>2.9485in</Left>
             <Height>0.125in</Height>
             <Width>1.54167in</Width>
-            <ZIndex>58</ZIndex>
+            <ZIndex>59</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2129,11 +2153,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>6.11384in</Top>
-            <Left>0.54225in</Left>
+            <Top>6.06385in</Top>
+            <Left>0.54895in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>59</ZIndex>
+            <ZIndex>60</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2166,11 +2190,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CTOTShiftAmount</rd:DefaultName>
-            <Top>6.32217in</Top>
-            <Left>0.54251in</Left>
+            <Top>6.27218in</Top>
+            <Left>0.54921in</Left>
             <Height>0.125in</Height>
             <Width>2.04514in</Width>
-            <ZIndex>60</ZIndex>
+            <ZIndex>61</ZIndex>
             <Visibility>
               <Hidden>true</Hidden>
             </Visibility>
@@ -2185,7 +2209,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.72791in</Height>
+        <Height>6.64458in</Height>
         <Style>
           <Border>
             <Style>None</Style>
