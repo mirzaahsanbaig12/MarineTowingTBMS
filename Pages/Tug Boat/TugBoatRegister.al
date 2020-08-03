@@ -21,7 +21,10 @@ page 50114 "Tug Boat Register List"
                 {
                     ApplicationArea = All;
                 }
-
+                field(ExternaTug; ExternaTug)
+                {
+                    ApplicationArea = All;
+                }
                 field(Status; Status)
                 {
                     ApplicationArea = All;
