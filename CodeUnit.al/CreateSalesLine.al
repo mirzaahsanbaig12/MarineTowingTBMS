@@ -299,7 +299,10 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate("Line No.", lineNo);
                             SalesLine.Validate("Document Type", SalesLine."Document Type"::Order);
                             SalesLine.Validate("Type", SalesLine.Type::"G/L Account");
-                            SalesLine.Validate("No.", Format(RevAccount));
+                            if tugBoatRec.AcctRev <> '' then
+                                SalesLine.Validate("No.", Format(tugBoatRec.AcctRev))
+                            else
+                                SalesLine.Validate("No.", Format(RevAccount));
                             SalesLine.Validate("Quantity", 1);
                             SalesLineCharges := fixRate;
                             SalesLine.Validate("Unit Price", fixRate);
