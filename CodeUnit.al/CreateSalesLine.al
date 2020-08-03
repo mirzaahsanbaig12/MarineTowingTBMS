@@ -22,6 +22,7 @@ codeunit 50115 CreateSalesLines
         tariffRec: Record Tariff;
         baseRateRec: Record TarBr;
         hours: Duration;
+        HourlyJobDuration: Duration;
         TonnageDiff: Integer;
         StartPort: Code[20];
         EndPort: code[20];
@@ -261,19 +262,36 @@ codeunit 50115 CreateSalesLines
 
                             if logDocRec.JobType = logDocRec.JobType::Hourly
                             then begin
+                                //in minutes calculation
+                                HourlyJobDuration := logDetRec.Timefinish - logDetRec.TimeStart;
+                                HourlyJobDuration := hours / 60000;
                                 hours := logDetRec.Timefinish - logDetRec.TimeStart;
-                                fixRate := hours / 3600000;
-                                fixRate := Round(fixRate, 1, '=') * tugBoatRec.HourlyRate;
-                                LineDesc := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
-                                LineDesc := LineDesc + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + locStart.Description;
-                                LineDesc := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + LocEnd.Description;
-                                LineDesc := LineDesc + ' 5 @ ' + Format(tugBoatRec.HourlyRate, 0, RateFormatStr);
+                                //hours := Round(hours / 60000, 1.00, '>');
 
-                                LineDesc1 := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
-                                LineDesc1 := LineDesc1 + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + locStart.Description;
+                                if HourlyJobDuration <= 60 then
+                                    //If less then 1 hour, bill for 1 hour
+                                    fixRate := tugBoatRec.HourlyRate
+                                else begin
+                                    //Bill in 5 mins increments
+                                    Message('time: %1 --%2', (HourlyJobDuration / 5), Round((HourlyJobDuration / 5), 1, '>'));
+                                    fixRate := Round((HourlyJobDuration / 5), 1, '>') * (tugBoatRec.HourlyRate / 12);
+                                end;
 
-                                LineDesc2 := ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + LocEnd.Description;
-                                LineDesc2 := LineDesc2 + ' 5 @ ' + Format(tugBoatRec.HourlyRate, 0, RateFormatStr);
+                                //fixRate := Round(fixRate, 1, '=') * tugBoatRec.HourlyRate;
+
+                                // LineDesc := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
+                                // LineDesc := LineDesc + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + locStart.Description;
+                                // LineDesc := LineDesc + ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + LocEnd.Description;
+                                // LineDesc := LineDesc + ' 5 @ ' + Format(tugBoatRec.HourlyRate, 0, RateFormatStr);
+
+                                // LineDesc1 := tugBoatRec.Name;//+ ' \ vessel ' + logDocRec.VesId + ' \';
+                                // LineDesc1 := LineDesc1 + ' Leave doc at' + format(DT2Time(logDetRec.TimeStart)) + ' ' + locStart.Description;
+
+                                // LineDesc2 := ' Arrive doc at ' + format(DT2Time(logDetRec.Timefinish)) + ' ' + LocEnd.Description;
+                                // LineDesc2 := LineDesc2 + ' 5 @ ' + Format(tugBoatRec.HourlyRate, 0, RateFormatStr);
+
+                                LineDesc := tugBoatRec.Name + ' ' + Format(hours) + ' @ $' + format(tugBoatRec.HourlyRate, 0, PriceFormatStr);
+                                lineDesc1 := LineDesc;
                             end;
 
                             SalesLine."Document No." := SalesOrderNo;
@@ -549,7 +567,12 @@ codeunit 50115 CreateSalesLines
                                         FuelSurchargesSL.Validate("Quantity", 1);
                                         FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
                                         FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-                                        FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on log rate of $' + Format(SalesLineCharges, 0, RateFormatStr);
+                                        FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on log rate of $';
+                                        if (logDocRec.JobType = logDocRec.JobType::Hourly) then
+                                            FuelSurchargeDesc += Format(SalesLineCharges, 0, RateFormatStr)
+                                        else
+                                            FuelSurchargeDesc += Format(baseRateRec.Rate, 0, RateFormatStr);
+
                                         FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
                                         FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
                                         FuelSurchargesSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
