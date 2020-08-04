@@ -38,7 +38,7 @@ page 50158 SchedulerAPIPage
             field(JobDate; JobDate)
             {
             }
-            field(JobType; JobTypeNew)
+            field(JobType; SchedulerJobType)
             {
             }
             field(ManagerMemo; ManagerMemo)

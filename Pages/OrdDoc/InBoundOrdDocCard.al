@@ -68,7 +68,7 @@ page 50144 "Inbound Ord Doc Card"
                     ApplicationArea = All;
                     Caption = 'Status';
                 }
-                field(JobType; JobTypeNew)
+                field(JobType; SchedulerJobType)
                 {
                     ApplicationArea = All;
                 }
