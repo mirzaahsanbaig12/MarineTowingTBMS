@@ -165,6 +165,7 @@ pageextension 50115 Operations extends "Order Processor Role Center"
                     ApplicationArea = All;
                     Caption = 'Billing Tariff';
                     RunObject = report "Billing Tariff Single";
+                    Visible = false;
                 }
 
                 action("SalesOrder")
