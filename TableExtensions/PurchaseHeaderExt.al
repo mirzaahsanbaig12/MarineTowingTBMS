@@ -7,7 +7,7 @@ tableextension 50120 PurchaseHeaderExt extends "Purchase Header"
         {
             DataClassification = ToBeClassified;
             Editable = false;
-            TableRelation = "Sales Header"."No." WHERE("Document Type" = const(Order));
+            TableRelation = "Sales Invoice Header"."No.";
         }
         // Add changes to table fields here
     }
