@@ -1,36 +1,27 @@
-page 50114 "Tug Boat Register List"
+page 50172 JobTypeCardPage
 {
-    PageType = List;
+    PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "Tug Boat";
-    Caption = 'Tug Boat List';
-    CardPageId = 50115;
-
+    SourceTable = JobType;
+    Caption = 'Job Type Card';
     layout
     {
         area(Content)
         {
-            repeater("General")
+            group(GroupName)
             {
-                field(TugId; TugId)
+                field(JobType; JobType)
                 {
                     ApplicationArea = All;
+                    Caption = 'Job Type';
                 }
-                field(Name; Name)
+                field(Description; Description)
                 {
                     ApplicationArea = All;
-                }
-                field(ExternaTug; ExternaTug)
-                {
-                    ApplicationArea = All;
-                }
-                field(Status; Status)
-                {
-                    ApplicationArea = All;
+                    Caption = 'Description';
                 }
             }
-
         }
     }
 

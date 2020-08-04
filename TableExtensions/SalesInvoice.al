@@ -60,8 +60,11 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
             DataClassification = ToBeClassified;
             Caption = 'Multiple Logs';
         }
-
-
+        field(50114; ConNumber; Integer)
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Contract;
+        }
 
     }
 

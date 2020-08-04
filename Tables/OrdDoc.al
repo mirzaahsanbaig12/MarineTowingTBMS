@@ -89,7 +89,16 @@ table 50126 OrdDoc
             DataClassification = ToBeClassified;
             OptionMembers = "SU","BR","NO","DC";
             Caption = 'Job Type';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Field Changed';
 
+        }
+        field(50135; SchedulerJobType; Code[20])
+        {
+
+            DataClassification = ToBeClassified;
+            TableRelation = JobType;
+            Caption = 'Job Type';
         }
 
         field(50121; Status; Option)
@@ -277,10 +286,6 @@ table 50126 OrdDoc
                                 logDetRec.LineNumber := logDetRecl.LineNumber + 1
                             else
                                 logDetRec.LineNumber := 1;
-
-
-
-
 
                             logDetRec.Validate(TugId, ordTugRec.TugId);
                             logDetRec.Validate(LogDocNumber, logDoc.LogDocNumber);

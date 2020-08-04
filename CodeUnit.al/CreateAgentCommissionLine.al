@@ -7,7 +7,7 @@ codeunit 50116 CreateAgentCommissionLine
 
     local procedure CreateCommissionLines()
     var
-        SalesHeader: Record "Sales Header";
+        SalesInvoiceHeader: Record "Sales Invoice Header";
         AgentConLine: Record AgentCommissionLine;
         NewAgentComLine: Record AgentCommissionLine;
         PurchaseHeader: Record "Purchase Header";
@@ -19,21 +19,22 @@ codeunit 50116 CreateAgentCommissionLine
         InvoiceCreated: Integer;
         PurchaseInvoiceNo: Code[20];
     begin
-        SalesHeader.Reset();
+        SalesInvoiceHeader.Reset();
         InvoiceCreated := 0;
 
-        SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
-        if SalesHeader.FindSet() then begin
+        //SalesInvoiceHeader.SetRange("Document Type", SalesInvoiceHeader."Document Type"::Order);
+
+        if SalesInvoiceHeader.FindSet() then begin
             REPEAT
                 NewPurchaseHeader.Reset();
                 NewPurchaseLine.Reset();
                 NewPurchaseHeader.Init();
                 NewPurchaseLine.Init();
 
-                SalesHeader.CalcFields("Amount Including VAT");
+                SalesInvoiceHeader.CalcFields("Amount Including VAT");
 
                 ConAgent.Reset();
-                ConAgent.SetRange(ConNumber, SalesHeader.ConNumber);
+                ConAgent.SetRange(ConNumber, SalesInvoiceHeader.ConNumber);
                 ConAgent.SetRange(IsConfidential, false);
                 if ConAgent.FindSet() then begin
                     repeat
@@ -41,26 +42,25 @@ codeunit 50116 CreateAgentCommissionLine
                             // //Message('agent no ' + Format(ConAgent.BusId));
                             PurchaseHeader.Reset();
                             PurchaseHeader.SetRange("Buy-from Vendor No.", ConAgent.BusId);
-                            PurchaseHeader.SetRange(SalesOrderNo, SalesHeader."No.");
+                            PurchaseHeader.SetRange(SalesOrderNo, SalesInvoiceHeader."No.");
 
                             PurchaseInvoice.Reset();
                             PurchaseInvoice.SetRange("Buy-from Vendor No.", ConAgent.BusId);
-                            PurchaseInvoice.SetRange(SalesOrderNo, SalesHeader."No.");
+                            PurchaseInvoice.SetRange(SalesOrderNo, SalesInvoiceHeader."No.");
 
 
                             //check for purchase invoice and posted purchase invoice existng record
                             if (NOT PurchaseHeader.FindFirst()) and (NOT PurchaseInvoice.FindFirst()) then begin
                                 PurchaseInvoiceNo := NoSeriesMgt.GetNextNo('P-INV', Today, true);
-                                
+
                                 NewPurchaseHeader.Init();
                                 NewPurchaseHeader.Validate("No.", PurchaseInvoiceNo);
                                 NewPurchaseHeader.Validate("Document Type", NewPurchaseHeader."Document Type"::Invoice);
-                                NewPurchaseHeader.Validate("Vendor Invoice No.", SalesHeader."No.");
-                                NewPurchaseHeader.Validate(SalesOrderNo, SalesHeader."No.");
+                                NewPurchaseHeader.Validate("Vendor Invoice No.", SalesInvoiceHeader."No.");
+                                NewPurchaseHeader.Validate(SalesOrderNo, SalesInvoiceHeader."No.");
                                 NewPurchaseHeader.Validate("Buy-from Vendor No.", ConAgent.BusId);
 
                                 If NewPurchaseHeader.Insert(true) then begin
-
                                     NewPurchaseLine.Init();
                                     NewPurchaseLine.Validate("Line No.", 1000);
                                     NewPurchaseLine.Validate("Document Type", NewPurchaseLine."Document Type"::Invoice);
@@ -68,7 +68,7 @@ codeunit 50116 CreateAgentCommissionLine
                                     NewPurchaseLine.Validate(Type, NewPurchaseLine.Type::"G/L Account"); // Line type
                                     NewPurchaseLine.Validate("No.", format(61200)); // GL account number
                                     NewPurchaseLine.Validate(Quantity, 1);
-                                    NewPurchaseLine.Validate("Direct Unit Cost", (SalesHeader."Amount Including VAT" * ConAgent.CommonPer));
+                                    NewPurchaseLine.Validate("Direct Unit Cost", (SalesInvoiceHeader."Amount Including VAT" * ConAgent.CommonPer));
                                     //purchLine.Validate("Line Amount", purchInvLineStg."Line Amount");
                                     NewPurchaseLine.Validate("Shortcut Dimension 1 Code", Format(100300));
                                     if NewPurchaseLine.Insert(true) then begin
@@ -100,7 +100,7 @@ codeunit 50116 CreateAgentCommissionLine
 
                     until ConAgent.Next() = 0;
                 end;
-            UNTIL SalesHeader.NEXT = 0;
+            UNTIL SalesInvoiceHeader.NEXT = 0;
         end;
 
         Message('Total invoices created %1', InvoiceCreated);

@@ -7,7 +7,7 @@ tableextension 50121 PurchaseInvoiceHeaderExt extends "Purch. Inv. Header"
         {
             DataClassification = ToBeClassified;
             Editable = false;
-            TableRelation = "Sales Header"."No." WHERE("Document Type" = const(Order));
+            TableRelation = "Sales Invoice Header"."No.";
         }
     }
 
