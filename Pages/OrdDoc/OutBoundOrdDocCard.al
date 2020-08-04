@@ -80,6 +80,16 @@ page 50142 "Outbound Ord Doc Card"
                     ApplicationArea = All;
                 }
 
+                field(LocStr; LocStr)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(DestinationStr; DestinationStr)
+                {
+                    ApplicationArea = All;
+                }
+
             }
 
             group("Ord Tug")

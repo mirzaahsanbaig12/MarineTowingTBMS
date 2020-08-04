@@ -77,6 +77,15 @@ page 50144 "Inbound Ord Doc Card"
                 {
                     ApplicationArea = All;
                 }
+                field(LocStr; LocStr)
+                {
+                    ApplicationArea = All;
+                }
+
+                field(DestinationStr; DestinationStr)
+                {
+                    ApplicationArea = All;
+                }
 
 
             }

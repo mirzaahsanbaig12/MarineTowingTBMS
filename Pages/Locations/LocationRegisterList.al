@@ -6,6 +6,7 @@ page 50120 "Location Register List"
     SourceTable = "Location Register";
     Caption = 'Location List';
     CardPageId = 50121;
+    Editable = false;
 
     layout
     {

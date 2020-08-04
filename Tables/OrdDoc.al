@@ -177,6 +177,21 @@ table 50126 OrdDoc
             Editable = false;
         }
 
+        field(50136; LocStr; code[20])
+        {
+            Caption = 'Start Location';
+            DataClassification = ToBeClassified;
+            TableRelation = "Location Register";
+        }
+
+        field(50137; DestinationStr; code[20])
+        {
+            Caption = 'Destination Location';
+            DataClassification = ToBeClassified;
+            TableRelation = "Location Register";
+        }
+
+
     }
 
     keys
@@ -272,8 +287,8 @@ table 50126 OrdDoc
 
 
                 if logDoc.Insert(true) then begin
-                    Rec.Validate(Status, Status::Logged);
-                    Rec.Modify(true);
+                    //Rec.Validate(Status, Status::Logged);
+                    //Rec.Modify(true);
 
                     //log details tab start
                     ordTugRec.SetFilter(ORDocNumber, format(ORDocNumber));
