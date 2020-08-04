@@ -143,7 +143,7 @@ pageextension 50121 BusinessManagerExt extends "Business Manager Role Center"
                 {
                     ApplicationArea = All;
                     Caption = 'Calculate Commission';
-                    RunObject = codeunit CreateAgentCommissionLine;
+                    RunObject = report "Calculate Agent Commission";
                 }
 
                 action("SalesOrder")

@@ -2,10 +2,10 @@ codeunit 50116 CreateAgentCommissionLine
 {
     trigger OnRun()
     begin
-        CreateCommissionLines();
+        //CreateCommissionLines();
     end;
 
-    local procedure CreateCommissionLines()
+    procedure CreateCommissionLines(_Documentdate: Date)
     var
         SalesInvoiceHeader: Record "Sales Invoice Header";
         AgentConLine: Record AgentCommissionLine;
@@ -18,12 +18,13 @@ codeunit 50116 CreateAgentCommissionLine
         NoSeriesMgt: Codeunit NoSeriesManagement;
         InvoiceCreated: Integer;
         PurchaseInvoiceNo: Code[20];
+        DocumentDate: Date;
     begin
         SalesInvoiceHeader.Reset();
         InvoiceCreated := 0;
 
         //SalesInvoiceHeader.SetRange("Document Type", SalesInvoiceHeader."Document Type"::Order);
-
+        SalesInvoiceHeader.SetRange("Document Date", 0D, _Documentdate);
         if SalesInvoiceHeader.FindSet() then begin
             REPEAT
                 NewPurchaseHeader.Reset();
