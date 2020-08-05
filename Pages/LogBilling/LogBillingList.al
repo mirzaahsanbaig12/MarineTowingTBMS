@@ -311,6 +311,7 @@ page 50147 "Log Billing List"
                     SalesLine.Validate(TBMSIsFieldConfidentalLine, true);
                     SalesLine.Validate("Unit Price", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
                     SalesLine.Validate("Line Amount", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
+                    SalesLine.Validate(LogDate, DT2Date(logDocRec.Datelog));
                     if not salesHeaderLocalRec.mulipleLogs then
                         SalesLine.Validate(LogDocNumber, salesHeaderLocalRec.LogDocNumber);
 
