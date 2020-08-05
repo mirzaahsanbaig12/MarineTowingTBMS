@@ -278,6 +278,15 @@ codeunit 50111 GetData
         exit(OvertimeDuration);
     end;
 
+
+    procedure TBMSSalesConfDiscountReport(_SalesOrderNo: code[20])
+    var
+        SalesHeader: Record "Sales Header";
+    begin
+        SalesHeader.SetRange("No.", _SalesOrderNo);
+        Report.RunModal(Report::"TBMS Sales Conf Dsicount", true, true, SalesHeader);
+
+    end;
 }
 
 

@@ -16,35 +16,47 @@ pageextension 50117 SalesOrderExt extends "Sales Order"
         {
             Visible = true;
         }
+        */
 
         addafter("Print Confirmation")
         {
             action("TBMS Print Confirmation")
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Print Confirmation1123';
+                Caption = 'TBMS Print Discount';
                 Ellipsis = true;
                 Image = Print;
                 Promoted = true;
                 PromotedCategory = Category11;
-                ToolTip = 'Print a sales order confirmation.';
-                RunObject = report "TBMS Sales Confirmation";
+                ToolTip = 'Print a sales order discount confirmation.';
+                //RunObject = report "TBMS Sales Confirmation";
+
+                trigger OnAction()
+                begin
+                    PrintReport.TBMSSalesConfDiscountReport(Rec."No.");
+                end;
+
+
             }
         }
 
-        addlast("&Print")
+        /*addlast("&Print")
         {
-            action("TBMS Print Confirmation1")
+            action("TBMS Print Discount")
             {
                 ApplicationArea = All;
-                Caption = 'Print Confirmation1';
-                RunObject = report "TBMS Sales Confirmation";
+                Caption = 'TBMS Print Discount';
+                RunObject = report "TBMS Sales Conf Dsicount";
             }
         }
-        // Add changes to page actions here
         */
+        // Add changes to page actions here
+
     }
 
     var
         myInt: Integer;
+        PrintReport: Codeunit GetData;
+
+
 }
