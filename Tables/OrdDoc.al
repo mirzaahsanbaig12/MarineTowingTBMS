@@ -255,6 +255,7 @@ table 50126 OrdDoc
         ordTugRec: Record OrdTug;
         ordLocRec: Record OrdLoc;
         ContractRec: Record Contract;
+        JobTypeRec: Record JobType;
 
     begin
 
@@ -264,7 +265,27 @@ table 50126 OrdDoc
             logDoc.Validate(DocType, logDoc.DocType);
             logDoc.Validate(Status, logDoc.Status::Open);
 
-            logDoc.Validate(JobType, logDoc.JobType::Docking); //confirm this
+            //MAPPING SCHEDULER JOB TYPE TO LOGS JOB TYPE
+            if SchedulerJobType = '' then
+                FieldError(SchedulerJobType, 'Job Type must be selected')
+            else begin
+                if JobTypeRec.Get(SchedulerJobType) then begin
+                    if JobTypeRec.Description.ToLower().Contains('hourly') then
+                        logDoc.Validate(JobType, logDoc.JobType::Hourly)
+                    else
+                        if JobTypeRec.Description.ToLower().Contains('undocking') then
+                            logDoc.Validate(JobType, logDoc.JobType::Undocking)
+                        else
+                            if JobTypeRec.Description.ToLower().Contains('docking') then
+                                logDoc.Validate(JobType, logDoc.JobType::Docking)
+                            else
+                                if JobTypeRec.Description.ToLower().Contains('shifting') then
+                                    logDoc.Validate(JobType, logDoc.JobType::Shifting)
+                                else
+                                    FieldError(SchedulerJobType, 'Invalid Job Type');
+                end;
+            end;
+
             logDoc.Validate(PilId, PilId);
             logDoc.Validate(Tonnage, Tonnage);
             logDoc.Validate(ORDocNumber, ORDocNumber);

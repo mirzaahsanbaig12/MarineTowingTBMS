@@ -152,9 +152,22 @@ codeunit 50115 CreateSalesLines
                             tugBoatRec.SetFilter(TugId, logDetRec.TugId);
                             tugBoatRec.FindFirst();
 
-                            LocEnd.Get(logDetRec.DestinationStr);
-                            locStart.Get(logDetRec.LocStr);
-
+                            //GET LOCATIONS BASED ON JOB TYPE
+                            case logDocRec.JobType of
+                                logDocRec.JobType::Shifting:
+                                    begin
+                                        LocEnd.Get(logDetRec.DestinationStr);
+                                        locStart.Get(logDetRec.LocStr);
+                                    end;
+                                logDocRec.JobType::Docking:
+                                    LocEnd.Get(logDetRec.DestinationStr);
+                                logDocRec.JobType::Undocking:
+                                    locStart.Get(logDetRec.LocStr);
+                            end;
+  
+                            // LocEnd.Get(logDetRec.DestinationStr);
+                            // locStart.Get(logDetRec.LocStr);
+  
                             //ahsan changes start
 
                             if tariffRec.FindFirst()
