@@ -961,6 +961,7 @@ report 50116 "TBMS Sales Conf Dsicount"
     requestpage
     {
         SaveValues = true;
+        Caption = 'Print salaes confirmation discount';
 
         layout
         {
@@ -971,13 +972,6 @@ report 50116 "TBMS Sales Conf Dsicount"
                 group(Options)
                 {
                     Caption = 'Options';
-                    field(TBMSPrintConfDiscLines; TBMSPrintConfDiscLines)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Print Confidential Discount Lines';
-                        Enabled = LogInteractionEnable;
-                        ToolTip = 'Specifies if you want to print confidental discount lines.';
-                    }
 
                     field(LogInteraction; LogInteraction)
                     {

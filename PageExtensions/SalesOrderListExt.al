@@ -16,7 +16,7 @@ pageextension 50126 SalesOrderlistExt extends "Sales Order List"
                 Ellipsis = true;
                 Image = Print;
                 Promoted = true;
-                PromotedCategory = Category11;
+                PromotedCategory = Category7;
                 ToolTip = 'Print a sales order discount confirmation.';
                 //RunObject = report "TBMS Sales Confirmation";
 

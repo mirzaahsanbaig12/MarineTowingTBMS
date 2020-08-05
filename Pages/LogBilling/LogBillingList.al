@@ -269,9 +269,11 @@ page 50147 "Log Billing List"
         salesline: Record "Sales Line";
         lineNo: Integer;
         contractRec: Record Contract;
+        desc: Text[200];
+        PriceFormatStr: Text[200];
     begin
 
-
+        PriceFormatStr := '<Integer Thousand><Decimals,3>';
         SalesLine.SetFilter("Document Type", format(SalesLine."Document Type"::Order));
         SalesLine.SetFilter("Document No.", _salesHeaderNo);
 
@@ -315,8 +317,9 @@ page 50147 "Log Billing List"
                     if not salesHeaderLocalRec.mulipleLogs then
                         SalesLine.Validate(LogDocNumber, salesHeaderLocalRec.LogDocNumber);
 
-                    SalesLine.Validate(TBMSlongDesc, 'Confidential Discount');
-                    SalesLine.Validate(TBMSDescription, 'Confidential Discount');
+                    desc := 'DISCOUNT (' + Format(ConAgent.DiscPer, 0, PriceFormatStr) + '% ) On $' + Format(SalesHeaderAmount, 0, PriceFormatStr);
+                    SalesLine.Validate(TBMSlongDesc, desc);
+                    SalesLine.Validate(TBMSDescription, desc);
                     SalesLine.Validate(TBMSDescription2);
                     //SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                     if contractRec.DiscPer > 0 then begin
