@@ -67,6 +67,9 @@ End Function
         <Field Name="CompanyAddress1">
           <DataField>CompanyAddress1</DataField>
         </Field>
+        <Field Name="Invoice_Notes">
+          <DataField>Invoice_Notes</DataField>
+        </Field>
         <Field Name="LogDocNumber">
           <DataField>LogDocNumber</DataField>
         </Field>
@@ -432,6 +435,9 @@ End Function
         </Field>
         <Field Name="TBMSDescription2">
           <DataField>TBMSDescription2</DataField>
+        </Field>
+        <Field Name="TBMSDescription3">
+          <DataField>TBMSDescription3</DataField>
         </Field>
         <Field Name="AmountExcludingVAT_Line">
           <DataField>AmountExcludingVAT_Line</DataField>

@@ -42,6 +42,12 @@ tableextension 50115 SalesInvoiceExtTBMS extends "Sales Invoice Line"
             DataClassification = ToBeClassified;
             Caption = 'Description';
         }
+        field(50117; TBMSDescription3; Text[200])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Line Description 3';
+        }
+
     }
 
     var

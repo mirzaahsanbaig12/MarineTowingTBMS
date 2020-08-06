@@ -45,6 +45,12 @@ tableextension 50112 SalesLineExtTBMS extends "Sales Line"
             Caption = 'Description';
         }
 
+        field(50117; TBMSDescription3; Text[200])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Line Description 3';
+        }
+
 
     }
 
