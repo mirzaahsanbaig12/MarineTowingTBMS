@@ -19,6 +19,12 @@ report 50116 "TBMS Sales Conf Dsicount"
             column(CompanyAddress1; CompanyAddr[1])
             {
             }
+
+
+            column(Invoice_Notes; "Invoice Notes")
+            {
+
+            }
             column(LogDocNumber; LogDocNumber)
             {
             }
@@ -400,6 +406,8 @@ report 50116 "TBMS Sales Conf Dsicount"
                 { }
 
                 column(TBMSDescription2; TBMSDescription2)
+                { }
+                column(TBMSDescription3; TBMSDescription3)
                 { }
 
                 column(AmountExcludingVAT_Line; Amount)
@@ -961,7 +969,7 @@ report 50116 "TBMS Sales Conf Dsicount"
     requestpage
     {
         SaveValues = true;
-        Caption = 'Print salaes confirmation discount';
+        Caption = 'Print sales confirmation discount';
 
         layout
         {

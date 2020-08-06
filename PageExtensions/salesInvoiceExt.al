@@ -36,6 +36,8 @@ pageextension 50125 SalesInvoiceLineExt extends "Sales Invoice Subform"
 
     actions
     {
+
+
         // Add changes to page actions here
     }
 

@@ -1,4 +1,4 @@
-pageextension 50126 SalesOrderlistExt extends "Sales Order List"
+pageextension 50128 SalesInvoiceListHeader extends "Posted Sales Invoices"
 {
     layout
     {
@@ -7,7 +7,8 @@ pageextension 50126 SalesOrderlistExt extends "Sales Order List"
 
     actions
     {
-        addafter("Print Confirmation")
+
+        addafter(Print)
         {
             action("TBMS Print Confirmation")
             {
@@ -16,21 +17,22 @@ pageextension 50126 SalesOrderlistExt extends "Sales Order List"
                 Ellipsis = true;
                 Image = Print;
                 Promoted = true;
-                PromotedCategory = Category8;
-                ToolTip = 'Print a sales order discount confirmation.';
+                PromotedCategory = Category7;
+                ToolTip = 'Print a sales invoice discount';
                 //RunObject = report "TBMS Sales Confirmation";
 
                 trigger OnAction()
                 begin
-                    PrintReport.TBMSSalesConfDiscountReport(Rec."No.");
+                    PrintReport.TBMSSalesInvoiceDiscountReport(Rec."No.");
                 end;
 
 
             }
-        }
 
+        }
         // Add changes to page actions here
     }
+
 
     var
         myInt: Integer;

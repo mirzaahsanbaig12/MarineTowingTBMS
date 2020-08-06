@@ -318,9 +318,10 @@ page 50147 "Log Billing List"
                         SalesLine.Validate(LogDocNumber, salesHeaderLocalRec.LogDocNumber);
 
                     desc := 'DISCOUNT (' + Format(ConAgent.DiscPer, 0, PriceFormatStr) + '% ) On $' + Format(SalesHeaderAmount, 0, PriceFormatStr);
-                    SalesLine.Validate(TBMSlongDesc, desc);
-                    SalesLine.Validate(TBMSDescription, desc);
+                    SalesLine.Validate(TBMSlongDesc, 'Confidential Discount');
+                    SalesLine.Validate(TBMSDescription, 'Confidential Discount');
                     SalesLine.Validate(TBMSDescription2);
+                    SalesLine.Validate(TBMSDescription3, desc);
                     //SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                     if contractRec.DiscPer > 0 then begin
                         if (contractRec.DiscType = contractRec.DiscType::"Gross On All Charges") OR (contractRec.DiscType = contractRec.DiscType::"Gross On Base Charges") then begin

@@ -439,10 +439,13 @@ report 50113 "TBMS Sales Invoice"
                 column(TBMSDescription; TBMSDescription)
                 { }
 
+
                 column(LogDateString; LogDateString)
                 { }
 
                 column(TBMSDescription2; TBMSDescription2)
+                { }
+                column(TBMSDescription3; TBMSDescription3)
                 { }
                 column(AmountExcludingVAT_Line; Amount)
                 {

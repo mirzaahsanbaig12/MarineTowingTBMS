@@ -287,6 +287,15 @@ codeunit 50111 GetData
         Report.RunModal(Report::"TBMS Sales Conf Dsicount", true, true, SalesHeader);
 
     end;
+
+    procedure TBMSSalesInvoiceDiscountReport(_salesInvoiceNo: code[20])
+    var
+        SalesInvoice: Record "Sales Invoice Header";
+    begin
+        SalesInvoice.SetRange("No.", _salesInvoiceNo);
+        Report.RunModal(Report::"TBMS Sales Discount Invoice", true, true, SalesInvoice);
+
+    end;
 }
 
 
