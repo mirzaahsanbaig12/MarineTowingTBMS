@@ -164,10 +164,10 @@ codeunit 50115 CreateSalesLines
                                 logDocRec.JobType::Undocking:
                                     locStart.Get(logDetRec.LocStr);
                             end;
-  
+
                             // LocEnd.Get(logDetRec.DestinationStr);
                             // locStart.Get(logDetRec.LocStr);
-  
+
                             //ahsan changes start
 
                             if tariffRec.FindFirst()
@@ -582,11 +582,11 @@ codeunit 50115 CreateSalesLines
                                         FuelSurchargesSL.Validate("Quantity", 1);
                                         FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
                                         FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-                                        FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on log rate of $';
+                                        FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on $';
                                         if (logDocRec.JobType = logDocRec.JobType::Hourly) then
-                                            FuelSurchargeDesc += Format(SalesLineCharges, 0, RateFormatStr)
+                                            FuelSurchargeDesc += Format(SalesLineCharges, 0, PriceFormatStr)
                                         else
-                                            FuelSurchargeDesc += Format(baseRateRec.Rate, 0, RateFormatStr);
+                                            FuelSurchargeDesc += Format(baseRateRec.Rate, 0, PriceFormatStr);
 
                                         FuelSurchargesSL.Validate(TBMSlongDesc, FuelSurchargeDesc);
                                         FuelSurchargesSL.Validate(TBMSDescription, FuelSurchargeDesc);
