@@ -184,7 +184,7 @@ report 50133 "API Call"
         values: Text;
         jsonObj: JsonObject;
         jToken: JsonToken;
-        pagss: Page "Document Attachment Details";
+        pagss: Page "";
         tables: Record "Document Attachment";
         AuthString: Text;
         Base64Convert: Codeunit "Base64 Convert";

@@ -17,6 +17,17 @@ pageextension 50110 CustomerExt extends "Customer Card"
 
                 }
             }
+            group("Blanket Commissions")
+            {
+                Visible = TBMSAgent = true;
+                part(BlanketCommissions; "Agent Blanket Comm SubForm")
+                {
+                    ApplicationArea = Basic, Suite;
+                    SubPageLink = AgentId = FIELD("No.");
+                    UpdatePropagation = Both;
+
+                }
+            }
 
             group("Business Types")
             {
