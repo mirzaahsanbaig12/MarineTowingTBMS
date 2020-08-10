@@ -19,9 +19,11 @@ pageextension 50110 CustomerExt extends "Customer Card"
             }
             group("Blanket Commissions")
             {
+
                 Visible = TBMSAgent = true;
                 part(BlanketCommissions; "Agent Blanket Comm SubForm")
                 {
+                    Caption = 'Blanket Commissions';
                     ApplicationArea = Basic, Suite;
                     SubPageLink = AgentId = FIELD("No.");
                     UpdatePropagation = Both;
@@ -66,11 +68,13 @@ pageextension 50110 CustomerExt extends "Customer Card"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         CurrPage.ContractForm.Page.SetBusOc("No.");
+        CurrPage.BlanketCommissions.Page.SetAgentId("No.");
     end;
 
     trigger OnAfterGetRecord()
     begin
         CurrPage.ContractForm.Page.SetBusOc("No.");
+        CurrPage.BlanketCommissions.Page.SetAgentId("No.");
     end;
 
 

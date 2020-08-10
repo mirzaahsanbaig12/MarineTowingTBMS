@@ -219,6 +219,12 @@ table 50123 Contract
                 end;
             end;
         }
+        field(50136; DefaultCommission; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Enable Blanket Commission';
+            InitValue = true;
+        }
 
     }
 

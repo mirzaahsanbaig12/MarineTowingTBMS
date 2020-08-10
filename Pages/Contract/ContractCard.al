@@ -120,6 +120,11 @@ page 50138 "Contract Card"
                 {
                     ApplicationArea = All;
                 }
+                field("Blanket Commission"; DefaultCommission)
+                {
+                    ApplicationArea = All;
+                }
+
             }
             group("Contract Agent")
             {

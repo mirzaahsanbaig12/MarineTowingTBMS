@@ -18,11 +18,12 @@ page 50173 "Agent Blanket Comm SubForm"
                 field(AgentId; AgentId)
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Visible = false;
 
                 }
                 field(Company; CompanyId)
                 {
+                    Caption = 'Company';
                     ApplicationArea = All;
                 }
                 field(CommissionType; CommissionType)
@@ -40,4 +41,17 @@ page 50173 "Agent Blanket Comm SubForm"
     actions
     {
     }
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        AgentId := AgentIdCode;
+    end;
+
+    var
+        AgentIdCode: Code[20];
+
+    procedure SetAgentId(_agentId: Code[20])
+    begin
+        AgentIdCode := _agentId;
+    end;
 }
