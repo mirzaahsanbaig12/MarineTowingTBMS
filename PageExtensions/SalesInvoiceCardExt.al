@@ -3,6 +3,14 @@ pageextension 50127 SalesInvoiceHeader extends "Posted Sales Invoice"
     layout
     {
         // Add changes to page layout here
+        addafter("Sell-to Customer Name")
+        {
+            field(LogJobType; LogJobType)
+            {
+                ApplicationArea = All;
+                Editable = false;
+            }
+        }
     }
 
     actions

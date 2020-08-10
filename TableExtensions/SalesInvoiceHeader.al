@@ -25,7 +25,17 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
             FieldClass = FlowField;
 
         }
-
+        field(50113; "TBMS Discount Description"; Text[300])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Discount Description';
+            Editable = false;
+        }
+        field(50114; ConNumber; Integer)
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = Contract;
+        }
         field(50115; "TBMS Confidental Discount"; Decimal)
         {
             Caption = 'Confidental Discount';
@@ -34,13 +44,6 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
 
             CalcFormula = Sum ("Sales Invoice Line"."Line Discount Amount" where("Document No." = FIELD("No."), "Document No." = FIELD("No."),
                                                                          "TBMSIsFieldConfidentalLine" = const(true)));
-        }
-
-        field(50113; "TBMS Discount Description"; Text[300])
-        {
-            DataClassification = ToBeClassified;
-            Caption = 'Discount Description';
-            Editable = false;
         }
         field(50117; "Invoice Notes"; Text[2048])
         {
@@ -60,11 +63,15 @@ tableextension 50114 SalesInvoiceHeaderExtTBMS extends "Sales Invoice Header"
             DataClassification = ToBeClassified;
             Caption = 'Multiple Logs';
         }
-        field(50114; ConNumber; Integer)
+        field(50120; LogJobType; Option)
         {
             DataClassification = ToBeClassified;
-            TableRelation = Contract;
+            OptionMembers = "","Docking","Shifting","Undocking","Hourly";
+            Caption = 'Job Type';
         }
+
+
+
 
     }
 

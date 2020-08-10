@@ -35,6 +35,7 @@ page 50115 "Tug Register Card"
                 field(AccountCC; AccountCC)
                 {
                     ApplicationArea = All;
+                    Editable = ExternaTug = false;
                 }
                 field(AcctRev; AcctRev)
                 {
@@ -63,6 +64,13 @@ page 50115 "Tug Register Card"
                 field(ExternaTug; ExternaTug)
                 {
                     ApplicationArea = All;
+
+                    trigger OnValidate()
+                    begin
+                        if ExternaTug = true then begin
+                            AccountCC := '100300';
+                        end;
+                    end;
                 }
 
                 field(HourlyRate; HourlyRate)

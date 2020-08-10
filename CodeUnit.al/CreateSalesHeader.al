@@ -38,7 +38,7 @@ codeunit 50114 CreateSalesHeader
             SalesHeader.Validate("Vessel", logDocRec.VesId);
             SalesHeader.Validate(ConNumber, logDocRec.ConNumber);
             SalesHeader.Validate(logdate, DT2Date(logDocRec.Datelog));
-
+            SalesHeader.Validate(LogJobType, logDocRec.JobType);
             if _multipleLogs then
                 SalesHeader.Validate(mulipleLogs, true)
             else

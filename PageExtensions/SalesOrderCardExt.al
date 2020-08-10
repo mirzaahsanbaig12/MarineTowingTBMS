@@ -4,9 +4,13 @@ pageextension 50117 SalesOrderExt extends "Sales Order"
     {
         // Add changes to page layout here
 
-        addafter(Status)
+        addafter("Sell-to Customer Name")
         {
-
+            field(LogJobType; LogJobType)
+            {
+                ApplicationArea = All;
+                Editable = false;
+            }
         }
     }
 
