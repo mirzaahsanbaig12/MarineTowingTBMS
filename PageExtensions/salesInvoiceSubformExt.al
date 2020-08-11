@@ -22,6 +22,11 @@ pageextension 50125 SalesInvoiceLineExt extends "Sales Invoice Subform"
                 DrillDownPageId = "Log Billing";
             }
 
+            field(LogJobType; LogJobType)
+            {
+                ApplicationArea = All;
+            }
+
             field(TBMSlongDesc; TBMSlongDesc)
             {
                 ApplicationArea = ALL;

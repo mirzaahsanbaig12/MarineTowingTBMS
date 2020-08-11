@@ -11,6 +11,11 @@ pageextension 50113 SalesLineExt extends "Sales Order Subform"
                 Visible = false;
             }
 
+            field(LogJobType; LogJobType)
+            {
+                ApplicationArea = All;
+            }
+
             field("Posting Date"; "Posting Date")
             {
                 ApplicationArea = All;

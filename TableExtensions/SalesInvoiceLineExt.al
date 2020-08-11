@@ -48,6 +48,12 @@ tableextension 50115 SalesInvoiceExtTBMS extends "Sales Invoice Line"
             Caption = 'Line Description 3';
         }
 
+        field(50118; LogJobType; Option)
+        {
+            DataClassification = ToBeClassified;
+            OptionMembers = "","Docking","Shifting","Undocking","Hourly";
+            Caption = 'Job Type';
+        }
     }
 
     var

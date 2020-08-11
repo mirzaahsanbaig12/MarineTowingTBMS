@@ -51,6 +51,13 @@ tableextension 50112 SalesLineExtTBMS extends "Sales Line"
             Caption = 'Line Description 3';
         }
 
+        field(50118; LogJobType; Option)
+        {
+            DataClassification = ToBeClassified;
+            OptionMembers = "","Docking","Shifting","Undocking","Hourly";
+            Caption = 'Job Type';
+        }
+
 
     }
 
