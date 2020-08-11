@@ -116,6 +116,16 @@ codeunit 50115 CreateSalesLines
                     end;
 
                     SetTariff(tariffRec, contractRec, CompanyRec);
+                    /*Message('tariffRec.BRInc %1 ,tariffRec.JobShiftAmount %2, tariffRec.BRAmt %3, tariffRec.JobShiftTime %4, tariffRec.JobStandardTime %5 , tariffRec.OTRateAmount %6 ,tariffRec.FSPrcBase %7 ,tariffRec.FSPrcInc %8', tariffRec.BRInc - - -
+                    tariffRec.JobShiftAmount,
+                    tariffRec.BRAmt,
+                    tariffRec.JobShiftTime,
+                    tariffRec.JobStandardTime,
+                    tariffRec.OTRateAmount,
+                    tariffRec.FSPrcBase,
+                    tariffRec.FSPrcInc);
+                    */
+
                     //add customer account base on contract billing option value
                     if contractRec.BillingOptions = contractRec.BillingOptions::Agent then begin
                         customerAcc := logDocRec.BusLA;
@@ -304,6 +314,7 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate("Line No.", lineNo);
                             SalesLine.Validate("Document Type", SalesLine."Document Type"::Order);
                             SalesLine.Validate("Type", SalesLine.Type::"G/L Account");
+                            SalesLine.Validate(LogJobType, logDocRec.JobType);
                             if tugBoatRec.AcctRev <> '' then
                                 SalesLine.Validate("No.", Format(tugBoatRec.AcctRev))
                             else
@@ -351,7 +362,7 @@ codeunit 50115 CreateSalesLines
                                                 RepositionChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
                                                 RepositionChargeSL.Validate("No.", Format(RevAccount));
                                                 RepositionChargeSL.Validate("Quantity", 1);
-
+                                                RepositionChargeSL.Validate(LogJobType, logDocRec.JobType);
                                                 RepositionChargeSL.Validate("Unit Price", PortZoneRec.FlatRate);
                                                 RepositionChargeSL.Validate("Line Amount", PortZoneRec.FlatRate);
                                                 RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
@@ -406,6 +417,7 @@ codeunit 50115 CreateSalesLines
                                                 AdditionalTimeChargeSL.Validate("Line Amount", fixRate);
                                                 AdditionalTimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                                 LineDesc := 'Additional Time Charge for ' + tugBoatRec.name;
+                                                AdditionalTimeChargeSL.Validate(LogJobType, logDocRec.JobType);
                                                 AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                                 AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
                                                 AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -535,6 +547,7 @@ codeunit 50115 CreateSalesLines
                                             OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                             //LineDesc := 'Over Time Charge for ' + tugBoatRec.Name;
                                             //OvertimeChargeSL.Validate(Description, LineDesc);
+                                            OvertimeChargeSL.Validate(LogJobType, logDocRec.JobType);
                                             OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                             OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
                                             OvertimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -574,6 +587,7 @@ codeunit 50115 CreateSalesLines
                                         FuelSurchargesSL.Validate("Quantity", 1);
                                         FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
                                         FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
+                                        FuelSurchargesSL.Validate(LogJobType, logDocRec.JobType);
                                         FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on $';
                                         if (logDocRec.JobType = logDocRec.JobType::Hourly) then
                                             FuelSurchargeDesc += Format(SalesLineCharges, 0, PriceFormatStr)
