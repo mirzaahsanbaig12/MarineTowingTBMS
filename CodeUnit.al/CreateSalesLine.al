@@ -115,6 +115,7 @@ codeunit 50115 CreateSalesLines
                         IsFixedRate := true;
                     end;
 
+                    //message('here');
                     SetTariff(tariffRec, contractRec, CompanyRec);
                     /*Message('tariffRec.BRInc %1 ,tariffRec.JobShiftAmount %2, tariffRec.BRAmt %3, tariffRec.JobShiftTime %4, tariffRec.JobStandardTime %5 , tariffRec.OTRateAmount %6 ,tariffRec.FSPrcBase %7 ,tariffRec.FSPrcInc %8', tariffRec.BRInc - - -
                     tariffRec.JobShiftAmount,
@@ -125,6 +126,7 @@ codeunit 50115 CreateSalesLines
                     tariffRec.FSPrcBase,
                     tariffRec.FSPrcInc);
                     */
+
 
                     //add customer account base on contract billing option value
                     if contractRec.BillingOptions = contractRec.BillingOptions::Agent then begin
@@ -314,7 +316,6 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate("Line No.", lineNo);
                             SalesLine.Validate("Document Type", SalesLine."Document Type"::Order);
                             SalesLine.Validate("Type", SalesLine.Type::"G/L Account");
-                            SalesLine.Validate(LogJobType, logDocRec.JobType);
                             if tugBoatRec.AcctRev <> '' then
                                 SalesLine.Validate("No.", Format(tugBoatRec.AcctRev))
                             else
@@ -330,6 +331,7 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate(TBMSDescription2, lineDesc2);
                             SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                             SalesLine.Validate(LogDate, DT2Date(logDocRec.Datelog));
+                            SalesLine.Validate(LogJobType, logDocRec.JobType);
                             SalesLine.Validate(LogDateString, format(DT2Date(logDocRec.Datelog)));
                             //Message('date %1', DT2Date(logDocRec.Datelog));
 
