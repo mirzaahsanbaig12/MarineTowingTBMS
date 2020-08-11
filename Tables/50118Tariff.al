@@ -30,11 +30,13 @@ table 50118 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Docking/Undocking Time';
+            InitValue = -1;
         }
         field(50114; JobShiftTime; Integer)
         {
             DataClassification = ToBeClassified;
             Caption = 'Shift Time';
+            InitValue = -1;
         }
 
         field(50115; JobSpPer; Decimal)
@@ -60,6 +62,7 @@ table 50118 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Shift Adj Percentage';
+            InitValue = -1;
         }
 
         field(50119; FSType; Option)
@@ -80,6 +83,7 @@ table 50118 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Fuel Base Price';
+            InitValue = -1;
         }
 
         field(50122; FSPrcInc; Decimal)
@@ -87,6 +91,7 @@ table 50118 "Tariff"
             DataClassification = ToBeClassified;
             Caption = 'Fuel Price Incr';
             DecimalPlaces = 4;
+            InitValue = -1;
         }
 
         field(50123; FSPerBase; Decimal)
@@ -95,6 +100,7 @@ table 50118 "Tariff"
             Caption = 'Surcharge Base %';
             AutoFormatExpression = '<precision, 2:2><standard format,0>%';
             AutoFormatType = 10;
+            InitValue = -1;
         }
 
         field(50124; FSPerInc; Decimal)
@@ -121,6 +127,7 @@ table 50118 "Tariff"
         {
             DataClassification = ToBeClassified;
             Caption = 'Amount/Percent';
+            InitValue = -1;
 
         }
 
@@ -201,12 +208,14 @@ table 50118 "Tariff"
         {
             Caption = 'Increment Tons';
             DataClassification = ToBeClassified;
+            InitValue = -1;
         }
 
         field(50140; BRAmt; Integer)
         {
             Caption = 'Rate Amount';
             DataClassification = ToBeClassified;
+            InitValue = -1;
         }
 
         field(50141; TariffType; Option)

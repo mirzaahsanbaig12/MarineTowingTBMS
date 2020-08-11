@@ -115,15 +115,7 @@ codeunit 50115 CreateSalesLines
                         IsFixedRate := true;
                     end;
 
-                    //if customer tarif is not defined on contract then use company tarif
-                    if contractRec.TarCustomer = ''
-                            then begin
-                        tariffRec.SetFilter(TarId, CompanyRec.TarId);
-                    end
-                    else begin
-                        tariffRec.SetFilter(TarId, contractRec.TarCustomer);
-                    end;
-
+                    SetTariff(tariffRec, contractRec, CompanyRec);
                     //add customer account base on contract billing option value
                     if contractRec.BillingOptions = contractRec.BillingOptions::Agent then begin
                         customerAcc := logDocRec.BusLA;
@@ -170,7 +162,7 @@ codeunit 50115 CreateSalesLines
 
                             //ahsan changes start
 
-                            if tariffRec.FindFirst()
+                            if tariffRec.TarId <> ''
                             then begin
 
                                 baseRateRec.Reset();
@@ -341,7 +333,7 @@ codeunit 50115 CreateSalesLines
                             if SalesLine.Insert(true) then begin
                                 if IsFixedRate = false then begin
                                     //REOSITION START
-                                    if tariffRec.FindFirst() then begin
+                                    if tariffRec.TarId <> '' then begin
                                         if logDocRec.JobType = logDocRec.JobType::Docking then
                                             PortZoneId := LocEnd.PrtId;
                                         if logDocRec.JobType = logDocRec.JobType::Undocking then
@@ -384,7 +376,7 @@ codeunit 50115 CreateSalesLines
                                     //No additional charge for hourly type
                                     if logDocRec.JobType <> logDocRec.JobType::Hourly then begin
 
-                                        if tariffRec.FindFirst() then begin
+                                        if tariffRec.TarId <> '' then begin
                                             if logDocRec.JobType = logDocRec.JobType::Shifting then
                                                 StandardJobMins := tariffRec.JobShiftTime
                                             else
@@ -442,7 +434,7 @@ codeunit 50115 CreateSalesLines
                                     if baseCalendar.FindFirst() then begin
                                         CalendarMgmt.SetSource(baseCalendar, CustomizedCalendarChange);
                                     end;
-                                    if tariffRec.FindFirst() then begin
+                                    if tariffRec.TarId <> '' then begin
 
                                         //calculation working dates
                                         //OLD CODE START
@@ -675,5 +667,57 @@ codeunit 50115 CreateSalesLines
         end;
     end;
 
+    local procedure SetTariff(VAR tariffRec: Record Tariff; ContractRec: Record Contract; CompanyRec: Record "Company Register")
+    var
+        NullNumberValue: Decimal;
+        CompanyTariff: Record Tariff;
+        CustomerTariff: Record Tariff;
+    begin
+        NullNumberValue := -1;
+        //GET COMPANY TARIFF
+        CompanyTariff.Get(CompanyRec.TarId);
 
+        // GET CUSTOMER TARIFF
+        if ContractRec.TarCustomer <> '' then
+            CustomerTariff.Get(contractRec.TarCustomer);
+
+        //IF CUSTOMER TARIFF IS NULL, SET COMPANY TARIFF
+        if ContractRec.TarCustomer = '' then
+            tariffRec := CompanyTariff
+        else
+            //IF CUSTOMER TARIFF IS DEFINED 
+            if ContractRec.TarCustomer <> '' then begin
+                //IS DELTA BILLING IS FALSE, USE CUSTOMER TARIFF
+                if ContractRec.DeltaBilling = false then begin
+                    tariffRec := CustomerTariff
+                end
+                else begin
+                    //ELSE SET VALUES USING DELTA BILLING
+                    tariffRec := CompanyTariff;
+                    if CustomerTariff.BRInc <> NullNumberValue then
+                        tariffRec.BRInc := CustomerTariff.BRInc;
+
+                    if CustomerTariff.BRAmt <> NullNumberValue then
+                        tariffRec.BRAmt := CustomerTariff.BRAmt;
+
+                    if CustomerTariff.JobShiftAmount <> NullNumberValue then
+                        tariffRec.JobShiftAmount := CustomerTariff.JobShiftAmount;
+
+                    if CustomerTariff.JobShiftTime <> NullNumberValue then
+                        tariffRec.JobShiftTime := CustomerTariff.JobShiftTime;
+
+                    if CustomerTariff.JobStandardTime <> NullNumberValue then
+                        tariffRec.JobStandardTime := CustomerTariff.JobStandardTime;
+
+                    if CustomerTariff.OTRateAmount <> NullNumberValue then
+                        tariffRec.OTRateAmount := CustomerTariff.OTRateAmount;
+
+                    if CustomerTariff.FSPrcBase <> NullNumberValue then
+                        tariffRec.FSPrcBase := CustomerTariff.FSPrcBase;
+
+                    if CustomerTariff.FSPrcInc <> NullNumberValue then
+                        tariffRec.FSPrcInc := CustomerTariff.FSPrcInc;
+                end;
+            end;
+    end;
 }
