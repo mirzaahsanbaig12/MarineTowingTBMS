@@ -4,7 +4,7 @@ page 50143 "InBound Ord Doc List"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = OrdDoc;
-    Caption = 'Inbound Order Document';
+    Caption = 'Inbound Scheduler';
     CardPageId = 50144;
     SourceTableView = where(InboundOutbound = const(Inbound));
 
