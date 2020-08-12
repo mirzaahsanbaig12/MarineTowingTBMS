@@ -314,7 +314,7 @@ page 50147 "Log Billing List"
                     SalesLine.Validate("Unit Price", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
                     SalesLine.Validate("Line Amount", 0 - (ConAgent.DiscPer * SalesHeaderAmount));
                     SalesLine.Validate(LogDate, DT2Date(logDocRec.Datelog));
-                    salesline.Validate(LogJobType, logDocRec.JobType);
+                    salesline.Validate(ChargeType, 'Discount');
                     if not salesHeaderLocalRec.mulipleLogs then
                         SalesLine.Validate(LogDocNumber, salesHeaderLocalRec.LogDocNumber);
 

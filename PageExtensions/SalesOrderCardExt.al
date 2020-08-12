@@ -6,11 +6,6 @@ pageextension 50117 SalesOrderExt extends "Sales Order"
 
         addafter("Sell-to Customer Name")
         {
-            field(LogJobType; LogJobType)
-            {
-                ApplicationArea = All;
-                Editable = false;
-            }
         }
     }
 

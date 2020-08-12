@@ -5,25 +5,6 @@ pageextension 50113 SalesLineExt extends "Sales Order Subform"
         //Add changes to page layout here
         addafter("No.")
         {
-            field(TBMSDescription; TBMSDescription)
-            {
-                ApplicationArea = All;
-                Visible = false;
-            }
-
-            field(LogJobType; LogJobType)
-            {
-                ApplicationArea = All;
-            }
-
-            field("Posting Date"; "Posting Date")
-            {
-                ApplicationArea = All;
-                Visible = false;
-            }
-        }
-        addafter(Description)
-        {
             field(LogDocNumber; LogDocNumber)
             {
                 ApplicationArea = All;
@@ -32,7 +13,12 @@ pageextension 50113 SalesLineExt extends "Sales Order Subform"
                 DrillDown = true;
                 DrillDownPageId = "Log Billing";
             }
-
+            field(ChargeType; ChargeType)
+            {
+                ApplicationArea = ALL;
+                Editable = false;
+                Caption = 'Charge Type';
+            }
             field(TBMSlongDesc; TBMSlongDesc)
             {
                 ApplicationArea = ALL;

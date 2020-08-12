@@ -73,12 +73,6 @@ tableextension 50113 SalesHeaderExtTBMS extends "Sales Header"
             DataClassification = ToBeClassified;
             Caption = 'Multiple Logs';
         }
-        field(50120; LogJobType; Option)
-        {
-            DataClassification = ToBeClassified;
-            OptionMembers = "","Docking","Shifting","Undocking","Hourly";
-            Caption = 'Job Type';
-        }
     }
 
     var

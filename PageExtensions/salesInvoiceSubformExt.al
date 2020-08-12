@@ -5,14 +5,6 @@ pageextension 50125 SalesInvoiceLineExt extends "Sales Invoice Subform"
         // Add changes to page layout here
         addafter("No.")
         {
-            field("Posting Date"; "Posting Date")
-            {
-                ApplicationArea = All;
-                Visible = false;
-            }
-        }
-        addafter(Description)
-        {
             field(LogDocNumber; LogDocNumber)
             {
                 ApplicationArea = All;
@@ -21,19 +13,38 @@ pageextension 50125 SalesInvoiceLineExt extends "Sales Invoice Subform"
                 DrillDown = true;
                 DrillDownPageId = "Log Billing";
             }
-
-            field(LogJobType; LogJobType)
+            field(ChargeType; ChargeType)
             {
-                ApplicationArea = All;
+                ApplicationArea = ALL;
+                Editable = false;
+                Caption = 'Charge Type';
             }
-
             field(TBMSlongDesc; TBMSlongDesc)
             {
                 ApplicationArea = ALL;
             }
         }
-
         modify(Description)
+        {
+            Visible = false;
+        }
+        addafter("TotalSalesLine.""Line Amount""")
+        {
+            field("TBMS Discount"; tbmsDiscount)
+            {
+                ApplicationArea = Suite;
+                AutoFormatExpression = "Currency Code";
+                AutoFormatType = 1;
+                Caption = 'Discount';
+                Editable = false;
+            }
+        }
+        modify("Invoice Discount Amount")
+        {
+            Visible = false;
+
+        }
+        modify("Invoice Disc. Pct.")
         {
             Visible = false;
         }
@@ -46,6 +57,21 @@ pageextension 50125 SalesInvoiceLineExt extends "Sales Invoice Subform"
         // Add changes to page actions here
     }
 
+    trigger OnOpenPage()
+    begin
+        SalesHeader.Init();
+        tbmsDiscount := 0;
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        if SalesHeader.Get("Document Type", "Document No.") then begin
+            SalesHeader.CalcFields("TBMS Discount");
+            tbmsDiscount := SalesHeader."TBMS Discount";
+        end;
+    end;
+
     var
-        myInt: Integer;
+        tbmsDiscount: Decimal;
+        SalesHeader: Record "Sales Header";
 }

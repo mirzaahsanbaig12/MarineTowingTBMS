@@ -3,6 +3,31 @@ pageextension 50118 PostedSalesInvoiceSubformExt extends "Posted Sales Invoice S
     layout
     {
         // Add changes to page layout here
+        addafter("No.")
+        {
+            field(LogDocNumber; LogDocNumber)
+            {
+                ApplicationArea = All;
+                Caption = 'Log #';
+                Editable = false;
+                DrillDown = true;
+                DrillDownPageId = "Log Billing";
+            }
+            field(ChargeType; ChargeType)
+            {
+                ApplicationArea = ALL;
+                Editable = false;
+                Caption = 'Charge Type';
+            }
+            field(TBMSlongDesc; TBMSlongDesc)
+            {
+                ApplicationArea = ALL;
+            }
+        }
+        modify(Description)
+        {
+            Visible = false;
+        }
         addafter("Invoice Discount Amount")
         {
             field("TBMS Discount"; tbmsDiscount)

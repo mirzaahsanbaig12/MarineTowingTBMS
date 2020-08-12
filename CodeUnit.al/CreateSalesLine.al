@@ -333,7 +333,7 @@ codeunit 50115 CreateSalesLines
                             SalesLine.Validate(TBMSDescription2, lineDesc2);
                             SalesLine.Validate(LogDocNumber, logDocRec.LogDocNumber);
                             SalesLine.Validate(LogDate, DT2Date(logDocRec.Datelog));
-                            SalesLine.Validate(LogJobType, logDocRec.JobType);
+                            SalesLine.Validate(ChargeType, Format(logDocRec.JobType));
                             SalesLine.Validate(LogDateString, format(DT2Date(logDocRec.Datelog)));
                             //Message('date %1', DT2Date(logDocRec.Datelog));
 
@@ -366,7 +366,7 @@ codeunit 50115 CreateSalesLines
                                                 RepositionChargeSL.Validate("Type", SalesLine.Type::"G/L Account");
                                                 RepositionChargeSL.Validate("No.", Format(RevAccount));
                                                 RepositionChargeSL.Validate("Quantity", 1);
-                                                RepositionChargeSL.Validate(LogJobType, logDocRec.JobType);
+                                                RepositionChargeSL.Validate(ChargeType, 'Reposition');
                                                 RepositionChargeSL.Validate("Unit Price", PortZoneRec.FlatRate);
                                                 RepositionChargeSL.Validate("Line Amount", PortZoneRec.FlatRate);
                                                 RepositionChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
@@ -421,7 +421,7 @@ codeunit 50115 CreateSalesLines
                                                 AdditionalTimeChargeSL.Validate("Line Amount", fixRate);
                                                 AdditionalTimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                                 LineDesc := 'Additional Time Charge for ' + tugBoatRec.name;
-                                                AdditionalTimeChargeSL.Validate(LogJobType, logDocRec.JobType);
+                                                AdditionalTimeChargeSL.Validate(ChargeType, 'Additional Time');
                                                 AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                                 AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
                                                 AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -551,7 +551,7 @@ codeunit 50115 CreateSalesLines
                                             OvertimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                             //LineDesc := 'Over Time Charge for ' + tugBoatRec.Name;
                                             //OvertimeChargeSL.Validate(Description, LineDesc);
-                                            OvertimeChargeSL.Validate(LogJobType, logDocRec.JobType);
+                                            OvertimeChargeSL.Validate(ChargeType, 'Overtime');
                                             OvertimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                             OvertimeChargeSL.Validate(TBMSDescription, LineDesc);
                                             OvertimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -591,7 +591,7 @@ codeunit 50115 CreateSalesLines
                                         FuelSurchargesSL.Validate("Quantity", 1);
                                         FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
                                         FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-                                        FuelSurchargesSL.Validate(LogJobType, logDocRec.JobType);
+                                        FuelSurchargesSL.Validate(ChargeType, 'Fuel Surcharge');
                                         FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on $';
                                         if (logDocRec.JobType = logDocRec.JobType::Hourly) then
                                             FuelSurchargeDesc += Format(SalesLineCharges, 0, PriceFormatStr)

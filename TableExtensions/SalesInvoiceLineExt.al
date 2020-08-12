@@ -47,12 +47,10 @@ tableextension 50115 SalesInvoiceExtTBMS extends "Sales Invoice Line"
             DataClassification = ToBeClassified;
             Caption = 'Line Description 3';
         }
-
-        field(50118; LogJobType; Option)
+        field(50118; ChargeType; Text[50])
         {
             DataClassification = ToBeClassified;
-            OptionMembers = "","Docking","Shifting","Undocking","Hourly";
-            Caption = 'Job Type';
+            Caption = 'Charge Type';
         }
     }
 
