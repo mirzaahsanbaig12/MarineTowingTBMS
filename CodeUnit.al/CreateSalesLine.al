@@ -421,7 +421,7 @@ codeunit 50115 CreateSalesLines
                                                 AdditionalTimeChargeSL.Validate("Line Amount", fixRate);
                                                 AdditionalTimeChargeSL.Validate("Shortcut Dimension 1 Code", tugBoatRec.AccountCC);
                                                 LineDesc := 'Additional Time Charge for ' + tugBoatRec.name;
-                                                AdditionalTimeChargeSL.Validate(ChargeType, 'Additional Time');
+                                                AdditionalTimeChargeSL.Validate(ChargeType, 'AdditionalTime');
                                                 AdditionalTimeChargeSL.Validate(TBMSlongDesc, LineDesc);
                                                 AdditionalTimeChargeSL.Validate(TBMSDescription, LineDesc);
                                                 AdditionalTimeChargeSL.Validate(LogDocNumber, logDocRec.LogDocNumber);
@@ -591,7 +591,7 @@ codeunit 50115 CreateSalesLines
                                         FuelSurchargesSL.Validate("Quantity", 1);
                                         FuelSurchargesSL.Validate("Unit Price", FuelSurchargeAmount);
                                         FuelSurchargesSL.Validate("Line Amount", FuelSurchargeAmount);
-                                        FuelSurchargesSL.Validate(ChargeType, 'Fuel Surcharge');
+                                        FuelSurchargesSL.Validate(ChargeType, 'FuelSurcharge');
                                         FuelSurchargeDesc := 'Fuel Surcharge ' + tugBoatRec.name + ' ' + Format(FuelSurchargePercent, 0, PriceFormatStr) + '% on $';
                                         if (logDocRec.JobType = logDocRec.JobType::Hourly) then
                                             FuelSurchargeDesc += Format(SalesLineCharges, 0, PriceFormatStr)
