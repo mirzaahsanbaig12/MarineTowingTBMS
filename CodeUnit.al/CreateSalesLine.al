@@ -115,9 +115,9 @@ codeunit 50115 CreateSalesLines
                         IsFixedRate := true;
                     end;
 
-                    //message('here');
                     SetTariff(tariffRec, contractRec, CompanyRec);
-                    /*Message('tariffRec.BRInc %1 ,tariffRec.JobShiftAmount %2, tariffRec.BRAmt %3, tariffRec.JobShiftTime %4, tariffRec.JobStandardTime %5 , tariffRec.OTRateAmount %6 ,tariffRec.FSPrcBase %7 ,tariffRec.FSPrcInc %8', tariffRec.BRInc - - -
+
+                    /*Message('tariffRec.BRInc %1 ,tariffRec.JobShiftAmount %2, tariffRec.BRAmt %3, tariffRec.JobShiftTime %4, tariffRec.JobStandardTime %5 , tariffRec.OTRateAmount %6 ,tariffRec.FSPrcBase %7 ,tariffRec.FSPrcInc %8', tariffRec.BRInc,
                     tariffRec.JobShiftAmount,
                     tariffRec.BRAmt,
                     tariffRec.JobShiftTime,
@@ -126,6 +126,8 @@ codeunit 50115 CreateSalesLines
                     tariffRec.FSPrcBase,
                     tariffRec.FSPrcInc);
                     */
+
+
 
 
                     //add customer account base on contract billing option value
@@ -576,8 +578,8 @@ codeunit 50115 CreateSalesLines
                                         FuelSurchargePercent := (logDocRec.FuelCost - tariffRec.FSPrcBase) DIV tariffRec.FSPrcInc;
                                         FuelSurchargeAmount := (FuelSurchargePercent / 100) * SalesLineCharges;
                                         FuelSurchargeAmount := ROUND(FuelSurchargeAmount, 0.01, '>');
-                                        LogFuelRate := logDocRec.FuelCost;
 
+                                        LogFuelRate := logDocRec.FuelCost;
 
                                         FuelSurchargesSL."Document No." := SalesOrderNo;
                                         FuelSurchargesSL.Init();
