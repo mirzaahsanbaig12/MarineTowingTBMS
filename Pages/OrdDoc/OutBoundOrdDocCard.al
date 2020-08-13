@@ -5,7 +5,7 @@ page 50142 "Outbound Ord Doc Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = OrdDoc;
-    Caption = 'Outbound Order Document Details';
+    Caption = 'Outbound Scheduler';
     layout
     {
         area(Content)

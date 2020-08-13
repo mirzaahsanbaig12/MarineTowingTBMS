@@ -5,7 +5,7 @@ page 50144 "Inbound Ord Doc Card"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = OrdDoc;
-    Caption = 'Inbound Order Document Details';
+    Caption = 'Inbound Scheduler';
 
     layout
     {
