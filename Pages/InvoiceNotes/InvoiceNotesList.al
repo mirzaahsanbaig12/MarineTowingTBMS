@@ -6,6 +6,7 @@ page 50154 "Invoice Notes List"
     SourceTable = "Invoice Notes";
     Caption = 'Invoice Notes List';
     CardPageId = 50155;
+    Editable = false;
 
     layout
     {
@@ -22,6 +23,11 @@ page 50154 "Invoice Notes List"
                 {
                     ApplicationArea = All;
                 }
+                field(Memo; InoMemos)
+                {
+                    ApplicationArea = All;
+                }
+
             }
 
         }
